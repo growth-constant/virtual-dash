@@ -1,0 +1,4 @@
+node_modules/
+tmp/
+public/
+./docker/proxy/acme.json

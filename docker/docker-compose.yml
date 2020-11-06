@@ -1,0 +1,35 @@
+version: "3"
+services:
+  web:
+    image: virtual-dash:dev
+    build: 
+      context: ./../
+      dockerfile: ./docker/Dockerfile
+    command: rails s -b 0.0.0.0
+    links: 
+      - db
+    ports:
+      - 3000:3000
+    environment:
+      - BUNDLE_PATH=/bundle/vendor
+    volumes:
+    - ./../:/home/virtual-dash/
+    - node_modules_path:/home/virtual-dash/node_modules/
+    - bundle_path:/bundle/
+    environment:
+    - RAILS_LOG_TO_STDOUT=true
+    - POSTGRES_HOST=db
+    - POSTGRES_USER=postgres
+    - POSTGRES_PASSWORD=password
+  db:
+    image: "postgres:11"
+    ports:
+      - "5432:5432"
+    environment:
+    - POSTGRES_PASSWORD=password
+    volumes:
+      - virtual-dash_dbdata:/var/lib/postgresql/data
+volumes:
+  bundle_path:
+  node_modules_path:
+  virtual-dash_dbdata:
