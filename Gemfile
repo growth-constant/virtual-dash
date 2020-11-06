@@ -26,6 +26,13 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 gem 'devise', '~> 4.7', '>= 4.7.3'
+# gem for oauth authentication with third parties
+gem "omniauth", "~> 1.9"
+# gem to authenticate with strava
+gem "omniauth-strava", "~> 0.0.6"
+# gem process haml files
+gem "haml-rails", "~> 2.0"
+
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
@@ -54,7 +61,3 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
-gem "omniauth", "~> 1.9"
-
-gem "omniauth-strava", "~> 0.0.6"

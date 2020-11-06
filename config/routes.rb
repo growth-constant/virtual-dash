@@ -9,6 +9,6 @@ Rails.application.routes.draw do
   end
 
   authenticated :user do
-    root 'secret#index', as: :authenticated_root
+    root 'home#secret', as: :authenticated_root
   end
 end
