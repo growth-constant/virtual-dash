@@ -5,13 +5,40 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   devise :omniauthable, omniauth_providers: %i[strava]
 
+  def self.from_omniauth_to_fields(auth)
+    fields = {}
+    if not auth.is_a?(OmniAuth::AuthHash)
+      auth = OmniAuth::AuthHash.new(auth)
+    end
+    raw_info = auth.extra.raw_info
+    # personal info
+    fields[:name] = auth.info.name
+    fields[:first_name] = raw_info.firstname
+    fields[:last_name] = raw_info.lastname
+    fields[:image] = raw_info.profile
+    fields[:image_medium] = raw_info.profile_medium
+    fields[:city] = raw_info.city
+    fields[:state] = raw_info.state
+    fields[:country] = raw_info.country
+    # provider
+    fields[:provider] = auth.provider
+    fields[:uid] = auth.extra.raw_info.id
+    # credentials
+    fields[:token] = auth.credentials.token
+    fields[:token_expires_at] = auth.credentials.expires_at
+    fields[:refresh_token] = auth.credentials.refresh_toke
+    return fields
+  end
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      put auth
+      fields = self.from_omniauth_to_fields(auth)
+      # if email is null then get it from the user
       user.email = auth.info.email
       user.password = Devise.friendly_token[0, 20]
-      user.name = auth.info.name   # assuming the user model has a name
-      user.image = auth.info.image # assuming the user model has an image
+      fields.each do |field, value|
+        user.attributes[field] = value
+      end
       # If you are using confirmable and the provider(s) you use validate emails, 
       # uncomment the line below to skip the confirmation emails.
       # user.skip_confirmation!
