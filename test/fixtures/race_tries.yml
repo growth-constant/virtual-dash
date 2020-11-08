@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  registration: one
+  user: one
+  segment: MyString
+  duration: 1
+  start: 2020-11-08 20:10:59
+
+two:
+  registration: two
+  user: two
+  segment: MyString
+  duration: 1
+  start: 2020-11-08 20:10:59

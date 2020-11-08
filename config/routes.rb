@@ -6,10 +6,10 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'users/registrations' }
   
   unauthenticated do
-    root "home#index"
+    root "races#index"
   end
 
   authenticated :user do
-    root 'home#secret', as: :authenticated_root
+    root 'races#index', as: :authenticated_root
   end
 end

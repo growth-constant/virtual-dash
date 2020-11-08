@@ -32,7 +32,12 @@ gem "omniauth", "~> 1.9"
 gem "omniauth-strava", "~> 0.0.6"
 # gem process haml files
 gem "haml-rails", "~> 2.0"
-
+# gem to install semantic ui into rails
+gem "fomantic-ui-sass", "~> 2.8"
+# gem to simplify forms
+gem "simple_form", "~> 5.0"
+# gem to add country select for forms
+gem "country_select", "~> 4.0"
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
@@ -62,4 +67,3 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem "fomantic-ui-sass", "~> 2.8"

@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  race: one
+  user: one
+  race_category: one
+  status: MyString
+
+two:
+  race: two
+  user: two
+  race_category: two
+  status: MyString
