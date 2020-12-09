@@ -7,7 +7,8 @@ one:
   state: MyString
   city: MyString
   enddate: 2020-11-08 19:50:39
-
+  user: 
+  segment_id: 2761995843388551916
 two:
   title: MyString
   description: MyString

@@ -1,25 +1,12 @@
-# README
+# Virtual Dash 
+## Development of App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+To start the application run the following docker command
 
-Things you may want to cover:
+```bash
+# create DB & migrations (DB will be up'd with this command)
+docker-compose -f ./docker/docker-compose.yml run --service-ports --rm web bundle exec rake db:create db:migrate
+# run rails application (along with DB)
+docker-compose -f ./docker/docker-compose.yml run --service-ports --rm web
+```
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-# virtual-dash

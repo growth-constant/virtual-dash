@@ -37,7 +37,6 @@ gem "fomantic-ui-sass", "~> 2.8"
 # gem to simplify forms
 gem "simple_form", "~> 5.0"
 # gem to add country select for forms
-gem "country_select", "~> 4.0"
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
@@ -67,3 +66,6 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+gem "country_select", "~> 4.0"
+
+gem "strava-ruby-client", "~> 0.4.0"
