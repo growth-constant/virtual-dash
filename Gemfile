@@ -27,15 +27,15 @@ gem 'jbuilder', '~> 2.7'
 # gem 'image_processing', '~> 1.2'
 gem 'devise', '~> 4.7', '>= 4.7.3'
 # gem for oauth authentication with third parties
-gem "omniauth", "~> 1.9"
+gem 'omniauth', '~> 1.9'
 # gem to authenticate with strava
-gem "omniauth-strava", "~> 0.0.6"
+gem 'omniauth-strava', '~> 0.0.6'
 # gem process haml files
-gem "haml-rails", "~> 2.0"
+gem 'haml-rails', '~> 2.0'
 # gem to install semantic ui into rails
-gem "fomantic-ui-sass", "~> 2.8"
+gem 'fomantic-ui-sass', '~> 2.8'
 # gem to simplify forms
-gem "simple_form", "~> 5.0"
+gem 'simple_form', '~> 5.0'
 # gem to add country select for forms
 
 # Reduces boot times through caching; required in config/boot.rb
@@ -69,6 +69,8 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem "country_select", "~> 4.0"
+gem 'country_select', '~> 4.0'
 
-gem "strava-ruby-client", "~> 0.4.0"
+gem 'strava-ruby-client', '~> 0.4.0'
+gem 'vcr', '~> 6.0'
+gem 'webmock', '~> 3.10'
