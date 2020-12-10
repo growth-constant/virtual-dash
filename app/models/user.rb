@@ -26,7 +26,7 @@ class User < ApplicationRecord
     # credentials
     fields[:token] = auth.credentials.token
     fields[:token_expires_at] = auth.credentials.expires_at
-    fields[:refresh_token] = auth.credentials.refresh_toke
+    fields[:refresh_token] = auth.credentials.refresh_token
     return fields
   end
 
@@ -39,7 +39,7 @@ class User < ApplicationRecord
       fields.each do |field, value|
         user.attributes[field] = value
       end
-      # If you are using confirmable and the provider(s) you use validate emails, 
+      # If you are using confirmable and the provider(s) you use validate emails,
       # uncomment the line below to skip the confirmation emails.
       # user.skip_confirmation!
     end
