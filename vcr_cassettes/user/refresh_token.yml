@@ -1,0 +1,59 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://www.strava.com/api/v3/oauth/token
+    body:
+      encoding: US-ASCII
+      string: client_id=54154&client_secret=dc5d0e5fd37d42098944c0416ebc8eb203e25488&grant_type=refresh_token&refresh_token=d132fa935e8293ab5c0364a6260d11bd4b6a0773
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 10 Dec 2020 23:30:27 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Via:
+      - 1.1 linkerd
+      X-Download-Options:
+      - noopen
+      Status:
+      - 200 OK
+      X-Request-Id:
+      - b84cf175-852b-4018-8f28-202166bed6ac
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Etag:
+      - W/"8d854071e32280f32a104ca8273b88cf"
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Vary:
+      - Origin
+      X-Xss-Protection:
+      - 1; mode=block
+    body:
+      encoding: ASCII-8BIT
+      string: '{"token_type":"Bearer","access_token":"603abfb153d8e19d13c56ac52fce1c1a741c98a8","expires_at":1607652312,"expires_in":9285,"refresh_token":"d132fa935e8293ab5c0364a6260d11bd4b6a0773"}'
+  recorded_at: Thu, 10 Dec 2020 23:30:27 GMT
+recorded_with: VCR 6.0.0
