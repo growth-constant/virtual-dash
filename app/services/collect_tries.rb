@@ -47,8 +47,14 @@ class CollectTries
   end
 
   def segment(segment_id, user)
+    # segment_id=4677383&start_date_local=2020-11-01&end_date_local=2020-11-30
+    # if last try is nil we can use the date of starting race
+    last_try = RaceTry.where(user_id: user.id, segment_id: segment_id).last
+
     res = Faraday.get("#{API_ENDPOINT}/segment_efforts",
-                      { segment_id: segment_id },
+                      { segment_id: segment_id,
+                        start_date_local: last_try&.start&.strftime('%F') || '2010-01-01',
+                        end_date_local: DateTime.now.strftime('%F') || '' },
                       { 'Authorization' => "Bearer #{user.token}" })
     if res.status == 401
       refresh_token(user)

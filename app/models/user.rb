@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   devise :omniauthable, omniauth_providers: %i[strava]
 
+  has_many :race_tries
+
   def self.from_omniauth_to_fields(auth)
     fields = {}
     if not auth.is_a?(OmniAuth::AuthHash)
