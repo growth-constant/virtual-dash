@@ -50,8 +50,7 @@ class CollectTries
                        registration_id: registration.id,
                        segment_id: segment_id,
                        duration: try['elapsed_time'],
-                       start: try['start_date_local']
-                      )
+                       start: try['start_date_local'])
       end
     end
   end
@@ -62,8 +61,7 @@ class CollectTries
       req.body = { 'client_id': ENV['CLIENT_ID'],
                    'client_secret': ENV['CLIENT_SECRET'],
                    'grant_type': 'refresh_token',
-                   'refresh_token': user.refresh_token
-                 }.to_json
+                   'refresh_token': user.refresh_token }.to_json
     end
     update_user_tokens(user,
                        JSON.parse(resp.body))
