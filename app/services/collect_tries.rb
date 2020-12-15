@@ -1,9 +1,6 @@
 # frozen_string_literal: true
 
-require 'oj'
 require 'faraday'
-require 'net/http'
-require 'uri'
 
 # Service for Collect Tries
 class CollectTries
@@ -24,35 +21,40 @@ class CollectTries
       next unless Registration.exists?(user_id: user.id)
 
       registrations = Registration.where(user_id: user.id, status: true)
-      segment_effort(user, registrations)
+      segment_efforts(user, registrations)
     end
   end
 
-  def segment_effort(user, registrations)
-    url = "#{API_ENDPOINT}/segment_efforts"
-
+  def segment_efforts(user, registrations)
     registrations&.each do |registration|
       segment_id = registration.race.segment_id
-      res = Faraday.get(url,
-                        { segment_id: segment_id },
-                        { 'Authorization' => "Bearer #{user.token}" })
-
-      if res.status == 401
-        refresh_token(user)
-        user.reload
-        res = Faraday.get(url,
-                          { segment_id: segment_id },
-                          { 'Authorization' => "Bearer #{user.token}" })
-      end
+      res = segment(segment_id, user)
 
       JSON.parse(res.body).each do |try|
-        RaceTry.create(user_id: user.id,
-                       registration_id: registration.id,
-                       segment_id: segment_id,
-                       duration: try['elapsed_time'],
-                       start: try['start_date_local'])
+        next if RaceTry.exists?(user_id: user.id, segment_id: segment_id, start: try['start_date_local'])
+
+        add_race_try(user, registration, segment_id, try)
       end
     end
+  end
+
+  def add_race_try(user, registration, segment_id, try)
+    RaceTry.create(user_id: user.id,
+                   registration_id: registration.id,
+                   segment_id: segment_id,
+                   duration: try['elapsed_time'],
+                   start: try['start_date_local'])
+  end
+
+  def segment(segment_id, user)
+    res = Faraday.get("#{API_ENDPOINT}/segment_efforts",
+                      { segment_id: segment_id },
+                      { 'Authorization' => "Bearer #{user.token}" })
+    if res.status == 401
+      refresh_token(user)
+      res = segment(segment_id, user.reload)
+    end
+    res
   end
 
   def refresh_token(user)
