@@ -57,19 +57,20 @@ class CollectTries
   end
 
   def refresh_token(user)
-    url = URI.parse('https://www.strava.com/api/v3/oauth/token')
-    https = Net::HTTP.new(url.host, url.port);
-    https.use_ssl = true
-    request = Net::HTTP::Post.new(url.request_uri)
-    request.set_form_data({
-                            'client_id' => ENV['CLIENT_ID'],
-                            'client_secret' => ENV['CLIENT_SECRET'],
-                            'grant_type' => 'refresh_token',
-                            'refresh_token' => user.refresh_token
-                          })
-    res = JSON.parse(https.request(request).body)
+    resp = Faraday.post('https://www.strava.com/api/v3/oauth/token') do |req|
+      req.headers['Content-Type'] = 'application/json'
+      req.body = { 'client_id': ENV['CLIENT_ID'],
+                   'client_secret': ENV['CLIENT_SECRET'],
+                   'grant_type': 'refresh_token',
+                   'refresh_token': user.refresh_token
+                 }.to_json
+    end
+    update_user_tokens(user,
+                       JSON.parse(resp.body))
+  end
 
-    if res['access_token']
+  def update_user_tokens(user, res)
+    if res['access_token'] && res['refresh_token']
       user.update(token: res['access_token'],
                   refresh_token: res['refresh_token'],
                   token_expires_at: res['expires_at'])
