@@ -28,33 +28,34 @@ class CollectTries
   def segment_efforts(user, registrations)
     registrations&.each do |registration|
       segment_id = registration.race.segment_id
-      res = segment(segment_id, user)
+      res = segment(segment_id, user, registration.race)
 
       JSON.parse(res.body).each do |try|
         next if RaceTry.exists?(user_id: user.id, segment_id: segment_id, start: try['start_date_local'])
 
-        add_race_try(user, registration, segment_id, try)
+        add_race_try(user, registration, try)
       end
     end
   end
 
-  def add_race_try(user, registration, segment_id, try)
+  def add_race_try(user, registration, try)
     RaceTry.create(user_id: user.id,
                    registration_id: registration.id,
-                   segment_id: segment_id,
+                   segment_id: try['segment']['id'],
                    duration: try['elapsed_time'],
-                   start: try['start_date_local'])
+                   start: try['start_date'])
   end
 
-  def segment(segment_id, user)
+  def segment(segment_id, user, race)
     # segment_id=4677383&start_date_local=2020-11-01&end_date_local=2020-11-30
     # if last try is nil we can use the date of starting race
     last_try = RaceTry.where(user_id: user.id, segment_id: segment_id).last
 
     res = Faraday.get("#{API_ENDPOINT}/segment_efforts",
                       { segment_id: segment_id,
-                        start_date_local: last_try&.start&.strftime('%F') || '2010-01-01',
-                        end_date_local: DateTime.now.strftime('%F') || '' },
+                        start_date_local: last_try || race&.startdate&.strftime('%F'),
+                        end_date_local: race&.enddate&.strftime('%F'),
+                        per_page: 50 },
                       { 'Authorization' => "Bearer #{user.token}" })
     if res.status == 401
       refresh_token(user)

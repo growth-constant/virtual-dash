@@ -64,10 +64,22 @@ describe 'user', type: :request do
 
     it 'quantity tries must be N' do
       VCR.use_cassette('race/race_tries') do
-        @res = Faraday.get("#{@api_endpoint}/segment_efforts",
+        res = Faraday.get("#{@api_endpoint}/segment_efforts",
                            { segment_id: @segment_id },
                            { 'Authorization' => "Bearer #{victor.token}" })
-        expect(JSON.parse(@res.body).count).to eq(30)
+        expect(JSON.parse(res.body).count).to eq(30)
+      end
+    end
+
+    it 'quantity tries must be N when adding start and end date' do
+      VCR.use_cassette('race/race_tries_limited_by_date') do
+        res = Faraday.get("#{@api_endpoint}/segment_efforts",
+                           { segment_id: @segment_id,
+                             start_date_local: '2020-09-16',
+                             end_date_local: '2020-12-16' },
+                           { 'Authorization' => "Bearer #{victor.token}" })
+
+        expect(JSON.parse(res.body).count).to eq(21)
       end
     end
   end

@@ -1,0 +1,126 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.strava.com/api/v3/segment_efforts?end_date_local=2020-12-16&segment_id=4677383&start_date_local=2020-09-16
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.1.0
+      Authorization:
+      - Bearer 5656828bbe02ea7ea866fd6cfff653134ecf6cb8
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 16 Dec 2020 23:37:07 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Via:
+      - 1.1 linkerd
+      X-Download-Options:
+      - noopen
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '100,1000'
+      X-Request-Id:
+      - b91a60a3-a9d4-4625-8517-7b2d698914fb
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Etag:
+      - W/"11a2956ba75f717b8e91ef0cbddf6167"
+      X-Frame-Options:
+      - DENY
+      X-Ratelimit-Usage:
+      - '6,21'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Vary:
+      - Origin
+      X-Xss-Protection:
+      - 1; mode=block
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"id":2742209153917565396,"resource_state":2,"name":"Monks-Gate-Mine
+        climb","activity":{"id":4079845250,"resource_state":1},"athlete":{"id":2187119,"resource_state":1},"elapsed_time":186,"moving_time":183,"start_date":"2020-09-18T23:47:50Z","start_date_local":"2020-09-18T17:47:50Z","distance":643.2,"start_index":346,"end_index":485,"device_watts":false,"average_watts":299.5,"segment":{"id":4677383,"resource_state":2,"name":"Monks-Gate-Mine
+        climb","activity_type":"Ride","distance":643.2,"average_grade":8.2,"maximum_grade":17.2,"elevation_high":1317.6,"elevation_low":1264.8,"start_latlng":[31.789667,-106.487981],"end_latlng":[31.793995,-106.49137],"elevation_profile":null,"start_latitude":31.789667,"start_longitude":-106.487981,"end_latitude":31.793995,"end_longitude":-106.49137,"climb_category":0,"city":"El
+        Paso","state":"TX","country":"United States","private":false,"hazardous":false,"starred":false},"pr_rank":null,"achievements":[],"kom_rank":null},{"id":2751264294807277674,"resource_state":2,"name":"Monks-Gate-Mine
+        climb","activity":{"id":4192011178,"resource_state":1},"athlete":{"id":2187119,"resource_state":1},"elapsed_time":196,"moving_time":189,"start_date":"2020-10-14T00:24:20Z","start_date_local":"2020-10-13T18:24:20Z","distance":643.2,"start_index":249,"end_index":380,"device_watts":false,"average_watts":285.4,"segment":{"id":4677383,"resource_state":2,"name":"Monks-Gate-Mine
+        climb","activity_type":"Ride","distance":643.2,"average_grade":8.2,"maximum_grade":17.2,"elevation_high":1317.6,"elevation_low":1264.8,"start_latlng":[31.789667,-106.487981],"end_latlng":[31.793995,-106.49137],"elevation_profile":null,"start_latitude":31.789667,"start_longitude":-106.487981,"end_latitude":31.793995,"end_longitude":-106.49137,"climb_category":0,"city":"El
+        Paso","state":"TX","country":"United States","private":false,"hazardous":false,"starred":false},"pr_rank":null,"achievements":[],"kom_rank":null},{"id":2744745290464646164,"resource_state":2,"name":"Monks-Gate-Mine
+        climb","activity":{"id":4112260036,"resource_state":1},"athlete":{"id":2187119,"resource_state":1},"elapsed_time":209,"moving_time":195,"start_date":"2020-09-26T00:37:45Z","start_date_local":"2020-09-25T18:37:45Z","distance":643.2,"start_index":148,"end_index":293,"device_watts":false,"average_watts":272.4,"segment":{"id":4677383,"resource_state":2,"name":"Monks-Gate-Mine
+        climb","activity_type":"Ride","distance":643.2,"average_grade":8.2,"maximum_grade":17.2,"elevation_high":1317.6,"elevation_low":1264.8,"start_latlng":[31.789667,-106.487981],"end_latlng":[31.793995,-106.49137],"elevation_profile":null,"start_latitude":31.789667,"start_longitude":-106.487981,"end_latitude":31.793995,"end_longitude":-106.49137,"climb_category":0,"city":"El
+        Paso","state":"TX","country":"United States","private":false,"hazardous":false,"starred":false},"pr_rank":null,"achievements":[],"kom_rank":null},{"id":2752940132005685140,"resource_state":2,"name":"Monks-Gate-Mine
+        climb","activity":{"id":4212496390,"resource_state":1},"athlete":{"id":2187119,"resource_state":1},"elapsed_time":226,"moving_time":207,"start_date":"2020-10-18T15:36:11Z","start_date_local":"2020-10-18T09:36:11Z","distance":643.2,"start_index":3824,"end_index":3998,"device_watts":false,"average_watts":240.3,"segment":{"id":4677383,"resource_state":2,"name":"Monks-Gate-Mine
+        climb","activity_type":"Ride","distance":643.2,"average_grade":8.2,"maximum_grade":17.2,"elevation_high":1317.6,"elevation_low":1264.8,"start_latlng":[31.789667,-106.487981],"end_latlng":[31.793995,-106.49137],"elevation_profile":null,"start_latitude":31.789667,"start_longitude":-106.487981,"end_latitude":31.793995,"end_longitude":-106.49137,"climb_category":0,"city":"El
+        Paso","state":"TX","country":"United States","private":false,"hazardous":false,"starred":false},"pr_rank":null,"achievements":[],"kom_rank":null},{"id":2755069757403565302,"resource_state":2,"name":"Monks-Gate-Mine
+        climb","activity":{"id":4236764780,"resource_state":1},"athlete":{"id":2187119,"resource_state":1},"elapsed_time":243,"moving_time":216,"start_date":"2020-10-24T12:11:38Z","start_date_local":"2020-10-24T06:11:38Z","distance":643.2,"start_index":330,"end_index":495,"device_watts":false,"average_watts":237.5,"segment":{"id":4677383,"resource_state":2,"name":"Monks-Gate-Mine
+        climb","activity_type":"Ride","distance":643.2,"average_grade":8.2,"maximum_grade":17.2,"elevation_high":1317.6,"elevation_low":1264.8,"start_latlng":[31.789667,-106.487981],"end_latlng":[31.793995,-106.49137],"elevation_profile":null,"start_latitude":31.789667,"start_longitude":-106.487981,"end_latitude":31.793995,"end_longitude":-106.49137,"climb_category":0,"city":"El
+        Paso","state":"TX","country":"United States","private":false,"hazardous":false,"starred":false},"pr_rank":null,"achievements":[],"kom_rank":null},{"id":2750415727832242382,"resource_state":2,"name":"Monks-Gate-Mine
+        climb","activity":{"id":4182167082,"resource_state":1},"athlete":{"id":2187119,"resource_state":1},"elapsed_time":244,"moving_time":219,"start_date":"2020-10-11T15:28:23Z","start_date_local":"2020-10-11T09:28:23Z","distance":643.2,"start_index":1078,"end_index":1260,"device_watts":false,"average_watts":230.7,"segment":{"id":4677383,"resource_state":2,"name":"Monks-Gate-Mine
+        climb","activity_type":"Ride","distance":643.2,"average_grade":8.2,"maximum_grade":17.2,"elevation_high":1317.6,"elevation_low":1264.8,"start_latlng":[31.789667,-106.487981],"end_latlng":[31.793995,-106.49137],"elevation_profile":null,"start_latitude":31.789667,"start_longitude":-106.487981,"end_latitude":31.793995,"end_longitude":-106.49137,"climb_category":0,"city":"El
+        Paso","state":"TX","country":"United States","private":false,"hazardous":false,"starred":false},"pr_rank":null,"achievements":[],"kom_rank":null},{"id":2750415727836847310,"resource_state":2,"name":"Monks-Gate-Mine
+        climb","activity":{"id":4182167082,"resource_state":1},"athlete":{"id":2187119,"resource_state":1},"elapsed_time":248,"moving_time":223,"start_date":"2020-10-11T16:05:11Z","start_date_local":"2020-10-11T10:05:11Z","distance":643.2,"start_index":2603,"end_index":2795,"device_watts":false,"average_watts":226.2,"segment":{"id":4677383,"resource_state":2,"name":"Monks-Gate-Mine
+        climb","activity_type":"Ride","distance":643.2,"average_grade":8.2,"maximum_grade":17.2,"elevation_high":1317.6,"elevation_low":1264.8,"start_latlng":[31.789667,-106.487981],"end_latlng":[31.793995,-106.49137],"elevation_profile":null,"start_latitude":31.789667,"start_longitude":-106.487981,"end_latitude":31.793995,"end_longitude":-106.49137,"climb_category":0,"city":"El
+        Paso","state":"TX","country":"United States","private":false,"hazardous":false,"starred":false},"pr_rank":null,"achievements":[],"kom_rank":null},{"id":2770329091353568666,"resource_state":2,"name":"Monks-Gate-Mine
+        climb","activity":{"id":4433256708,"resource_state":1},"athlete":{"id":2187119,"resource_state":1},"elapsed_time":252,"moving_time":221,"start_date":"2020-12-05T14:34:00Z","start_date_local":"2020-12-05T07:34:00Z","distance":643.2,"start_index":361,"end_index":550,"device_watts":false,"average_watts":251.3,"segment":{"id":4677383,"resource_state":2,"name":"Monks-Gate-Mine
+        climb","activity_type":"Ride","distance":643.2,"average_grade":8.2,"maximum_grade":17.2,"elevation_high":1317.6,"elevation_low":1264.8,"start_latlng":[31.789667,-106.487981],"end_latlng":[31.793995,-106.49137],"elevation_profile":null,"start_latitude":31.789667,"start_longitude":-106.487981,"end_latitude":31.793995,"end_longitude":-106.49137,"climb_category":0,"city":"El
+        Paso","state":"TX","country":"United States","private":false,"hazardous":false,"starred":false},"pr_rank":null,"achievements":[],"kom_rank":null},{"id":2761620127879999048,"resource_state":2,"name":"Monks-Gate-Mine
+        climb","activity":{"id":4322625416,"resource_state":1},"athlete":{"id":2187119,"resource_state":1},"elapsed_time":255,"moving_time":227,"start_date":"2020-11-11T14:03:15Z","start_date_local":"2020-11-11T07:03:15Z","distance":643.2,"start_index":346,"end_index":529,"device_watts":false,"average_watts":214.1,"segment":{"id":4677383,"resource_state":2,"name":"Monks-Gate-Mine
+        climb","activity_type":"Ride","distance":643.2,"average_grade":8.2,"maximum_grade":17.2,"elevation_high":1317.6,"elevation_low":1264.8,"start_latlng":[31.789667,-106.487981],"end_latlng":[31.793995,-106.49137],"elevation_profile":null,"start_latitude":31.789667,"start_longitude":-106.487981,"end_latitude":31.793995,"end_longitude":-106.49137,"climb_category":0,"city":"El
+        Paso","state":"TX","country":"United States","private":false,"hazardous":false,"starred":false},"pr_rank":null,"achievements":[],"kom_rank":null},{"id":2762504176654685874,"resource_state":2,"name":"Monks-Gate-Mine
+        climb","activity":{"id":4333903373,"resource_state":1},"athlete":{"id":2187119,"resource_state":1},"elapsed_time":257,"moving_time":227,"start_date":"2020-11-13T23:56:08Z","start_date_local":"2020-11-13T16:56:08Z","distance":643.2,"start_index":323,"end_index":514,"device_watts":false,"average_watts":222.2,"segment":{"id":4677383,"resource_state":2,"name":"Monks-Gate-Mine
+        climb","activity_type":"Ride","distance":643.2,"average_grade":8.2,"maximum_grade":17.2,"elevation_high":1317.6,"elevation_low":1264.8,"start_latlng":[31.789667,-106.487981],"end_latlng":[31.793995,-106.49137],"elevation_profile":null,"start_latitude":31.789667,"start_longitude":-106.487981,"end_latitude":31.793995,"end_longitude":-106.49137,"climb_category":0,"city":"El
+        Paso","state":"TX","country":"United States","private":false,"hazardous":false,"starred":false},"pr_rank":null,"achievements":[],"kom_rank":null},{"id":2768865810190049116,"resource_state":2,"name":"Monks-Gate-Mine
+        climb","activity":{"id":4416156230,"resource_state":1},"athlete":{"id":2187119,"resource_state":1},"elapsed_time":268,"moving_time":232,"start_date":"2020-12-01T13:45:07Z","start_date_local":"2020-12-01T06:45:07Z","distance":643.2,"start_index":351,"end_index":552,"device_watts":false,"average_watts":212.8,"segment":{"id":4677383,"resource_state":2,"name":"Monks-Gate-Mine
+        climb","activity_type":"Ride","distance":643.2,"average_grade":8.2,"maximum_grade":17.2,"elevation_high":1317.6,"elevation_low":1264.8,"start_latlng":[31.789667,-106.487981],"end_latlng":[31.793995,-106.49137],"elevation_profile":null,"start_latitude":31.789667,"start_longitude":-106.487981,"end_latitude":31.793995,"end_longitude":-106.49137,"climb_category":0,"city":"El
+        Paso","state":"TX","country":"United States","private":false,"hazardous":false,"starred":false},"pr_rank":null,"achievements":[],"kom_rank":null},{"id":2762733040327600818,"resource_state":2,"name":"Monks-Gate-Mine
+        climb","activity":{"id":4337325658,"resource_state":1},"athlete":{"id":2187119,"resource_state":1},"elapsed_time":271,"moving_time":237,"start_date":"2020-11-14T16:03:34Z","start_date_local":"2020-11-14T09:03:34Z","distance":643.2,"start_index":2274,"end_index":2477,"device_watts":false,"average_watts":204.5,"segment":{"id":4677383,"resource_state":2,"name":"Monks-Gate-Mine
+        climb","activity_type":"Ride","distance":643.2,"average_grade":8.2,"maximum_grade":17.2,"elevation_high":1317.6,"elevation_low":1264.8,"start_latlng":[31.789667,-106.487981],"end_latlng":[31.793995,-106.49137],"elevation_profile":null,"start_latitude":31.789667,"start_longitude":-106.487981,"end_latitude":31.793995,"end_longitude":-106.49137,"climb_category":0,"city":"El
+        Paso","state":"TX","country":"United States","private":false,"hazardous":false,"starred":false},"pr_rank":null,"achievements":[],"kom_rank":null},{"id":2746384397435693300,"resource_state":2,"name":"Monks-Gate-Mine
+        climb","activity":{"id":4132705036,"resource_state":1},"athlete":{"id":2187119,"resource_state":1},"elapsed_time":272,"moving_time":242,"start_date":"2020-09-30T13:01:27Z","start_date_local":"2020-09-30T07:01:27Z","distance":643.2,"start_index":314,"end_index":519,"device_watts":false,"average_watts":209.2,"segment":{"id":4677383,"resource_state":2,"name":"Monks-Gate-Mine
+        climb","activity_type":"Ride","distance":643.2,"average_grade":8.2,"maximum_grade":17.2,"elevation_high":1317.6,"elevation_low":1264.8,"start_latlng":[31.789667,-106.487981],"end_latlng":[31.793995,-106.49137],"elevation_profile":null,"start_latitude":31.789667,"start_longitude":-106.487981,"end_latitude":31.793995,"end_longitude":-106.49137,"climb_category":0,"city":"El
+        Paso","state":"TX","country":"United States","private":false,"hazardous":false,"starred":false},"pr_rank":null,"achievements":[],"kom_rank":null},{"id":2770329091355759002,"resource_state":2,"name":"Monks-Gate-Mine
+        climb","activity":{"id":4433256708,"resource_state":1},"athlete":{"id":2187119,"resource_state":1},"elapsed_time":275,"moving_time":232,"start_date":"2020-12-05T15:13:22Z","start_date_local":"2020-12-05T08:13:22Z","distance":643.2,"start_index":2071,"end_index":2271,"device_watts":false,"average_watts":236.5,"segment":{"id":4677383,"resource_state":2,"name":"Monks-Gate-Mine
+        climb","activity_type":"Ride","distance":643.2,"average_grade":8.2,"maximum_grade":17.2,"elevation_high":1317.6,"elevation_low":1264.8,"start_latlng":[31.789667,-106.487981],"end_latlng":[31.793995,-106.49137],"elevation_profile":null,"start_latitude":31.789667,"start_longitude":-106.487981,"end_latitude":31.793995,"end_longitude":-106.49137,"climb_category":0,"city":"El
+        Paso","state":"TX","country":"United States","private":false,"hazardous":false,"starred":false},"pr_rank":null,"achievements":[],"kom_rank":null},{"id":2748196527360565584,"resource_state":2,"name":"Monks-Gate-Mine
+        climb","activity":{"id":4154328396,"resource_state":1},"athlete":{"id":2187119,"resource_state":1},"elapsed_time":279,"moving_time":237,"start_date":"2020-10-05T12:52:56Z","start_date_local":"2020-10-05T06:52:56Z","distance":643.2,"start_index":408,"end_index":618,"device_watts":false,"average_watts":201.6,"segment":{"id":4677383,"resource_state":2,"name":"Monks-Gate-Mine
+        climb","activity_type":"Ride","distance":643.2,"average_grade":8.2,"maximum_grade":17.2,"elevation_high":1317.6,"elevation_low":1264.8,"start_latlng":[31.789667,-106.487981],"end_latlng":[31.793995,-106.49137],"elevation_profile":null,"start_latitude":31.789667,"start_longitude":-106.487981,"end_latitude":31.793995,"end_longitude":-106.49137,"climb_category":0,"city":"El
+        Paso","state":"TX","country":"United States","private":false,"hazardous":false,"starred":false},"pr_rank":null,"achievements":[],"kom_rank":null},{"id":2762733040323860146,"resource_state":2,"name":"Monks-Gate-Mine
+        climb","activity":{"id":4337325658,"resource_state":1},"athlete":{"id":2187119,"resource_state":1},"elapsed_time":284,"moving_time":247,"start_date":"2020-11-14T15:10:11Z","start_date_local":"2020-11-14T08:10:11Z","distance":643.2,"start_index":352,"end_index":561,"device_watts":false,"average_watts":197.7,"segment":{"id":4677383,"resource_state":2,"name":"Monks-Gate-Mine
+        climb","activity_type":"Ride","distance":643.2,"average_grade":8.2,"maximum_grade":17.2,"elevation_high":1317.6,"elevation_low":1264.8,"start_latlng":[31.789667,-106.487981],"end_latlng":[31.793995,-106.49137],"elevation_profile":null,"start_latitude":31.789667,"start_longitude":-106.487981,"end_latitude":31.793995,"end_longitude":-106.49137,"climb_category":0,"city":"El
+        Paso","state":"TX","country":"United States","private":false,"hazardous":false,"starred":false},"pr_rank":null,"achievements":[],"kom_rank":null},{"id":2759089210575664630,"resource_state":2,"name":"Monks-Gate-Mine
+        climb","activity":{"id":4285290188,"resource_state":1},"athlete":{"id":2187119,"resource_state":1},"elapsed_time":285,"moving_time":213,"start_date":"2020-11-04T14:13:35Z","start_date_local":"2020-11-04T07:13:35Z","distance":643.2,"start_index":0,"end_index":179,"device_watts":false,"average_watts":187.2,"segment":{"id":4677383,"resource_state":2,"name":"Monks-Gate-Mine
+        climb","activity_type":"Ride","distance":643.2,"average_grade":8.2,"maximum_grade":17.2,"elevation_high":1317.6,"elevation_low":1264.8,"start_latlng":[31.789667,-106.487981],"end_latlng":[31.793995,-106.49137],"elevation_profile":null,"start_latitude":31.789667,"start_longitude":-106.487981,"end_latitude":31.793995,"end_longitude":-106.49137,"climb_category":0,"city":"El
+        Paso","state":"TX","country":"United States","private":false,"hazardous":false,"starred":false},"pr_rank":null,"achievements":[],"kom_rank":null},{"id":2767567172325100724,"resource_state":2,"name":"Monks-Gate-Mine
+        climb","activity":{"id":4399733085,"resource_state":1},"athlete":{"id":2187119,"resource_state":1},"elapsed_time":287,"moving_time":248,"start_date":"2020-11-27T22:59:11Z","start_date_local":"2020-11-27T15:59:11Z","distance":643.2,"start_index":319,"end_index":529,"device_watts":false,"average_watts":196.1,"segment":{"id":4677383,"resource_state":2,"name":"Monks-Gate-Mine
+        climb","activity_type":"Ride","distance":643.2,"average_grade":8.2,"maximum_grade":17.2,"elevation_high":1317.6,"elevation_low":1264.8,"start_latlng":[31.789667,-106.487981],"end_latlng":[31.793995,-106.49137],"elevation_profile":null,"start_latitude":31.789667,"start_longitude":-106.487981,"end_latitude":31.793995,"end_longitude":-106.49137,"climb_category":0,"city":"El
+        Paso","state":"TX","country":"United States","private":false,"hazardous":false,"starred":false},"pr_rank":null,"achievements":[],"kom_rank":null},{"id":2772928906067366262,"resource_state":2,"name":"Monks-Gate-Mine
+        climb","activity":{"id":4463936785,"resource_state":1},"athlete":{"id":2187119,"resource_state":1},"elapsed_time":305,"moving_time":222,"start_date":"2020-12-12T15:58:55Z","start_date_local":"2020-12-12T08:58:55Z","distance":643.2,"start_index":426,"end_index":608,"device_watts":false,"average_watts":179.5,"segment":{"id":4677383,"resource_state":2,"name":"Monks-Gate-Mine
+        climb","activity_type":"Ride","distance":643.2,"average_grade":8.2,"maximum_grade":17.2,"elevation_high":1317.6,"elevation_low":1264.8,"start_latlng":[31.789667,-106.487981],"end_latlng":[31.793995,-106.49137],"elevation_profile":null,"start_latitude":31.789667,"start_longitude":-106.487981,"end_latitude":31.793995,"end_longitude":-106.49137,"climb_category":0,"city":"El
+        Paso","state":"TX","country":"United States","private":false,"hazardous":false,"starred":false},"pr_rank":null,"achievements":[],"kom_rank":null},{"id":2772928906069601654,"resource_state":2,"name":"Monks-Gate-Mine
+        climb","activity":{"id":4463936785,"resource_state":1},"athlete":{"id":2187119,"resource_state":1},"elapsed_time":319,"moving_time":219,"start_date":"2020-12-12T19:17:54Z","start_date_local":"2020-12-12T12:17:54Z","distance":643.2,"start_index":2935,"end_index":3119,"device_watts":false,"average_watts":170.5,"segment":{"id":4677383,"resource_state":2,"name":"Monks-Gate-Mine
+        climb","activity_type":"Ride","distance":643.2,"average_grade":8.2,"maximum_grade":17.2,"elevation_high":1317.6,"elevation_low":1264.8,"start_latlng":[31.789667,-106.487981],"end_latlng":[31.793995,-106.49137],"elevation_profile":null,"start_latitude":31.789667,"start_longitude":-106.487981,"end_latitude":31.793995,"end_longitude":-106.49137,"climb_category":0,"city":"El
+        Paso","state":"TX","country":"United States","private":false,"hazardous":false,"starred":false},"pr_rank":null,"achievements":[],"kom_rank":null},{"id":2772127316427118626,"resource_state":2,"name":"Monks-Gate-Mine
+        climb","activity":{"id":4454423993,"resource_state":1},"athlete":{"id":2187119,"resource_state":1},"elapsed_time":405,"moving_time":237,"start_date":"2020-12-10T14:10:29Z","start_date_local":"2020-12-10T07:10:29Z","distance":643.2,"start_index":1254,"end_index":1467,"device_watts":false,"average_watts":135.0,"segment":{"id":4677383,"resource_state":2,"name":"Monks-Gate-Mine
+        climb","activity_type":"Ride","distance":643.2,"average_grade":8.2,"maximum_grade":17.2,"elevation_high":1317.6,"elevation_low":1264.8,"start_latlng":[31.789667,-106.487981],"end_latlng":[31.793995,-106.49137],"elevation_profile":null,"start_latitude":31.789667,"start_longitude":-106.487981,"end_latitude":31.793995,"end_longitude":-106.49137,"climb_category":0,"city":"El
+        Paso","state":"TX","country":"United States","private":false,"hazardous":false,"starred":false},"pr_rank":null,"achievements":[],"kom_rank":null}]'
+  recorded_at: Wed, 16 Dec 2020 23:37:07 GMT
+recorded_with: VCR 6.0.0
