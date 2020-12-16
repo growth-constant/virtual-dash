@@ -45,4 +45,30 @@ describe 'user', type: :request do
       end
     end
   end
+
+  context 'race tries' do
+    let!(:victor) { FactoryBot.create(:user) }
+    let!(:race) { FactoryBot.create(:race) }
+    let!(:race_category) { FactoryBot.create(:race_category) }
+    let!(:registration) do
+      FactoryBot.create(:registration,
+                        user: victor,
+                        race: race,
+                        race_category: race_category)
+    end
+
+    before do
+      @api_endpoint = 'https://www.strava.com/api/v3'
+      @segment_id = '4677383'
+    end
+
+    it 'quantity tries must be N' do
+      VCR.use_cassette('race/race_tries') do
+        @res = Faraday.get("#{@api_endpoint}/segment_efforts",
+                           { segment_id: @segment_id },
+                           { 'Authorization' => "Bearer #{victor.token}" })
+        expect(JSON.parse(@res.body).count).to eq(30)
+      end
+    end
+  end
 end
