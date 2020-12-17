@@ -6,6 +6,7 @@ class User < ApplicationRecord
   devise :omniauthable, omniauth_providers: %i[strava]
 
   has_many :race_tries
+  has_many :registrations
 
   def self.from_omniauth_to_fields(auth)
     fields = {}
