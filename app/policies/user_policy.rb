@@ -10,6 +10,10 @@ class UserPolicy
     @user.role == 'admin'
   end
 
+  def race_admin?
+    @user.role == 'race_admin'
+  end
+
   class Scope
     attr_reader :user, :scope
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_17_204048) do
+ActiveRecord::Schema.define(version: 2020_12_17_224811) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 2020_12_17_204048) do
     t.string "segment_id"
     t.boolean "published"
     t.datetime "startdate"
+    t.integer "user_id"
   end
 
   create_table "registrations", force: :cascade do |t|
