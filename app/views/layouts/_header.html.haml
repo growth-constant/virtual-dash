@@ -1,6 +1,8 @@
 .ui.fixed.menu#header
   .ui.container
     %a.header.item{:href => "/"} Virtual Dash
+    - if current_user.present? && policy(current_user).admin?
+      %a.header.item{:href => "/admin"} Admin
     .right.menu
       .ui.simple.dropdown.item
         -# locale = I18n.locale.to_sym
