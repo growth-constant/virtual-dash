@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_many :race_tries
   has_many :registrations
 
+  enum role: { admin: 1, race_admin: 2, athlete: 3 }
+
   def self.from_omniauth_to_fields(auth)
     fields = {}
     if not auth.is_a?(OmniAuth::AuthHash)
