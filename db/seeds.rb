@@ -5,3 +5,25 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+user = User.find_by(email: 'victor.j.fdez@gmail.com')
+
+if user
+  race = Race.create(
+    title: 'Test race',
+    segment_id: '4677383'
+  )
+
+  race_category = RaceCategory.create(
+    title: 'Special category race',
+    price: 30,
+    race_id: race.id
+  )
+
+  Registration.create(
+    race_id: race.id,
+    user_id: user.id,
+    race_category_id: race_category.id,
+    status: true
+  )
+end
