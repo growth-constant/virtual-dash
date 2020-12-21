@@ -13,3 +13,11 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: ${{secrets.HEROKU_APP_NAME_DEVELOP}}
           heroku_email: "victor@growthconstant.com"
+      - name: DB Migrate w/ Heroku Run
+        uses: michcio1234/heroku-run@0.1.1
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: ${{secrets.HEROKU_APP_NAME_DEVELOP}}
+          heroku_email: "victor@growthconstant.com"
+          # Command to run.
+          command: rake db:migrate
