@@ -1,0 +1,66 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.strava.com/api/v3/athlete
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer 603abfb153d8e19d13c56ac52fce1c1a741c98a8
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - www.strava.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 10 Dec 2020 23:30:28 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Via:
+      - 1.1 linkerd
+      X-Download-Options:
+      - noopen
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '100,1000'
+      X-Request-Id:
+      - cb3219f0-4e2f-486b-a3e0-c1878fb73c8f
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Etag:
+      - W/"979522946f973d3deb2798edbcc09dba"
+      X-Frame-Options:
+      - DENY
+      X-Ratelimit-Usage:
+      - '1,17'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Vary:
+      - Origin
+      X-Xss-Protection:
+      - 1; mode=block
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJpZCI6NzM2MTYzMDcsInVzZXJuYW1lIjoiY3Nhcl9kaWF6IiwicmVzb3VyY2Vfc3RhdGUiOjIsImZpcnN0bmFtZSI6IkPDqXNhciIsImxhc3RuYW1lIjoiRGlheiIsImNpdHkiOm51bGwsInN0YXRlIjpudWxsLCJjb3VudHJ5IjpudWxsLCJzZXgiOiJNIiwicHJlbWl1bSI6ZmFsc2UsInN1bW1pdCI6ZmFsc2UsImNyZWF0ZWRfYXQiOiIyMDIwLTEyLTA5VDIwOjA3OjExWiIsInVwZGF0ZWRfYXQiOiIyMDIwLTEyLTA5VDIzOjI3OjQ4WiIsImJhZGdlX3R5cGVfaWQiOjAsInByb2ZpbGVfbWVkaXVtIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EtL0FPaDE0R2hVNC14MGoxenF2WWpGWGhxQTZadk5xM1NSa3E0QTBUbkFLNE1pV3c9czk2LWMiLCJwcm9maWxlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EtL0FPaDE0R2hVNC14MGoxenF2WWpGWGhxQTZadk5xM1NSa3E0QTBUbkFLNE1pV3c9czk2LWMiLCJmcmllbmQiOm51bGwsImZvbGxvd2VyIjpudWxsfQ==
+  recorded_at: Thu, 10 Dec 2020 23:30:28 GMT
+recorded_with: VCR 6.0.0

@@ -27,15 +27,15 @@ gem 'jbuilder', '~> 2.7'
 # gem 'image_processing', '~> 1.2'
 gem 'devise', '~> 4.7', '>= 4.7.3'
 # gem for oauth authentication with third parties
-gem "omniauth", "~> 1.9"
+gem 'omniauth', '~> 1.9'
 # gem to authenticate with strava
-gem "omniauth-strava", "~> 0.0.6"
+gem 'omniauth-strava', '~> 0.0.6'
 # gem process haml files
-gem "haml-rails", "~> 2.0"
+gem 'haml-rails', '~> 2.0'
 # gem to install semantic ui into rails
-gem "fomantic-ui-sass", "~> 2.8"
+gem 'fomantic-ui-sass', '~> 2.8'
 # gem to simplify forms
-gem "simple_form", "~> 5.0"
+gem 'simple_form', '~> 5.0'
 # gem to add country select for forms
 
 # Reduces boot times through caching; required in config/boot.rb
@@ -53,19 +53,26 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'rubocop', '~> 1.6'
 end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 2.15'
-  gem 'selenium-webdriver'
-  # Easy installation and use of web drivers to run system tests with browsers
-  gem 'webdrivers'
+  gem 'database_cleaner', '~> 1.8', '>= 1.8.5'
+  gem 'factory_bot_rails', '~> 6.1'
+  gem 'faker', '~> 2.15', '>= 2.15.1'
+  # Adds support for Capybara system testing and selenium driver
+  gem 'rspec-rails', '~> 4.0', '>= 4.0.1'
+  gem 'shoulda-matchers', '~> 4.4', '>= 4.4.1'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem "country_select", "~> 4.0"
+gem 'country_select', '~> 4.0'
 
-gem "strava-ruby-client", "~> 0.4.0"
+gem 'strava-ruby-client', '~> 0.4.0'
+gem 'vcr', '~> 6.0'
+gem 'webmock', '~> 3.10'
+gem 'faraday', '~> 1.1'
+gem 'oj', '~> 3.10', '>= 3.10.16'
