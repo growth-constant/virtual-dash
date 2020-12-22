@@ -37,7 +37,7 @@ RailsAdmin.config do |config|
 
   config.model 'Race' do
     edit do
-      exclude_fields :id
+      exclude_fields :id, :race_tries
     end
     list do
       include_fields :title, :startdate, :enddate

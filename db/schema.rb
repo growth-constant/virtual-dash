@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_21_224219) do
+ActiveRecord::Schema.define(version: 2020_12_22_014223) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 2020_12_21_224219) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "moving_time"
     t.datetime "start_date_local"
+    t.integer "race_id"
     t.index ["registration_id"], name: "index_race_tries_on_registration_id"
     t.index ["start"], name: "index_race_tries_on_start"
     t.index ["user_id"], name: "index_race_tries_on_user_id"

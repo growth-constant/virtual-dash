@@ -32,7 +32,6 @@ class RacesController < ApplicationController
       if @race.save
         format.html { redirect_to @race, notice: 'Race was successfully created.' }
         format.json { render :show, status: :created, location: @race }
-        RaceSegment.new(@race.reload, current_user).call
       else
         format.html { render :new }
         format.json { render json: @race.errors, status: :unprocessable_entity }

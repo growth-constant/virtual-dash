@@ -49,4 +49,14 @@ class User < ApplicationRecord
       # user.skip_confirmation!
     end
   end
+
+  # to get current user inside models
+  def self.current
+    Thread.current[:user]
+  end
+
+  # to set current user inside models
+  def self.current=(user)
+    Thread.current[:user] = user
+  end
 end
