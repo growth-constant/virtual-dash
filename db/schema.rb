@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_21_204751) do
+ActiveRecord::Schema.define(version: 2020_12_21_224219) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,16 @@ ActiveRecord::Schema.define(version: 2020_12_21_204751) do
     t.boolean "published"
     t.datetime "startdate"
     t.integer "user_id"
+    t.string "activity_type"
+    t.string "name"
+    t.float "distance"
+    t.float "average_grade"
+    t.float "maximum_grade"
+    t.float "elevation_high"
+    t.float "elevation_low"
+    t.string "start_latlng", array: true
+    t.string "end_latlng", array: true
+    t.jsonb "all_data"
   end
 
   create_table "registrations", force: :cascade do |t|
