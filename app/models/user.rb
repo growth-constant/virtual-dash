@@ -6,6 +6,9 @@ class User < ApplicationRecord
   devise :omniauthable, omniauth_providers: %i[strava]
 
   has_many :race_tries
+  has_many :registrations
+
+  enum role: { admin: 1, race_admin: 2, athlete: 3 }
 
   def self.from_omniauth_to_fields(auth)
     fields = {}
@@ -45,5 +48,15 @@ class User < ApplicationRecord
       # uncomment the line below to skip the confirmation emails.
       # user.skip_confirmation!
     end
+  end
+
+  # to get current user inside models
+  def self.current
+    Thread.current[:user]
+  end
+
+  # to set current user inside models
+  def self.current=(user)
+    Thread.current[:user] = user
   end
 end

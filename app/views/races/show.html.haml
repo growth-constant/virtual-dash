@@ -19,6 +19,7 @@
   %b Enddate:
   = @race.enddate
 
-= link_to 'Edit', edit_race_path(@race)
-\|
+- if current_user.present? && (policy(current_user).admin? || policy(@race).edit?)
+  = link_to 'Edit', edit_race_path(@race)
+  \|
 = link_to 'Back', races_path

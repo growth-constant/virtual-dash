@@ -15,10 +15,12 @@ class RacesController < ApplicationController
   # GET /races/new
   def new
     @race = Race.new
+    authorize @race, :create?
   end
 
   # GET /races/1/edit
   def edit
+    authorize @race, :edit?
   end
 
   # POST /races
@@ -69,6 +71,6 @@ class RacesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def race_params
-      params.require(:race).permit(:title, :description, :country, :state, :city, :enddate)
+      params.require(:race).permit(:title, :description, :country, :state, :city, :enddate, :segment_id)
     end
 end

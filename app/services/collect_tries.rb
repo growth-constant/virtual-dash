@@ -43,7 +43,10 @@ class CollectTries
                    registration_id: registration.id,
                    segment_id: try['segment']['id'],
                    duration: try['elapsed_time'],
-                   start: try['start_date'])
+                   start: try['start_date'],
+                   moving_time: try['moving_time'],
+                   start_date_local: try['start_date_local']
+                   )
   end
 
   def segment(segment_id, user, race)
