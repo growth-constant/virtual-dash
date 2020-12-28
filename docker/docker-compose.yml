@@ -24,7 +24,7 @@ services:
     - STRAVA_CLIENT_ID=54154
     - STRAVA_CLIENT_SECRET=dc5d0e5fd37d42098944c0416ebc8eb203e25488
   db:
-    image: "postgres:11"
+    image: "postgres:10.12"
     ports:
       - "5432:5432"
     environment:
