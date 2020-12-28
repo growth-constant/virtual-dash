@@ -1,0 +1,3 @@
+= simple_form_for [@race, @registration], :url => "race_registration_path" do |f|
+  = f.input :race
+  %p= @stripe_session.to_json

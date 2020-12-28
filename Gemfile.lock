@@ -327,6 +327,11 @@ GEM
       faraday (>= 1.0.0)
       faraday_middleware
       hashie
+    stripe (5.28.0)
+    stripe-rails (2.2.1)
+      rails (>= 5.1)
+      responders
+      stripe (>= 3.15.0)
     temple (0.8.2)
     thor (1.0.1)
     thread_safe (0.3.6)
@@ -393,6 +398,7 @@ DEPENDENCIES
   spring-watcher-listen (~> 2.0.0)
   sprockets (= 3.7.2)
   strava-ruby-client (~> 0.4.0)
+  stripe-rails (~> 2.2)
   turbolinks (~> 5)
   tzinfo-data
   vcr (~> 6.0)
