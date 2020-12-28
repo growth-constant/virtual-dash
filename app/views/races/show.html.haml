@@ -19,7 +19,37 @@
   %b Enddate:
   = @race.enddate
 
+%div#map{:style => "height: 600px"}
+
 - if current_user.present? && (policy(current_user).admin? || policy(@race).edit?)
   = link_to 'Edit', edit_race_path(@race)
   \|
 = link_to 'Back', races_path
+
+:javascript
+  function initMap() {
+    var map = new google.maps.Map(document.getElementById('map'), {
+      center: {
+        lat: #{@lat}, lng: #{@lng} ,
+      },
+      zoom: 17,
+      mapTypeIds: ['roadmap' , 'satellite', 'hybrid', 'terrain', 'styled_map']
+
+    });
+
+    var encoded_data = "#{@race.all_data['map']['polyline']}";
+
+    var decode = google.maps.geometry.encoding.decodePath(encoded_data);
+
+    var line = new google.maps.Polyline({
+      path: decode,
+      strokeColor: '#E23510',
+      strokeOpacity: 1.0,
+      strokeWeight: 4,
+      zIndex: 3
+    });
+
+    line.setMap(map);
+  }
+
+  initMap();

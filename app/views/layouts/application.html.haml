@@ -7,6 +7,9 @@
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+
+    %script{:defer => "defer", :src => "https://maps.googleapis.com/maps/api/js?key=#{ENV['GMAPS_KEY']}&callback=initMap&libraries=geometry&v=weekly"}
+
   %body
     = render partial: "layouts/header"
     .ui.main.container

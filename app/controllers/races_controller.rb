@@ -10,6 +10,10 @@ class RacesController < ApplicationController
   # GET /races/1
   # GET /races/1.json
   def show
+    coordinates = Polylines::Decoder.decode_polyline(@race.all_data['map']['polyline'])
+    i = coordinates.size / 2
+    @lat = coordinates[i][0]
+    @lng = coordinates[i][1]
   end
 
   # GET /races/new

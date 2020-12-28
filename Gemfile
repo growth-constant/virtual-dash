@@ -78,3 +78,5 @@ gem 'faraday', '~> 1.1'
 gem 'oj', '~> 3.10', '>= 3.10.16'
 gem 'rails_admin', '~> 2.0'
 gem 'pundit', '~> 2.1'
+
+gem 'polylines', '~> 0.4.0'
