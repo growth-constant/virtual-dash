@@ -1,25 +1,36 @@
 %p#notice= notice
 
-%p
-  %b Title:
-  = @race.title
-%p
-  %b Description:
-  = @race.description
-%p
-  %b Country:
-  = @race.country
-%p
-  %b State:
-  = @race.state
-%p
-  %b City:
-  = @race.city
-%p
-  %b Enddate:
-  = @race.enddate
+%div.title= @race.title
 
-%div#map{:style => "height: 600px"}
+%div.center
+  %div.description= @race.description
+
+%div.enddate= "Registration closes on #{@race.enddate.strftime("%d of %B, %Y")}"
+
+%div.center
+  %button.register_button{type: 'button'} Register with Strava
+
+%div.short_text or
+
+%div.center
+  %button.live_results_button{type: 'button'} Live Results
+
+
+.ui.vertically.divided.grid
+  .six.column.row
+    .column.center
+    .column.center
+      %img.medium.ui.image{:src => "/assets/fake.png", :height => "200px", :width => "200px"}/
+
+    .column.center
+    .column.center
+
+    .column.center
+      %img.medium.ui.image{:src => "/assets/fake.png", :height => "200px", :width => "200px"}/
+    .column.center
+
+%div.map
+  %div#map{:style => "height: 600px"}
 
 - if current_user.present? && (policy(current_user).admin? || policy(@race).edit?)
   = link_to 'Edit', edit_race_path(@race)
