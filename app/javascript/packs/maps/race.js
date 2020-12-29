@@ -1,7 +1,5 @@
-window.addEventListener('load', function () {
+window.addEventListener('turbolinks:load', function () {
   function initMap() {
-
-    debugger
     var data = document.getElementById('map');
     var polyline = data.dataset.polyline;
     var lat = parseFloat(data.dataset.lat);
