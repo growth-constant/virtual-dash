@@ -84,3 +84,5 @@ gem 'webmock', '~> 3.10'
 # payment platform
 
 gem "stripe-rails", "~> 2.2"
+
+gem "enumerize", "~> 2.4"

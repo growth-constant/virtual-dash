@@ -1,3 +1,31 @@
-.new-registration
-  %h1.ui.center.aligned.header= "Agreements & Race Payment for #{@race.name}"
-  = render "form"
+%h1.ui.center.aligned.header= "Agreements for '#{@race.name}'"
+.ui.stackable.four.column.centered.grid
+  .row
+    .three.column
+      %p 
+        %strong Check
+        all of the agreements to agree to their terms and conditions.
+  .row
+    .three.column
+      .ui.checkbox
+        %input.agreements{:type => "checkbox", :name=> "privacy"}
+        %label 
+          = "Privacy agreement"
+          %a{:href => "https://app.termly.io/document/privacy-policy/dcc9ffbc-34cd-47df-8c53-d67b9bc3d962"}= " (full terms)"
+  .row
+    .three.column
+      .ui.checkbox
+        %input.agreements{:type => "checkbox", :name=> "terms"}
+        %label
+          = "Terms of use agreement"
+          %a{:href => "https://app.termly.io/document/terms-of-use-for-ios-app/f2fed715-a6ee-45c0-b02b-5e07a5eb9238"}= " (full terms)"
+  .row
+    .three.column
+      .ui.checkbox
+        %input.agreements{:type => "checkbox", :name=> "release"}
+        %label
+          = "Accident waiver & release of liability agreement"
+          %a{:href => "https://www.dropbox.com/s/tr039c4ozf6tlqn/Accident%20Waiver%20and%20Release%20of%20Liability.docx?dl=0"}= " (full terms)"
+  .row
+    .two.column.center.aligned
+      %button.new-registration-checkout.ui.disabled.primary.button{:"data-post-url" => checkout_session_race_registration_index_path(@race.id)} Pay Registration

@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :races do
-    resources :registration, :only => [:new, :create]
+    resources :registration, :only => [:new] do
+      post :checkout_session, :on => :collection
+      get :checkout_successful, :on => :collection
+      get :status, :on => :member
+    end
   end
   # get 'home/index'
   # devise_for :users

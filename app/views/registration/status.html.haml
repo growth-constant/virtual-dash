@@ -1,0 +1,19 @@
+%h1.ui.center.aligned.header= "Registration Status for '#{@race.name}'"
+.ui.stackable.four.column.grid
+  .center.floated.two.column
+    .ui.list
+      .item
+        %strong status: 
+        %span= @registration.status
+      .item
+        %strong payment status: 
+        %span= @registration.payment_status
+      .item
+        %strong agreements signed: 
+        %span= @registration.agreements_signed
+      .item
+        %strong race: 
+        %span= @race.name
+      .item
+        %strong last updated: 
+        %span= @registration.updated_at

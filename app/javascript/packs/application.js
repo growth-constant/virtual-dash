@@ -18,11 +18,60 @@ import { loadStripe } from '@stripe/stripe-js';
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-//const stripe = await loadStripe();
-$(document).on('turbolinks:load', function() {
-  console.log("It works on each visit!")
-  $(".new-registration").load(function(){
-    console.log("It on new registrations!")
+// agreements checkbox code
+function checkAllBoxes(){
+  // check all checkboxes on any change
+  var checkboxes = $("input.agreements[type=checkbox]");
+  var count = checkboxes.length;
+  for (var box of checkboxes) {
+    box = $(box)
+    if (box.is(":checked")) {
+      count -= 1;
+    }
+  }
+  var button = $("button.new-registration-checkout");
+  if (count == 0) {
+    // enable payment button
+    button.removeClass('disabled');
+  } else {
+    button.addClass('disabled');
+  }
+  console.log(`${count} missing checks`);
+}
 
-  });
-})
+$(document).on('turbolinks:load', function () {
+  var checkboxes = $("input.agreements[type=checkbox]");
+  if (checkboxes.length > 0) {
+    checkAllBoxes();
+    checkboxes.change(function () {
+      checkAllBoxes();
+    });
+  }
+});
+
+// stripe payment for race registrations
+$(document).on('turbolinks:load', function () {
+  var button = $("button.new-registration-checkout")
+  if (button.length) {
+    button = button[0]
+    // todo finish checkout buttons here
+    var stripeKey = $('meta[name="stripe-key"]').attr('content')
+    var stripePromise = loadStripe(stripeKey);
+    var postUrl = $(button).attr('data-post-url');
+
+    button.addEventListener('click', function () {
+      // Get Stripe.js instance
+      stripePromise.then((stripe) => {
+        Fetch.postJSON(postUrl).then((session) => {
+          return stripe.redirectToCheckout({
+            sessionId: session.id,
+          })
+        }).then((result) => {
+          if(result.error){
+            alert(result.error.message);
+          }
+        })
+      })
+    });
+  }
+});

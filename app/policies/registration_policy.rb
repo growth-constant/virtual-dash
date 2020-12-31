@@ -6,8 +6,20 @@ class RegistrationPolicy
     @record = record
   end
 
-  def create? 
-    !Registration.exists?(user: @user, race: @record.race) 
+  def new?
+    r = Registration.find_by(user: @user, race: @record.race)
+    if r.present? 
+      if r.status.require_agreements?
+        return true
+      end
+    else
+      return true
+    end
+    return false
+  end
+
+  def status? 
+    @record.user_id == @user.id
   end
 
   class Scope
