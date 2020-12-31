@@ -8,14 +8,18 @@ class RegistrationController < ApplicationController
     if (not @registration.status.require_agreements?) and (not @registration.status.require_payment?)
       # redirect to correct page
       redirect_to @race, alert: "You are already registered"
+    else
+      authorize @registration, :new?
+      @registration.save
     end
-    authorize @registration, :new?
-    @registration.save
   end
 
   # POST /races/:race_id/registration/checkout_session
   def checkout_session
     # setup information for stripe session
+    if @registration.session_id.present and @registration.session_id != ""
+      render json: { id: @registration.session_id }
+    end
     @race = @registration.race
     product_name = "registration - #{@race.name} - #{@race.id}"
     price = (@race.price == 0.0 ? 10.0 : @race.price) * 100
