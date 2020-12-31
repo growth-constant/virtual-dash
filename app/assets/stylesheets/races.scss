@@ -1,3 +1,66 @@
 // Place all the styles related to the races controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.center {
+  text-align: center;
+}
+
+.description {
+  font-size: large;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  text-align: justify;
+}
+
+.enddate {
+  font-size: x-large;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  text-align: center;
+}
+
+.image {
+  background-color: #e7e7ed;
+  float: left;
+  height: 200px;
+  margin: 30px;
+  width: 200px;
+}
+
+.live_results_button {
+  background-color: #ff3f00;
+  border: none;
+  color: #ffffff;
+  font-size: medium;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.map {
+  clear:both;
+}
+
+.register_button {
+  background-color: #ff3f00;
+  border: none;
+  color: #ffffff;
+  font-size: medium;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.short_text {
+  font-size: large;
+  text-align: center;
+}
+
+.title {
+  font-size: xxx-large;
+  margin-bottom: 30px;
+  text-align: center;
+}

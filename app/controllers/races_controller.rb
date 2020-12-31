@@ -10,6 +10,10 @@ class RacesController < ApplicationController
   # GET /races/1
   # GET /races/1.json
   def show
+    coordinates = Polylines::Decoder.decode_polyline(@race.all_data['map']['polyline'])
+    i = coordinates.size / 2
+    @lat = coordinates[i][0]
+    @lng = coordinates[i][1]
   end
 
   # GET /races/new
@@ -64,13 +68,14 @@ class RacesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_race
-      @race = Race.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def race_params
-      params.require(:race).permit(:title, :description, :country, :state, :city, :enddate, :segment_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_race
+    @race = Race.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def race_params
+    params.require(:race).permit(:title, :description, :country, :state, :city, :enddate, :segment_id)
+  end
 end
