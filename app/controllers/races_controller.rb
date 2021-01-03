@@ -1,5 +1,7 @@
 class RacesController < ApplicationController
   before_action :set_race, only: [:show, :edit, :update, :destroy]
+  before_action :set_profile, only: %i[index]
+
 
   # GET /races
   # GET /races.json

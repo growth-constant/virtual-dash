@@ -8,7 +8,10 @@
 %div.enddate= "Registration closes on #{@race.enddate.strftime("%d of %B, %Y")}"
 
 %div.center
-  %button.register_button{type: 'button'} Register with Strava
+  - if !current_user
+    %a.ui.register_strava_button_link.button{href: '/users/sign_in'} You must register first through Strava
+  - else
+    %button.register_button{type: 'button'} Register with Strava
 
 %div.short_text or
 

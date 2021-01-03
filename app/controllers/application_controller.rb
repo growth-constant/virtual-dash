@@ -2,7 +2,14 @@ class ApplicationController < ActionController::Base
   include Pundit
   before_action :set_current_user
 
+
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+
+  def set_profile
+    if current_user
+      redirect_to edit_user_path(current_user) unless current_user.profile_complete
+    end
+  end
 
   private
 
