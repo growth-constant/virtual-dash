@@ -1,0 +1,6 @@
+= simple_form_for @user do |f|
+  = f.input :name
+  = f.input :gender, collection: User::GENDER
+  = f.input :phone
+  = f.input :birthdate, as: :date, html5: true
+  = f.button :submit
