@@ -4,7 +4,7 @@ class RegistrationController < ApplicationController
   before_action :set_registration, only: [:checkout_successful, :checkout_session, :status]
 
   def new
-    @registration = Registration.find_or_initialize_by(:user => current_user, :race => @race)
+    @registration = Registration.find_or_initialize_by(user: current_user, race: @race)
     if (not @registration.status.require_agreements?) and (not @registration.status.require_payment?)
       # redirect to correct page
       redirect_to @race, alert: "You are already registered"
@@ -84,6 +84,6 @@ class RegistrationController < ApplicationController
     end
 
     def set_registration
-      @registration = Registration.find_by(:race_id => params[:race_id], :user => current_user)
+      @registration = Registration.find_by(race_id: params[:race_id], user: current_user)
     end
 end
