@@ -2,20 +2,20 @@
 %html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %title VirtualDash
+    %title Virtual Dash
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag "https://maps.google.com/maps/api/js?key=#{ENV['GMAPS_KEY']}&libraries=geometry"
-
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
-
     = javascript_pack_tag 'maps/race'
+    = tag :meta, :name => "stripe-key", :content => Rails.configuration.stripe[:publishable_key]
 
 
   %body
     = render partial: "layouts/header"
     .ui.main.container
-      %p.notice= notice
-      %p.alert= alert
+      %p#notice= notice
+      %p#alert= alert
       = yield
