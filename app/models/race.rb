@@ -5,6 +5,6 @@ class Race < ApplicationRecord
   private
 
   def update_race
-    RaceSegment.new(self, User.current).call
+    RetrieveSegmentInfoJob.perform_now(self, User.current)
   end
 end

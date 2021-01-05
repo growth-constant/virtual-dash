@@ -20,7 +20,6 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
 gem 'sprockets', '3.7.2'
-# gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -74,15 +73,18 @@ gem 'country_select', '~> 4.0'
 gem 'faraday', '~> 1.1'
 
 gem 'oj', '~> 3.10', '>= 3.10.16'
-gem "polylines", "~> 0.4.0"
+gem 'polylines', '~> 0.4.0'
 gem 'pundit', '~> 2.1'
 gem 'rails_admin', '~> 2.0'
+gem 'redis', '~> 4.2', '>= 4.2.5'
+gem 'sidekiq', '~> 6.1', '>= 6.1.2'
+gem 'sidekiq-cron', '~> 1.2'
 gem 'strava-ruby-client', '~> 0.4.0'
 gem 'vcr', '~> 6.0'
 gem 'webmock', '~> 3.10'
 
 # payment platform
-gem "stripe-rails", "~> 2.2"
+gem 'stripe-rails', '~> 2.2'
 
 # enum for models
-gem "enumerize", "~> 2.4"
+gem 'enumerize', '~> 2.4'
