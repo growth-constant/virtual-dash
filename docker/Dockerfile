@@ -19,6 +19,7 @@ RUN yarn install
 
 # Expose
 EXPOSE 3000
+EXPOSE 6739
 
 # Mount All Code
 VOLUME ["/home/virtual-dash"]

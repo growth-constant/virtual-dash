@@ -1,4 +1,4 @@
-# Virtual Dash 
+# Virtual Dash
 ## Development of App
 
 To start the application run the following docker command
@@ -10,3 +10,7 @@ docker-compose -f ./docker/docker-compose.yml run --service-ports --rm web bundl
 docker-compose -f ./docker/docker-compose.yml run --service-ports --rm web
 ```
 
+```bash
+# run workers
+docker-compose -f ./docker/docker-compose.yml run --service-ports --rm worker
+```
