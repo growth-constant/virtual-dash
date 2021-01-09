@@ -1,4 +1,11 @@
 = simple_form_for @user do |f|
+
+  .ui.form.error
+    .ui.error.message
+      .header Change default assigned email
+      %p You can continue with complete your sign up for your account if  you modify to your e-mail address.
+
+  = f.input :email
   = f.input :name
   = f.input :gender, collection: User::GENDER
   = f.input :phone
