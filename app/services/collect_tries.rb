@@ -71,8 +71,8 @@ class CollectTries
   def refresh_token(user)
     resp = Faraday.post('https://www.strava.com/api/v3/oauth/token') do |req|
       req.headers['Content-Type'] = 'application/json'
-      req.body = { 'client_id': ENV['CLIENT_ID'],
-                   'client_secret': ENV['CLIENT_SECRET'],
+      req.body = { 'client_id': ENV['STRAVA_CLIENT_ID'],
+                   'client_secret': ENV['STRAVA_CLIENT_SECRET'],
                    'grant_type': 'refresh_token',
                    'refresh_token': user.refresh_token }.to_json
     end
