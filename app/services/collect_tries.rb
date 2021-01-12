@@ -20,7 +20,7 @@ class CollectTries
     @users.each do |user|
       next unless Registration.exists?(user_id: user.id)
 
-      registrations = Registration.where(user_id: user.id, status: true)
+      registrations = Registration.where(user_id: user.id, status: 'registered')
       segment_efforts(user, registrations)
     end
   end
