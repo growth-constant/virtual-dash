@@ -53,7 +53,6 @@ class RegistrationController < ApplicationController
   # GET /races/:race_id/registration/checkout_successful
   def checkout_successful
     # get session information and update registration accordingly
-    byebug
     @race = @registration.race
     @stripe_session = Stripe::Checkout::Session.retrieve(@registration.session_id)
     @registration.payment_status = @stripe_session.payment_status

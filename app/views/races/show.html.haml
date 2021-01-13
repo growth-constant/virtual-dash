@@ -10,7 +10,7 @@
 %div.center
   - if !current_user
     %a.ui.register_strava_button_link.button{href: '/users/sign_in'} You must register first through Strava
-  - elsif current_user && !@registered
+  - elsif current_user && @registered.empty?
     %a.ui.register_strava_button_link.button{href: "/races/#{@race.id}/registration/new"} Register to race
   - elsif current_user && !@registered.empty?
     %a.ui.positive.button{href: '#'} Already registered
