@@ -1,7 +1,7 @@
 class RacesController < ApplicationController
-  before_action :set_race, only: [:show, :edit, :update, :destroy]
+  before_action :set_race, only: %i[show edit update destroy]
   before_action :set_profile, only: %i[index]
-
+  before_action :registered, only: %i[show]
 
   # GET /races
   # GET /races.json
@@ -70,6 +70,10 @@ class RacesController < ApplicationController
   end
 
   private
+
+  def registered
+    @registered = Registration.user_registered?(current_user, @race) if current_user
+  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_race
