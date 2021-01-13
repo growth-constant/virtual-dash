@@ -2,6 +2,7 @@ class Registration < ApplicationRecord
   extend Enumerize
   belongs_to :race
   belongs_to :user
+
   enumerize :status, in: [
     :require_agreements,
     :require_payment,
@@ -13,4 +14,9 @@ class Registration < ApplicationRecord
     :unpaid,
     :no_payment_required
   ], default: :unpaid
+
+  # Scopes
+  scope :user_registered?, lambda { |user, race|
+    where(user_id: user.id, race_id: race.id, status: :registered)
+  }
 end

@@ -1,13 +1,14 @@
 class RegistrationController < ApplicationController
   before_action :authenticate_user!
   before_action :set_race, only: [:new]
-  before_action :set_registration, only: [:checkout_successful, :checkout_session, :status]
+  before_action :set_registration, only: %i[checkout_successful checkout_session status]
 
   def new
     @registration = Registration.find_or_initialize_by(user: current_user, race: @race)
-    if (not @registration.status.require_agreements?) and (not @registration.status.require_payment?)
+    if !@registration.status.require_agreements? \
+       && !@registration.status.require_payment?
       # redirect to correct page
-      redirect_to @race, alert: "You are already registered"
+      redirect_to @race, alert: 'You are already registered'
     else
       authorize @registration, :new?
       @registration.save
@@ -17,7 +18,7 @@ class RegistrationController < ApplicationController
   # POST /races/:race_id/registration/checkout_session
   def checkout_session
     # setup information for stripe session
-    if @registration.session_id.present and @registration.session_id != ""
+    if @registration.session_id.present? && @registration.session_id != ''
       render json: { id: @registration.session_id }
     end
     @race = @registration.race
@@ -49,9 +50,8 @@ class RegistrationController < ApplicationController
     render json: { id: @stripe_session.id }
   end
 
-
-  # GET /races/:race_id/registration/checkout_successful 
-  def checkout_successful 
+  # GET /races/:race_id/registration/checkout_successful
+  def checkout_successful
     # get session information and update registration accordingly
     byebug
     @race = @registration.race
@@ -77,13 +77,14 @@ class RegistrationController < ApplicationController
     authorize @registration, :status?
   end
 
-  private 
-    # Use callbacks to share common setup or constraints between actions.
-    def set_race
-      @race = Race.find(params[:race_id])
-    end
+  private
 
-    def set_registration
-      @registration = Registration.find_by(race_id: params[:race_id], user: current_user)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_race
+    @race = Race.find(params[:race_id])
+  end
+
+  def set_registration
+    @registration = Registration.find_by(race_id: params[:race_id], user: current_user)
+  end
 end
