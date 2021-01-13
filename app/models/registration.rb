@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Registration activerecord model
 class Registration < ApplicationRecord
   extend Enumerize
   belongs_to :race
@@ -16,7 +19,10 @@ class Registration < ApplicationRecord
   ], default: :unpaid
 
   # Scopes
-  scope :user_registered?, lambda { |user, race|
-    where(user_id: user.id, race_id: race.id, status: :registered)
+  scope :user_registered_and_paid?, lambda { |user, race|
+    where(user_id: user.id,
+          race_id: race.id,
+          status: :registered,
+          payment_status: :paid)
   }
 end

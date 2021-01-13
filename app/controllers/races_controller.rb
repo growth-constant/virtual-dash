@@ -72,7 +72,9 @@ class RacesController < ApplicationController
   private
 
   def registered
-    @registered = Registration.user_registered?(current_user, @race) if current_user
+    return unless current_user
+
+    @registered = Registration.user_registered_and_paid?(current_user, @race)
   end
 
   # Use callbacks to share common setup or constraints between actions.
