@@ -71,6 +71,7 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 gem 'country_select', '~> 4.0'
 gem 'faraday', '~> 1.1'
+gem 'kaminari', '~> 1.2', '>= 1.2.1'
 
 gem 'oj', '~> 3.10', '>= 3.10.16'
 gem 'polylines', '~> 0.4.0'
