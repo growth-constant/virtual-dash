@@ -1,10 +1,21 @@
 class RacesController < ApplicationController
-  before_action :set_race, only: %i[show edit update destroy]
+  before_action :set_race, only: %i[show edit update destroy leaderboard]
   before_action :set_profile, only: %i[index]
   before_action :registered, only: %i[show]
   before_action :filter, only: %i[index]
 
   def index; end
+
+  def leaderboard
+    @total_pursue = ((@race.price * @race&.registrations&.count) / 0.9).to_i
+    @first_prize = (@total_pursue / 2).to_i
+    @second_prize = (@total_pursue / 3).to_i
+    @third_prize = (@total_pursue / 6).to_i
+
+    @competitors = @race.race_tries.leaders
+    @first_time = @race&.race_tries&.leaders&.first&.duration
+    @tries_counter = @race&.race_tries&.count
+  end
 
   def show
     coordinates = Polylines::Decoder.decode_polyline(@race.all_data['map']['polyline'])

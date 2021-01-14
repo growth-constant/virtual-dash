@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   resources :races do
+    get :leaderboard, on: :member
     resources :registration, only: [:new] do
       post :checkout_session, on: :collection
       get :checkout_successful, on: :collection
