@@ -397,6 +397,7 @@ DEPENDENCIES
   fomantic-ui-sass (~> 2.8)
   haml-rails (~> 2.0)
   jbuilder (~> 2.7)
+  kaminari (~> 1.2, >= 1.2.1)
   listen (~> 3.2)
   oj (~> 3.10, >= 3.10.16)
   omniauth (~> 1.9)
