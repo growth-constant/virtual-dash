@@ -17,10 +17,10 @@
         %td= "Time: #{Time.at(competitor.duration).utc.strftime('%H:%M:%S')}"
         - case i
         - when 1
-          %td= "$#{@leaderboard_women[:overall][:first_prize]}"
+          %td= "$#{@leaderboard_women[:prizes][:first]}"
         - when 2
-          %td= "$#{@leaderboard_women[:overall][:second_prize]}"
+          %td= "$#{@leaderboard_women[:prizes][:second]}"
         - when 3
-          %td= "$#{@leaderboard_women[:overall][:third_prize]}"
+          %td= "$#{@leaderboard_women[:prizes][:third]}"
         - else
           %td $0

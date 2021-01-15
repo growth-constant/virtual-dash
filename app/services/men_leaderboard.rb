@@ -12,10 +12,10 @@ class MenLeaderboard
       total_purse: total_purse,
       competitors: @race.race_tries.leaders_men.limit(@limit),
       first_time: @race&.race_tries&.leaders_men&.first&.duration,
-      overall: {
-        first_prize: (total_purse / 2).to_i,
-        second_prize: (total_purse / 3).to_i,
-        third_prize: (total_purse / 6).to_i
+      prizes: {
+        first: (total_purse / 2).to_i,
+        second: (total_purse / 3).to_i,
+        third: (total_purse / 6).to_i
       }
     }
   end
