@@ -1,6 +1,6 @@
-%p= "Numbers of tries: #{@tries_counter || 0}"
-%p= "First Time: #{Time.at(@first_time || 0).utc.strftime('%H:%M:%S') || 0}"
-%p= "Total Pursue: $#{@total_pursue || 0}"
+%p= "Numbers of tries: #{@leaderboard[:tries_counter] || 0}"
+%p= "First Time: #{Time.at(@leaderboard[:first_time] || 0).utc.strftime('%H:%M:%S') || 0}"
+%p= "Total Pursue: $#{@leaderboard[:total_purse] || 0}"
 
 %h1 Overall
 
@@ -13,7 +13,7 @@
 
   %tbody
     - i = 0
-    - @competitors.each do |competitor|
+    - @leaderboard[:competitors].each do |competitor|
       - i += 1
       %tr
         %td= "##{i}"
@@ -23,10 +23,10 @@
         %td= "Time: #{Time.at(competitor.duration).utc.strftime('%H:%M:%S')}"
         - case i
         - when 1
-          %td= "$#{@first_prize}"
+          %td= "$#{@leaderboard[:overall][:first_prize]}"
         - when 2
-          %td= "$#{@second_prize}"
+          %td= "$#{@leaderboard[:overall][:second_prize]}"
         - when 3
-          %td= "$#{@third_prize}"
+          %td= "$#{@leaderboard[:overall][:third_prize]}"
         - else
           %td $0

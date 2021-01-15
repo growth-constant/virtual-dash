@@ -12,6 +12,10 @@ class Race < ApplicationRecord
   # Scopes
   scope :search, ->(q) { where(['title ILIKE ? OR description ILIKE ? ', "%#{q}%", "%#{q}%"]) }
 
+  def total_purse
+    ((price * registrations&.count) * 0.9).to_i
+  end
+
   private
 
   def update_race
