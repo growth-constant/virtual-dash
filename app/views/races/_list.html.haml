@@ -3,10 +3,7 @@
     %tr
       %th Title
       %th Description
-      %th Country
-      %th State
-      %th City
-      %th Enddate
+      %th LeaderBoard
       %th
       %th
       %th
@@ -16,10 +13,7 @@
       %tr
         %td= race.title
         %td= race.description
-        %td= race.country
-        %td= race.state
-        %td= race.city
-        %td= race.enddate
+        %td= link_to 'LeaderBoard', leaderboard_race_path(race)
         %td= link_to 'Show', race
         - if current_user.present? && (policy(current_user).admin? || policy(race).edit?)
           %td= link_to 'Edit', edit_race_path(race)

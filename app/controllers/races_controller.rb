@@ -1,10 +1,19 @@
 class RacesController < ApplicationController
-  before_action :set_race, only: %i[show edit update destroy]
+  before_action :set_race, only: %i[show edit update destroy leaderboard]
   before_action :set_profile, only: %i[index]
   before_action :registered, only: %i[show]
   before_action :filter, only: %i[index]
 
   def index; end
+
+  def leaderboard
+    competitors_qty = 3
+    @leaderboard = Leaderboard.new(@race, competitors_qty).call
+
+    # For when categories comes to life
+    # @leaderboard_men = MenLeaderboard.new(@race, competitors_qty).call
+    # @leaderboard_women = WomenLeaderboard.new(@race, competitors_qty).call
+  end
 
   def show
     coordinates = Polylines::Decoder.decode_polyline(@race.all_data['map']['polyline'])
