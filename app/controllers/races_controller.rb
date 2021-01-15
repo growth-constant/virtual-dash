@@ -8,6 +8,8 @@ class RacesController < ApplicationController
 
   def leaderboard
     @leaderboard = Leaderboard.new(@race).call
+    @leaderboard_men = LeaderboardMen.new(@race).call
+    @leaderboard_women = LeaderboardWomen.new(@race).call
   end
 
   def show

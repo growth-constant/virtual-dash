@@ -2,31 +2,11 @@
 %p= "First Time: #{Time.at(@leaderboard[:first_time] || 0).utc.strftime('%H:%M:%S') || 0}"
 %p= "Total Pursue: $#{@leaderboard[:total_purse] || 0}"
 
+%h1 Men's Category
+= render 'men', locals: {competitors: @leaderboard_men[:competitors]}
+
+%h1 Women's Category
+= render 'women', locals: {competitors: @leaderboard_women[:competitors]}
+
 %h1 Overall
-
-%table
-  %thead
-    %tr
-      %th
-      %th Competitor
-      %th Duration
-
-  %tbody
-    - i = 0
-    - @leaderboard[:competitors].each do |competitor|
-      - i += 1
-      %tr
-        %td= "##{i}"
-        %td
-          %img.ui.mini.circular.image{src: competitor.image}
-        %td= competitor.name
-        %td= "Time: #{Time.at(competitor.duration).utc.strftime('%H:%M:%S')}"
-        - case i
-        - when 1
-          %td= "$#{@leaderboard[:overall][:first_prize]}"
-        - when 2
-          %td= "$#{@leaderboard[:overall][:second_prize]}"
-        - when 3
-          %td= "$#{@leaderboard[:overall][:third_prize]}"
-        - else
-          %td $0
+= render 'competitors', locals: {competitors: @leaderboard[:competitors]}
