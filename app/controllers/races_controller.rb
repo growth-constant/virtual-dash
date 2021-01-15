@@ -7,9 +7,10 @@ class RacesController < ApplicationController
   def index; end
 
   def leaderboard
-    @leaderboard = Leaderboard.new(@race).call
-    @leaderboard_men = LeaderboardMen.new(@race).call
-    @leaderboard_women = LeaderboardWomen.new(@race).call
+    competitors_qty = 3
+    @leaderboard = Leaderboard.new(@race, competitors_qty).call
+    @leaderboard_men = MenLeaderboard.new(@race, competitors_qty).call
+    @leaderboard_women = WomenLeaderboard.new(@race, competitors_qty).call
   end
 
   def show

@@ -1,15 +1,16 @@
 # frozen_string_literal: true
 
-# Service for LeaderboardMen
-class LeaderboardMen
-  def initialize(race)
+# Service for MenLeaderboard
+class MenLeaderboard
+  def initialize(race, limit)
     @race = race
+    @limit = limit
   end
 
   def call
     {
       total_purse: total_purse,
-      competitors: @race.race_tries.leaders_men,
+      competitors: @race.race_tries.leaders_men.limit(@limit),
       first_time: @race&.race_tries&.leaders_men&.first&.duration,
       overall: {
         first_prize: (total_purse / 2).to_i,

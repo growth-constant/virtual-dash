@@ -6,7 +6,12 @@ class RaceTry < ApplicationRecord
   belongs_to :user
 
   # Scopes
-  scope :leaders, -> { select('name as name, image_medium as image, MIN(duration) as duration').joins(:user).group(:user_id, :name, :image_medium).order(3)}
+  scope :leaders, lambda {
+    select('name as name, image_medium as image, MIN(duration) as duration')
+      .joins(:user)
+      .group(:user_id, :name, :image_medium)
+      .order(3)
+  }
 
   scope :leaders_men, lambda {
     select('name as name, image_medium as image, MIN(duration) as duration, gender')
