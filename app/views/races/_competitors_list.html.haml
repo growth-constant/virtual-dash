@@ -2,11 +2,12 @@
 %p= "First Time: #{Time.at(@leaderboard[:first_time] || 0).utc.strftime('%H:%M:%S') || 0}"
 %p= "Total Pursue: $#{@leaderboard[:total_purse] || 0}"
 
-%h1 Men's Category
-= render 'men', locals: {competitors: @leaderboard_men[:competitors]}
+-# For when categories comes to life
+-# %h1 Men's Category
+-# = render 'men', locals: {competitors: @leaderboard_men[:competitors]}
 
-%h1 Women's Category
-= render 'women', locals: {competitors: @leaderboard_women[:competitors]}
+-# %h1 Women's Category
+-# = render 'women', locals: {competitors: @leaderboard_women[:competitors]}
 
 %h1 Overall
 = render 'competitors', locals: {competitors: @leaderboard[:competitors]}
