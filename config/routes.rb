@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   resources :races do
     get :leaderboard, on: :member
+    get :general_classification, on: :member
     resources :registration, only: [:new] do
       post :checkout_session, on: :collection
       get :checkout_successful, on: :collection

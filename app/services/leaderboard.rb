@@ -2,7 +2,7 @@
 
 # Service for Leaderboard
 class Leaderboard
-  def initialize(race, limit)
+  def initialize(race, limit = 3)
     @race = race
     @limit = limit
   end
@@ -10,7 +10,7 @@ class Leaderboard
   def call
     {
       total_purse: total_purse,
-      competitors: @race.race_tries.leaders.limit(@limit),
+      competitors: competitors,
       first_time: @race&.race_tries&.leaders&.first&.duration,
       tries_counter: @race&.race_tries&.count,
       prizes: {
@@ -22,6 +22,10 @@ class Leaderboard
   end
 
   private
+
+  def competitors
+    @limit == :all ? @race.race_tries.leaders : @race.race_tries.leaders.limit(@limit)
+  end
 
   def total_purse
     @race.total_purse

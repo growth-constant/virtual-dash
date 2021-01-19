@@ -1,0 +1,27 @@
+%h2 General Classification
+%table
+  %thead
+    %tr
+      %th
+      %th Competitor
+      %th Duration
+
+  %tbody
+    - i = 0
+    - @leaderboard[:competitors].each do |competitor|
+      - i += 1
+      %tr
+        %td= "##{i}"
+        %td
+          %img.ui.mini.circular.image{src: competitor.image}
+        %td= competitor.name
+        %td= "Time: #{Time.at(competitor.duration).utc.strftime('%H:%M:%S')}"
+        - case i
+        - when 1
+          %td= "$#{@leaderboard[:prizes][:first]}"
+        - when 2
+          %td= "$#{@leaderboard[:prizes][:second]}"
+        - when 3
+          %td= "$#{@leaderboard[:prizes][:third]}"
+        - else
+          %td $0
