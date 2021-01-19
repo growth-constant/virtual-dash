@@ -15,7 +15,8 @@ class RacesController < ApplicationController
   end
 
   def general_classification
-    @leaderboard = Leaderboard.new(@race, :all).call
+    @results = Leaderboard.new(@race, :all).call
+    @competitors = Kaminari.paginate_array(@results[:competitors]).page(params[:page]).per(1)
   end
 
   def show

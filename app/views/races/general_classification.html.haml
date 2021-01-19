@@ -8,7 +8,7 @@
 
   %tbody
     - i = 0
-    - @leaderboard[:competitors].each do |competitor|
+    - @competitors.each do |competitor|
       - i += 1
       %tr
         %td= "##{i}"
@@ -18,10 +18,12 @@
         %td= "Time: #{Time.at(competitor.duration).utc.strftime('%H:%M:%S')}"
         - case i
         - when 1
-          %td= "$#{@leaderboard[:prizes][:first]}"
+          %td= "$#{@results[:prizes][:first]}"
         - when 2
-          %td= "$#{@leaderboard[:prizes][:second]}"
+          %td= "$#{@results[:prizes][:second]}"
         - when 3
-          %td= "$#{@leaderboard[:prizes][:third]}"
+          %td= "$#{@results[:prizes][:third]}"
         - else
           %td $0
+
+= paginate @competitors
