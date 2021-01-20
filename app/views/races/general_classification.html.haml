@@ -5,7 +5,7 @@
       %th
       %th Competitor
       %th Duration
-
+      %th Date
   %tbody
     - i = 0
     - @competitors.each do |competitor|
@@ -16,6 +16,7 @@
           %img.ui.mini.circular.image{src: competitor.image}
         %td= competitor.name
         %td= "Time: #{Time.at(competitor.duration).utc.strftime('%H:%M:%S')}"
+        %td= competitor.start.strftime("%Y/%m/%d %H:%M")
         - case i
         - when 1
           %td= "$#{@results[:prizes][:first]}"
@@ -27,3 +28,5 @@
           %td $0
 
 = paginate @competitors
+
+= link_to 'Back', root_path
