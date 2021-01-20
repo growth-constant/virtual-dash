@@ -52,11 +52,11 @@ class CollectTries
   def segment(segment_id, user, race)
     # segment_id=4677383&start_date_local=2020-11-01&end_date_local=2020-11-30
     # if last try is nil we can use the date of starting race
-    last_try = RaceTry.where(user_id: user.id, segment_id: segment_id).last
+    last_try = RaceTry.last_try(user, segment_id).last
 
     res = Faraday.get("#{API_ENDPOINT}/segment_efforts",
       { segment_id: segment_id,
-        start_date_local: last_try || race&.startdate&.strftime('%F'),
+        start_date_local: last_try&.start&.strftime('%F') || race&.startdate&.strftime('%F'),
         end_date_local: race&.enddate&.strftime('%F'),
         per_page: 50 },
         { 'Authorization' => "Bearer #{user.token}" })

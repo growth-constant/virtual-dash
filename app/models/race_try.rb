@@ -6,12 +6,9 @@ class RaceTry < ApplicationRecord
   belongs_to :user
 
   # Scopes
-  # scope :leaders, lambda {
-  #   select('DISTINCT ON (name) name, MIN(duration) as duration, image_medium as image, start')
-  #     .joins(:user)
-  #     .group(:user_id, :name, :image_medium, :duration)
-  #     .order('duration')
-  # }
+  scope :last_try, lambda { |user, segment_id|
+    where(user_id: user.id, segment_id: segment_id).order('start DESC').limit(1)
+  }
 
   scope :leaders, lambda { |race, limit|
     find_by_sql("SELECT *
