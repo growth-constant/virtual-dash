@@ -89,3 +89,5 @@ gem 'stripe-rails', '~> 2.2'
 
 # enum for models
 gem 'enumerize', '~> 2.4'
+
+gem "rollbar", "~> 3.1"
