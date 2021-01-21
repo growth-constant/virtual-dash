@@ -13,6 +13,7 @@ class User < ApplicationRecord
 
   before_destroy :destroy_registrations
 
+
   def self.from_omniauth_to_fields(auth)
     fields = {}
     if not auth.is_a?(OmniAuth::AuthHash)
