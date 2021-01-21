@@ -10,6 +10,8 @@ class User < ApplicationRecord
 
   enum role: { admin: 1, race_admin: 2, athlete: 3 }
 
+  before_destroy :destroy_registrations
+
   def self.from_omniauth_to_fields(auth)
     fields = {}
     if not auth.is_a?(OmniAuth::AuthHash)
@@ -58,5 +60,11 @@ class User < ApplicationRecord
   # to set current user inside models
   def self.current=(user)
     Thread.current[:user] = user
+  end
+
+  private
+
+  def destroy_registrations
+    self.registrations.destroy_all
   end
 end
