@@ -20,7 +20,7 @@ class CollectTries
     @users.each do |user|
       next unless Registration.exists?(user_id: user.id)
 
-      registrations = Registration.where(user_id: user.id, status: true)
+      registrations = Registration.where(user_id: user.id, status: 'registered')
       segment_efforts(user, registrations)
     end
   end
@@ -33,45 +33,46 @@ class CollectTries
       JSON.parse(res.body).each do |try|
         next if RaceTry.exists?(user_id: user.id, segment_id: segment_id, start: try['start_date_local'])
 
-        add_race_try(user, registration, try)
+        add_race_try(user, registration, try, registration.race.id)
       end
     end
   end
 
-  def add_race_try(user, registration, try)
+  def add_race_try(user, registration, try, race_id)
     RaceTry.create(user_id: user.id,
                    registration_id: registration.id,
                    segment_id: try['segment']['id'],
                    duration: try['elapsed_time'],
                    start: try['start_date'],
                    moving_time: try['moving_time'],
-                   start_date_local: try['start_date_local']
-                   )
+                   start_date_local: try['start_date_local'],
+                   race_id: race_id)
   end
 
   def segment(segment_id, user, race)
     # segment_id=4677383&start_date_local=2020-11-01&end_date_local=2020-11-30
     # if last try is nil we can use the date of starting race
-    last_try = RaceTry.where(user_id: user.id, segment_id: segment_id).last
+    last_try = RaceTry.last_try(user, segment_id).last
 
     res = Faraday.get("#{API_ENDPOINT}/segment_efforts",
-                      { segment_id: segment_id,
-                        start_date_local: last_try || race&.startdate&.strftime('%F'),
-                        end_date_local: race&.enddate&.strftime('%F'),
-                        per_page: 50 },
-                      { 'Authorization' => "Bearer #{user.token}" })
-    if res.status == 401
-      refresh_token(user)
-      res = segment(segment_id, user.reload)
-    end
-    res
+      { segment_id: segment_id,
+        start_date_local: last_try&.start&.strftime('%F') || race&.startdate&.strftime('%F'),
+        end_date_local: race&.enddate&.strftime('%F'),
+        per_page: 50 },
+        { 'Authorization' => "Bearer #{user.token}" })
+
+        if res.status == 401
+          refresh_token(user)
+          res = segment(segment_id, user.reload, race)
+        end
+        res
   end
 
   def refresh_token(user)
     resp = Faraday.post('https://www.strava.com/api/v3/oauth/token') do |req|
       req.headers['Content-Type'] = 'application/json'
-      req.body = { 'client_id': ENV['CLIENT_ID'],
-                   'client_secret': ENV['CLIENT_SECRET'],
+      req.body = { 'client_id': ENV['STRAVA_CLIENT_ID'],
+                   'client_secret': ENV['STRAVA_CLIENT_SECRET'],
                    'grant_type': 'refresh_token',
                    'refresh_token': user.refresh_token }.to_json
     end

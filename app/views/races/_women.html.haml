@@ -1,0 +1,26 @@
+%table
+  %thead
+    %tr
+      %th
+      %th Competitor
+      %th Duration
+
+  %tbody
+    - i = 0
+    - @leaderboard_women[:competitors].each do |competitor|
+      - i += 1
+      %tr
+        %td= "##{i}"
+        %td
+          %img.ui.mini.circular.image{src: competitor.image}
+        %td= competitor.name
+        %td= "Time: #{Time.at(competitor.duration).utc.strftime('%H:%M:%S')}"
+        - case i
+        - when 1
+          %td= "$#{@leaderboard_women[:prizes][:first]}"
+        - when 2
+          %td= "$#{@leaderboard_women[:prizes][:second]}"
+        - when 3
+          %td= "$#{@leaderboard_women[:prizes][:third]}"
+        - else
+          %td $0

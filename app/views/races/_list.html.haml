@@ -1,0 +1,21 @@
+%table
+  %thead
+    %tr
+      %th Title
+      %th Description
+      %th LeaderBoard
+      %th
+      %th
+      %th
+
+  %tbody
+    - @races.each do |race|
+      %tr
+        %td= race.title
+        %td= race.description
+        %td= link_to 'LeaderBoard', leaderboard_race_path(race)
+        %td= link_to 'Show', race
+        - if current_user.present? && (policy(current_user).admin? || policy(race).edit?)
+          %td= link_to 'Edit', edit_race_path(race)
+          %td= link_to 'Destroy', race, method: :delete, data: { confirm: 'Are you sure?' }
+= paginate @races

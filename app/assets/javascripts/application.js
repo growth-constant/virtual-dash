@@ -1,1 +1,2 @@
-//= require semantic-ui
+//-# require semantic-ui
+//= require fetch-rails

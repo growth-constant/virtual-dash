@@ -1,0 +1,8 @@
+- if controller_name != 'sessions'
+  .ui.blue.button= link_to "Log in", new_session_path(resource_name)
+  %br
+
+- if devise_mapping.omniauthable?
+  - resource_class.omniauth_providers.each do |provider|
+    .ui.register_strava_button_link.button= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), class: 'register_strava_button_link'
+    %br

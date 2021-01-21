@@ -1,32 +1,43 @@
 class RacesController < ApplicationController
-  before_action :set_race, only: [:show, :edit, :update, :destroy]
+  before_action :set_race, only: %i[show edit update destroy leaderboard general_classification]
+  before_action :set_profile, only: %i[index]
+  before_action :registered, only: %i[show]
+  before_action :filter, only: %i[index]
 
-  # GET /races
-  # GET /races.json
-  def index
-    @races = Race.all
+  def index; end
+
+  def leaderboard
+    @leaderboard = Leaderboard.new(@race).call
+
+    # For when categories comes to life
+    # @leaderboard_men = MenLeaderboard.new(@race, competitors_qty).call
+    # @leaderboard_women = WomenLeaderboard.new(@race, competitors_qty).call
   end
 
-  # GET /races/1
-  # GET /races/1.json
+  def general_classification
+    @results = Leaderboard.new(@race, :all).call
+    @competitors = Kaminari.paginate_array(@results[:competitors]).page(params[:page]).per(1)
+  end
+
   def show
+    coordinates = Polylines::Decoder.decode_polyline(@race.all_data['map']['polyline'])
+    i = coordinates.size / 2
+    @lat = coordinates[i][0]
+    @lng = coordinates[i][1]
   end
 
-  # GET /races/new
   def new
     @race = Race.new
     authorize @race, :create?
   end
 
-  # GET /races/1/edit
   def edit
     authorize @race, :edit?
   end
 
-  # POST /races
-  # POST /races.json
   def create
     @race = Race.new(race_params)
+    @race.user_id = current_user.id
 
     respond_to do |format|
       if @race.save
@@ -39,8 +50,6 @@ class RacesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /races/1
-  # PATCH/PUT /races/1.json
   def update
     respond_to do |format|
       if @race.update(race_params)
@@ -53,8 +62,6 @@ class RacesController < ApplicationController
     end
   end
 
-  # DELETE /races/1
-  # DELETE /races/1.json
   def destroy
     @race.destroy
     respond_to do |format|
@@ -64,13 +71,28 @@ class RacesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_race
-      @race = Race.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def race_params
-      params.require(:race).permit(:title, :description, :country, :state, :city, :enddate, :segment_id)
-    end
+  def filter
+    @races = if params[:q].nil?
+               Race.all.page(params[:page])
+             else
+               Race.search(params[:q]).page(params[:page])
+             end
+  end
+
+  def registered
+    return unless current_user
+
+    @registered = Registration.user_registered_and_paid?(current_user, @race)
+  end
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_race
+    @race = Race.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def race_params
+    params.require(:race).permit(:title, :description, :country, :state, :city, :enddate, :segment_id, :user_id)
+  end
 end
