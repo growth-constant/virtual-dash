@@ -3,6 +3,7 @@ Rollbar.configure do |config|
   # To disable in specific environments, set config.enabled=false.
 
   config.access_token = '66d29272804c40b794fc861106f18aca'
+  config.use_sidekiq 'queue' => 'default'
 
   # Here we'll disable in 'test':
   if Rails.env.test?
