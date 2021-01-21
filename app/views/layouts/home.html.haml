@@ -1,0 +1,319 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Virtual Dash
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag "https://maps.google.com/maps/api/js?key=#{ENV['GMAPS_KEY']}&libraries=geometry"
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'maps/race'
+    = tag :meta, :name => "stripe-key", :content => Rails.configuration.stripe[:publishable_key]
+
+  :css
+    @import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,900|Lato:700,500");
+
+    @font-face {
+      font-family: "Helvetica-Regular";
+      font-style: normal;
+      font-weight: 400;
+      src: url("https://anima-uploads.s3.amazonaws.com/5eae8edb379f4b2f41f99ab5/Helvetica_33244fbeea10f093ae87de7a994c3697.ttf")
+        format("truetype");
+    }
+
+    .component-wrapper a,
+    .screen a {
+      text-decoration: none;
+      display: contents;
+    }
+
+    .full-width-a {
+      width: 100%;
+    }
+
+    .full-height-a {
+      height: 100%;
+    }
+
+    .screen textarea:focus,
+    .screen input:focus {
+      outline: none;
+    }
+
+    .screen *,
+    .component-wrapper * {
+      box-sizing: border-box;
+    }
+
+    .screen div {
+      -webkit-text-size-adjust: none;
+    }
+
+    .container-center-vertical,
+    .container-center-horizontal {
+      pointer-events: none;
+      display: flex;
+      flex-direction: row;
+      padding: 0;
+      margin: 0;
+    }
+
+    .container-center-vertical {
+      align-items: center;
+      height: 100%;
+    }
+
+    .container-center-horizontal {
+      justify-content: center;
+      width: 100%;
+    }
+
+    .container-center-vertical > *,
+    .container-center-horizontal > * {
+      pointer-events: auto;
+      flex-shrink: 0;
+    }
+
+    .component-wrapper,
+    .screen {
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+      word-break: break-all;
+      word-break: break-word;
+    }
+
+    .auto-animated div {
+      opacity: 0;
+      position: absolute;
+      --z-index: -1;
+    }
+
+    .auto-animated .container-center-vertical,
+    .auto-animated .container-center-horizontal {
+      opacity: 1;
+    }
+
+    .overlay {
+      position: absolute;
+      opacity: 0;
+      display: none;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      position: fixed;
+    }
+
+    .animate-appear {
+      opacity: 0;
+      display: block;
+      animation: reveal 0.3s ease-in-out 1 normal forwards;
+    }
+
+    .animate-disappear {
+      opacity: 1;
+      display: block;
+      animation: reveal 0.3s ease-in-out 1 reverse forwards;
+    }
+
+    .animate-nodelay {
+      animation-delay: 0s;
+    }
+
+    @keyframes reveal {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    .align-self-flex-start {
+      align-self: flex-start;
+    }
+    .align-self-flex-end {
+      align-self: flex-end;
+    }
+    .align-self-flex-center {
+      align-self: center;
+    }
+    .valign-text-middle {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .valign-text-bottom {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+    input:focus {
+      outline: none;
+    }
+    .component-wrapper,
+    .component-wrapper * {
+      pointer-events: none;
+    }
+
+    .component-wrapper a *,
+    .component-wrapper a,
+    .component-wrapper input,
+    .component-wrapper video,
+    .component-wrapper iframe,
+    .listeners-active,
+    .listeners-active * {
+      pointer-events: auto;
+    }
+
+    .hidden,
+    .hidden * {
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .smart-layers-pointers,
+    .smart-layers-pointers * {
+      pointer-events: auto;
+      visibility: visible;
+    }
+
+    .component-wrapper.not-ready,
+    .component-wrapper.not-ready * {
+      visibility: hidden !important;
+    }
+
+    .listeners-active-click,
+    .listeners-active-click * {
+      cursor: pointer;
+    }
+
+
+  %body{:style => "margin: 0; background: rgba(255, 255, 255, 1)"}
+    %input#anPageName{:name => "page", :type => "hidden", :value => "home-page"}/
+    .container-center-horizontal
+      .home-page.screen
+        .overlap-group1-C61RwL
+          %img.mask-group-44-RH0WJ5{:src => "assets/new_design/mask-group-44@1x.png"}/
+          .arrow-down-le-outline-RH0WJ5
+            %img.path-12323-qmxOaX{:src => "assets/new_design/path-12323@1x.png"}/
+          .group-9899-RH0WJ5
+            .features-0nex5R
+              .about-E2P4Tr.poppins-normal-pale-sky-16px About
+            %a{:href => '/races'}
+              .features-HSQsdM
+                .races-b7sI7e.poppins-normal-pale-sky-16px Races
+            .help-0nex5R
+              .help-Zxxyvq.poppins-normal-pale-sky-16px Help
+            .group-9900-0nex5R
+              .group-9918-Fo7mjA
+                .group-9917-EV3frf
+                  .group-9902-W2pWkm
+                    .group-9900-oKwjm7
+                    .group-9901-oKwjm7
+                  .group-9904-W2pWkm
+                    .group-9903-zBRIMz
+                  .group-9909-W2pWkm
+                    .group-9905-0vQ8tX
+                    .group-9906-0vQ8tX
+                    .group-9907-0vQ8tX
+                    .group-9908-0vQ8tX
+                  .group-9911-W2pWkm
+                    .group-9910-ZmJFKb
+                  .group-9913-W2pWkm
+                    .group-9912-GJrprQ
+                  .group-9916-W2pWkm
+                    .group-9914-EoVeeX
+                    .group-9915-EoVeeX
+              .group-9927-Fo7mjA
+                .group-9926-M9LTvx
+                  .group-9920-93Ki63
+                    .group-9919-w8kzs1
+                  .group-9925-93Ki63
+                    .group-9924-Hsi2yf
+                      .group-9923-aOOHjv
+                        .group-9922-aRs9Qs
+                          .group-9921-1IBBGO
+          .virtual-ra-fort-space-RH0WJ5 VIRTUAL RACING IN YOUR OWN COMFORT SPACE
+          .race-other-ney-prices-RH0WJ5
+            Race other bikers virtually on any course using Virtual Dash. Easily register online, race by yourself or
+            with friends on any of the virtual races at any time, and win money prices.
+          .buttonprimary-RH0WJ5
+            .log-in-kHggxj.lato-bold-white-14px= link_to 'Log in', new_user_session_path
+          .buttonprimary-s3i1G8
+            .register-0fJnjY.lato-bold-white-14px= link_to 'Register', new_user_session_path
+          %a{href: '/races'}
+            .buttonprimary-wN84x2
+              .explore-races-JadM7z.lato-bold-white-14px Explore races
+        .overlap-group-C61RwL
+          %img.rectangle-2778-4eduM0{:src => "assets/new_design/rectangle-2778@1x.png"}/
+          %img.rectangle-2780-4eduM0{:src => "assets/new_design/rectangle-2778@1x.png"}/
+          %img.mask-group-46-4eduM0{:src => "assets/new_design/mask-group-46@1x.png"}/
+          %img.mask-group-48-4eduM0{:src => "assets/new_design/mask-group-48@1x.png"}/
+          .group-9928-4eduM0
+            .race-at-an-nt-for-you-CEs2tY.poppins-semi-bold-ebony-36px
+              Race at any time that is convenient for you.
+            .lorem-ipsu--labore-et-CEs2tY.poppins-normal-pale-sky-20px
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
+              et
+          .auto-flex1-4eduM0
+            .win-price---each-race-aIOKt1.poppins-semi-bold-ebony-36px Win price money after each race
+            .lorem-ipsu--labore-et-aIOKt1.poppins-normal-pale-sky-20px
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
+              et
+          %img.repeat-grid-1-4eduM0{:src => "assets/new_design/repeat-grid-1@1x.png"}/
+          %img.repeat-grid-2-4eduM0{:src => "assets/new_design/repeat-grid-1@1x.png"}/
+        %img.mask-group-45-C61RwL{:src => "assets/new_design/mask-group-45@1x.png"}/
+        = yield
+        .footer-C61RwL
+          .group-9853-iPe1yZ
+            .web-studio-wx1UYx.poppins-medium-white-14px Legal
+            .dynamic-box-flex-wx1UYx.poppins-normal-white-12px Privacy policy
+            .dynamic-box-flex-lxBZc6.poppins-normal-white-12px Terms and condition
+            .dynamic-box-flex-bA8Fxq.poppins-normal-white-12px Cookies
+          .subscribe-iPe1yZ
+            .text-qPPd6S
+              .subscribe-TGj5BD.poppins-medium-white-14px Subscribe
+              .get-the-latest-news-TGj5BD.poppins-normal-white-12px
+                Get the latest news and articles to your
+                = succeed "inbox" do
+                  %br/
+            .input-qPPd6S
+              .rectangle-uRjDPe
+              .rectangle-qsGctK
+              .your-email-uRjDPe Your email
+              .icon-uRjDPe
+                %img.path-YNieyX{:src => "assets/new_design/path-1@1x.png"}/
+          .group-9935-iPe1yZ
+            .group-9933-wPk9Ao
+              .group-9918-5hAezG
+                .group-9917-K1mxte
+                  .group-9902-cqfbxD
+                    .group-9900-fceSyv
+                    .group-9901-fceSyv
+                  .group-9904-cqfbxD
+                    .group-9903-nvfYes
+                  .group-9909-cqfbxD
+                    .group-9905-TVaaiX
+                    .group-9906-TVaaiX
+                    .group-9907-TVaaiX
+                    .group-9908-TVaaiX
+                  .group-9911-cqfbxD
+                    .group-9910-Tx7WFa
+                  .group-9913-cqfbxD
+                    .group-9912-1hiGAc
+                  .group-9916-cqfbxD
+                    .group-9914-kBASSw
+                    .group-9915-kBASSw
+              .group-9927-5hAezG
+                .group-9926-Teph8G
+                  .group-9920-xRbmt8
+                    .group-9919-cI0sxL
+                  .group-9925-xRbmt8
+                    .group-9924-avMjTn
+                      .group-9923-ixJWdX
+                        .group-9922-a1sji1
+                          .group-9921-Uxxv6s
+            .dynamic-box-flex-wPk9Ao.poppins-normal-white-12px Races
+            .dynamic-box-flex-RgYKVM.poppins-normal-white-12px About
+            .dynamic-box-flex-NeVtqC.poppins-normal-white-12px Blog

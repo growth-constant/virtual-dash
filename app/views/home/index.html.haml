@@ -1,2 +1,23 @@
-%h1 Home#index
-= link_to "Sign in with Strava", user_strava_omniauth_authorize_path
+.upcoming-r-to-explore-C61RwL.poppins-semi-bold-ebony-36px Upcoming races for you to explore
+.se-top-rac-ose-to-you-C61RwL.poppins-normal-pale-sky-20px Se top races happening close to you
+- @races.each do |race|
+  .auto-flex-C61RwL
+    .overlap-group2-fhuxN3
+      .rectangle-2781-SJVP2h
+      %img.rectangle-2774-SJVP2h{:src => "assets/new_design/rectangle-2774@1x.png"}/
+    .group-9932-fhuxN3
+      .robocop-desert-race-UsUFn3.poppins-semi-bold-ebony-36px= race.title.titleize
+      .lorem-ipsu-oluptua-at-UsUFn3.poppins-normal-pale-sky-20px= race.description
+      .primary-button-UsUFn3
+        .register-to-race-cmDSwx
+          %a{href: '/users/sign_in'} Register
+
+      .primary-button-waEi4n
+        .more-info-OYrHx3 More info
+  -# .group-9931-C61RwL
+  -#   %img.ellipse-1107-vct2FX{:src => "assets/new_design/ellipse-1107@1x.png"}/
+  -#   %img.ellipse-1108-vct2FX{:src => "assets/new_design/ellipse-1108@1x.png"}/
+  -#   %img.ellipse-1109-vct2FX{:src => "assets/new_design/ellipse-1108@1x.png"}/
+  -#   %img.ellipse-1110-vct2FX{:src => "assets/new_design/ellipse-1108@1x.png"}/
+
+= paginate @races

@@ -1,8 +1,9 @@
 class HomeController < ApplicationController
-  def secret
-  end
+  layout 'home'
 
   def index
+    @races = Race.all.page(params[:page])
   end
 
+  def secret; end
 end
