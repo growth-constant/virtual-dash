@@ -29,9 +29,10 @@ class CollectTries
     registrations&.each do |registration|
       segment_id = registration.race.segment_id
       res = segment(segment_id, user, registration.race)
+      race_tries_for_user = RaceTry.where(user_id: user.id, segment_id: segment_id).pluck(:race_try_id)
 
       JSON.parse(res.body).each do |try|
-        next if RaceTry.exists?(user_id: user.id, segment_id: segment_id, start: try['start_date_local'])
+        next if race_tries_for_user.include? try['id']
 
         add_race_try(user, registration, try, registration.race.id)
       end
@@ -46,6 +47,7 @@ class CollectTries
                    start: try['start_date'],
                    moving_time: try['moving_time'],
                    start_date_local: try['start_date_local'],
+                   race_try_id: try['id'],
                    race_id: race_id)
   end
 
