@@ -29,7 +29,7 @@ class CollectTries
     registrations&.each do |registration|
       segment_id = registration.race.segment_id
       res = segment(segment_id, user, registration.race)
-      race_tries_for_user = RaceTry.where(user_id: user.id, segment_id: segment_id).pluck(:race_try_id)
+      race_tries_for_user = RaceTry.user_segments(user, segment_id).pluck(:race_try_id)
 
       JSON.parse(res.body).each do |try|
         next if race_tries_for_user.include? try['id']
