@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_31_211201) do
+ActiveRecord::Schema.define(version: 2021_01_22_220817) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 2020_12_31_211201) do
     t.integer "moving_time"
     t.datetime "start_date_local"
     t.integer "race_id"
+    t.bigint "race_try_id"
     t.index ["registration_id"], name: "index_race_tries_on_registration_id"
     t.index ["start"], name: "index_race_tries_on_start"
     t.index ["user_id"], name: "index_race_tries_on_user_id"
@@ -101,11 +102,11 @@ ActiveRecord::Schema.define(version: 2020_12_31_211201) do
     t.string "country"
     t.string "image_medium"
     t.integer "role", default: 3
-    t.string "stripe_customer_id"
     t.string "gender"
     t.string "phone"
     t.boolean "profile_complete", default: false
     t.date "birthdate"
+    t.string "stripe_customer_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
