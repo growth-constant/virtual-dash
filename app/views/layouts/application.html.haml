@@ -12,10 +12,17 @@
     = javascript_pack_tag 'maps/race'
     = tag :meta, :name => "stripe-key", :content => Rails.configuration.stripe[:publishable_key]
 
-
-  %body
-    = render partial: "layouts/header"
-    .ui.main.container
-      %p#notice= notice
-      %p#alert= alert
-      = yield
+  - if current_user
+    %body
+      = render partial: "layouts/header"
+      .ui.main.container
+        %p#notice= notice
+        %p#alert= alert
+        = yield
+  - else
+    %body{:style => "margin: 0; background: rgba(255, 255, 255, 1)"}
+      %input#anPageName{:name => "page", :type => "hidden", :value => "find-races"}/
+      .container-center-horizontal
+        .find-races.screen
+          = render partial: "layouts/header_races"
+          = yield

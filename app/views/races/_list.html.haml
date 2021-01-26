@@ -1,21 +1,16 @@
-%table
-  %thead
-    %tr
-      %th Title
-      %th Description
-      %th LeaderBoard
-      %th
-      %th
-      %th
+- @races.each do |race|
+  .component-25-1-C61RwL
+    .robocop-desert-race-aB2xmo.poppins-semi-bold-ebony-24px= race.title
+    .lorem-ipsu-oluptua-at-aB2xmo.poppins-normal-pale-sky-18px
+      = race.description
+    .heart-aB2xmo
+      %img.active-FK9VMq{:src => "assets/new_styles/active-1@1x.png"}/
+      %img.ellipse-32-FK9VMq{:src => "assets/new_styles/ellipse-32-1@1x.png"}/
+      %img.heart-FK9VMq{:src => "assets/new_styles/heart-3@1x.png"}/
+    %img.rectangle-2784-aB2xmo{:src => "assets/new_styles/rectangle-2784-2@1x.png"}/
+    .buttonprimary-leaderboard
+      = link_to 'LeaderBoard', leaderboard_race_path(race), class: 'leaderboard-CbhgY8 lato-bold-dodger-blue-14px'
+    .buttonprimary-register-in-list
+      = link_to 'Register to race', new_user_session_path, class: 'register-to-race-j8ySDH lato-bold-white-14px'
 
-  %tbody
-    - @races.each do |race|
-      %tr
-        %td= race.title
-        %td= race.description
-        %td= link_to 'LeaderBoard', leaderboard_race_path(race)
-        %td= link_to 'Show', race
-        - if current_user.present? && (policy(current_user).admin? || policy(race).edit?)
-          %td= link_to 'Edit', edit_race_path(race)
-          %td= link_to 'Destroy', race, method: :delete, data: { confirm: 'Are you sure?' }
 = paginate @races

@@ -1,0 +1,62 @@
+.group-9899-C61RwL
+  -# %a{:href => '/races'}
+    -# .group-9900-p04pkV
+    -#   .group-9918-P9n9ck
+    -#     .group-9917-azL5O4
+    -#       .group-9902-BAHXEU
+    -#         .group-9900-T33Nww
+    -#         .group-9901-T33Nww
+    -#       .group-9904-BAHXEU
+    -#         .group-9903-QzSuby
+    -#       .group-9909-BAHXEU
+    -#         .group-9905-7JZbEi
+    -#         .group-9906-7JZbEi
+    -#         .group-9907-7JZbEi
+    -#         .group-9908-7JZbEi
+    -#       .group-9911-BAHXEU
+    -#         .group-9910-dDmMkR
+    -#       .group-9913-BAHXEU
+    -#         .group-9912-VABRSi
+    -#       .group-9916-BAHXEU
+    -#         .group-9914-Dqmetp
+    -#         .group-9915-Dqmetp
+    -#   .group-9927-P9n9ck
+    -#     .group-9926-8RqyX8
+    -#       .group-9920-Bgo6we
+    -#         .group-9919-zQ0nPM
+    -#       .group-9925-Bgo6we
+    -#         .group-9924-en6IV7
+    -#           .group-9923-bsf9Jz
+    -#             .group-9922-qOgT92
+    -#               .group-9921-0KbhXn
+  .buttonprimary-login
+    %a.log-in-button.lato-bold-white-14px{:href => '/users/sign_in'} Log in
+  .buttonprimary-register
+    %a.register-button.lato-bold-white-14px{:href => '/users/sign_in'} Register
+
+  .features-p04pkV
+    .about-link.poppins-normal-pale-sky-16px About
+  .features-aLzR6V
+    %a.races-cfT95x{:href => '/races'} Races
+  .help-p04pkV
+    .help-A0tPHI.poppins-normal-pale-sky-16px Help
+
+.overlap-group-search
+  .rectangle-search
+  .searchinput-races
+    = form_with(url: races_path, method: 'get', local: true) do
+      = text_field_tag :q, nil, placeholder: 'Search race name', class: 'search-race-name'
+      %img.search-img{:src => "assets/new_styles/search@1x.png"}/
+
+  .formdropdown-4eduM0
+    .current-races-JNskzb.lato-medium-nobel-14px Current Races
+    %img.caret-down-JNskzb{:src => "assets/new_styles/caret-down-1@1x.png"}/
+  .formdropdown-BJQsbv
+    .distance-ovjRMA.lato-medium-nobel-14px Distance
+    %img.caret-down-ovjRMA{:src => "assets/new_styles/caret-down-1@1x.png"}/
+  .formdropdown-6sb1qn
+    .number-registered-S4SUKH.lato-medium-nobel-14px Number Registered
+    %img.caret-down-S4SUKH{:src => "assets/new_styles/caret-down-1@1x.png"}/
+  .formdropdown-ovOecM
+    .number-registered-CxLI6h.lato-medium-nobel-14px Number Registered
+    %img.caret-down-CxLI6h{:src => "assets/new_styles/caret-down-1@1x.png"}/
