@@ -43,10 +43,11 @@
 
 .overlap-group-search
   .rectangle-search
-  .searchinput-races
-    = form_with(url: races_path, method: 'get', local: true) do
-      = text_field_tag :q, nil, placeholder: 'Search race name', class: 'search-race-name'
-      %img.search-img{:src => "assets/new_styles/search@1x.png"}/
+    .searchinput-races
+      = form_with(url: races_path, method: 'get', local: true) do
+        .ui.icon.input
+          = text_field_tag :q, nil, placeholder: 'Search race name'
+          %i.search.icon
 
   .formdropdown-current-races
     .current-races-caret.lato-medium-nobel-14px Current Races
