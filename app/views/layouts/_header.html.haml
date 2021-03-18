@@ -1,33 +1,47 @@
-.ui.fixed.menu#header
-  .ui.container
-    %a.header.item{:href => "/"} Virtual Dash
-    - if current_user.present? && policy(current_user).admin?
-      %a.header.item{:href => "/admin"} Admin
-    .right.menu
-      .ui.simple.dropdown.item
-        -# locale = I18n.locale.to_sym
-        -#- if not user_signed_in?
-            %i.flag{:class => @locale_options[locale][:flag]}
-          - else
-            %i.flag{:class => @locale_options[locale][:flag]}
-            %i.dropdown.icon
-            .menu
-              - @locale_options.each do |lang, options|
-                = link_to user_edit_locale_path(:locale => lang.to_s), method: :post, class: 'item' do
-                  %i.flag{:class => options[:flag]}
-                  = options[:info]
-      - if not user_signed_in?
-        %a.item{:href => new_user_session_path } Login
-      - else
-        .ui.simple.dropdown.item
-          = current_user.email
-          %i.dropdown.icon
-          .menu
-            = link_to 'Setting', edit_user_registration_path, class: 'item'
-            .divider
-            .header User Actions
-            = link_to 'Logout', destroy_user_session_path, method: :delete, class: 'item'
-            -# if policy([:admin, User]).admin_users?
-                .divider
-                .header Administrator Actions
-                = link_to 'Admin Users', admin_user_admin_users_path, class: 'item'
+-# .ui.fixed.menu#header
+-#   .ui.container
+-#     %a.header.item{:href => "/"} Virtual Dash
+-#     - if current_user.present? && policy(current_user).admin?
+-#       %a.header.item{:href => "/admin"} Admin
+-#     .right.menu
+-#       .ui.simple.dropdown.item
+-#         -# locale = I18n.locale.to_sym
+-#         -#- if not user_signed_in?
+-#             %i.flag{:class => @locale_options[locale][:flag]}
+-#           - else
+-#             %i.flag{:class => @locale_options[locale][:flag]}
+-#             %i.dropdown.icon
+-#             .menu
+-#               - @locale_options.each do |lang, options|
+-#                 = link_to user_edit_locale_path(:locale => lang.to_s), method: :post, class: 'item' do
+-#                   %i.flag{:class => options[:flag]}
+-#                   = options[:info]
+-#       - if not user_signed_in?
+-#         %a.item{:href => new_user_session_path } Login
+-#       - else
+-#         .ui.simple.dropdown.item
+-#           = current_user.email
+-#           %i.dropdown.icon
+-#           .menu
+-#             = link_to 'Setting', edit_user_registration_path, class: 'item'
+-#             .divider
+-#             .header User Actions
+-#             = link_to 'Logout', destroy_user_session_path, method: :delete, class: 'item'
+-#             -# if policy([:admin, User]).admin_users?
+-#                 .divider
+-#                 .header Administrator Actions
+-#                 = link_to 'Admin Users', admin_user_admin_users_path, class: 'item'
+
+.ui.secondary.fixed.menu.dash-header
+  %a.item
+    %img{:src => "", :alt => "Virtual Dash"}
+  .right.menu
+    %a.item
+      About
+    %a.item
+      Races
+    %a.item
+      Help
+    .auth-buttons
+      .ui.primary.button Log in
+      .ui.button Register

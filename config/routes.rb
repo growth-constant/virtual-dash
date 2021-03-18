@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   resources :users, only: %i[edit update]
 
   unauthenticated do
-    root 'races#index'
+    root 'home#index'
   end
 
   authenticated :user do
