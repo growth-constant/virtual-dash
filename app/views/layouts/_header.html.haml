@@ -33,15 +33,17 @@
 -#                 = link_to 'Admin Users', admin_user_admin_users_path, class: 'item'
 
 .ui.secondary.fixed.menu.dash-header
-  %a.item
-    %img{:src => "", :alt => "Virtual Dash"}
+  %a.item{:href => '/'}
+    %img{:src => '', :alt => 'Virtual Dash'}
   .right.menu
-    %a.item
+    %a.item{:href => '/about'}
       About
-    %a.item
+    %a.item{:href => '/races'}
       Races
-    %a.item
+    %a.item{:href => '/help'}
       Help
     .auth-buttons
-      .ui.primary.button Log in
-      .ui.button Register
+      .ui.primary.button
+        = link_to 'Log in', new_user_session_path, class: 'link-to-header'
+      .ui.black.button
+        = link_to 'Register', new_user_session_path, class: 'link-to-header'
