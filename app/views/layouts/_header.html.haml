@@ -33,8 +33,8 @@
 -#                 = link_to 'Admin Users', admin_user_admin_users_path, class: 'item'
 
 .ui.secondary.fixed.menu.dash-header
-  %a.item{:href => '/'}
-    = image_tag('logo.svg', alt: 'Virtual Dash', class: 'logo-header')
+  %a.item{:href => '/', class: 'no-hover'}
+    = image_tag('logo.svg', alt: 'Virtual Dash', class: 'logo-nav')
   .right.menu
     %a.item{:href => '/about'}
       About
@@ -42,7 +42,6 @@
       Races
     %a.item{:href => '/help'}
       Help
-    -# TODO: Fix button alignment
     .auth-buttons 
       .ui.primary.button
         = link_to 'Log in', new_user_session_path, class: 'link-to-header'
