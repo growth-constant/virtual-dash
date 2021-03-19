@@ -34,7 +34,7 @@
 
 .ui.secondary.fixed.menu.dash-header
   %a.item{:href => '/'}
-    %img{:src => '', :alt => 'Virtual Dash'}
+    = image_tag('logo.svg', alt: 'Virtual Dash', class: 'logo-header')
   .right.menu
     %a.item{:href => '/about'}
       About
@@ -42,7 +42,8 @@
       Races
     %a.item{:href => '/help'}
       Help
-    .auth-buttons
+    -# TODO: Fix button alignment
+    .auth-buttons 
       .ui.primary.button
         = link_to 'Log in', new_user_session_path, class: 'link-to-header'
       .ui.black.button

@@ -1,6 +1,5 @@
 // Header styles
 .auth-buttons {
-    margin-top: 1em;
     margin-left: 3em;
 }
 
@@ -15,4 +14,9 @@
 
 a.link-to-header:hover {
     background-color: transparent !important;
+}
+
+.logo-header {
+    width: 213px !important;
+    height: 26px !important;
 }
