@@ -57,10 +57,22 @@ a.footer {
         padding-left: 13em;
     }
 
+    @media (max-width: 720px) {
+        height: 40em;
+        padding-left: 4em;
+        padding-right: 0em;
+    }
+
 }
 
 .footer-input-button {
     background-color: white !important;
+}
+
+.footer-mail{
+    @media (max-width: 720px) {
+        width: 22em !important;
+    }
 }
 
 .footer-title{
@@ -71,4 +83,8 @@ p.footer{
     font-size: 12px;
     max-width: 16em;
     margin-top: 1em;
+
+    @media (max-width: 720px) {
+        max-width: 22em;
+    }
 }
