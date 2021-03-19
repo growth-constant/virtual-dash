@@ -1,27 +1,27 @@
 .footer-container
-  .ui.three.column.centered.grid
+  .ui.stackable.three.column.centered.grid
     .centered.row
       .column
         %a{:href => '/', class: 'no-hover'}
           = image_tag('logo-white.svg', alt: 'Virtual Dash', class: 'logo-nav')
-        %br
-        %a{:href => '/', class: 'footer-link no-hover'} Race
-        %br
-        %a{:href => '/', class: 'footer-link no-hover'} About
-        %br
-        %a{:href => '/', class: 'footer-link no-hover'} Blog
+        %p{class: 'footer'}
+          %a{:href => '/', class: 'footer no-hover'} Race
+        %p
+          %a{:href => '/', class: 'footer no-hover'} About
+        %p
+          %a{:href => '/', class: 'footer no-hover'} Blog
       .column
-        %b Subscribe
-        %br
-        %a{:href => '/', class: 'footer-link no-hover'} Privacy policy
-        %br
-        %a{:href => '/', class: 'footer-link no-hover'} Terms and condition
-        %br
-        %a{:href => '/', class: 'footer-link no-hover'} Cookies
+        %p{class: 'footer-title'} Legal
+        %p{class: 'footer'}
+          %a{:href => '/', class: 'footer no-hover'} Privacy policy
+        %p
+          %a{:href => '/', class: 'footer no-hover'} Terms and condition
+        %p
+          %a{:href => '/', class: 'footer no-hover'} Cookies
       .column
-        %b Legal
+        %p{class: 'footer-title'} Subscribe
+        %p{class: 'footer'} Get the latest news and articles to your inbox every month.
         %br
-        %p Get the latest news and articles to your inbox every month.
         .ui.action.input
           %input{:placeholder => 'Your email', :type => 'email'}/
           %button.ui.icon.button.footer-input-button

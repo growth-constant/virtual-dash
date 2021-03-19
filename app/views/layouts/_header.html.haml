@@ -32,7 +32,7 @@
 -#                 .header Administrator Actions
 -#                 = link_to 'Admin Users', admin_user_admin_users_path, class: 'item'
 
-.ui.secondary.fixed.menu.dash-header
+.ui.secondary.fixed.menu.header-container
   %a.item{:href => '/', class: 'no-hover'}
     = image_tag('logo.svg', alt: 'Virtual Dash', class: 'logo-nav')
   .right.menu
@@ -44,6 +44,6 @@
       Help
     .auth-buttons 
       .ui.primary.button
-        = link_to 'Log in', new_user_session_path, class: 'link-to-header'
+        = link_to 'Log in', new_user_session_path, class: 'header-button'
       .ui.black.button
-        = link_to 'Register', new_user_session_path, class: 'link-to-header'
+        = link_to 'Register', new_user_session_path, class: 'header-button'
