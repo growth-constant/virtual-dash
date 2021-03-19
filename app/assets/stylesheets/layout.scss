@@ -1,6 +1,9 @@
 // Header styles
 .auth-buttons {
+    display: flex;
     margin-left: 3em;
+    align-items: center;
+    justify-content: center;
 }
 
 .dash-header {
