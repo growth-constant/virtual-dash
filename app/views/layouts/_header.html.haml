@@ -36,7 +36,7 @@
   %a.item{:href => '/', class: 'no-hover'}
     = image_tag('logo.svg', alt: 'Virtual Dash', class: 'logo-nav')
   .right.menu.mobile-nav
-    %button.huge.ui.icon.button.mobile-menu{ onclick: '$(".ui.right.sidebar.inverted.vertical.menu").sidebar("toggle");'}
+    %button.huge.ui.icon.button.mobile-menu#mobile-menu-button
       %i.bars.icon
   .right.menu.desktop-nav
     %a.item{:href => '/about'}

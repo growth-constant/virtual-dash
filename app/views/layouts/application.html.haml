@@ -4,6 +4,7 @@
     %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}/
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    %script{:src => "http://code.jquery.com/jquery-1.8.3.js"}
     %title Virtual Dash
     = csrf_meta_tags
     = csp_meta_tag
@@ -14,9 +15,8 @@
     = javascript_pack_tag 'maps/race'
     = tag :meta, :name => "stripe-key", :content => Rails.configuration.stripe[:publishable_key]
 
-
   %body
-    .ui.right.sidebar.inverted.vertical.menu
+    .ui.sidebar.inverted.vertical.menu#mobile-menu
       %a.item
         1
       %a.item
