@@ -31,6 +31,10 @@ body {
 }
 .main.container {
   margin: 10em 6.5em 10em !important;
+
+  @media (max-width: 720px) {
+    margin: 7em 1.5em 7em !important;
+  }
 }
 .wireframe {
   margin-top: 2em;
