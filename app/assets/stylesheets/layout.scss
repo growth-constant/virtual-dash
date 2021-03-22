@@ -1,3 +1,5 @@
+@import 'variables/colors.scss';
+
 // Shared layout styles
 a.no-hover:hover {
     background-color: transparent !important;
@@ -19,6 +21,10 @@ a.header-button{
 
 a.header-button:hover {
     background-color: transparent !important;
+}
+
+a.item.header {
+    color: $gray !important;
 }
 
 .auth-buttons {
@@ -67,7 +73,7 @@ a.footer {
 }
 
 .footer-arrow-icon {
-    color: #20a4f3;
+    color: $light-blue;
 }
 
 .footer-container {
@@ -81,7 +87,7 @@ a.footer {
     padding-left: 25em;
     padding-right: 5em;
     position: relative;
-    background-color: #081f3f;
+    background-color: $dark-blue;
     
     @media (max-width: 1280px) {
         padding-left: 13em;

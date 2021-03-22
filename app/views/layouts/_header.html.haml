@@ -39,14 +39,14 @@
     %button.huge.ui.icon.button.mobile-menu#mobile-menu-button
       %i.bars.icon
   .right.menu.desktop-nav
-    %a.item{:href => '/about'}
+    %a.item.header{:href => '/about'}
       About
-    %a.item{:href => '/races'}
+    %a.item.header{:href => '/races'}
       Races
-    %a.item{:href => '/help'}
+    %a.item.header{:href => '/help'}
       Help
     .auth-buttons 
-      .ui.primary.button
+      .ui.button.light-blue
         = link_to 'Log in', new_user_session_path, class: 'header-button'
-      .ui.black.button
+      .ui.button.dark-blue
         = link_to 'Register', new_user_session_path, class: 'header-button'

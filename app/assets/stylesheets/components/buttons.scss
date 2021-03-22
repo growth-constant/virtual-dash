@@ -1,0 +1,17 @@
+ @import '../variables/colors.scss';
+
+.light-blue{
+    background-color: $light-blue !important;
+    
+    &:hover {
+        background-color: darken($light-blue, 10%) !important;
+    } 
+}
+
+.dark-blue{
+    background-color: $dark-blue !important;
+
+    &:hover {
+        background-color: lighten($dark-blue, 10%) !important;
+    } 
+}
