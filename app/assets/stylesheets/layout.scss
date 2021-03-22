@@ -6,6 +6,10 @@ a.no-hover:hover {
 .logo-nav {
     width: 213px !important;
     height: 26px !important;
+
+    @media (max-width: 720px) {
+        width: 175px !important;
+    }
 }
 
 // Header styles
@@ -24,9 +28,35 @@ a.header-button:hover {
     justify-content: center;
 }
 
+.desktop-nav {
+    visibility: inherit;
+    
+    @media (max-width: 720px) {
+        visibility: hidden;
+    }
+}
+
 .header-container {
     padding: 3em 5em 3em !important;
     background-color: white !important;
+
+    @media (max-width: 720px) {
+        padding: 1.5em 0em 1.5em !important;
+    }
+}
+
+.mobile-menu{
+    color: black !important;
+    background-color: transparent !important;
+}
+
+.mobile-nav {
+    visibility: hidden;
+    padding-left: 3em !important;
+    
+    @media (max-width: 720px) {
+        visibility: inherit;
+    }
 }
 
 // Footer styles
@@ -59,7 +89,7 @@ a.footer {
 
     @media (max-width: 720px) {
         height: 40em;
-        padding-left: 4em;
+        padding-left: 1em;
         padding-right: 0em;
     }
 
@@ -71,7 +101,7 @@ a.footer {
 
 .footer-mail{
     @media (max-width: 720px) {
-        width: 22em !important;
+        width: 17em !important;
     }
 }
 
@@ -85,6 +115,6 @@ p.footer{
     margin-top: 1em;
 
     @media (max-width: 720px) {
-        max-width: 22em;
+        max-width: 19em;
     }
 }
