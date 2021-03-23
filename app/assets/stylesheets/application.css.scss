@@ -42,10 +42,12 @@ body {
   margin-right: 1.5em;
 }
 .main.container {
-  margin: 10em 6.5em 10em !important;
+  margin-top: 10em !important;
+  margin-bottom: 10em !important;
 
   @media (max-width: 720px) {
-    margin: 7em 1.5em 7em !important;
+    margin-top: 7em !important;
+    margin-bottom: 7em !important;
   }
 }
 .wireframe {

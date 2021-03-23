@@ -1,17 +1,24 @@
  @import '../variables/colors.scss';
 
-.light-blue{
-    background-color: $light-blue !important;
-    
-    &:hover {
-        background-color: darken($light-blue, 10%) !important;
-    } 
+a.link-to-button {
+  color: white !important;
+  &:hover {
+    background-color: transparent !important;
+  }
+} 
+
+ .light-blue {
+  color: white !important;
+  background-color: $light-blue !important;
+  &:hover {
+    background-color: darken($light-blue, 10%) !important;
+  } 
 }
 
-.dark-blue{
-    background-color: $dark-blue !important;
-
-    &:hover {
-        background-color: lighten($dark-blue, 10%) !important;
-    } 
+.dark-blue {
+  color: white !important;
+  background-color: $dark-blue !important;
+  &:hover {
+    background-color: lighten($dark-blue, 10%) !important;
+  } 
 }
