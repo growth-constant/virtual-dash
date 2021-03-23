@@ -26,6 +26,18 @@ body {
 }
 */
 
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: normal;
+  src: font-url('Poppins-Regular.ttf');
+  src: font-url('Poppins-Regular.ttf'), format('truetype');
+}
+
+* {
+  font-family: 'Poppins', sans-serif !important;
+}
+
 .ui.menu .item img.logo {
   margin-right: 1.5em;
 }
