@@ -1,0 +1,41 @@
+@import 'variables/colors';
+
+.icon.gray{
+    color: $gray;
+    font-style: normal !important;
+    font-weight: normal !important;
+    font-family: 'Icons' !important;
+    background-color: transparent !important;
+}
+
+.icon.black{
+    color: $black;
+    font-style: normal !important;
+    font-weight: normal !important;
+    font-family: 'Icons' !important;
+    background-color: transparent !important;
+}
+
+.icon.dark-blue{
+    color: $dark-blue;
+    font-style: normal !important;
+    font-weight: normal !important;
+    font-family: 'Icons' !important;
+    background-color: transparent !important;
+}
+
+.icon.light-blue{
+    color: $light-blue;
+    font-style: normal !important;
+    font-weight: normal !important;
+    font-family: 'Icons' !important;
+    background-color: transparent !important;
+}
+
+.icon.light-gray{
+    color: $light-blue;
+    font-style: normal !important;
+    font-weight: normal !important;
+    font-family: 'Icons' !important;
+    background-color: transparent !important;
+}
