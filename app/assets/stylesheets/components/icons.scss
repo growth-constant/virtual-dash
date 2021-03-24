@@ -1,7 +1,7 @@
 @import 'variables/colors';
 
 .icon.gray{
-    color: $gray;
+    color: $gray !important;
     font-style: normal !important;
     font-weight: normal !important;
     font-family: 'Icons' !important;
@@ -9,7 +9,7 @@
 }
 
 .icon.black{
-    color: $black;
+    color: $black !important;
     font-style: normal !important;
     font-weight: normal !important;
     font-family: 'Icons' !important;
@@ -17,7 +17,7 @@
 }
 
 .icon.dark-blue{
-    color: $dark-blue;
+    color: $dark-blue !important;
     font-style: normal !important;
     font-weight: normal !important;
     font-family: 'Icons' !important;
@@ -25,7 +25,7 @@
 }
 
 .icon.light-blue{
-    color: $light-blue;
+    color: $light-blue !important;
     font-style: normal !important;
     font-weight: normal !important;
     font-family: 'Icons' !important;
@@ -33,7 +33,7 @@
 }
 
 .icon.light-gray{
-    color: $light-blue;
+    color: $light-blue !important;
     font-style: normal !important;
     font-weight: normal !important;
     font-family: 'Icons' !important;

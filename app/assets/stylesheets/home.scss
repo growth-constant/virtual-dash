@@ -12,9 +12,19 @@
 }
 
 .welcome-container {
-    width: 100%;
     color: white;
-    margin-left: 15em;
-    margin-right: 15em;
     text-align: center;
+    padding: 10em 15em 10em;
+
+    .title {
+        font-size: 69px;
+        font-weight: bolder;
+    }
+
+    .desc {
+        font-size: 17px;
+        padding: 0em 5em 0em;
+    }
+
+
 }
