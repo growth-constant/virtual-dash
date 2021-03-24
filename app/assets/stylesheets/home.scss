@@ -9,22 +9,47 @@
         rgba(0, 0, 0, 0.5), 
         rgba(0, 0, 0, 0.5) 
     ), url('welcome-bg.png');
+    background-size: cover;
+
+    @media (max-width: 720px) {
+        height: 600px;
+    }
 }
 
 .welcome-container {
     color: white;
     text-align: center;
-    padding: 10em 15em 10em;
+    padding: 16em 30em 10em;
+    
+    @media (max-width: 1280px) {
+        padding: 10em 15em 10em;
+    }
+
+    @media (max-width: 720px) {
+        padding: 5em 1em 5em;
+    }
 
     .title {
         font-size: 69px;
         font-weight: bolder;
+        
+        @media (max-width: 720px) {
+            font-size: 35px;
+        }
     }
 
     .desc {
         font-size: 17px;
-        padding: 0em 5em 0em;
-    }
+        padding: 0em 7em 0em;
+        
+        @media (max-width: 720px) {
+            line-height: 2;
+            font-size: 13px;
+        }
 
+        @media (max-width: 1280px) {
+            padding: 0em 1em 0em;
+        }
+    }
 
 }
