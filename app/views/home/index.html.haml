@@ -12,4 +12,19 @@
         .sixteen.wide.column
           .ui.button.large.light-blue
             = link_to 'Explore races', new_user_session_path, class: 'link-to-button'
-
+.racers-container
+  .ui.stackable.two.stackable.column.grid
+    .row.first-row
+      .eight.wide.column
+        = image_tag 'landing-white-rectangleish.png', alt: 'White Rectangle', class: 'first-virtual-racer'
+      .eight.wide.column
+        .text-container
+          %h1.race-heading Race at any time that is convenient for you.
+          %p Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et.
+    .row
+      .eight.wide.column.right-inverted
+        = image_tag 'landing-white-rectangleish.png', alt: 'White Rectangle'
+      .eight.wide.column.left-inverted
+        .text-container
+          %h1.race-heading Win price money after each race
+          %p Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et.

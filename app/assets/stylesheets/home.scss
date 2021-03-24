@@ -2,13 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+@import 'variables/colors.scss';
+
+// Section 1
 .welcome-background {
     width: 100%;
     height: 900px;
     background: linear-gradient( 
         rgba(0, 0, 0, 0.5), 
         rgba(0, 0, 0, 0.5) 
-    ), url('welcome-bg.png');
+    ), url('landing-welcome-bg.png');
     background-size: cover;
 
     @media (max-width: 720px) {
@@ -52,4 +55,68 @@
         }
     }
 
+}
+
+// Section 2
+.racers-container { 
+
+    p {
+        font-size: 17px;
+        color: $gray;
+    }
+
+    .first-row {
+        margin: 0em 4em 0em !important;
+
+        @media (max-width: 1280px) {
+            margin: 0 !important;
+        }
+    }
+
+    .first-virtual-racer {
+        margin-left: 6em !important;
+
+        @media (max-width: 1280px) {
+            margin-left: 0 !important;
+        }
+    }
+
+    .left-inverted {
+        right: 48%;
+        
+        @media (max-width: 720px) {
+            right: 0;
+        }
+    }
+
+    .race-heading{
+        margin-top: 6em;
+
+        @media (max-width: 720px) {
+            margin-top: 0;
+        }
+    }
+
+    .right-inverted {
+        left: 50%;
+
+        @media (max-width: 720px) {
+            left: 0;
+        }
+    }
+
+    .text-container{
+        margin-left: 5em;
+        margin-right: 5em;
+
+        @media (max-width: 720px) {
+            margin-left: 10em;
+            margin-right: 10em;
+        }
+
+        @media (max-width: 1280px) {
+            margin-left: 1em;
+            margin-right: 1em;
+        }
+    }
 }
