@@ -1,4 +1,3 @@
--# = link_to "Sign in with Strava", user_strava_omniauth_authorize_path
 .welcome-background
   .welcome-container 
     .ui.grid
@@ -13,7 +12,7 @@
           .ui.button.large.light-blue
             = link_to 'Explore races', new_user_session_path, class: 'link-to-button'
 .racers-container
-  .ui.stackable.two.stackable.column.grid
+  .ui.stackable.two.column.grid
     .row.first-row
       .eight.wide.column
         = image_tag 'landing-virtual-racer-1.png', alt: 'Virtual Racer 1', class: 'first-virtual-racer'
@@ -30,7 +29,7 @@
           %p Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et.
 .panoramic-race
 .upcoming-container
-  .ui.grid
+  .ui.stackable.two.column.grid
     .row.title-row
       .sixteen.wide.column
         %h2 Upcoming races for you to explore
