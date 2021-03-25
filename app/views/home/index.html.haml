@@ -31,16 +31,18 @@
 .panoramic-race
 .upcoming-container
   .ui.grid
-    .row
+    .row.title-row
       .sixteen.wide.column
         %h2 Upcoming races for you to explore
         %p See top races happening close to you
     .row
-      .eight.wide.column 
       .eight.wide.column
-        %h2 Robocop Desert Race
-        %p Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
-        .ui.button.dark-blue
-          = link_to 'Register to race', new_user_session_path, class: 'link-to-button'
-        .ui.button.light-blue
-          = link_to 'More info', new_user_session_path, class: 'link-to-button'
+        = image_tag 'landing-map-example.png', alt: 'Robocop Desert Race Map', class: 'race-map'
+      .eight.wide.column
+        .race-data-container
+          %h2 Robocop Desert Race
+          %p Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+          .ui.button.dark-blue
+            = link_to 'Register to race', new_user_session_path, class: 'link-to-button'
+          .ui.button.light-blue
+            = link_to 'More info', new_user_session_path, class: 'link-to-button'

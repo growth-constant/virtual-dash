@@ -136,5 +136,31 @@
 
 // Section 4
 .upcoming-container {
-    
+    h2 {
+        font-size: 30px;
+    }
+
+    p {
+        color: $gray;
+        font-size: 15px;
+    }
+
+    .title-row {
+        margin-top: 6em;
+        margin-bottom: 6em;
+        text-align: center;
+        justify-content: center;
+        -webkit-box-pack: center;
+    }
+
+    .race-data-container {
+        margin-right: 8em;
+    }
+
+    .race-map {
+        height: 23em;
+        margin-left: 10em;
+        border-radius: 11%;
+        border: solid 1em red;
+    }
 }
