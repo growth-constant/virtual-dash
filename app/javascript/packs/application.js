@@ -8,6 +8,7 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 require("jquery")
+require("semantic-ui-sass")
 import { loadStripe } from '@stripe/stripe-js';
 
 // Uncomment to copy all static images under ../images to the output folder and reference
@@ -73,4 +74,11 @@ $(document).on('turbolinks:load', function () {
       })
     });
   }
+});
+
+// Open mobile menu
+$(document).on('turbolinks:load', function () {
+  $('#mobile-menu-button').on('click', () => {
+      $('#mobile-menu').sidebar('toggle');
+  });
 });
