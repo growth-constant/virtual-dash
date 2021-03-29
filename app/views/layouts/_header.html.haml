@@ -55,7 +55,10 @@
           = link_to 'Register', new_user_session_path, class: 'link-to-button'
     - else
       .ui.simple.dropdown.item
-        = image_tag 'https://upload.wikimedia.org/wikipedia/commons/a/ae/Michael_Jordan_in_2014.jpg', alt: 'Profile pic', class: 'profile-pic'
+        - if current_user.email
+          = image_tag '#{current_user.email}', alt: 'Profile pic', class: 'profile-pic'
+        - else
+          = image_tag 'default-user.jpg', alt: 'Profile pic', class: 'profile-pic'
         = current_user.email
         %i.dropdown.icon.black
         .menu
@@ -65,3 +68,7 @@
           = link_to destroy_user_session_path, method: :delete, class: 'item' do
             %i.power.off.icon.black 
             Log Out
+          -# if policy([:admin, User]).admin_users?
+                .divider
+                .header Administrator Actions
+                = link_to 'Admin Users', admin_user_admin_users_path, class: 'item'
