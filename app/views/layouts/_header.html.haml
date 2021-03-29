@@ -35,6 +35,8 @@
 .ui.secondary.fixed.menu.header-container
   %a.item{:href => '/', class: 'no-hover'}
     = image_tag('logo.svg', alt: 'Virtual Dash', class: 'logo-nav')
+  - if current_user.present? && policy(current_user).admin?
+    %a.header.item{:href => "/admin"} Admin
   .right.menu.mobile-nav
     %button.huge.ui.icon.button.mobile-menu#mobile-menu-button
       %i.bars.icon.black
@@ -45,8 +47,21 @@
       Races
     %a.item.header{:href => '/help'}
       Help
-    .auth-buttons 
-      .ui.button.light-blue
-        = link_to 'Log in', new_user_session_path, class: 'link-to-button'
-      .ui.button.dark-blue
-        = link_to 'Register', new_user_session_path, class: 'link-to-button'
+    - if not user_signed_in?
+      .auth-buttons 
+        .ui.button.light-blue
+          = link_to 'Log in', new_user_session_path, class: 'link-to-button'
+        .ui.button.dark-blue
+          = link_to 'Register', new_user_session_path, class: 'link-to-button'
+    - else
+      .ui.simple.dropdown.item
+        = image_tag 'https://upload.wikimedia.org/wikipedia/commons/a/ae/Michael_Jordan_in_2014.jpg', alt: 'Profile pic', class: 'profile-pic'
+        = current_user.email
+        %i.dropdown.icon.black
+        .menu
+          = link_to edit_user_registration_path, class: 'item' do
+            %i.user.icon.black 
+            My Profile
+          = link_to destroy_user_session_path, method: :delete, class: 'item' do
+            %i.power.off.icon.black 
+            Log Out
