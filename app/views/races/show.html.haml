@@ -54,8 +54,14 @@
           %p.desc= @race.description
       .row
         .sixteen.wide.column
-          .ui.button.large.light-blue
-            %a{href: "/races/#{@race.id}/registration/new", class: 'link-to-button'} Register now
+          - if !current_user
+            .ui.button.large.light-blue
+              = link_to 'Sign up', new_user_session_path, class: 'link-to-button'
+          - elsif current_user && @registered.empty?
+            .ui.button.large.light-blue
+              %a{href: "/races/#{@race.id}/registration/new", class: 'link-to-button'} Register now
+          - elsif current_user && !@registered.empty?
+            .ui.disabled.button.large.light-blue Already registered!
           .ui.inverted.button.large
             %a{href: "/races/#{@race.id}", class: 'link-to-inverted-button'} Live results
 .enddate-container
