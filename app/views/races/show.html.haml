@@ -58,3 +58,5 @@
             %a{href: "/races/#{@race.id}/registration/new", class: 'link-to-button'} Register now
           .ui.inverted.button.large
             %a{href: "/races/#{@race.id}", class: 'link-to-inverted-button'} Live results
+.enddate-container
+  %p.text= "Registation closes on #{@race.enddate.strftime('%B %d, %Y')}"
