@@ -119,6 +119,12 @@
         padding: 0em 1em 0em;
       }
     }
+
+    .race-details-button {
+      @media (max-width: 720px) {
+        font-size: 1em !important;
+      }
+    }
   } 
 }
 
