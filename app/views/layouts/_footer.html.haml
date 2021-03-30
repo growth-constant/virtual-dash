@@ -1,0 +1,28 @@
+.footer-container
+  .ui.stackable.three.column.centered.grid
+    .centered.row
+      .column
+        %a{:href => '/', class: 'no-hover'}
+          = image_tag('logo-white.svg', alt: 'Virtual Dash', class: 'logo-nav')
+        %p{class: 'footer'}
+          %a{:href => '/', class: 'footer no-hover'} Race
+        %p
+          %a{:href => '/', class: 'footer no-hover'} About
+        %p
+          %a{:href => '/', class: 'footer no-hover'} Blog
+      .column
+        %p{class: 'footer-title'} Legal
+        %p{class: 'footer'}
+          %a{:href => '/', class: 'footer no-hover'} Privacy policy
+        %p
+          %a{:href => '/', class: 'footer no-hover'} Terms and condition
+        %p
+          %a{:href => '/', class: 'footer no-hover'} Cookies
+      .column
+        %p{class: 'footer-title'} Subscribe
+        %p{class: 'footer'} Get the latest news and articles to your inbox every month.
+        %br
+        .ui.action.input.footer-mail
+          %input{:placeholder => 'Your email', :type => 'email'}/
+          %button.ui.icon.button.footer-input-button
+            %i.arrow.right.icon.light-blue

@@ -1,7 +1,9 @@
 !!!
 %html
   %head
+    %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}/
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
     %title Virtual Dash
     = csrf_meta_tags
     = csp_meta_tag
@@ -12,10 +14,26 @@
     = javascript_pack_tag 'maps/race'
     = tag :meta, :name => "stripe-key", :content => Rails.configuration.stripe[:publishable_key]
 
-
   %body
-    = render partial: "layouts/header"
-    .ui.main.container
-      %p#notice= notice
-      %p#alert= alert
-      = yield
+    .ui.right.thin.menu.vertical.sidebar#mobile-menu
+      %a.item.header{:href => '/about'}
+        About
+      %a.item.header{:href => '/races'}
+        Races
+      %a.item.header{:href => '/help'}
+        Help
+      - if not user_signed_in?
+        = link_to 'Log in', new_user_session_path, class: 'item header'
+        = link_to 'Register', new_user_session_path, class: 'item header'
+      - else
+        = link_to 'My Profile', edit_user_registration_path, class: 'item header'
+        = link_to 'Log Out', destroy_user_session_path, method: :delete, class: 'item header'
+    .pusher 
+      = render partial: "layouts/header"
+      .main.container
+        %p#notice= notice
+        %p#alert= alert
+        = yield
+
+  %footer
+    = render partial: "layouts/footer"

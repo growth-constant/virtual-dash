@@ -1,33 +1,33 @@
-.ui.fixed.menu#header
-  .ui.container
-    %a.header.item{:href => "/"} Virtual Dash
-    - if current_user.present? && policy(current_user).admin?
-      %a.header.item{:href => "/admin"} Admin
-    .right.menu
+.ui.secondary.fixed.menu.header-container
+  %a.item{:href => '/', class: 'no-hover'}
+    = image_tag('logo.svg', alt: 'Virtual Dash', class: 'logo-nav')
+  - if current_user.present? && policy(current_user).admin?
+    %a.header.item{:href => "/admin"} Admin
+  .right.menu.mobile-nav
+    %button.huge.ui.icon.button.mobile-menu#mobile-menu-button
+      %i.bars.icon.black
+  .right.menu.desktop-nav
+    %a.item.header{:href => '/about'}
+      About
+    %a.item.header{:href => '/races'}
+      Races
+    %a.item.header{:href => '/help'}
+      Help
+    - if not user_signed_in?
+      .auth-buttons 
+        .ui.button.light-blue
+          = link_to 'Log in', new_user_session_path, class: 'link-to-button'
+        .ui.button.dark-blue
+          = link_to 'Register', new_user_session_path, class: 'link-to-button'
+    - else
       .ui.simple.dropdown.item
-        -# locale = I18n.locale.to_sym
-        -#- if not user_signed_in?
-            %i.flag{:class => @locale_options[locale][:flag]}
-          - else
-            %i.flag{:class => @locale_options[locale][:flag]}
-            %i.dropdown.icon
-            .menu
-              - @locale_options.each do |lang, options|
-                = link_to user_edit_locale_path(:locale => lang.to_s), method: :post, class: 'item' do
-                  %i.flag{:class => options[:flag]}
-                  = options[:info]
-      - if not user_signed_in?
-        %a.item{:href => new_user_session_path } Login
-      - else
-        .ui.simple.dropdown.item
-          = current_user.email
-          %i.dropdown.icon
-          .menu
-            = link_to 'Setting', edit_user_registration_path, class: 'item'
-            .divider
-            .header User Actions
-            = link_to 'Logout', destroy_user_session_path, method: :delete, class: 'item'
-            -# if policy([:admin, User]).admin_users?
-                .divider
-                .header Administrator Actions
-                = link_to 'Admin Users', admin_user_admin_users_path, class: 'item'
+        = image_tag 'default-user.jpg', alt: 'Profile pic', class: 'profile-pic'
+        = current_user.email
+        %i.dropdown.icon.black
+        .menu
+          = link_to edit_user_registration_path, class: 'item' do
+            %i.user.icon.black 
+            My Profile
+          = link_to destroy_user_session_path, method: :delete, class: 'item' do
+            %i.power.off.icon.black 
+            Log Out
