@@ -10,14 +10,14 @@
       .row
         .sixteen.wide.column
           - if !current_user
-            .ui.button.large.light-blue.race-details-button
+            .ui.button.large.light-blue
               = link_to 'Sign up', new_user_session_path, class: 'link-to-button'
           - elsif current_user && @registered.empty?
-            .ui.button.large.light-blue.race-details-button
+            .ui.button.large.light-blue
               %a{href: "/races/#{@race.id}/registration/new", class: 'link-to-button'} Register now
           - elsif current_user && !@registered.empty?
-            .ui.disabled.button.large.light-blue.race-details-button Already registered!
-          .ui.inverted.button.large.race-details-button
+            .ui.disabled.button.large.light-blueRegistered!
+          .ui.inverted.button.large
             %a{href: "/races/#{@race.id}", class: 'link-to-inverted-button'} Live results
 .enddate-container
   %p.text= "Registation closes on #{@race.enddate.strftime('%B %d, %Y')}"
