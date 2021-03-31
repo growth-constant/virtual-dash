@@ -69,6 +69,11 @@
     }
   }
 
+  @media (min-width: 1140px) {
+    .container {
+      padding: 8em 17em 8em;
+    }
+  }
 }
 
 // Section 2
@@ -144,5 +149,20 @@
       width: 100%;
       margin-right: 0em !important;
     }
+  }
+
+  @media (max-width: 1024px) {
+    .race-map {
+      width: 100%;
+      height: 200px;
+    }
+  }
+
+  @media (min-width: 1140px) {
+    margin: 4em 10em 0em;
+  }
+
+  @media (min-width: 2560px) {
+    margin: 7em 50em 0em;
   }
 }
