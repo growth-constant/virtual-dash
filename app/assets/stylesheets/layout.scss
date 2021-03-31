@@ -1,6 +1,6 @@
 @import 'variables/colors.scss';
 
-// Shared layout styles
+////// Shared ////// 
 a.no-hover:hover {
     background-color: transparent !important;
 }
@@ -8,13 +8,9 @@ a.no-hover:hover {
 .logo-nav {
     width: 213px !important;
     height: 26px !important;
-
-    @media (max-width: 720px) {
-        width: 175px !important;
-    }
 }
 
-// Header styles
+////// Header ////// 
 a.item.header {
     color: $gray !important;
 }
@@ -28,19 +24,11 @@ a.item.header {
 
 .desktop-nav {
     visibility: inherit;
-    
-    @media (max-width: 720px) {
-        visibility: hidden;
-    }
 }
 
 .header-container {
     padding: 3em 5em 3em !important;
     background-color: white !important;
-
-    @media (max-width: 720px) {
-        padding: 1.5em 0em 1.5em !important;
-    }
 }
 
 .mobile-menu{
@@ -50,11 +38,6 @@ a.item.header {
 
 .mobile-nav {
     visibility: hidden;
-    padding-left: 3em !important;
-    
-    @media (max-width: 720px) {
-        visibility: inherit;
-    }
 }
 
 .profile-pic {
@@ -64,7 +47,7 @@ a.item.header {
     margin-right: 1em !important;
 }
 
-// Footer styles
+////// Footer ////// 
 a.footer {
     font-size: 12px;
     margin-bottom: 0.5em;
@@ -91,23 +74,10 @@ a.footer {
     @media (max-width: 1280px) {
         padding-left: 13em;
     }
-
-    @media (max-width: 720px) {
-        height: 40em;
-        padding-left: 1em;
-        padding-right: 0em;
-    }
-
 }
 
 .footer-input-button {
     background-color: white !important;
-}
-
-.footer-mail{
-    @media (max-width: 720px) {
-        width: 17em !important;
-    }
 }
 
 .footer-title{
@@ -118,8 +88,41 @@ p.footer{
     font-size: 12px;
     max-width: 16em;
     margin-top: 1em;
+}
 
-    @media (max-width: 720px) {
-        max-width: 19em;
+@media (max-width: 768px) {
+    ////// Shared //////
+    .logo-nav {
+        width: 175px !important;
+    }
+
+    ////// Header ////// 
+    .desktop-nav {
+        width: 0%;
+        margin-left: 0%;
+        visibility: hidden;
+    }
+
+    .header-container {
+        padding: 1.5em 0em 1.5em !important;
+    }
+
+    .mobile-nav {
+        visibility: inherit;
+    }
+
+    ////// Footer ////// 
+    .footer-container {
+        height: 40em;
+        padding-left: 1em;
+        padding-right: 0em;
+
+        p.footer {
+            max-width: 19em;
+        }
+
+        .footer-mail {
+            width: 17em !important;
+        }
     }
 }
