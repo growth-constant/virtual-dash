@@ -66,14 +66,10 @@ a.footer {
     height: 30em;
     color: white;
     padding-top: 5em;
-    padding-left: 25em;
+    padding-left: 14em;
     padding-right: 5em;
     position: relative;
     background-color: $dark-blue;
-    
-    @media (max-width: 1280px) {
-        padding-left: 13em;
-    }
 }
 
 .footer-input-button {
@@ -90,7 +86,7 @@ p.footer{
     margin-top: 1em;
 }
 
-@media (max-width: 768px) {
+@media (min-width: 320px) and (max-width: 768px) {
     ////// Shared //////
     .logo-nav {
         width: 175px !important;
@@ -115,7 +111,7 @@ p.footer{
     .footer-container {
         height: 40em;
         padding-left: 1em;
-        padding-right: 0em;
+        padding-right: 1em;
 
         p.footer {
             max-width: 19em;
@@ -124,5 +120,11 @@ p.footer{
         .footer-mail {
             width: 17em !important;
         }
+    }
+}
+
+@media (min-width: 1023px) and (max-width: 1200px) {
+    .footer-container {
+        padding-left: 7em;
     }
 }
