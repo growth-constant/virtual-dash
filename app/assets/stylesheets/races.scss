@@ -4,66 +4,7 @@
 
 @import 'variables/colors.scss';
 
-.center {
-  text-align: center;
-}
-
-.description {
-  font-size: large;
-  margin-bottom: 30px;
-  margin-top: 30px;
-  text-align: justify;
-}
-
-.enddate {
-  font-size: x-large;
-  margin-bottom: 30px;
-  margin-top: 30px;
-  text-align: center;
-}
-
-.image {
-  background-color: #e7e7ed;
-  float: left;
-  height: 200px;
-  margin: 30px;
-  width: 200px;
-}
-
-.live_results_button {
-  background-color: #ff3f00;
-  border: none;
-  color: #ffffff;
-  font-size: medium;
-  margin-bottom: 20px;
-  margin-top: 20px;
-  padding: 15px;
-  border-radius: 5px;
-}
-
-.register_button {
-  background-color: #ff3f00;
-  border: none;
-  color: #ffffff;
-  font-size: medium;
-  margin-bottom: 20px;
-  margin-top: 20px;
-  padding: 15px;
-  border-radius: 5px;
-}
-
-.short_text {
-  font-size: large;
-  text-align: center;
-}
-
-.title {
-  font-size: xxx-large;
-  margin-bottom: 30px;
-  text-align: center;
-}
-
-// Race details
+////// Race details //////
 
 // Section 1
 .race-details-background {
