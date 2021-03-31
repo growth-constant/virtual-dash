@@ -70,15 +70,16 @@
   .ui.stackable.grid
     .row
       .eight.wide.column
-        %h2{class: 'race-name'}= @race.title
+        %h1{class: 'race-name'}= @race.title
         %p{class: 'price'}= "$#{@race.price.to_i}"
-        %p= @race.description
+        %h2 Description
+        %p{class: 'desc'}= @race.description
       .eight.wide.column
         .ui.button.large.light-blue.register
           %a{href: "/races/#{@race.id}/registration/new", class: 'link-to-button'} Register now
-        .map-container
-          %div#map{ "data-polyline" => "#{@race.all_data['map']['polyline']}",
-                    "data-lat" => "#{@lat}", 
-                    "data-lng" => "#{@lng}", 
-                    :class => "race-map"
-                  }
+        .map-container#map{ 
+          "data-polyline" => "#{@race.all_data['map']['polyline']}",
+          "data-lat" => "#{@lat}", 
+          "data-lng" => "#{@lng}", 
+          :class => "race-map"
+        }

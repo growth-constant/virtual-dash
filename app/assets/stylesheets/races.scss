@@ -144,6 +144,15 @@
 // Section 3
 .race-details-container {
   
+  margin: 4em;
+  padding: 4em;
+  box-shadow: 0px 0px 20px 2px #6b778c4f !important;
+
+  .desc {
+    color: $gray;
+    font-size: 15px;
+  }
+
   .map-container {
     clear:both;
   }
@@ -155,13 +164,19 @@
 
   .price {
     margin-top: 0%;
+    font-size: 20px;
+    font-weight: bold;
   }
 
   .race-name {
-
+    font-size: 30px;
+    margin-bottom: 0;
+    font-weight: bold;
   }
 
   .register {
     float: right;
+    margin-right: 1em !important;
+    margin-bottom: 2em !important;
   }
 }
