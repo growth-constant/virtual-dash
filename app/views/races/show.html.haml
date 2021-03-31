@@ -66,3 +66,19 @@
             %a{href: "/races/#{@race.id}", class: 'link-to-inverted-button'} Live results
 .enddate-container
   %p.text= "Registation closes on #{@race.enddate.strftime('%B %d, %Y')}"
+.race-details-container
+  .ui.stackable.grid
+    .row
+      .eight.wide.column
+        %h2{class: 'race-name'}= @race.title
+        %p{class: 'price'}= "$#{@race.price.to_i}"
+        %p= @race.description
+      .eight.wide.column
+        .ui.button.large.light-blue.register
+          %a{href: "/races/#{@race.id}/registration/new", class: 'link-to-button'} Register now
+        .map-container
+          %div#map{ "data-polyline" => "#{@race.all_data['map']['polyline']}",
+                    "data-lat" => "#{@lat}", 
+                    "data-lng" => "#{@lng}", 
+                    :class => "race-map"
+                  }
