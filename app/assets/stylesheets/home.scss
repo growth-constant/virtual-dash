@@ -13,10 +13,6 @@
         rgba(0, 0, 0, 0.5) 
     ), url('landing-welcome-bg.png');
     background-size: cover;
-
-    @media (max-width: 720px) {
-        height: 600px;
-    }
 }
 
 .welcome-container {
@@ -28,28 +24,15 @@
         padding: 10em 15em 10em;
     }
 
-    @media (max-width: 720px) {
-        padding: 5em 1em 5em;
-    }
-
     .title {
         font-size: 69px;
         font-weight: bolder;
-        
-        @media (max-width: 720px) {
-            font-size: 35px;
-        }
     }
 
     .desc {
         font-size: 17px;
         padding: 0em 7em 0em;
         
-        @media (max-width: 720px) {
-            line-height: 2;
-            font-size: 13px;
-        }
-
         @media (max-width: 1280px) {
             padding: 0em 1em 0em;
         }
@@ -84,36 +67,19 @@
 
     .left-inverted {
         right: 48%;
-        
-        @media (max-width: 720px) {
-            right: 0;
-        }
     }
 
     .race-heading{
         margin-top: 6em;
-
-        @media (max-width: 720px) {
-            margin-top: 0;
-        }
     }
 
     .right-inverted {
         left: 50%;
-
-        @media (max-width: 720px) {
-            left: 0;
-        }
     }
 
     .text-container{
         margin-left: 5em;
         margin-right: 5em;
-
-        @media (max-width: 720px) {
-            margin-left: 10em;
-            margin-right: 10em;
-        }
 
         @media (max-width: 1280px) {
             margin-left: 1em;
@@ -128,10 +94,6 @@
     height: 35em;
     background-image: url('landing-panoramic-race.png');
     background-size: cover;
-
-    @media (max-width: 720px) {
-        height: 15em;
-    }
 }
 
 // Section 4
@@ -151,21 +113,11 @@
         text-align: center;
         justify-content: center;
         -webkit-box-pack: center;
-
-        @media (max-width: 720px) {
-            margin-top: 3em !important;
-        }
     }
 
     .race-data-container {
         margin-top: 5em;
         margin-right: 20em;
-
-        @media (max-width: 720px) {
-            margin-top: 0em !important;
-            margin-left: 1em !important;
-            margin-right: 0em !important;
-        }
 
         @media (max-width: 1280px) {
             margin-left: 0em;
@@ -180,13 +132,78 @@
         border: solid 1.5em white;
         box-shadow: 2px 2px 17px 0px $gray !important;
 
-        @media (max-width: 720px) {
-            margin-left: 0em !important;
-        }
-
         @media (max-width: 1280px) {
             margin-left: 10em;
         }
 
     }
 }
+
+@media (min-width: 320px) and (max-width: 768px) {
+    // Section 1
+    .welcome-background {
+        height: 600px;
+    }
+
+    .welcome-container {
+        padding: 5em 1em 5em;
+
+        .title {
+            font-size: 35px;
+        }
+
+        .desc {
+            line-height: 2;
+            font-size: 13px;
+        }
+    }
+
+    // Section 2
+    .racers-container {
+        .left-inverted {
+            right: 0;
+        }
+
+        .race-heading {
+            margin-top: 0;
+        }
+
+        .right-inverted {
+            left: 0;
+        }
+
+        .text-container {
+            margin-left: 1em;
+            margin-right: 1em;
+        }
+    }
+
+    // Section 3
+    .panoramic-race {
+        height: 15em;
+    }
+
+    // Section 4
+    .upcoming-container {
+        .title-row {
+            margin-top: 3em !important;
+        }
+
+        .race-data-container {
+            margin-top: 0em !important;
+            margin-left: 1em !important;
+            margin-right: 0em !important;
+        }
+
+        .race-map {
+            margin-left: 0em !important;
+        }
+    }
+
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {}
+
+@media (min-width: 1023px) and (max-width: 1200px) {}
+
+@media (min-width: 1201px) and (max-width: 2559) {}
