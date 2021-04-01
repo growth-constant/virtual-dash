@@ -124,11 +124,16 @@
         .desc {
             line-height: 2;
             font-size: 13px;
+            padding: 0em 1em 0em;
         }
     }
 
     // Section 2
     .racers-container {
+        .first-virtual-racer {
+            margin-left: 0;
+        }
+
         .left-inverted {
             right: 0;
         }
@@ -175,8 +180,12 @@
 @media (min-width: 426px) and (max-width: 768px) {
     // Section 2
     .racers-container {
+        p {
+            font-size: 14px;
+        }
+
         .race-heading {
-            margin-top: 2.5em;
+            margin-top: 1.5em;
         }
     }
 }
