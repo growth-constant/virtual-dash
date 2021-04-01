@@ -1,44 +1,78 @@
-%p#notice= notice
-
-%div.title= @race.title
-
-%div.center
-  %div.description= @race.description
-
-%div.enddate= "Registration closes on #{@race.enddate.strftime("%d of %B, %Y")}"
-
-%div.center
-  - if !current_user
-    %a.ui.register_strava_button_link.button{href: '/users/sign_in'} You must register first through Strava
-  - elsif current_user && @registered.empty?
-    %a.ui.register_strava_button_link.button{href: "/races/#{@race.id}/registration/new"} Register to race
-  - elsif current_user && !@registered.empty?
-    %a.ui.positive.button{href: '#'} Already registered
-
-%div.short_text or
-
-%div.center
-  %button.live_results_button{type: 'button'} Live Results
-
-
-.ui.vertically.divided.grid
-  .six.column.row
-    .column.center
-    .column.center
-      %img.medium.ui.image{:src => "/assets/fake.png", :height => "200px", :width => "200px"}/
-
-    .column.center
-    .column.center
-
-    .column.center
-      %img.medium.ui.image{:src => "/assets/fake.png", :height => "200px", :width => "200px"}/
-    .column.center
-
-%div.map
-  %div#map{"data-polyline" => "#{@race.all_data['map']['polyline']}",
-  "data-lat" => "#{@lat}", "data-lng" => "#{@lng}", :style => "height: 600px"}
-
-- if current_user.present? && (policy(current_user).admin? || policy(@race).edit?)
-  = link_to 'Edit', edit_race_path(@race)
-  \|
-= link_to 'Back', races_path
+.race-details-background
+  .container 
+    .ui.grid
+      .row
+        .sixteen.wide.column
+          %h1.title= @race.title
+      .row
+        .sixteen.wide.column
+          %p.desc= @race.description
+      .row
+        .sixteen.wide.column
+          - if !current_user
+            .ui.button.large.light-blue
+              = link_to 'Sign up', new_user_session_path, class: 'link-to-button'
+          - elsif current_user && @registered.empty?
+            .ui.button.large.light-blue
+              %a{href: "/races/#{@race.id}/registration/new", class: 'link-to-button'} Register now
+          - elsif current_user && !@registered.empty?
+            .ui.disabled.button.large.light-blue Registered!
+          .ui.inverted.button.large
+            %a{href: "/races/#{@race.id}", class: 'link-to-inverted-button'} Live results
+.enddate-container
+  %p.text= "Registation closes on #{@race.enddate.strftime('%B %d, %Y')}"
+.race-details-container
+  .ui.stackable.grid
+    .row
+      .eight.wide.column
+        %h1{class: 'race-name'}= @race.title
+        %p{class: 'price'}= "$#{@race.price.to_i}"
+        %h2 Description
+        %p{class: 'desc'}= @race.description
+      .eight.wide.colum.map-and-button
+        - if !current_user
+          .ui.button.large.light-blue.register
+            = link_to 'Sign up', new_user_session_path, class: 'link-to-button'
+        - elsif current_user && @registered.empty?
+          .ui.button.large.light-blue.register
+            %a{href: "/races/#{@race.id}/registration/new", class: 'link-to-button'} Register now
+        - elsif current_user && !@registered.empty?
+          .ui.disabled.button.large.light-blue.register Registered!
+        - if current_user.present? && (policy(current_user).admin? || policy(@race).edit?)
+          .ui.button.large.light-blue.register
+            = link_to 'Edit race', edit_race_path(@race), class: 'link-to-button'
+        .map-container#map{ 
+          "data-polyline" => "#{@race.all_data['map']['polyline']}",
+          "data-lat" => "#{@lat}", 
+          "data-lng" => "#{@lng}", 
+          :class => "race-map"
+        }
+    .row
+      .sixteen.wide.column
+        .leaderboard-container
+          %h2 Leaderboard
+          %table.ui.striped.table.leaderboard-table
+            %tbody
+              - @leaderboard[:competitors].each_with_index do |competitor, index|
+                %tr
+                  %td.trophy
+                    - if index === 0
+                      = image_tag '1st-place.png'
+                    - elsif index === 1
+                      = image_tag '2nd-place.png'
+                    - elsif index === 2
+                      = image_tag '3rd-place.png'
+                  %td
+                    .user-container
+                      %img{src: competitor.image, alt: 'User profile', class: 'picture-profile'}
+                      .user-name= competitor.name
+                  %td= "#{Time.at(competitor.duration).utc.strftime('%H:%M:%S')}"
+                  %td= "#{@race.distance} km"
+                  - if index === 0
+                    %td= "$#{@leaderboard[:prizes][:first]}"
+                  - elsif index === 1
+                    %td= "$#{@leaderboard[:prizes][:second]}"
+                  - elsif index === 2
+                    %td= "$#{@leaderboard[:prizes][:third]}"
+          .ui.button.large.dark-blue
+            = link_to 'View more', general_classification_race_path(@race), class: 'link-to-button'
