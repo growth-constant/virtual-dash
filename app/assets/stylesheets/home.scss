@@ -19,10 +19,6 @@
     color: white;
     text-align: center;
     padding: 16em 30em 10em;
-    
-    @media (max-width: 1280px) {
-        padding: 10em 15em 10em;
-    }
 
     .title {
         font-size: 69px;
@@ -32,10 +28,6 @@
     .desc {
         font-size: 17px;
         padding: 0em 7em 0em;
-        
-        @media (max-width: 1280px) {
-            padding: 0em 1em 0em;
-        }
     }
 
 }
@@ -50,19 +42,11 @@
     }
 
     .first-row {
-        margin: 0em 4em 0em !important;
-
-        @media (max-width: 1280px) {
-            margin: 0 !important;
-        }
+        margin: 0em 4em 0em;
     }
 
     .first-virtual-racer {
-        margin-left: 6em !important;
-
-        @media (max-width: 1280px) {
-            margin-left: 0 !important;
-        }
+        margin-left: 6em;
     }
 
     .left-inverted {
@@ -80,11 +64,6 @@
     .text-container{
         margin-left: 5em;
         margin-right: 5em;
-
-        @media (max-width: 1280px) {
-            margin-left: 1em;
-            margin-right: 1em;
-        }
     }
 }
 
@@ -118,11 +97,6 @@
     .race-data-container {
         margin-top: 5em;
         margin-right: 20em;
-
-        @media (max-width: 1280px) {
-            margin-left: 0em;
-            margin-right: 10em;
-        }
     }
 
     .race-map {
@@ -131,14 +105,9 @@
         border-radius: 11%;
         border: solid 1.5em white;
         box-shadow: 2px 2px 17px 0px $gray !important;
-
-        @media (max-width: 1280px) {
-            margin-left: 10em;
-        }
-
     }
 }
-
+////// Mobile //////
 @media (min-width: 320px) and (max-width: 768px) {
     // Section 1
     .welcome-background {
@@ -202,7 +171,9 @@
 
 }
 
+////// Tablet //////
 @media (min-width: 426px) and (max-width: 768px) {
+    // Section 2
     .racers-container {
         .race-heading {
             margin-top: 2.5em;
@@ -210,8 +181,82 @@
     }
 }
 
-@media (min-width: 769px) and (max-width: 1024px) {}
+////// Laptop //////
+@media (min-width: 769px) and (max-width: 1024px) {
+    // Section 1
+    .welcome-container {
+        padding: 10em 6em 0em;
+    }
 
-@media (min-width: 1023px) and (max-width: 1200px) {}
+    // Section 2
+    .racers-container {
+        .first-virtual-racer {
+            margin-left: 0em;
+        }
 
-@media (min-width: 1201px) and (max-width: 2559) {}
+        .race-heading {
+            margin-top: 2em;
+        }
+    }
+
+    // Section 3
+    .panoramic-race {
+        height: 20em;
+    }
+
+    // Section 4
+    .upcoming-container {
+        .race-data-container {
+            margin-top: 3em;
+            margin-right: 4em;
+        }
+
+        .race-map {
+            margin-left: 4em;
+        }
+    }
+
+}
+
+////// Laptop L //////
+@media (min-width: 1025px) and (max-width: 1440px) {
+    // Section 1
+    .welcome-container {
+        padding: 10em 15em 10em;
+
+        .desc {
+            padding: 0em 1em 0em;
+        }
+    }
+
+    // Section 2
+    .racers-container {
+        .first-row {
+            margin: 0;
+        }
+
+        .first-virtual-racer {
+            margin-left: 0;
+        }
+
+        .text-container {
+            margin-left: 1em;
+            margin-right: 1em;
+        }
+    }
+
+    // Section 4
+    .upcoming-container {
+        .race-data-container {
+            margin-left: 0em;
+            margin-right: 10em;
+        }
+
+        .race-map {
+            margin-left: 10em;
+        }
+    }
+}
+
+////// 4K //////
+@media (min-width: 1441px) and (max-width: 2559) {}
