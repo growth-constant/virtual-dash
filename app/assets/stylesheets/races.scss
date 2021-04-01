@@ -114,6 +114,10 @@
     clear:both;
   }
 
+  .map-and-button {
+    margin-left: auto;
+  }
+
   .race-map {
     float: right;
     width: 500px;
@@ -132,12 +136,17 @@
     margin-bottom: 2em !important;
   }
 
-  @media (min-width: 320px) and (max-width: 768px) {
+  @media (min-width: 320px) and (max-width: 425px) {
     padding: 1em;
     margin: 2em 0.5em 2em;
 
     .desc {
       text-align: justify;
+    }
+
+    .map-and-button {
+      width: 100%;
+      margin-left: none;
     }
 
     .race-map {
@@ -151,9 +160,16 @@
     }
   }
 
+  @media (min-width: 426px) and (max-width: 768px) {
+    .race-map {
+      width: 250px;
+      height: 250px;
+    }
+  }
+
   @media (min-width: 769px) and (max-width: 1024px) {
     .race-map {
-      width: 100%;
+      width: 400px;
       height: 200px;
     }
   }
@@ -194,9 +210,9 @@
     vertical-align: middle;
   }
 
-  @media (min-width: 320px) and (max-width: 768px) {
-    .extra {
-      display: none;
+  @media (min-width: 320px) and (max-width: 425px) {
+    .leaderboard-table {
+      text-align: center !important;
     }
   }
 }
