@@ -94,9 +94,7 @@ p.footer{
 
     ////// Header ////// 
     .desktop-nav {
-        width: 0%;
-        margin-left: 0%;
-        visibility: hidden;
+        display: none !important;
     }
 
     .header-container {
