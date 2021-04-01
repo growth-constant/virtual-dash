@@ -29,7 +29,7 @@
         %p{class: 'price'}= "$#{@race.price.to_i}"
         %h2 Description
         %p{class: 'desc'}= @race.description
-      .eight.wide.column
+      .eight.wide.colum
         - if !current_user
           .ui.button.large.light-blue.register
             = link_to 'Sign up', new_user_session_path, class: 'link-to-button'
@@ -47,3 +47,32 @@
           "data-lng" => "#{@lng}", 
           :class => "race-map"
         }
+    .row
+      .sixteen.wide.column
+        .leaderboard-container
+          %h2 Leaderboard
+          %table.ui.striped.table.leaderboard-table
+            %tbody
+              - @leaderboard[:competitors].each_with_index do |competitor, index|
+                %tr
+                  %td.trophy
+                    - if index === 0
+                      = image_tag '1st-place.png'
+                    - elsif index === 1
+                      = image_tag '2nd-place.png'
+                    - elsif index === 2
+                      = image_tag '3rd-place.png'
+                  %td
+                    .user-container
+                      %img{src: competitor.image, alt: 'User profile', class: 'picture-profile'}
+                      .user-name= competitor.name
+                  %td.extra= "#{Time.at(competitor.duration).utc.strftime('%H:%M:%S')}"
+                  %td.extra= "#{@race.distance} km"
+                  - if index === 0
+                    %td.extra= "$#{@leaderboard[:prizes][:first]}"
+                  - elsif index === 1
+                    %td.extra= "$#{@leaderboard[:prizes][:second]}"
+                  - elsif index === 2
+                    %td.extra= "$#{@leaderboard[:prizes][:third]}"
+          .ui.button.large.dark-blue
+            = link_to 'View more', general_classification_race_path(@race), class: 'link-to-button'

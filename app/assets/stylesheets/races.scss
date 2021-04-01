@@ -166,3 +166,37 @@
     margin: 7em 10em 0em;
   }
 }
+
+// Section 4
+.leaderboard-container {
+  .picture-profile {
+    width: 25px;
+    height: 25px;
+    display: inline;
+    border-radius: 50%;
+    vertical-align: middle;
+  }
+
+  .leaderboard-table {
+    border-color: $gray !important;
+  }
+
+  .trophy {
+    width: 25px;
+  }
+
+  .user-container {
+    display: inline;
+  }
+
+  .user-name {
+    display: inline;
+    vertical-align: middle;
+  }
+
+  @media (min-width: 320px) and (max-width: 768px) {
+    .extra {
+      display: none;
+    }
+  }
+}
