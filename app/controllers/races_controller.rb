@@ -24,6 +24,7 @@ class RacesController < ApplicationController
     i = coordinates.size / 2
     @lat = coordinates[i][0]
     @lng = coordinates[i][1]
+    @leaderboard = Leaderboard.new(@race).call
   end
 
   def new
