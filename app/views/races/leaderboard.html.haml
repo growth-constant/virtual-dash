@@ -10,4 +10,5 @@
           = render :partial => 'components/stats-card', :locals => {:name => 'Fastest Time', :icon => 'leaderboard-time-icon.svg', :number => Time.at(@leaderboard[:first_time]).utc.strftime('%H:%M:%S')}
         .column
           = render :partial => 'components/stats-card', :locals => {:name => 'Total Purse', :icon => 'leaderboard-purse-icon.svg', :number => "$#{@leaderboard[:total_purse]}"}
-%p= @race
+  .multi-leaderboard-container
+    = render :partial => 'components/leaderboard-table', :locals => {:full_path => '/', :distance => @race.distance, :title => 'Overall', :leaderboard => @leaderboard}

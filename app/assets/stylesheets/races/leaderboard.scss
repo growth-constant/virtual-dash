@@ -1,5 +1,11 @@
 .leaderboard-container {
-    margin-top: 12em;
+  margin-top: 12em;
+  margin-left: 2em;
+  margin-right: 2em;
+
+  .multi-leaderboard-container {
+    margin-top: 4em;
     margin-left: 2em;
     margin-right: 2em;
+  }
 }
