@@ -1,0 +1,34 @@
+.leaderboard-table-container
+  .ui.grid
+    .two.column.row
+      .column
+        %h2= title
+      .column
+        - if not full_path.nil?
+          .full-board-link
+            %a{ :href => full_path } Full Leaderboard
+    .row
+      .column
+        %table.ui.striped.table.leaderboard-table
+          %tbody
+            - leaderboard[:competitors].each_with_index do |competitor, index|
+              %tr
+                %td.trophy
+                  - if index === 0
+                    = image_tag 'leaderboard-1st-place-icon.svg'
+                  - elsif index === 1
+                    = image_tag 'leaderboard-2nd-place-icon.svg'
+                  - elsif index === 2
+                    = image_tag 'leaderboard-3rd-place-icon.svg'
+                %td
+                  .user-container
+                    %img{src: competitor.image, alt: 'User profile', class: 'picture-profile'}
+                    .user-name= competitor.name
+                %td= "#{Time.at(competitor.duration).utc.strftime('%H:%M:%S')}"
+                %td= "#{distance} km"
+                - if index === 0
+                  %td= "$#{leaderboard[:prizes][:first]}"
+                - elsif index === 1
+                  %td= "$#{leaderboard[:prizes][:second]}"
+                - elsif index === 2
+                  %td= "$#{leaderboard[:prizes][:third]}"

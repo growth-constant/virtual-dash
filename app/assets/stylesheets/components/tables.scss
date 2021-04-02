@@ -1,0 +1,47 @@
+@import '../variables/colors.scss';
+
+.leaderboard-table-container {
+  margin-bottom: 1em;
+
+  .full-board-link {
+    a {
+      height: 1em;
+      float: right;
+      max-width: 30%;
+      margin-top: 4%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      color: $dark-blue !important;
+      
+      &:hover {
+        color: $light-blue !important;
+        background-color: transparent !important;
+      }
+    }
+  }
+
+  .leaderboard-table {
+    // border-color: $gray !important;
+
+    .picture-profile {
+      width: 25px;
+      height: 25px;
+      display: inline;
+      border-radius: 50%;
+      vertical-align: middle;
+    }
+  
+    .trophy {
+      width: 25px;
+    }
+  
+    .user-container {
+      display: inline;
+    }
+  
+    .user-name {
+      display: inline;
+      vertical-align: middle;
+    }
+  }
+}
