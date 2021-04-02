@@ -1,0 +1,37 @@
+@import '../variables/colors.scss';
+
+.stats-card{
+    padding: 2em;
+    border-radius: 6px;
+    box-shadow: 0px 0px 11px 1px #6b778c4f !important;
+
+    .stats-icon {
+        float: right !important;
+    }
+
+    .stats-name {
+        font-size: 17px;
+        font-weight: bold;
+        color: $dark-blue;
+    }
+
+    .stats-number {
+        font-size: 24px;
+        font-weight: bold;
+        color: $dark-blue;
+    }
+}
+
+////// Mobile //////
+@media (min-width: 320px) and (max-width: 768px) {
+    .stats-card {
+        padding: 1em;
+    }
+}
+
+////// Laptop L //////
+@media (min-width: 1025px) and (max-width: 1440px) {
+    .stats-card {
+        margin: 0em 2em 0em;
+    }
+}

@@ -1,3 +1,12 @@
-= render partial: 'competitors_list'
-
-= link_to 'Back', :back
+-# = render partial: 'competitors_list'
+-# = link_to 'Back', :back
+.leaderboard-container
+  .stats-cards-container
+    .ui.stackable.grid
+      .three.column.row
+        .column
+          = render :partial => 'components/stats-card', :locals => {:name => 'Number of Tries', :icon => 'leaderboard-tries-icon.svg', :number => @leaderboard[:tries_counter]}
+        .column
+          = render :partial => 'components/stats-card', :locals => {:name => 'Fastest Time', :icon => 'leaderboard-time-icon.svg', :number => Time.at(@leaderboard[:first_time]).utc.strftime('%H:%M:%S')}
+        .column
+          = render :partial => 'components/stats-card', :locals => {:name => 'Total Purse', :icon => 'leaderboard-purse-icon.svg', :number => "$#{@leaderboard[:total_purse]}"}
