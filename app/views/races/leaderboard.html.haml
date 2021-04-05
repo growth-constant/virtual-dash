@@ -1,5 +1,3 @@
--# = render partial: 'competitors_list'
--# = link_to 'Back', :back
 .nav-container
   = render :partial => 'components/breadcrumb', :locals => {:nav => [{:name => 'Races', :path => '/races'}, {:name => @race.title, :path => "/races/#{@race.id}"}, {:name => 'Leaderboard'}]}
 .leaderboard-container

@@ -17,14 +17,10 @@
 
   .leaderboard-race-extract {
     margin-top: 8em;
-    margin-left: 2em;
-    margin-right: 2em;
   }
 
   .multi-leaderboard-container {
     margin-top: 4em;
-    margin-left: 2em;
-    margin-right: 2em;
   }
 }
 
@@ -52,6 +48,26 @@
       margin-top: 2em;
       margin-left: 1em;
       margin-right: 1em;
+    }
+  }
+}
+
+////// Laptop L //////
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .nav-container {
+    margin-top: 0em;
+    padding-left: 4em;
+  }
+
+  .leaderboard-container {
+    .leaderboard-race-extract {
+      margin-left: 2em;
+      margin-right: 2em;
+    }
+
+    .multi-leaderboard-container {
+      margin-left: 2em;
+      margin-right: 2em;
     }
   }
 }
