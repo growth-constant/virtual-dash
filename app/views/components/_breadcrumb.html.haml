@@ -1,0 +1,9 @@
+.breadcrumb-container
+  .ui.breadcrumb
+    - nav.each.each_with_index do | section, index |
+      - if (index + 1) === nav.length()
+        .active.section= section[:name]
+      - else
+        .breadcrumb-link
+          %a.section{:href => section[:path]}= section[:name]
+        .divider /

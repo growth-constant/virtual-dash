@@ -27,7 +27,7 @@ services:
     - STRIPE_PUB_KEY=pk_test_51HNKEKLf04duTe6muNEmSQGfQl6V9JAMTemqXr7iCPQo2FMMBWND7PxK4bGVoWLywMN7nhf5v0zpq3MsMFcf4KBz00y8tkEnVS
     - STRIPE_SECRET_KEY=sk_test_51HNKEKLf04duTe6mJnC6JjjfcdZOhDOLpkH9jTR305WvYku3Qu8TTJvl0FZDVaCtRY9SiEIQqB9u07k7nb9S4W6i008aBuz03I
     - GMAPS_KEY=AIzaSyD1yemIABjJWJ13y1dNLnuGCVOHicAluk0
-    - REDIS_URL=redis:6739
+    - REDIS_URL=redis://redis:6379/1
   worker:
     image: virtual-dash:dev
     build:

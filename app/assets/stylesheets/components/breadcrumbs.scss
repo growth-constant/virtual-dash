@@ -1,0 +1,14 @@
+@import '../variables/colors.scss';
+
+.breadcrumb-container {
+  .breadcrumb-link {
+    display: inline-block;
+    
+    a {
+      &:hover {
+        color: $light-blue !important;
+        background-color: transparent !important;
+      }
+    } 
+  }
+}

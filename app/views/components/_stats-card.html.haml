@@ -1,0 +1,10 @@
+.stats-card
+  .ui.grid
+    .two.column.row
+      .twelve.wide.column
+        %p.stats-name= name
+      .four.wide.column
+        %img{src: image_path(icon), alt: name, class: 'stats-icon'}
+    .one.column.row
+      .column
+        %p.stats-number= number

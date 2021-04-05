@@ -1,3 +1,16 @@
-= render partial: 'competitors_list'
-
-= link_to 'Back', :back
+.nav-container
+  = render :partial => 'components/breadcrumb', :locals => {:nav => [{:name => 'Races', :path => '/races'}, {:name => @race.title, :path => "/races/#{@race.id}"}, {:name => 'Leaderboard'}]}
+.leaderboard-container
+  .stats-cards-container
+    .ui.stackable.grid
+      .three.column.row
+        .column
+          = render :partial => 'components/stats-card', :locals => {:name => 'Number of Tries', :icon => 'leaderboard-tries-icon.svg', :number => @leaderboard[:tries_counter]}
+        .column
+          = render :partial => 'components/stats-card', :locals => {:name => 'Fastest Time', :icon => 'leaderboard-time-icon.svg', :number => Time.at(@leaderboard[:first_time]).utc.strftime('%H:%M:%S')}
+        .column
+          = render :partial => 'components/stats-card', :locals => {:name => 'Total Purse', :icon => 'leaderboard-purse-icon.svg', :number => "$#{@leaderboard[:total_purse]}"}
+  .multi-leaderboard-container
+    = render :partial => 'components/leaderboard-table', :locals => {:full_path => '/', :distance => @race.distance, :title => 'Overall', :leaderboard => @leaderboard}
+  .leaderboard-race-extract
+    = render :partial => 'components/race-extract'
