@@ -17,11 +17,41 @@
 
   .leaderboard-race-extract {
     margin-top: 8em;
+    margin-left: 2em;
+    margin-right: 2em;
   }
 
   .multi-leaderboard-container {
     margin-top: 4em;
     margin-left: 2em;
     margin-right: 2em;
+  }
+}
+
+////// Mobile //////
+@media (min-width: 320px) and (max-width: 768px) {
+  .nav-container {
+    padding-left: 2em;
+  }
+
+  .leaderboard-container {
+    margin-left: .5em;
+    margin-right: 0em;
+
+    .leaderboard-race-extract {
+      margin-top: 3em;
+      margin-left: 0em;
+      margin-right: 0em;
+
+      h1 {
+        font-size: 35px;
+      }
+    }
+    
+    .multi-leaderboard-container {
+      margin-top: 2em;
+      margin-left: 1em;
+      margin-right: 1em;
+    }
   }
 }

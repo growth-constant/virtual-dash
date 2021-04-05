@@ -24,3 +24,28 @@
     margin-top: 2em !important;
   }
 }
+
+////// Mobile //////
+@media (min-width: 320px) and (max-width: 768px) {
+  .race-extract-container {
+    width: 98%;
+    height: 35em;
+    padding: 3em;
+
+    h1 {
+      font-size: 30px !important;
+    }
+
+    p {
+      max-width: 100%;
+    }
+  }
+}
+
+
+////// Laptop L //////
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .race-extract-container {
+    height: 40em;
+  }
+}
