@@ -1,7 +1,7 @@
 class RacesController < ApplicationController
   before_action :set_race, only: %i[show edit update destroy leaderboard general_classification]
   before_action :set_profile, only: %i[index]
-  before_action :registered, only: %i[show]
+  before_action :registered, only: %i[show leaderboard]
   before_action :filter, only: %i[index]
 
   def index; end
