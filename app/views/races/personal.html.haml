@@ -1,0 +1,24 @@
+.nav-container
+  = render :partial => 'components/breadcrumb', :locals => {:nav => [{:name => 'Races', :path => '/races'}, {:name => @race.title, :path => "/races/#{@race.id}"}, {:name => 'Personal race status'}]}
+.leaderboard-shared-container
+  .stats-cards-container
+    .ui.stackable.grid
+      .three.column.row
+        .column
+          = render :partial => 'components/stats-card', :locals => {:name => 'Overall Ranking', :icon => 'trophy-icon.svg', :number => '2nd'}
+        .column
+          = render :partial => 'components/stats-card', :locals => {:name => 'Category Ranking', :icon => 'trophy-icon.svg', :number => '1st'}
+        .column
+          = render :partial => 'components/stats-card', :locals => {:name => 'Cuurrent Prize', :icon => 'leaderboard-purse-icon.svg', :number => '$100.00'}
+  .segment-activity-container
+    %h2 Segment Activity
+    %table.ui.striped.table
+      %tbody
+        - [1,2,3,4].each do |activity|
+          %tr
+            %td.arrow
+              - if true
+                = image_tag 'up-green-arrow.svg', alt: 'Up arrow'
+              - else
+                = image_tag 'down-red-arrow.svg', alt: 'Down arrow'
+            %td= 'Segment activity description'

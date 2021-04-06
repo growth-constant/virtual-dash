@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   resources :races do
+    get :personal, on: :member
     get :leaderboard, on: :member
     get :general_classification, on: :member
     resources :registration, only: [:new] do

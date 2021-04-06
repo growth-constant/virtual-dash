@@ -1,20 +1,4 @@
-@import '../variables/colors.scss';
-
-.nav-container {
-  height: 5em;
-  width: 100%;
-  display: flex;
-  margin-top: 10em;
-  padding-left: 4em;
-  align-items: center; 
-  background-color: $ligther-gray;
-}
-
-.leaderboard-container {
-  margin-top: 2em;
-  margin-left: 2em;
-  margin-right: 2em;
-
+.leaderboard-shared-container {
   .leaderboard-race-extract {
     margin-top: 8em;
   }
@@ -26,14 +10,7 @@
 
 ////// Mobile //////
 @media (min-width: 320px) and (max-width: 768px) {
-  .nav-container {
-    padding-left: 2em;
-  }
-
-  .leaderboard-container {
-    margin-left: .5em;
-    margin-right: 0em;
-
+  .leaderboard-shared-container {
     .leaderboard-race-extract {
       margin-top: 3em;
       margin-left: 0em;
@@ -54,12 +31,7 @@
 
 ////// Laptop L //////
 @media (min-width: 1025px) and (max-width: 1440px) {
-  .nav-container {
-    margin-top: 0em;
-    padding-left: 4em;
-  }
-
-  .leaderboard-container {
+  .leaderboard-shared-container {
     .leaderboard-race-extract {
       margin-left: 2em;
       margin-right: 2em;
