@@ -36,8 +36,26 @@ class PersonalLeaderboard
     end
   end
 
+  ### Steps to get segment activity ###
+  # [/] 1 - Get the all user tries
+  # [/] 2 - Cycle throught the array
+  # [] 3 - Get the date of i and i+1
+  # [] 2 - Get overall leaderboard between the dates
+  # [] 3 - Save position on @position_log
+  # [] 4 - Repeat until finish compleate the array
   def segment_activity
-    RaceTry.user_segments(@me, @leaderboard[:race_segment])
+    @tries = RaceTry.user_segments(@me, @leaderboard[:race_segment])
+    @position_log = []
+
+    @tries.each_with_index do | try, index |
+      @date_leaderboard = RaceTry.tries_between_dates(
+        @leaderboard[:race_segment],
+        try[:start],
+        @tries[index + 1][:start]
+      )
+      @position_log.push(@date_leaderboard.index { |competitor| competitor.user_id == @me.id })
+    end
+
   end
 
 end

@@ -7,7 +7,7 @@ class RaceTry < ApplicationRecord
 
   # Scopes
   scope :user_segments, lambda { |user, segment_id|
-    where(user_id: user.id, segment_id: segment_id).order('start desc')
+    where(user_id: user.id, segment_id: segment_id).order('start DESC')
   }
 
   scope :last_try, lambda { |user, segment_id|
@@ -45,4 +45,8 @@ class RaceTry < ApplicationRecord
       .group(:user_id, :name, :image_medium, :gender)
       .order(3)
   }
+
+  scope :tries_between_dates, lambda { |segment_id, from_date, to_date|
+    where(segment_id: segment_id, "start #{from_date} AND #{to_date}")
+}
 end
