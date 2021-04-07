@@ -21,7 +21,7 @@ class RacesController < ApplicationController
 
   def personal
     @leaderboard = Leaderboard.new(@race, :all).call
-    @personal =  PersonalLeaderboard.new(@leaderboard, current_user)
+    @personal =  PersonalLeaderboard.new(@leaderboard, current_user).call
   end
 
   def show

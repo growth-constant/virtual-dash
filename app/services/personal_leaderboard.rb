@@ -11,11 +11,13 @@ class PersonalLeaderboard
     @overall_ranking = overall_ranking + 1
     {
       overall_ranking: @overall_ranking,
-      category_rankng: @overall_ranking,
+      category_ranking: @overall_ranking, # Change when categories come to life
       current_prize: current_prize(@overall_ranking),
-      segment_activity: [1,2,3,4]
+      segment_activity: segment_activity
     }
   end
+
+  private
 
   def overall_ranking
     @leaderboard[:competitors].index{ |competitor| competitor.id == @me.id}
@@ -32,6 +34,10 @@ class PersonalLeaderboard
       else
         0
     end
+  end
+
+  def segment_activity
+    RaceTry.user_segments(@me, @leaderboard[:race_segment])
   end
 
 end

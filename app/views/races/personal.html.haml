@@ -1,0 +1,8 @@
+%br
+%h3= @personal[:overall_ranking]
+%h3= @personal[:category_ranking]
+%h3= @personal[:current_prize]
+%br
+- @personal[:segment_activity].each do |segment|
+  %p= segment.start
+  %p= segment.duration
