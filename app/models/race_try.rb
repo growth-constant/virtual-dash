@@ -47,6 +47,6 @@ class RaceTry < ApplicationRecord
   }
 
   scope :tries_between_dates, lambda { |segment_id, from_date, to_date|
-    where(segment_id: segment_id, "start #{from_date} AND #{to_date}")
+    where(["segment_id = ? and start BETWEEN ? AND ?", segment_id, from_date, to_date])
 }
 end

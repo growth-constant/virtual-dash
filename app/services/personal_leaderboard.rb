@@ -48,13 +48,21 @@ class PersonalLeaderboard
     @position_log = []
 
     @tries.each_with_index do | try, index |
-      @date_leaderboard = RaceTry.tries_between_dates(
-        @leaderboard[:race_segment],
-        try[:start],
-        @tries[index + 1][:start]
-      )
-      @position_log.push(@date_leaderboard.index { |competitor| competitor.user_id == @me.id })
+      puts "Entro"
+      unless @tries.to_a[index + 1].nil?
+        @date_leaderboard = RaceTry.tries_between_dates(
+          @leaderboard[:race_segment],
+          try[:start],
+          @tries.to_a[index + 1][:start]
+        )
+        @position_log.push(1)
+        # @position_log.push(@date_leaderboard.index { |competitor| competitor.user_id == @me.id })
+      end
     end
+
+    puts "### POSITION LOG ###"
+    puts @position_log
+    puts "######"
 
   end
 
