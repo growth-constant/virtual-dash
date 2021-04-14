@@ -43,13 +43,20 @@ class PersonalLeaderboard
     @tries.each_with_index do | try, index |
       if not @tries.to_a[index + 1].nil?
 
-        @date_leaderboard = RaceTry.tries_between_dates(
+        puts "### DATES ###"
+        puts "From >>>"
+        puts try[:start]
+        puts "To >>>"
+        puts @tries.to_a[index + 1][:start]
+        puts "######"
+
+        date_leaderboard = RaceTry.tries_between_dates(
           @leaderboard[:race_segment],
           try[:start],
           @tries.to_a[index + 1][:start]
         )
         
-        @date_leaderboard.each_with_index do | race_try, index |
+        date_leaderboard.each_with_index do | race_try, index |
           if race_try.user_id == @me.id
             @position_log.push(
               position: index,
@@ -62,7 +69,12 @@ class PersonalLeaderboard
       end
     end
 
-    @position_log = @position_log.uniq { |log| log[:race_try_id]}
+    # @position_log = @position_log.uniq { |log| log[:race_try_id]}
+
+    puts "### POSITION LOG ###"
+    puts @position_log
+    puts "######"
+
   end
 
 end
