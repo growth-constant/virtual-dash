@@ -45,7 +45,7 @@ class PersonalLeaderboard
         @leaderboard[:race_segment],
         dates.first[:start],
         date[:start]
-      )
+      ).to_a
       position = get_position(tries)
       my_tries = tries_on_date(tries, date[:start])
 
@@ -59,7 +59,7 @@ class PersonalLeaderboard
   end
 
   def get_position(tries)
-    tries = tries.sort_by { |try| try[:duration] }
+    tries = tries.sort_by! { |try| try[:duration] }
     tries.index { |try| try[:user_id] == @me.id }.min
   end
 
