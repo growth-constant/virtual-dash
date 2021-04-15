@@ -37,44 +37,34 @@ class PersonalLeaderboard
   end
 
   def segment_activity
-    @tries = RaceTry.user_segments(@me, @leaderboard[:race_segment])
-    @position_log = []
+    dates = RaceTry.segment_dates(@leaderboard[:race_segment])
+    segments = []
 
-    @tries.each_with_index do | try, index |
-      if not @tries.to_a[index + 1].nil?
+    dates.each_with_index do | date, index |
+      tries = RaceTry.tries_between_dates(
+        @leaderboard[:race_segment],
+        dates.first,
+        date
+      )
+      position = get_position(tries)
+      my_tries = tries_on_date(tries, date)
 
-        puts "### DATES ###"
-        puts "From >>>"
-        puts try[:start]
-        puts "To >>>"
-        puts @tries.to_a[index + 1][:start]
-        puts "######"
-
-        date_leaderboard = RaceTry.tries_between_dates(
-          @leaderboard[:race_segment],
-          try[:start],
-          @tries.to_a[index + 1][:start]
-        )
-        
-        date_leaderboard.each_with_index do | race_try, index |
-          if race_try.user_id == @me.id
-            @position_log.push(
-              position: index,
-              date: race_try.start,
-              race_try_id: race_try.id
-            )
-          end
-        end
-
-      end
+      segments.push({
+        date: date,
+        tries: my_tries,
+        position: position
+      })
     end
+    puts segments
+  end
 
-    # @position_log = @position_log.uniq { |log| log[:race_try_id]}
+  def get_position(tries)
+    tries = tries.sort_by { |try| try[:duration] }
+    tries.index { |try| try[:user_id] == @me.id }.min
+  end
 
-    puts "### POSITION LOG ###"
-    puts @position_log
-    puts "######"
-
+  def tries_on_date(tries, date)
+    tries.select{ |try| try[:start] == date && try[:user_id] == @me.id }
   end
 
 end
