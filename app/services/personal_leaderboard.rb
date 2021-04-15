@@ -43,14 +43,14 @@ class PersonalLeaderboard
     dates.each_with_index do | date, index |
       tries = RaceTry.tries_between_dates(
         @leaderboard[:race_segment],
-        dates.first,
-        date
+        dates.first[:start],
+        date[:start]
       )
       position = get_position(tries)
-      my_tries = tries_on_date(tries, date)
+      my_tries = tries_on_date(tries, date[:start])
 
       segments.push({
-        date: date,
+        date: date[:start],
         tries: my_tries,
         position: position
       })
