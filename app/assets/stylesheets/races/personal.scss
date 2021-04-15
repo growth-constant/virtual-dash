@@ -4,8 +4,18 @@
     margin-left: 0em;
     margin-right: 0em;
 
-    .arrow {
-      width: 12px;
+
+    .segment-container {
+      display: inline;
+      
+      .arrow {
+        width: 12px;
+      }
+
+      .segment-desc {
+        display: inline;
+        vertical-align: middle;
+      }
     }
   }
 }
