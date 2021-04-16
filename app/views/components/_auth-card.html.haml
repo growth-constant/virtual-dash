@@ -1,0 +1,12 @@
+.ui.centered.grid
+  .centered.row
+    .sixteen.wide.column
+      .auth-card-container
+        .auth-card
+          %h1 Welcome
+          %p  
+            By signing in you accept our 
+            %a{ href: "http://" } Privacy Policy 
+            and 
+            %a{ href: "http://" } Terms of Service.
+          .ui.register_strava_button_link.button= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), class: 'register_strava_button_link'
