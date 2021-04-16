@@ -37,7 +37,7 @@ class PersonalLeaderboard
   end
 
   def segment_activity
-    RaceTry.user_segments(@me.id, @leaderboard[:race_segment])
+    RaceTry.user_segments(@me, @leaderboard[:race_segment])
   end
 
 end

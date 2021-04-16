@@ -6,8 +6,8 @@ class RaceTry < ApplicationRecord
   belongs_to :user
 
   # Scopes
-  scope :user_segments, lambda { |user_id, segment_id|
-    where(user_id: user_id, segment_id: segment_id).order('start DESC')
+  scope :user_segments, lambda { |user, segment_id|
+    where(user_id: user.id, segment_id: segment_id).order('start DESC')
   }
 
   scope :last_try, lambda { |user, segment_id|
