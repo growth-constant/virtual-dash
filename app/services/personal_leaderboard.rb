@@ -37,34 +37,7 @@ class PersonalLeaderboard
   end
 
   def segment_activity
-    dates = RaceTry.segment_dates(@leaderboard[:race_segment])
-    segments = []
-
-    dates.each_with_index do | date, index |
-      tries = RaceTry.tries_between_dates(
-        @leaderboard[:race_segment],
-        dates.first[:start],
-        date[:start]
-      ).to_a
-      position = get_position(tries)
-      my_tries = tries_on_date(tries, date[:start])
-
-      segments.push({
-        date: date[:start],
-        tries: my_tries,
-        position: position
-      })
-    end
-    puts segments
-  end
-
-  def get_position(tries)
-    tries = tries.sort_by! { |try| try[:duration] }
-    tries.index { |try| try[:user_id] == @me.id }.min
-  end
-
-  def tries_on_date(tries, date)
-    tries.select{ |try| try[:start] == date && try[:user_id] == @me.id }
+    RaceTry.user_segments(@me.id, @leaderboard[:race_segment])
   end
 
 end

@@ -6,14 +6,8 @@ class RaceTry < ApplicationRecord
   belongs_to :user
 
   # Scopes
-  scope :segment_dates, lambda { |segment_id|
-    select('start')
-      .distinct
-      .where(segment_id: segment_id)
-  }
-
-  scope :user_segments, lambda { |user, segment_id|
-    where(user_id: user.id, segment_id: segment_id).order('start DESC')
+  scope :user_segments, lambda { |user_id, segment_id|
+    where(user_id: user_id, segment_id: segment_id).order('start DESC')
   }
 
   scope :last_try, lambda { |user, segment_id|
@@ -52,7 +46,4 @@ class RaceTry < ApplicationRecord
       .order(3)
   }
 
-  scope :tries_between_dates, lambda { |segment_id, from_date, to_date|
-    where(["segment_id = ? AND start <= ? AND start >= ?", segment_id, from_date, to_date])
-  }
 end
