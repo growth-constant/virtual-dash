@@ -5,27 +5,22 @@
     .ui.stackable.grid
       .three.column.row
         .column
-          = render :partial => 'components/stats-card', :locals => {:name => 'Overall Ranking', :icon => 'trophy-icon.svg', :number => '2nd'}
+          = render :partial => 'components/stats-card', :locals => {:name => 'Overall Ranking', :icon => 'trophy-icon.svg', :number => @personal[:overall_ranking].ordinalize}
         .column
-          = render :partial => 'components/stats-card', :locals => {:name => 'Category Ranking', :icon => 'trophy-icon.svg', :number => '1st'}
+          = render :partial => 'components/stats-card', :locals => {:name => 'Category Ranking', :icon => 'trophy-icon.svg', :number => @personal[:category_ranking].ordinalize}
         .column
-          = render :partial => 'components/stats-card', :locals => {:name => 'Cuurrent Prize', :icon => 'leaderboard-purse-icon.svg', :number => '$100.00'}
+          = render :partial => 'components/stats-card', :locals => {:name => 'Cuurrent Prize', :icon => 'leaderboard-purse-icon.svg', :number => "$#{@personal[:current_prize]}"}
   .segment-activity-container
     %h2 Segment Activity
     %table.ui.striped.table
       %tbody
-        %tr
-          %td
-            .segment-container
-              %i.green.caret.up.icon
-              %span.segment-desc= 'On 17/04/2021 at 8:00 AM made 1:00 hr'
-        %tr
-          %td
-            .segment-container
-              %i.grey.caret.right.icon
-              %span.segment-desc= 'On 16/04/2021 at 8:00 PM made 1:45 hr'
-        %tr
-          %td
-            .segment-container
-              %i.grey.caret.right.icon
-              %span.segment-desc= 'On 16/04/2021 at 8:00 AM made 1:15 hr'
+        - @personal[:segment_activity].each_with_index do |segment, index|
+        - last_time = @personal[:segment_activity][index + 1] ? @personal[:segment_activity][index + 1][:duration] : 0
+          %tr
+            %td
+              .segment-container
+                - if last_time > segment.duration
+                  %i.green.caret.up.icon
+                - else
+                  %i.gray.caret.right.icon
+                %span.segment-desc= "Try recorded on #{Time.at(segment.start).utc.strftime('%d/%m/%y at %H:%M')} with a time of #{Time.at(segment.duration).utc.strftime('%H:%M:%S')}"

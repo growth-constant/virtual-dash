@@ -19,8 +19,9 @@ class RacesController < ApplicationController
     @competitors = Kaminari.paginate_array(@results[:competitors]).page(params[:page]).per(1)
   end
 
-  # Personal race status / Personal leaderboard
   def personal
+    @leaderboard = Leaderboard.new(@race, :all).call
+    @personal =  PersonalLeaderboard.new(@leaderboard, current_user).call
   end
 
   def show
