@@ -9,13 +9,13 @@
         .column
           = render :partial => 'components/stats-card', :locals => {:name => 'Category Ranking', :icon => 'trophy-icon.svg', :number => @personal[:category_ranking].ordinalize}
         .column
-          = render :partial => 'components/stats-card', :locals => {:name => 'Cuurrent Prize', :icon => 'leaderboard-purse-icon.svg', :number => "$#{@personal[:current_prize]}"}
+          = render :partial => 'components/stats-card', :locals => {:name => 'Current Prize', :icon => 'leaderboard-purse-icon.svg', :number => "$#{@personal[:current_prize]}"}
   .segment-activity-container
     %h2 Segment Activity
     %table.ui.striped.table
       %tbody
         - @personal[:segment_activity].each_with_index do |segment, index|
-        - last_time = @personal[:segment_activity][index + 1] ? @personal[:segment_activity][index + 1][:duration] : 0
+          - last_time = @personal[:segment_activity][index + 1] ? @personal[:segment_activity][index + 1][:duration] : 0
           %tr
             %td
               .segment-container
