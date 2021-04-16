@@ -1,5 +1,5 @@
 class RacesController < ApplicationController
-  before_action :set_race, only: %i[show edit update destroy leaderboard general_classification]
+  before_action :set_race, only: %i[show edit update destroy leaderboard general_classification personal]
   before_action :set_profile, only: %i[index]
   before_action :registered, only: %i[show leaderboard]
   before_action :filter, only: %i[index]
@@ -17,6 +17,11 @@ class RacesController < ApplicationController
   def general_classification
     @results = Leaderboard.new(@race, :all).call
     @competitors = Kaminari.paginate_array(@results[:competitors]).page(params[:page]).per(1)
+  end
+
+  def personal
+    @leaderboard = Leaderboard.new(@race, :all).call
+    @personal =  PersonalLeaderboard.new(@leaderboard, current_user).call
   end
 
   def show

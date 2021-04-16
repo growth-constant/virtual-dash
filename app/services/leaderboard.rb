@@ -13,6 +13,7 @@ class Leaderboard
       competitors: competitors,
       first_time: RaceTry.leaders(@race, 1)&.first&.duration,
       tries_counter: @race&.race_tries&.count,
+      race_segment: @race.segment_id,
       prizes: {
         first: (total_purse / 2).to_i,
         second: (total_purse / 3).to_i,
