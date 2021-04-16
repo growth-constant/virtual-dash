@@ -14,12 +14,24 @@
     %h2 Segment Activity
     %table.ui.striped.table
       %tbody
-        - [1,2,3,4].each do |activity|
-          %tr
-            %td
-              .segment-container
-                - if true
-                  = image_tag 'up-green-arrow.svg', alt: 'Up arrow', class: 'arrow'
-                - else
-                  = image_tag 'down-red-arrow.svg', alt: 'Down arrow', class: 'arrow'
-                %span.segment-desc= 'Segment activity description'
+        %tr
+          %td
+            .segment-container
+              %i.green.caret.up.icon
+              %span.segment-desc= 'On 17/04/2021 at 8:00 AM made 1:00 hr'
+        %tr
+          %td
+            .segment-container
+              %i.grey.caret.right.icon
+              %span.segment-desc= 'On 16/04/2021 at 8:00 PM made 1:45 hr'
+        %tr
+          %td
+            .segment-container
+              %i.grey.caret.right.icon
+              %span.segment-desc= 'On 16/04/2021 at 8:00 AM made 1:15 hr'
+            -# .segment-container
+            -#   - if true
+            -#     = image_tag 'up-green-arrow.svg', alt: 'Up arrow', class: 'arrow'
+            -#   - else
+            -#     = image_tag 'down-red-arrow.svg', alt: 'Down arrow', class: 'arrow'
+            -#   %span.segment-desc= 'Segment activity description'
