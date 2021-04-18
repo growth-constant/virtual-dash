@@ -1,0 +1,43 @@
+.leaderboard-shared-container {
+  .segment-activity-container{
+    margin-top: 5em;
+    margin-left: 0em;
+    margin-right: 0em;
+
+
+    .segment-container {
+      display: inline;
+      
+      .icon {
+        width: 12px;
+        font-family: 'Icons' !important;
+      }
+
+      .segment-desc {
+        display: inline;
+        vertical-align: middle;
+      }
+    }
+  }
+}
+
+////// Mobile //////
+@media (min-width: 320px) and (max-width: 768px) { 
+  .leaderboard-shared-container {
+    .segment-activity-container {
+      margin-top: 3em;
+      margin-left: 1em;
+      margin-right: 1em;
+    } 
+  }
+}
+
+////// Laptop L //////
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .leaderboard-shared-container {
+    .segment-activity-container {
+      margin-left: 2em;
+      margin-right: 2em;
+    } 
+  }
+}

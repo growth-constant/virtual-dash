@@ -1,6 +1,6 @@
 .nav-container
   = render :partial => 'components/breadcrumb', :locals => {:nav => [{:name => 'Races', :path => '/races'}, {:name => @race.title, :path => "/races/#{@race.id}"}, {:name => 'Leaderboard'}]}
-.leaderboard-container
+.leaderboard-shared-container
   .stats-cards-container
     .ui.stackable.grid
       .three.column.row

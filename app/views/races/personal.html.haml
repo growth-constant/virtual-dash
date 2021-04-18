@@ -1,7 +1,26 @@
-%br
-%h3= @personal[:overall_ranking]
-%h3= @personal[:category_ranking]
-%h3= @personal[:current_prize]
-%br
-- @personal[:segment_activity].each do |segment|
-  %p= "On #{Time.at(segment.start).utc.strftime('%d/%m/%y')} made #{Time.at(segment.duration).utc.strftime('%H:%M:%S')}"
+.nav-container
+  = render :partial => 'components/breadcrumb', :locals => {:nav => [{:name => 'Races', :path => '/races'}, {:name => @race.title, :path => "/races/#{@race.id}"}, {:name => 'Personal race status'}]}
+.leaderboard-shared-container
+  .stats-cards-container
+    .ui.stackable.grid
+      .three.column.row
+        .column
+          = render :partial => 'components/stats-card', :locals => {:name => 'Overall Ranking', :icon => 'trophy-icon.svg', :number => @personal[:overall_ranking].ordinalize}
+        .column
+          = render :partial => 'components/stats-card', :locals => {:name => 'Category Ranking', :icon => 'trophy-icon.svg', :number => @personal[:category_ranking].ordinalize}
+        .column
+          = render :partial => 'components/stats-card', :locals => {:name => 'Current Prize', :icon => 'leaderboard-purse-icon.svg', :number => "$#{@personal[:current_prize]}"}
+  .segment-activity-container
+    %h2 Segment Activity
+    %table.ui.striped.table
+      %tbody
+        - @personal[:segment_activity].each_with_index do |segment, index|
+          - last_time = @personal[:segment_activity][index + 1] ? @personal[:segment_activity][index + 1][:duration] : 0
+          %tr
+            %td
+              .segment-container
+                - if last_time > segment.duration
+                  %i.green.caret.up.icon
+                - else
+                  %i.gray.caret.right.icon
+                %span.segment-desc= "Try recorded on #{Time.at(segment.start).utc.strftime('%d/%m/%y at %H:%M')} with a time of #{Time.at(segment.duration).utc.strftime('%H:%M:%S')}"
