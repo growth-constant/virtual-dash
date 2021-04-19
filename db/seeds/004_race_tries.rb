@@ -1,18 +1,18 @@
 # Users
-wilford = User.find(1)
-melanie = User.find(2)
-layton = User.find(3)
-josie = User.find(4)
+wilford = User.find_by name: 'Joseph Wilford'
+melanie = User.find_by name: 'Melanie Cavill'
+layton = User.find_by name: 'Andre Layton'
+josie = User.find_by name: 'Josie Wellstead'
 
 # Registrations
-wilford_snowpiercer = Registration.find(1)
-melanie_snowpiercer = Registration.find(2)
-layton_snowpiercer = Registration.find(3)
-josie_snowpiercer = Registration.find(4)
-wilford_big_alice = Registration.find(5)
-melanie_big_alice = Registration.find(6)
-layton_big_alice = Registration.find(7)
-josie_big_alice = Registration.find(8)
+wilford_snowpiercer = Registration.find_by session_id: 'wilford-snowpiercer'
+melanie_snowpiercer = Registration.find_by session_id: 'melanie-snowpiercer'
+layton_snowpiercer = Registration.find_by session_id: 'layton-snowpiercer'
+josie_snowpiercer = Registration.find_by session_id: 'josie-snowpiercer'
+wilford_big_alice = Registration.find_by session_id: 'wilford-bigalice'
+melanie_big_alice = Registration.find_by session_id: 'melanie-bigalice'
+layton_big_alice = Registration.find_by session_id: 'layton-bigalice'
+josie_big_alice = Registration.find_by session_id: 'josie-bigalice'
 
 # Race tries
 RaceTry.find_or_create_by(

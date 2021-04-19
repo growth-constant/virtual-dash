@@ -1,13 +1,13 @@
 # Users
-wilford = User.find(1)
-melanie = User.find(2)
-layton = User.find(3)
-josie = User.find(4)
+wilford = User.find_by name: 'Joseph Wilford'
+melanie = User.find_by name: 'Melanie Cavill'
+layton = User.find_by name: 'Andre Layton'
+josie = User.find_by name: 'Josie Wellstead'
 
 
 # Races
-snowpiercer_race = Race.find(1)
-big_alice_race = Race.find(2)
+snowpiercer_race = Race.find_by title: 'Snowpiercer'
+big_alice_race = Race.find_by title: 'Big Alice Race'
 
 # Registrations
 Registration.find_or_create_by(
@@ -16,7 +16,7 @@ Registration.find_or_create_by(
   status: 'registered',
   payment_status: 'paid',
   agreements_signed: true,
-  session_id: 'cs_test_a1UufTYj3Tjc1qXYzKpl3qW4bPIoNaVTiNlTAvbLumegYo0MbcMY3BCAVQ'
+  session_id: 'wilford-snowpiercer'
 )
 
 Registration.find_or_create_by(
@@ -25,7 +25,7 @@ Registration.find_or_create_by(
   status: 'registered',
   payment_status: 'paid',
   agreements_signed: true,
-  session_id: 'cs_test_a1UufTYj3Tjc1qXYzKpl3qW4bPIoNaVTiNlTAvbLumegYo0MbcMY3BCAVQ'
+  session_id: 'melanie-snowpiercer'
 )
 
 Registration.find_or_create_by(
@@ -34,7 +34,7 @@ Registration.find_or_create_by(
   status: 'registered',
   payment_status: 'paid',
   agreements_signed: true,
-  session_id: 'cs_test_a1UufTYj3Tjc1qXYzKpl3qW4bPIoNaVTiNlTAvbLumegYo0MbcMY3BCAVQ'
+  session_id: 'layton-snowpiercer'
 )
 
 Registration.find_or_create_by(
@@ -43,7 +43,7 @@ Registration.find_or_create_by(
   status: 'registered',
   payment_status: 'paid',
   agreements_signed: true,
-  session_id: 'cs_test_a1UufTYj3Tjc1qXYzKpl3qW4bPIoNaVTiNlTAvbLumegYo0MbcMY3BCAVQ'
+  session_id: 'josie-snowpiercer'
 )
 
 Registration.find_or_create_by(
@@ -52,7 +52,7 @@ Registration.find_or_create_by(
   status: 'registered',
   payment_status: 'paid',
   agreements_signed: true,
-  session_id: 'cs_test_a1UufTYj3Tjc1qXYzKpl3qW4bPIoNaVTiNlTAvbLumegYo0MbcMY3BCAVQ'
+  session_id: 'wilford-bigalice'
 )
 
 Registration.find_or_create_by(
@@ -61,7 +61,7 @@ Registration.find_or_create_by(
   status: 'registered',
   payment_status: 'paid',
   agreements_signed: true,
-  session_id: 'cs_test_a1UufTYj3Tjc1qXYzKpl3qW4bPIoNaVTiNlTAvbLumegYo0MbcMY3BCAVQ'
+  session_id: 'melanie-bigalice'
 )
 
 Registration.find_or_create_by(
@@ -70,7 +70,7 @@ Registration.find_or_create_by(
   status: 'registered',
   payment_status: 'paid',
   agreements_signed: true,
-  session_id: 'cs_test_a1UufTYj3Tjc1qXYzKpl3qW4bPIoNaVTiNlTAvbLumegYo0MbcMY3BCAVQ'
+  session_id: 'layton-bigalice'
 )
 
 Registration.find_or_create_by(
@@ -79,5 +79,5 @@ Registration.find_or_create_by(
   status: 'registered',
   payment_status: 'paid',
   agreements_signed: true,
-  session_id: 'cs_test_a1UufTYj3Tjc1qXYzKpl3qW4bPIoNaVTiNlTAvbLumegYo0MbcMY3BCAVQ'
+  session_id: 'josie-bigalice'
 )
