@@ -28,7 +28,16 @@
 #   )
 # end
 
+puts 'Reseting PK sequence on all tables..'
+ActiveRecord::Base.connection.tables.each do |t|
+  ActiveRecord::Base.connection.reset_pk_sequence!(t)
+end
+
+puts 'Seeding...'
+
 Dir[Rails.root.join('db/seeds/*.rb')].sort.each do |file|
   puts "Processing #{file.split('/').last}"
   require file
 end
+
+puts 'Done!'
