@@ -1,5 +1,5 @@
 # Get the user that will create the races and make it the current one
-wilford = User.find_by name: 'Joseph Wilford'
+wilford = User.find_by email: 'mr.wilford@wilford.co'
 User.current=(wilford)
 
 Race.create!([
