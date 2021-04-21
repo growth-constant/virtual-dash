@@ -21,8 +21,8 @@ josie_big_alice = Registration.find_by session_id: 'josie-bigalice'
 # Race tries
 RaceTry.create!([
   {
-    registration_id: wilford_snowpiercer,
-    user_id: wilford,
+    registration_id: wilford_snowpiercer[:id],
+    user_id: wilford[:id],
     duration: 500,
     start: '2021-04-19 00:00:00',
     moving_time: 260,
@@ -31,8 +31,8 @@ RaceTry.create!([
     race_try_id: 1
   },
   {
-    registration_id: melanie_snowpiercer,
-    user_id: melanie,
+    registration_id: melanie_snowpiercer[:id],
+    user_id: melanie[:id],
     duration: 510,
     start: '2021-04-19 00:00:00',
     moving_time: 270,
@@ -41,8 +41,8 @@ RaceTry.create!([
     race_try_id: 2
   },
   {
-    registration_id: layton_snowpiercer,
-    user_id: layton,
+    registration_id: layton_snowpiercer[:id],
+    user_id: layton[:id],
     duration: 520,
     start: '2021-04-19 00:00:00',
     moving_time: 280,
@@ -51,8 +51,8 @@ RaceTry.create!([
     race_try_id: 3
   },
   {
-    registration_id: josie_snowpiercer,
-    user_id: josie,
+    registration_id: josie_snowpiercer[:id],
+    user_id: josie[:id],
     duration: 530,
     start: '2021-04-19 00:00:00',
     moving_time: 290,
@@ -61,8 +61,8 @@ RaceTry.create!([
     race_try_id: 4
   },
   {
-    registration_id: wilford_big_alice,
-    user_id: wilford,
+    registration_id: wilford_big_alice[:id],
+    user_id: wilford[:id],
     duration: 500,
     start: '2021-04-19 00:00:00',
     moving_time: 260,
@@ -71,8 +71,8 @@ RaceTry.create!([
     race_try_id: 5
   },
   {
-    registration_id: melanie_big_alice,
-    user_id: melanie,
+    registration_id: melanie_big_alice[:id],
+    user_id: melanie[:id],
     duration: 510,
     start: '2021-04-19 00:00:00',
     moving_time: 270,
@@ -81,8 +81,8 @@ RaceTry.create!([
     race_try_id: 6
   },
   {
-    registration_id: layton_big_alice,
-    user_id: layton,
+    registration_id: layton_big_alice[:id],
+    user_id: layton[:id],
     duration: 520,
     start: '2021-04-19 00:00:00',
     moving_time: 280,
@@ -91,8 +91,8 @@ RaceTry.create!([
     race_try_id: 7
   },
   {
-    registration_id: josie_big_alice,
-    user_id: josie,
+    registration_id: josie_big_alice[:id],
+    user_id: josie[:id],
     duration: 530,
     start: '2021-04-19 00:00:00',
     moving_time: 290,

@@ -8,11 +8,6 @@ josie = User.find_by email: 'josie@thetail.xyz'
 snowpiercer_race = Race.find_by title: 'Snowpiercer'
 big_alice_race = Race.find_by title: 'Big Alice Race'
 
-puts "Data thingy"
-
-puts snowpiercer_race[:id]
-puts layton[:id]
-
 # Registrations
 Registration.create!([
   {
