@@ -23,6 +23,7 @@ RaceTry.create!([
   {
     registration_id: wilford_snowpiercer[:id],
     user_id: wilford[:id],
+    segment_id: '4677383',
     duration: 500,
     start: '2021-04-19 00:00:00',
     moving_time: 260,
@@ -33,6 +34,7 @@ RaceTry.create!([
   {
     registration_id: melanie_snowpiercer[:id],
     user_id: melanie[:id],
+    segment_id: '4677383',
     duration: 510,
     start: '2021-04-19 00:00:00',
     moving_time: 270,
@@ -43,6 +45,7 @@ RaceTry.create!([
   {
     registration_id: layton_snowpiercer[:id],
     user_id: layton[:id],
+    segment_id: '4677383',
     duration: 520,
     start: '2021-04-19 00:00:00',
     moving_time: 280,
@@ -53,6 +56,7 @@ RaceTry.create!([
   {
     registration_id: josie_snowpiercer[:id],
     user_id: josie[:id],
+    segment_id: '4677383',
     duration: 530,
     start: '2021-04-19 00:00:00',
     moving_time: 290,
@@ -63,6 +67,7 @@ RaceTry.create!([
   {
     registration_id: wilford_big_alice[:id],
     user_id: wilford[:id],
+    segment_id: '4677383',
     duration: 500,
     start: '2021-04-19 00:00:00',
     moving_time: 260,
@@ -73,6 +78,7 @@ RaceTry.create!([
   {
     registration_id: melanie_big_alice[:id],
     user_id: melanie[:id],
+    segment_id: '4677383',
     duration: 510,
     start: '2021-04-19 00:00:00',
     moving_time: 270,
@@ -83,6 +89,7 @@ RaceTry.create!([
   {
     registration_id: layton_big_alice[:id],
     user_id: layton[:id],
+    segment_id: '4677383',
     duration: 520,
     start: '2021-04-19 00:00:00',
     moving_time: 280,
@@ -93,6 +100,7 @@ RaceTry.create!([
   {
     registration_id: josie_big_alice[:id],
     user_id: josie[:id],
+    segment_id: '4677383',
     duration: 530,
     start: '2021-04-19 00:00:00',
     moving_time: 290,

@@ -26,9 +26,10 @@ class RaceSegment
     if res.status == 401
       refresh_token
       res = segment
+    else
+      update(JSON.parse(res.body))
     end
 
-    update(JSON.parse(res.body))
   end
 
   def update(res)

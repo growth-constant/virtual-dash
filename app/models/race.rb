@@ -19,8 +19,6 @@ class Race < ApplicationRecord
   private
 
   def update_race
-    if User.current[:email] != 'mr.wilford@wilford.co'
-      RetrieveSegmentInfoJob.perform_now(self, User.current)
-    end
+    RetrieveSegmentInfoJob.perform_now(self, User.current)
   end
 end
