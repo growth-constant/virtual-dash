@@ -22,7 +22,7 @@
     - else
       .ui.simple.dropdown.item
         %img{src: current_user.image, alt: 'Profile pic', class: 'profile-pic'}
-        = current_user.email
+        = current_user.name
         %i.dropdown.icon.black
         .menu
           = link_to edit_user_registration_path, class: 'item' do
