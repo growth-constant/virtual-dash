@@ -36,6 +36,12 @@
         color: $gray;
         font-size: 12px;
         margin-bottom: 2em !important;
+        // Limit description to 4 lines
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 5; /* number of lines to show */
+        text-overflow: ellipsis;
+        -webkit-box-orient: vertical;
     }
 
     .race-card-buttons {
@@ -46,8 +52,9 @@
         border-collapse: separate;
 
         .button {
-            vertical-align: middle;
+            width: 50%;
             display: table-cell;
+            vertical-align: middle;
         }
     }
 }
