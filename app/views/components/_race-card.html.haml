@@ -2,9 +2,19 @@
   .ui.grid
     .one.row.column
       .sixteen.wide.column
-        .race-card-map
-          -# Mapa
-    .one.row.column
+        -# Mapa
+        - coordinates = Polylines::Decoder.decode_polyline(race.all_data['map']['polyline'])
+        - i = coordinates.size / 2
+        - lat = coordinates[i][0]
+        - lng = coordinates[i][1]
+        .map-container{ 
+          "data-polyline" => "#{race.all_data['map']['polyline']}",
+          "data-lat" => "#{lat}", 
+          "data-lng" => "#{lng}", 
+          :class => "race-map",
+          :id => "map#{race.id}"
+        }
+    .one.row.column.race-data
       .sixteen.wide.column
         .race-card-details
           %h3= race.title
@@ -17,7 +27,7 @@
               = link_to 'Sign up', new_user_session_path, class: 'link-to-button'
           - elsif current_user && @registered.empty?
             .ui.button.dark-blue.register.mini
-              = link_to 'Register now', new_race_registration_path(race), class: 'link-to-button'
+              = link_to 'Register to race', new_race_registration_path(race), class: 'link-to-button'
           - elsif current_user && !@registered.empty?
             .ui.button.dark-blue.register.mini
               = link_to 'Personal status', personal_race_path(race), class: 'link-to-button'
