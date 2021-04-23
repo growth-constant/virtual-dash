@@ -1,7 +1,15 @@
-= render partial: 'shared/search'
-= render partial: 'list'
+-# = render partial: 'shared/search'
+-# = render partial: 'list'
 
-%br
+-# %br
 
-- if current_user.present? && (policy(current_user).admin? || policy(current_user).race_admin?)
-  = link_to 'New Race', new_race_path
+-# - if current_user.present? && (policy(current_user).admin? || policy(current_user).race_admin?)
+-#   = link_to 'New Race', new_race_path
+
+-##########
+.race-list-container
+  .ui.stackable.grid
+    .four.column.row
+      - @races.each do | race |
+        .column
+          = render partial: 'components/race-card'

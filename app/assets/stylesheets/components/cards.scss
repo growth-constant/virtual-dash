@@ -1,27 +1,5 @@
 @import '../variables/colors.scss';
 
-.stats-card{
-    padding: 2em;
-    border-radius: 6px;
-    box-shadow: 0px 0px 11px 1px #6b778c4f !important;
-
-    .stats-icon {
-        float: right !important;
-    }
-
-    .stats-name {
-        font-size: 17px;
-        font-weight: bold;
-        color: $dark-blue;
-    }
-
-    .stats-number {
-        font-size: 24px;
-        font-weight: bold;
-        color: $dark-blue;
-    }
-}
-
 .auth-card-container {
     display: flex;
     margin-top: 3em;
@@ -46,6 +24,40 @@
               background-color: transparent !important;
           }  
         }
+    }
+}
+
+.race-card {
+    padding-left: 1em;
+    padding-right: 1em;
+    border: solid #eaeaea 1px;
+
+    p {
+        color: $gray;
+        font-size: 12px;
+        margin-bottom: 3em !important;
+    }
+}
+
+.stats-card{
+    padding: 2em;
+    border-radius: 6px;
+    box-shadow: 0px 0px 11px 1px #6b778c4f !important;
+
+    .stats-icon {
+        float: right !important;
+    }
+
+    .stats-name {
+        font-size: 17px;
+        font-weight: bold;
+        color: $dark-blue;
+    }
+
+    .stats-number {
+        font-size: 24px;
+        font-weight: bold;
+        color: $dark-blue;
     }
 }
 
