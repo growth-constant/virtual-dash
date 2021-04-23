@@ -9,10 +9,10 @@
         .race-card-details
           %h3= 'Robocop Desert Race'
           %p= 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce viverra id eros at venenatis. Aenean vitae orci hendrerit, vulputate libero at, scelerisque orci.'
-    .two.column.row
-      .eight.wide.column 
-        .ui.button.dark-blue.tiny
-          = link_to 'Register to race', new_user_session_path, class: 'link-to-button'
-      .eight.wide.column
-        .ui.button.inverted.blue.tiny
-          = link_to 'Leaderboard', new_user_session_path, class: 'link-to-inverted-blue-button'
+    .one.column.row
+      .sixteen.wide.column 
+        .race-card-buttons
+          .ui.button.dark-blue.mini
+            = link_to 'Register to race', new_user_session_path, class: 'link-to-button'
+          .ui.button.inverted.blue.mini
+            = link_to 'Leaderboard', new_user_session_path, class: 'link-to-inverted-blue-button'

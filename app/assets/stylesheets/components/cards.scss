@@ -35,7 +35,20 @@
     p {
         color: $gray;
         font-size: 12px;
-        margin-bottom: 3em !important;
+        margin-bottom: 2em !important;
+    }
+
+    .race-card-buttons {
+        display: table;
+        margin-bottom: 1em;
+        align-items: center;
+        border-spacing: .5em;
+        border-collapse: separate;
+
+        .button {
+            vertical-align: middle;
+            display: table-cell;
+        }
     }
 }
 
