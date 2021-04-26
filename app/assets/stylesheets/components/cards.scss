@@ -29,35 +29,21 @@
 
 .race-card {
     border: solid #eaeaea 1px;
-    
-    .race-data {
-        padding-left: 1em;
-        padding-right: 1em;
-     
-        p {
+
+    .details {
+        margin-left: 1em;
+        margin-right: 1em;
+
+        .desc {
             color: $gray;
             font-size: 12px;
             margin-bottom: 2em !important;
             // Limit description to 4 lines
-            overflow: hidden;
+            overflow: hidden !important;
             display: -webkit-box;
-            -webkit-line-clamp: 5; /* number of lines to show */
+            -webkit-line-clamp: 4; /* number of lines to show */
             text-overflow: ellipsis;
             -webkit-box-orient: vertical;
-        }
-
-        .race-card-buttons {
-            display: table;
-            margin-bottom: 1em;
-            align-items: center;
-            border-spacing: .5em;
-            border-collapse: separate;
-    
-            .button {
-                width: 50%;
-                display: table-cell;
-                vertical-align: middle;
-            }
         }
     }
 

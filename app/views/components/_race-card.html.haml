@@ -2,7 +2,6 @@
   .ui.grid
     .one.row.column
       .sixteen.wide.column
-        -# Mapa
         - coordinates = Polylines::Decoder.decode_polyline(race.all_data['map']['polyline'])
         - i = coordinates.size / 2
         - lat = coordinates[i][0]
@@ -14,11 +13,11 @@
           :class => "race-map",
           :id => "map#{race.id}"
         }
-    .one.row.column.race-data
+    .one.row.column
       .sixteen.wide.column
-        .race-card-details
+        .details
           %h3= race.title
-          %p= race.description
+          %p.desc= race.description
     .one.column.row
       .sixteen.wide.column 
         .race-card-buttons
