@@ -30,6 +30,22 @@
 .race-card {
     border: solid #eaeaea 1px;
 
+    .buttons {
+        display: table;
+        margin-left: 1em;
+        margin-right: 1em;
+        margin-bottom: 1em;
+        align-items: center;
+        border-spacing: .5em;
+        border-collapse: separate;
+
+        .button {
+            width: 50%;
+            display: table-cell;
+            vertical-align: middle;
+        }
+    }
+
     .details {
         margin-left: 1em;
         margin-right: 1em;
