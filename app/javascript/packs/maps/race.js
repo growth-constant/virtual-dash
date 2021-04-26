@@ -2,13 +2,11 @@ window.addEventListener('turbolinks:load', function () {
   function initMap() {
     var data = document.getElementsByClassName('map-container');
 
-    console.log(data)
-
     if (data && data.length) {
-      data.forEach( element => {
-        var polyline = data.dataset.polyline;
-        var lat = parseFloat(data.dataset.lat);
-        var lng = parseFloat(data.dataset.lng);
+      for (let element of data) {
+        var polyline = element.dataset.polyline;
+        var lat = parseFloat(element.dataset.lat);
+        var lng = parseFloat(element.dataset.lng);
 
         var map = new google.maps.Map( element, {
           center: {
@@ -31,7 +29,7 @@ window.addEventListener('turbolinks:load', function () {
         });
 
         line.setMap(map);
-      });
+      }
     }
   }
 
