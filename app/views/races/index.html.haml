@@ -11,5 +11,10 @@
   .ui.stackable.grid
     .three.column.row
       - @races.each do | race |
-        .column
-          = render partial: 'components/race-card', locals: {race: race}
+        - if current_user.present?
+          -  registered = Registration.user_registered_and_paid?(current_user, race)
+          .column
+            = render partial: 'components/race-card', locals: {race: race, registered: registered}
+        - else
+          .column
+            = render partial: 'components/race-card', locals: {race: race}

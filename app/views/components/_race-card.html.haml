@@ -25,10 +25,10 @@
           - if !current_user
             .fluid.ui.button.dark-blue.register.tiny
               = link_to 'Sign up', new_user_session_path, class: 'link-to-button'
-          - elsif current_user && @registered.empty?
+          - elsif current_user && registered.empty?
             .fluid.ui.button.dark-blue.register.tiny
               = link_to 'Register', new_race_registration_path(race), class: 'link-to-button'
-          - elsif current_user && !@registered.empty?
+          - elsif current_user && !registered.empty?
             .fluid.ui.button.dark-blue.register.tiny
               = link_to 'Status', personal_race_path(race), class: 'link-to-button'
       .right-button-column.eight.wide.centered.column
