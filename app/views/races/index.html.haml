@@ -9,7 +9,7 @@
 -##########
 .race-list-container
   .ui.stackable.grid
-    .four.column.row
+    .three.column.row
       - @races.each do | race |
         .column
           = render partial: 'components/race-card', locals: {race: race}

@@ -30,22 +30,6 @@
 .race-card {
     border: solid #eaeaea 1px;
 
-    .buttons {
-        display: table;
-        margin-left: 1em;
-        margin-right: 1em;
-        margin-bottom: 1em;
-        align-items: center;
-        border-spacing: .5em;
-        border-collapse: separate;
-
-        .button {
-            width: 50%;
-            display: table-cell;
-            vertical-align: middle;
-        }
-    }
-
     .details {
         margin-left: 1em;
         margin-right: 1em;
@@ -53,7 +37,7 @@
         .desc {
             color: $gray;
             font-size: 12px;
-            margin-bottom: 2em !important;
+            min-height: 68px;
             // Limit description to 4 lines
             overflow: hidden !important;
             display: -webkit-box;
@@ -61,18 +45,28 @@
             text-overflow: ellipsis;
             -webkit-box-orient: vertical;
         }
+    }
 
-        .title {
-            overflow: hidden !important;
-            display: -webkit-box;
-            -webkit-line-clamp: 1;
-            text-overflow: ellipsis;
-            -webkit-box-orient: vertical;
-        }
+    .left-button {
+        margin-left: 1em;
+        margin-bottom: 1em;
+    }
+
+    .left-button-column {
+        padding-right: 1% !important;
     }
 
     .map-container {
         height: 8em;
+    }
+
+    .right-button {
+        margin-right: 1em;
+        margin-bottom: 1em;
+    }
+
+    .right-button-column {
+        padding-left: 1% !important;
     }
 }
 
@@ -113,30 +107,6 @@
 
     .stats-card {
         padding: 1em;
-    }
-}
-
-////// Tablet //////
-@media (min-width: 425px) and (max-width: 768px) {
-    .race-card {
-        .details {
-            .title {
-                overflow: hidden !important;
-                display: -webkit-box;
-                -webkit-line-clamp: 1;
-                text-overflow: ellipsis;
-                -webkit-box-orient: vertical;
-            }
-        }
-
-        .buttons {
-            display: grid;
-
-            .button {
-                width: 100%;
-                margin-bottom: 0.5em;
-            }
-        }
     }
 }
 
