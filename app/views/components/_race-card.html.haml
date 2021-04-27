@@ -15,9 +15,10 @@
         }
     .one.row.column
       .sixteen.wide.column
-        .details
-          %h3.title= race.title
-          %p.desc= race.description
+        = link_to race do
+          .details
+            %h3.title= race.title
+            %p.desc= race.description
     .two.column.row
       .left-button-column.eight.wide.centered.column
         .left-button

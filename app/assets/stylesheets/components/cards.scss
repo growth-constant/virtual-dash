@@ -45,6 +45,14 @@
             text-overflow: ellipsis;
             -webkit-box-orient: vertical;
         }
+
+        .title {
+            color: $black;
+
+            &:hover {
+                color: $light-blue;
+            }
+        }
     }
 
     .left-button {
@@ -67,6 +75,10 @@
 
     .right-button-column {
         padding-left: 1% !important;
+    }
+
+    &:hover {
+        box-shadow: 0px 0px 11px 1px #6b778c4f !important;
     }
 }
 
