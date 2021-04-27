@@ -61,6 +61,14 @@
             text-overflow: ellipsis;
             -webkit-box-orient: vertical;
         }
+
+        .title {
+            overflow: hidden !important;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            text-overflow: ellipsis;
+            -webkit-box-orient: vertical;
+        }
     }
 
     .map-container {
@@ -92,10 +100,6 @@
 
 ////// Mobile //////
 @media (min-width: 320px) and (max-width: 768px) {
-    .stats-card {
-        padding: 1em;
-    }
-
     .auth-card-container {
         margin: 3em 1em 0em;
     }
@@ -104,6 +108,34 @@
         p {
             width: 90%;
             margin-bottom: 60%;
+        }
+    }
+
+    .stats-card {
+        padding: 1em;
+    }
+}
+
+////// Tablet //////
+@media (min-width: 425px) and (max-width: 768px) {
+    .race-card {
+        .details {
+            .title {
+                overflow: hidden !important;
+                display: -webkit-box;
+                -webkit-line-clamp: 1;
+                text-overflow: ellipsis;
+                -webkit-box-orient: vertical;
+            }
+        }
+
+        .buttons {
+            display: grid;
+
+            .button {
+                width: 100%;
+                margin-bottom: 0.5em;
+            }
         }
     }
 }

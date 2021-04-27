@@ -1,3 +1,10 @@
 .race-list-container {
   margin: 12em 6em 0em;
 }
+
+////// Mobile //////
+@media (min-width: 320px) and (max-width: 768px) {
+  .race-list-container {
+    margin: 9em 1em 0em;
+  }
+}
