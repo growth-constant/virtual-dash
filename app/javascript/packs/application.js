@@ -84,4 +84,6 @@ $(document).on('turbolinks:load', function () {
 });
 
 // Dropdowns
-$(document).on("turbolinks:load", () => $(".ui.dropdown").dropdown());
+$(document).on('turbolinks:load', () => {
+  $('.ui.dropdown').dropdown();
+});
