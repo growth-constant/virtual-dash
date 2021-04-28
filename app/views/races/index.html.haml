@@ -13,14 +13,14 @@
     .ui.action.input
       = text_field_tag :name, nil, placeholder: 'Search race name'
     .ui.selection.dropdown
-      %input{:name => :time, :type => 'hidden'}/
+      %input{:name => :time, :type => 'hidden', :value => (@params ? 'uwu': 'ono')}/
       %i.dropdown.icon.gray
       .default.text Current Races
       .scrollhint.menu
         .item{'data-value' => 'current'} Current races
         .item{'data-value' => 'upcoming'} Upcoming races
     .ui.selection.dropdown
-      %input{:name => :distance,:type => 'hidden'}/
+      %input{:name => :distance, :type => 'hidden'}/
       %i.dropdown.icon.gray
       .default.text Distance
       .scrollhint.menu
@@ -28,8 +28,8 @@
         .item{'data-value' => '10'} Up to 10km
         .item{'data-value' => '5'} Up to 5km
         .item{'data-value' => '1000000'} Any distance
-    = button_tag type: 'submit', class: 'ui icon button' do
-      %i.search.icon.gray
+    = button_tag 'Search', type: 'submit', class: 'ui button'
+    = link_to 'Clear', races_path, class: 'ui button'
   %br
   -# List races
   .ui.stackable.grid

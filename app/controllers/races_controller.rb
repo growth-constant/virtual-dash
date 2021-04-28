@@ -83,7 +83,8 @@ class RacesController < ApplicationController
     if params.as_json.size < 3
       @races = Race.all.page(params[:page])
     else
-      @races = Race.search(params.as_json).page(params[:page])
+      @params = params.as_json
+      @races = Race.search(@params).page(params[:page])
     end
   end
 
