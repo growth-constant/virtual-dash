@@ -11,36 +11,25 @@
   -# Search races
   = form_with(url: races_path, method: 'get', local: true) do
     .ui.action.input
-      = text_field_tag :q, nil, placeholder: 'Search race name'
-      = button_tag type: 'submit', class: 'ui icon button' do
-        %i.search.icon.gray
+      = text_field_tag :name, nil, placeholder: 'Search race name'
     .ui.selection.dropdown
-      %input{:name => 'any1', :type => 'hidden'}/
+      %input{:name => :time, :type => 'hidden'}/
       %i.dropdown.icon.gray
       .default.text Current Races
       .scrollhint.menu
-        .item{'data-value' => '0'} Current races
-        .item{'data-value' => '1'} Upcoming races
+        .item{'data-value' => 'current'} Current races
+        .item{'data-value' => 'upcoming'} Upcoming races
     .ui.selection.dropdown
-      %input{:name => 'any2', :type => 'hidden'}/
+      %input{:name => :distance,:type => 'hidden'}/
       %i.dropdown.icon.gray
       .default.text Distance
       .scrollhint.menu
-        .item{'data-value' => '0'} Up to 20km
-        .item{'data-value' => '1'} Up to 10km
-        .item{'data-value' => '2'} Up to 5km
-        .item{'data-value' => '3'} Less than 5km
-        .item{'data-value' => '4'} Any distance
-    .ui.selection.dropdown
-      %input{:name => 'any3', :type => 'hidden'}/
-      %i.dropdown.icon.gray
-      .default.text Number Registered
-      .scrollhint.menu
-        .item{'data-value' => '0'} Up to 200
-        .item{'data-value' => '1'} Up to 100
-        .item{'data-value' => '2'} Up to 50
-        .item{'data-value' => '3'} Less than 10
-        .item{'data-value' => '4'} Any number
+        .item{'data-value' => '20'} Up to 20km
+        .item{'data-value' => '10'} Up to 10km
+        .item{'data-value' => '5'} Up to 5km
+        .item{'data-value' => '1000000'} Any distance
+    = button_tag type: 'submit', class: 'ui icon button' do
+      %i.search.icon.gray
   %br
   -# List races
   .ui.stackable.grid

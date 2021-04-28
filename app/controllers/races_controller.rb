@@ -79,11 +79,12 @@ class RacesController < ApplicationController
   private
 
   def filter
-    @races = if params[:q].nil?
-               Race.all.page(params[:page])
-             else
-               Race.search(params[:q]).page(params[:page])
-             end
+    # When paginator is implemented, change the 3 for 4 in the conditional
+    if params.as_json.size < 3
+      @races = Race.all.page(params[:page])
+    else
+      @races = Race.search(params.as_json).page(params[:page])
+    end
   end
 
   def registered
