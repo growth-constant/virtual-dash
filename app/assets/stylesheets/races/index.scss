@@ -1,5 +1,20 @@
+@import '../variables/colors.scss';
+
 .race-list-container {
-  margin: 12em 6em 0em;
+  margin: 2em 6em 0em;
+}
+
+.race-search-container {
+  padding: 0em 6em 0em;
+  box-shadow: 0px 10px 24px 0px $light-shadow !important;
+
+  .search {
+    padding-bottom: 1em;
+  }
+
+  .search-item{
+    margin-right: 1em;
+  }
 }
 
 ////// Mobile //////
