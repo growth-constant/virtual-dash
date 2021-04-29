@@ -20,6 +20,16 @@
 ////// Mobile //////
 @media (min-width: 320px) and (max-width: 768px) {
   .race-list-container {
-    margin: 9em 1em 0em;
+    margin: 3em 1em 0em;
+  }
+
+  .race-search-container {
+    padding: 0em 1em 3em;
+
+    .search-item {
+      width: 100%;
+      margin-right: 0%;
+      margin-bottom: .5em;
+    }
   }
 }
