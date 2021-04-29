@@ -1,12 +1,3 @@
--# = render partial: 'shared/search'
--# = render partial: 'list'
-
--# %br
-
--# - if current_user.present? && (policy(current_user).admin? || policy(current_user).race_admin?)
--#   = link_to 'New Race', new_race_path
-
--##########
 .race-search-container
   = form_with(url: races_path, method: 'get', local: true, class: 'search') do
     .ui.icon.input.search-item
@@ -28,6 +19,8 @@
         .item{'data-value' => '10'} Up to 10km
         .item{'data-value' => '5'} Up to 5km
         .item{'data-value' => '1000000'} Any distance
+    - if current_user.present? && (policy(current_user).admin? || policy(current_user).race_admin?)
+      = link_to 'New Race', new_race_path, class: 'ui right floated button dark-blue'
     - if @params
       = link_to 'Clear', races_path, class: 'ui right floated button'
     = submit_tag 'Search', class: 'ui right floated button'
