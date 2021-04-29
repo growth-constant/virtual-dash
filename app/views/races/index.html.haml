@@ -10,17 +10,17 @@
 .race-search-container
   = form_with(url: races_path, method: 'get', local: true, class: 'search') do
     .ui.icon.input.search-item
-      = text_field_tag :name, nil, placeholder: 'Search race name'
+      = text_field_tag :name, nil, placeholder: 'Search race name', value: @params.nil? ? '' : @params['name']
       %i.search.icon.gray
     .ui.selection.dropdown.search-item
-      %input{:name => :time, :type => 'hidden'}/
+      %input{:name => :time, :type => 'hidden', value: @params.nil? ? '' : @params['time']}/
       %i.dropdown.icon.gray
       .default.text Current Races
       .scrollhint.menu
         .item{'data-value' => 'current'} Current races
         .item{'data-value' => 'upcoming'} Upcoming races
     .ui.selection.dropdown.search-item
-      %input{:name => :distance, :type => 'hidden'}/
+      %input{:name => :distance, :type => 'hidden', value: @params.nil? ? '' : @params['distance']}/
       %i.dropdown.icon.gray
       .default.text Distance
       .scrollhint.menu
@@ -30,7 +30,7 @@
         .item{'data-value' => '1000000'} Any distance
     - if @params
       = link_to 'Clear', races_path, class: 'ui right floated button'
-    = button_tag 'Search', type: 'submit', class: 'ui right floated button'
+    = submit_tag 'Search', class: 'ui right floated button'
 .race-list-container
   .ui.stackable.grid
     .three.column.row
