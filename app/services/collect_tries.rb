@@ -32,6 +32,7 @@ class CollectTries
       race_tries_for_user = RaceTry.user_segments(user, segment_id).pluck(:race_try_id)
 
       JSON.parse(res.body).each do |try|
+        puts trys
         next if race_tries_for_user.include? try['id']
 
         add_race_try(user, registration, try, registration.race.id)
@@ -52,6 +53,7 @@ class CollectTries
   end
 
   def segment(segment_id, user, race)
+    puts "### ENTRO ###"
     # segment_id=4677383&start_date_local=2020-11-01&end_date_local=2020-11-30
     # if last try is nil we can use the date of starting race
     last_try = RaceTry.last_try(user, segment_id).last

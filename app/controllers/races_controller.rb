@@ -20,6 +20,9 @@ class RacesController < ApplicationController
   end
 
   def personal
+    ## TRY SIDEKIQ THINGY ##
+    CollectTries.new.call
+
     @leaderboard = Leaderboard.new(@race, :all).call
     @personal =  PersonalLeaderboard.new(@leaderboard, current_user).call
   end
