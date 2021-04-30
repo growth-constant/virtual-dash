@@ -10,7 +10,30 @@ class Race < ApplicationRecord
   after_create :update_race
 
   # Scopes
-  scope :search, ->(q) { where(['title ILIKE ? OR description ILIKE ? ', "%#{q}%", "%#{q}%"]) }
+  scope :search, ->(params) { 
+    query_string = []
+
+    params.each do |name, value|
+      case name
+      when 'name'
+        if value != ''
+          query_string.push("title ILIKE '%#{value}%' OR description ILIKE '%#{value}%'")
+        end
+      when 'time'
+        if value == 'current'
+          query_string.push('startdate <= NOW()::timestamp AND enddate >= NOW()::timestamp')
+        elsif value == 'upcoming'
+          query_string.push('startdate >= NOW()::timestamp AND enddate >= NOW()::timestamp')
+        end
+      when 'distance'
+        if value != ''
+          query_string.push("distance <= #{value}")
+        end
+      end
+    end
+
+    where(query_string.join(' AND '))
+  }
 
   def total_purse
     ((price * registrations&.count) * 0.9).to_i
