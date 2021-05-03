@@ -68,9 +68,7 @@ class CollectTries
 
     start_date_local = last_try&.start&.strftime('%F') ? last_try&.start&.strftime('%F') : race&.startdate&.strftime('%F')
     if start_date_local.nil?
-      puts "### Resta de fechas"
-      puts race.created_at - 1.day
-      start_date_local = race&.created_at&.strftime('%F')
+      start_date_local = (race.created_at - 1.day).strftime('%F')
     end
 
     res = Faraday.get("#{API_ENDPOINT}/segment_efforts",
