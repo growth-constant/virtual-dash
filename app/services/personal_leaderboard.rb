@@ -8,7 +8,15 @@ class PersonalLeaderboard
   end
 
   def call
-    @overall_ranking = overall_ranking + 1
+
+    @overall_ranking = overall_ranking
+
+    if @overall_ranking.nil?
+      @overall_ranking = 0
+    else
+      @overall_ranking = @overall_ranking + 1
+    end
+
     {
       overall_ranking: @overall_ranking,
       category_ranking: @overall_ranking, # Change when categories come to life
