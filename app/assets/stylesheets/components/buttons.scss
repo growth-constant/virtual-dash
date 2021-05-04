@@ -13,9 +13,17 @@ a.link-to-inverted-button {
     color: black !important;
     background-color: transparent !important;
   }
-} 
+}
 
- .light-blue {
+a.link-to-inverted-blue-button {
+  color: $light-blue !important;
+  &:hover {
+    color: white !important;
+    background-color: transparent !important;
+  }
+}
+
+.light-blue {
   color: white !important;
   background-color: $light-blue !important;
   &:hover {

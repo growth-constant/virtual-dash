@@ -82,3 +82,8 @@ $(document).on('turbolinks:load', function () {
       $('#mobile-menu').sidebar('toggle');
   });
 });
+
+// Dropdowns
+$(document).on('turbolinks:load', () => {
+  $('.ui.dropdown').dropdown();
+});
