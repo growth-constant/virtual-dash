@@ -1,5 +1,28 @@
-%h1 New race
-
-= render 'form'
-
-= link_to 'Back', races_path
+.new-race-container
+  .ui.stackable.grid
+    .two.column.row
+      .column 
+        .title-container
+          %h1 New race
+      .column
+        .title-container
+          = link_to 'Back', races_path, class: 'ui right floated button'
+    .one.column.row
+      .column
+        = simple_form_for @race do |f|
+          .ui.stackable.grid
+            .two.column.row
+              .column
+                = f.input :title, class: 'ui input'
+                = f.input :description, class: 'ui input'
+                = f.input :country, class: 'ui input'
+                = f.input :state, class: 'ui input'
+                = f.input :city, class: 'ui input'
+                = f.input :segment_id, class: 'ui input'
+              .column
+                = f.input :startdate, label: 'Starts', class: 'ui input'
+                %br
+                = f.input :enddate, label: 'Ends', class: 'ui input'
+          %br
+          = f.button :submit
+-# = render 'form'
