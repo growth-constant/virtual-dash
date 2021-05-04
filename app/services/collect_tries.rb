@@ -30,18 +30,8 @@ class CollectTries
       segment_id = registration.race.segment_id
       res = segment(segment_id, user, registration.race)
       race_tries_for_user = RaceTry.user_segments(user, segment_id).pluck(:race_try_id)
-      
-      # puts "### Race name"
-      # puts registration.race.title
-      # puts "### Segment Efforts Res"
-      # puts res.body
-
-      # Hacer algo para cuando regrese un arreglo vacío
 
       JSON.parse(res.body).each do |try|
-        puts "###### ENTRO AL LOOP ######"
-        # puts "### Segment efforts try"
-        # puts try[0]['id'].class
         next if race_tries_for_user.include? try['id']
 
         add_race_try(user, registration, try, registration.race.id)
@@ -65,11 +55,7 @@ class CollectTries
     # segment_id=4677383&start_date_local=2020-11-01&end_date_local=2020-11-30
     # if last try is nil we can use the date of starting race
     last_try = RaceTry.last_try(user, segment_id).last
-
     start_date_local = last_try.nil? ? race.startdate : last_try.start
-    if start_date_local.nil?
-      start_date_local = (race.created_at - 1.day)
-    end
 
     res = Faraday.get("#{API_ENDPOINT}/segment_efforts",
       { segment_id: segment_id,
