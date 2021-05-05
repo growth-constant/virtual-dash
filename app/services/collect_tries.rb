@@ -31,6 +31,10 @@ class CollectTries
       res = segment(segment_id, user, registration.race)
       race_tries_for_user = RaceTry.user_segments(user, segment_id).pluck(:race_try_id)
 
+      if res.status == 400
+        puts "> STRAVA RETURNED AN ERROR #{res.status}: #{res.body}" 
+      end
+      
       JSON.parse(res.body).each do |try|
         next if race_tries_for_user.include? try['id']
 
