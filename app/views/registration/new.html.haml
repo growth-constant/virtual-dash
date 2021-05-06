@@ -26,6 +26,14 @@
         %label
           = "Accident waiver & release of liability agreement"
           %a{:href => "https://www.dropbox.com/s/tr039c4ozf6tlqn/Accident%20Waiver%20and%20Release%20of%20Liability.docx?dl=0"}= " (full terms)"
-  .row
-    .two.column.center.aligned
-      %button.new-registration-checkout.ui.disabled.primary.button{:"data-post-url" => checkout_session_race_registration_index_path(@race.id)} Pay Registration
+  - if current_user.is_subscribed == false
+    .row
+      .ui.warning.message
+        .header
+          You must a Strava subscriber to register to race!
+        %a{:href=>'https://www.strava.com/subscribe', class: 'link-to-anchor'} Subscribe
+        , then try tomorrow
+  - else
+    .row
+      .two.column.center.aligned
+        %button.new-registration-checkout.ui.disabled.primary.button{:"data-post-url" => checkout_session_race_registration_index_path(@race.id)} Pay Registration

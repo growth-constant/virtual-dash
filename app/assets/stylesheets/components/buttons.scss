@@ -7,6 +7,14 @@ a.link-to-button {
   }
 }
 
+a.link-to-anchor {
+  color: $light-blue !important;
+  &:hover {
+    text-decoration: underline;
+    background-color: transparent !important;
+  }
+}
+ 
 a.link-to-inverted-button {
   color: white !important;
   &:hover {
