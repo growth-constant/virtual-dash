@@ -9,27 +9,36 @@
             %a{ :href => full_path } Full Leaderboard
     .row
       .column
-        %table.ui.striped.table.leaderboard-table
-          %tbody
-            - leaderboard[:competitors].each_with_index do |competitor, index|
-              %tr
-                %td.trophy
+        -# Display a message if there's no tries on the race
+        - if leaderboard[:competitors].length == 0
+          .ui.icon.message
+            %i.bicycle.icon.black
+            .content
+              .header
+                Be the first to finish the race segment
+              %p You and others can track their tries on this segment. Use the Strava app to participate on this race.
+        - else
+          %table.ui.striped.table.leaderboard-table
+            %tbody
+              - leaderboard[:competitors].each_with_index do |competitor, index|
+                %tr
+                  %td.trophy
+                    - if index === 0
+                      = image_tag 'leaderboard-1st-place-icon.svg'
+                    - elsif index === 1
+                      = image_tag 'leaderboard-2nd-place-icon.svg'
+                    - elsif index === 2
+                      = image_tag 'leaderboard-3rd-place-icon.svg'
+                  %td
+                    .user-container
+                      %object{data: competitor.image, type: 'image/jpg', class: 'picture-profile'}
+                        = image_tag 'default-user', alt: 'User profile', class: 'picture-profile'
+                      .user-name= competitor.name
+                  %td= "#{Time.at(competitor.duration).utc.strftime('%H:%M:%S')}"
+                  %td= "#{distance} km"
                   - if index === 0
-                    = image_tag 'leaderboard-1st-place-icon.svg'
+                    %td= "$#{leaderboard[:prizes][:first]}"
                   - elsif index === 1
-                    = image_tag 'leaderboard-2nd-place-icon.svg'
+                    %td= "$#{leaderboard[:prizes][:second]}"
                   - elsif index === 2
-                    = image_tag 'leaderboard-3rd-place-icon.svg'
-                %td
-                  .user-container
-                    %object{data: competitor.image, type: 'image/jpg', class: 'picture-profile'}
-                      = image_tag 'default-user', alt: 'User profile', class: 'picture-profile'
-                    .user-name= competitor.name
-                %td= "#{Time.at(competitor.duration).utc.strftime('%H:%M:%S')}"
-                %td= "#{distance} km"
-                - if index === 0
-                  %td= "$#{leaderboard[:prizes][:first]}"
-                - elsif index === 1
-                  %td= "$#{leaderboard[:prizes][:second]}"
-                - elsif index === 2
-                  %td= "$#{leaderboard[:prizes][:third]}"
+                    %td= "$#{leaderboard[:prizes][:third]}"

@@ -1,0 +1,18 @@
+.new-race-container {
+  margin: 1em 9em 0em;
+
+  .title-container {
+    margin-top: 1em;
+  }
+}
+
+////// Mobile //////
+@media (min-width: 320px) and (max-width: 768px) { 
+  .new-race-container {
+    margin: 0em 1em 0em;
+
+    .title-container {
+      margin-top: 0em;
+    }
+  }  
+}

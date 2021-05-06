@@ -2,10 +2,8 @@
   %h1= @race.title
   %p= @race.description
   - if !current_user
-    .ui.button.large.light-blue
-      = link_to 'Sign up', new_user_session_path, class: 'link-to-button'
+    = link_to 'Sign up', new_user_session_path, class: ' ui button large light-blue'
   - elsif current_user && @registered.empty?
-    .ui.button.large.light-blue
-      %a{href: "/races/#{race.id}/registration/new", class: 'link-to-button'} Register now
+    = link_to 'Register now', new_race_registration_path(@race), class: 'ui button large light-blue'
   - elsif current_user && !@registered.empty?
     .ui.disabled.button.large.light-blue Registered!

@@ -47,6 +47,7 @@ class RacesController < ApplicationController
 
     respond_to do |format|
       if @race.save
+        CollectTries.new.call # Collect new tries after a new race is crated
         format.html { redirect_to @race, notice: 'Race was successfully created.' }
         format.json { render :show, status: :created, location: @race }
       else
