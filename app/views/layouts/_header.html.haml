@@ -21,7 +21,8 @@
           = link_to 'Register', new_user_session_path, class: 'link-to-button'
     - else
       .ui.simple.dropdown.item
-        %img{src: current_user.image, alt: 'Profile pic', class: 'profile-pic'}
+        %object{data: current_user.image, type: 'image/jpg', class: 'profile-pic'}
+          = image_tag 'default-user', alt: 'Profile pic', class: 'profile-pic'
         = current_user.name
         %i.dropdown.icon.black
         .menu
