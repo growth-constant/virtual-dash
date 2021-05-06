@@ -31,13 +31,21 @@ class CollectTries
       res = segment(segment_id, user, registration.race)
       race_tries_for_user = RaceTry.user_segments(user, segment_id).pluck(:race_try_id)
 
-      puts "> STRAVA'S RESPONSE (#{res.status}): #{res.body}" 
-      
-      JSON.parse(res.body).each do |try|
-        next if race_tries_for_user.include? try['id']
-
-        add_race_try(user, registration, try, registration.race.id)
+      if res.status == 200
+        if user.is_subscribed == false
+          set_user_stripe_subscription_status(user, true) # If the response is fulfilled, it means that the user is a subscriptor. 
+        end
+        JSON.parse(res.body).each do |try|
+          next if race_tries_for_user.include? try['id']
+          
+          add_race_try(user, registration, try, registration.race.id)
+        end
+      elsif res.status == 402 && user.is_subscribed == true
+        set_user_stripe_subscription_status(user, false)
+      else
+        puts "> ERROR AT STRAVA'S RESPONSE (#{res.status}): #{res.body}" 
       end
+
     end
   end
 
@@ -94,5 +102,9 @@ class CollectTries
     else
       false
     end
+  end
+
+  def set_user_stripe_subscription_status(user, is_sub)
+    user.update(is_subscribed: is_sub)
   end
 end
