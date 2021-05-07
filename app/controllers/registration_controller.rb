@@ -9,6 +9,11 @@ class RegistrationController < ApplicationController
        && !@registration.status.require_payment?
       # redirect to correct page
       redirect_to @race, alert: 'You are already registered'
+    elsif @registration.status.require_payment?
+      @registration.session_id = nil
+      @registration.agreements_signed = false
+      @registration.status = :require_agreements
+      @registration.save!
     else
       authorize @registration, :new?
       @registration.save
