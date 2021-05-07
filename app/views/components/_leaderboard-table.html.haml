@@ -32,7 +32,7 @@
                   %td
                     .user-container
                       %object{data: competitor.image, type: 'image/jpg', class: 'picture-profile'}
-                        = image_tag 'default-user.jpeg', alt: 'User profile', class: 'picture-profile'
+                        = image_tag 'default-user.jpg', alt: 'User profile', class: 'picture-profile'
                       .user-name= competitor.name
                   %td= "#{Time.at(competitor.duration).utc.strftime('%H:%M:%S')}"
                   %td= "#{distance} km"
