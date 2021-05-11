@@ -1,4 +1,5 @@
 class RacesController < ApplicationController
+  before_action :check_payment_status, only: %i[show]
   before_action :set_race, only: %i[show edit update destroy leaderboard general_classification personal]
   before_action :set_profile, only: %i[index]
   before_action :registered, only: %i[show leaderboard]
@@ -93,6 +94,23 @@ class RacesController < ApplicationController
     return unless current_user
 
     @registered = Registration.user_registered_and_paid?(current_user, @race)
+  end
+
+  # Check if payment status is the same on Stripe
+  def check_payment_status
+    race = Race.find(params[:id])
+    registration = Registration.race_registration(current_user, race)
+    if registration.status == 'require_payment'
+      stripe_res = Stripe::Checkout::Session.retrieve(
+        registration.session_id
+      )
+      if stripe_res.payment_status == 'paid'
+        registration.update(
+          status: 'registered',
+          payment_status: 'paid'
+        )
+      end
+    end
   end
 
   # Use callbacks to share common setup or constraints between actions.
