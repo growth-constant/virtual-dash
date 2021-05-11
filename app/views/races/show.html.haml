@@ -23,6 +23,7 @@
 .enddate-container
   %p.text= "Registation closes on #{@race.enddate.strftime('%B %d, %Y')}"
 .race-details-container
+  %p= @payment.payment_status
   .ui.stackable.grid
     .row
       .eight.wide.column

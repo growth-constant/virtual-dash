@@ -19,6 +19,10 @@ class Registration < ApplicationRecord
   ], default: :unpaid
 
   # Scopes
+  scope :race_registration, lambda { |user, race|
+    where(user_id: user.id, race_id: race.id).first
+  }
+
   scope :user_registered_and_paid?, lambda { |user, race|
     where(user_id: user.id,
           race_id: race.id,
