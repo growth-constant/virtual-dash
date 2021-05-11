@@ -1,4 +1,5 @@
 class RacesController < ApplicationController
+  before_action :check_payment_status, only: %i[show]
   before_action :set_race, only: %i[show edit update destroy leaderboard general_classification personal]
   before_action :set_profile, only: %i[index]
   before_action :registered, only: %i[show leaderboard]
@@ -30,7 +31,6 @@ class RacesController < ApplicationController
     @lat = coordinates[i][0]
     @lng = coordinates[i][1]
     @leaderboard = Leaderboard.new(@race).call
-    check_payment_status(@race)
   end
 
   def new
@@ -96,7 +96,9 @@ class RacesController < ApplicationController
     @registered = Registration.user_registered_and_paid?(current_user, @race)
   end
 
-  def check_payment_status(race)
+  # Check if payment status is the same on Stripe
+  def check_payment_status
+    race = Race.find(params[:id])
     registration = Registration.race_registration(current_user, race)
     if registration.status == 'require_payment'
       stripe_res = Stripe::Checkout::Session.retrieve(
