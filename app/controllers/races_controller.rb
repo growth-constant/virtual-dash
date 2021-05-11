@@ -30,7 +30,7 @@ class RacesController < ApplicationController
     @lat = coordinates[i][0]
     @lng = coordinates[i][1]
     @leaderboard = Leaderboard.new(@race).call
-    @payment = check_payment_status(@race)
+    check_payment_status(@race)
   end
 
   def new
@@ -98,9 +98,17 @@ class RacesController < ApplicationController
 
   def check_payment_status(race)
     registration = Registration.race_registration(current_user, race)
-    stripe_res = Stripe::Checkout::Session.retrieve(
-      registration.session_id
-    )
+    if registration.status == 'require_payment'
+      stripe_res = Stripe::Checkout::Session.retrieve(
+        registration.session_id
+      )
+      if stripe_res.payment_status == 'paid'
+        registration.update(
+          status: 'registered',
+          payment_status: 'paid'
+        )
+      end
+    end
   end
 
   # Use callbacks to share common setup or constraints between actions.
