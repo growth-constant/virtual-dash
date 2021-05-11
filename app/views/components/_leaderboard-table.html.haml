@@ -35,7 +35,7 @@
                         = image_tag 'default-user.jpg', alt: 'User profile', class: 'picture-profile'
                       .user-name= competitor.name
                   %td= "#{Time.at(competitor.duration).utc.strftime('%H:%M:%S')}"
-                  %td= "#{distance} km"
+                  %td= "#{(distance / 1000).round(2)} km"
                   - if index === 0
                     %td= "$#{leaderboard[:prizes][:first]}"
                   - elsif index === 1
