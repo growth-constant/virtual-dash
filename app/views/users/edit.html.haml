@@ -1,15 +1,1 @@
-%br
-.ui.stackable.three.column.centered.grid
-  - if @user.is_subscribed == false
-    .row
-      .two.column
-        .ui.warning.message
-          .header
-            You must be a Strava premium subscriber to register to a race
-          %a{:href=>'https://www.strava.com/subscribe', class: 'link-to-anchor'} Subscribe
-          , then register to race.
-  .row
-    .two.column
-      %h1 Editing Profile
-      = render 'form'
-      = link_to 'Back', races_path
+= render 'edit-form'

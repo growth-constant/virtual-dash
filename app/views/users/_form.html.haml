@@ -1,7 +1,0 @@
-= simple_form_for @user do |f|
-  = f.input :email, input_html: { value: '', placeholder: 'your@email.com', input_wrapper_html: { class: 'error' } }, hint: 'Important advice: You can continue with complete your sign up for your account if  you modify to your e-mail address'
-  = f.input :name
-  = f.input :gender, collection: User::GENDER
-  = f.input :phone
-  = f.input :birthdate, as: :date, html5: true
-  = f.button :submit
