@@ -27,7 +27,7 @@
     .row
       .eight.wide.column
         %h1{class: 'race-name'}= @race.title
-        %p{class: 'price'}= "$#{@race.price.to_i}"
+        %p{class: 'price-and-dates'}= "$#{@race.price.to_i} | From #{@race.startdate.strftime('%B %d')} to #{@race.enddate.strftime('%B %d')}"
         %h2 Description
         %p{class: 'desc'}= @race.description
       .eight.wide.colum.map-and-button
