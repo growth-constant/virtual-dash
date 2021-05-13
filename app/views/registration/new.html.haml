@@ -11,21 +11,21 @@
         %input.agreements{:type => "checkbox", :name=> "privacy"}
         %label 
           = "Privacy agreement"
-          = link_to('(full terms)', '/docs/privacy-policy.pdf', {:target => '_blank'})
+          = link_to('(full terms)', '/docs/privacy-policy.pdf', {:target => '_blank', :class => 'link-to-anchor'})
   .row
     .three.column
       .ui.checkbox
         %input.agreements{:type => "checkbox", :name=> "terms"}
         %label
           = "Terms of use agreement"
-          = link_to('(full terms)', '/docs/terms-of-use.pdf', {:target => '_blank'})
+          = link_to('(full terms)', '/docs/terms-of-use.pdf', {:target => '_blank', :class => 'link-to-anchor'})
   .row
     .three.column
       .ui.checkbox
         %input.agreements{:type => "checkbox", :name=> "release"}
         %label
           = "Accident waiver & release of liability agreement"
-          = link_to('(full terms)', '/docs/release-liability.pdf', {:target => '_blank'})
+          = link_to('(full terms)', '/docs/release-liability.pdf', {:target => '_blank', :class => 'link-to-anchor'})
   - if current_user.is_subscribed == false
     .row
       .ui.warning.message
