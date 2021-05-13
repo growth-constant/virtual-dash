@@ -5,19 +5,19 @@
         %a{:href => '/', class: 'no-hover'}
           = image_tag('logo-white.svg', alt: 'Virtual Dash', class: 'logo-nav')
         %p{class: 'footer'}
-          %a{:href => '/', class: 'footer no-hover'} Race
+          = link_to('Race', races_path, {:class => 'footer no-hover'})
         %p
-          %a{:href => '/', class: 'footer no-hover'} About
+          = link_to('About', '/', {:class => 'footer no-hover'})
         %p
-          %a{:href => '/', class: 'footer no-hover'} Blog
+          = link_to('Blog', '/', {:class => 'footer no-hover'})
       .column
         %p{class: 'footer-title'} Legal
         %p{class: 'footer'}
-          %a{:href => '/', class: 'footer no-hover'} Privacy policy
+          = link_to('Privacy policy', '/docs/privacy-policy.pdf', {:target => '_blank', :class => 'footer no-hover'})
         %p
-          %a{:href => '/', class: 'footer no-hover'} Terms and condition
+          = link_to('Terms and condition', '/docs/terms-of-use.pdf', {:target => '_blank', :class => 'footer no-hover'})
         %p
-          %a{:href => '/', class: 'footer no-hover'} Cookies
+          = link_to('Cookies', '/', {:target => '_blank', :class => 'footer no-hover'})
       .column
         %p{class: 'footer-title'} Subscribe
         %p{class: 'footer'} Get the latest news and articles to your inbox every month.

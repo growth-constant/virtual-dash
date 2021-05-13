@@ -11,21 +11,21 @@
         %input.agreements{:type => "checkbox", :name=> "privacy"}
         %label 
           = "Privacy agreement"
-          %a{:href => "https://app.termly.io/document/privacy-policy/dcc9ffbc-34cd-47df-8c53-d67b9bc3d962"}= " (full terms)"
+          = link_to('(full terms)', '/docs/privacy-policy.pdf', {:target => '_blank', :class => 'link-to-anchor'})
   .row
     .three.column
       .ui.checkbox
         %input.agreements{:type => "checkbox", :name=> "terms"}
         %label
           = "Terms of use agreement"
-          %a{:href => "https://app.termly.io/document/terms-of-use-for-ios-app/f2fed715-a6ee-45c0-b02b-5e07a5eb9238"}= " (full terms)"
+          = link_to('(full terms)', '/docs/terms-of-use.pdf', {:target => '_blank', :class => 'link-to-anchor'})
   .row
     .three.column
       .ui.checkbox
         %input.agreements{:type => "checkbox", :name=> "release"}
         %label
           = "Accident waiver & release of liability agreement"
-          %a{:href => "https://www.dropbox.com/s/tr039c4ozf6tlqn/Accident%20Waiver%20and%20Release%20of%20Liability.docx?dl=0"}= " (full terms)"
+          = link_to('(full terms)', '/docs/release-liability.pdf', {:target => '_blank', :class => 'link-to-anchor'})
   - if current_user.is_subscribed == false
     .row
       .ui.warning.message
