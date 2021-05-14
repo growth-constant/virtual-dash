@@ -20,8 +20,12 @@
               = link_to 'Personal status', personal_race_path(@race), class: 'link-to-button'
           .ui.inverted.button.large
             = link_to 'Live results', leaderboard_race_path(@race), class: 'link-to-inverted-button'
-.enddate-container
-  %p.text= "Registation closes on #{@race.enddate.strftime('%B %d, %Y')}"
+- if @race.enddate < Time.now 
+  .enddate-container{:style => 'background-color: red !important;'}
+    %p.text= "The race ended on #{@race.enddate.strftime('%B %d, %Y')}"
+- else
+  .enddate-container
+    %p.text= "Registation closes on #{@race.enddate.strftime('%B %d, %Y')}"
 .race-details-container
   .ui.stackable.grid
     .row
