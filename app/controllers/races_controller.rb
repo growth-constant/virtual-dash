@@ -98,17 +98,19 @@ class RacesController < ApplicationController
 
   # Check if payment status is the same on Stripe
   def check_payment_status
-    race = Race.find(params[:id])
-    registration = Registration.race_registration(current_user, race)
-    if registration.status == 'require_payment'
-      stripe_res = Stripe::Checkout::Session.retrieve(
-        registration.session_id
-      )
-      if stripe_res.payment_status == 'paid'
-        registration.update(
-          status: 'registered',
-          payment_status: 'paid'
+    if current_user
+      race = Race.find(params[:id])
+      registration = Registration.race_registration(current_user, race)
+      if registration.status == 'require_payment'
+        stripe_res = Stripe::Checkout::Session.retrieve(
+          registration.session_id
         )
+        if stripe_res.payment_status == 'paid'
+          registration.update(
+            status: 'registered',
+            payment_status: 'paid'
+          )
+        end
       end
     end
   end
