@@ -13,15 +13,22 @@
             .ui.button.large.light-blue
               = link_to 'Sign up', new_user_session_path, class: 'link-to-button'
           - elsif current_user && @registered.empty?
-            .ui.button.large.light-blue
-              = link_to 'Register now', new_race_registration_path(@race), class: 'link-to-button'
+            - if @race.enddate < Time.now 
+              .ui.disabled.button.large.light-blue Race endend
+            - else
+              .ui.button.large.light-blue
+                = link_to 'Register now', new_race_registration_path(@race), class: 'link-to-button'
           - elsif current_user && !@registered.empty?
             .ui.button.large.light-blue
               = link_to 'Personal status', personal_race_path(@race), class: 'link-to-button'
           .ui.inverted.button.large
             = link_to 'Live results', leaderboard_race_path(@race), class: 'link-to-inverted-button'
-.enddate-container
-  %p.text= "Registation closes on #{@race.enddate.strftime('%B %d, %Y')}"
+- if @race.enddate < Time.now 
+  .enddate-container{:style => 'background-color: red !important;'}
+    %p.text= "The race ended on #{@race.enddate.strftime('%B %d, %Y')}"
+- else
+  .enddate-container
+    %p.text= "Registation closes on #{@race.enddate.strftime('%B %d, %Y')}"
 .race-details-container
   .ui.stackable.grid
     .row
@@ -35,8 +42,11 @@
           .ui.button.large.light-blue.register
             = link_to 'Sign up', new_user_session_path, class: 'link-to-button'
         - elsif current_user && @registered.empty?
-          .ui.button.large.light-blue.register
-            = link_to 'Register now', new_race_registration_path(@race), class: 'link-to-button'
+          - if @race.enddate < Time.now 
+            .ui.disabled.button.large.light-blue.register Race endend
+          - else
+            .ui.button.large.light-blue.register
+              = link_to 'Register now', new_race_registration_path(@race), class: 'link-to-button'
         - elsif current_user && !@registered.empty?
           .ui.button.large.light-blue.register
             = link_to 'Personal status', personal_race_path(@race), class: 'link-to-button'
