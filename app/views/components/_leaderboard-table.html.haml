@@ -19,6 +19,13 @@
               %p You and others can track their tries on this segment. Use the Strava app to participate on this race.
         - else
           %table.ui.striped.table.leaderboard-table
+            %thead
+              %tr
+                %th 
+                %th Name
+                %th Time
+                %th Tries
+                %th Price
             %tbody
               - leaderboard[:competitors].each_with_index do |competitor, index|
                 %tr
@@ -35,7 +42,6 @@
                         = image_tag 'default-user.jpg', alt: 'User profile', class: 'picture-profile'
                       .user-name= competitor.name
                   %td= "#{Time.at(competitor.duration).utc.strftime('%H:%M:%S')}"
-                  %td= "#{(distance / 1000).round(2)} km"
                   - user_tries = leaderboard[:users_tries].select{ |user| user[:user_id] == competitor.id }
                   %td= "#{user_tries[0][:tries]}"
                   - if index === 0
