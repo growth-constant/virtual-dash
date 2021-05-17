@@ -31,11 +31,6 @@ class Leaderboard
 
   def users_tries
     @users_tries = RaceTry.tries_per_user(@race)
-    
-    p '>>>><<<<<'
-    try = @users_tries.select { |user| user[:user_id] == 1 }
-    p try[0][:tries]
-
   end
 
   def total_purse
