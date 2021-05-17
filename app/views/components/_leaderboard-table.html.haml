@@ -36,6 +36,8 @@
                       .user-name= competitor.name
                   %td= "#{Time.at(competitor.duration).utc.strftime('%H:%M:%S')}"
                   %td= "#{(distance / 1000).round(2)} km"
+                  - user_tries = leaderboard[:users_tries].select{ |user| user[:user_id] == competitor.id }
+                  %td= "#{user_tries[0][:tries]}"
                   - if index === 0
                     %td= "$#{leaderboard[:prizes][:first]}"
                   - elsif index === 1

@@ -14,6 +14,12 @@ class RaceTry < ApplicationRecord
     where(user_id: user.id, segment_id: segment_id).order('start DESC').limit(1)
   }
 
+  scope :tries_per_user, lambda { | race |
+    select('user_id, COUNT(*) as tries')
+      .where('race_id': race.id)
+      .group(:user_id)
+  }
+
   scope :leaders, lambda { |race, limit|
     find_by_sql("
       SELECT *
