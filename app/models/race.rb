@@ -36,7 +36,9 @@ class Race < ApplicationRecord
   }
 
   def total_purse
-    ((price * registrations&.count) * 0.9).to_i
+    # If there's no price set on the DB, default price will be 10 USD
+    checked_price = (price == 0) ? 10 : price 
+    ((checked_price * registrations&.count) * 0.9).to_i
   end
 
   private
