@@ -14,6 +14,7 @@ class Leaderboard
       first_time: RaceTry.leaders(@race, 1)&.first&.duration,
       tries_counter: @race&.race_tries&.count,
       race_segment: @race.segment_id,
+      users_tries: users_tries,
       prizes: {
         first: (total_purse / 2).to_i,
         second: (total_purse / 3).to_i,
@@ -26,6 +27,10 @@ class Leaderboard
 
   def competitors
     @limit == :all ? RaceTry.leaders(@race, 10000) : RaceTry.leaders(@race, 3)
+  end
+
+  def users_tries
+    @users_tries = RaceTry.tries_per_user(@race)
   end
 
   def total_purse
