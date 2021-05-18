@@ -61,6 +61,7 @@
         }
     .row
       .sixteen.wide.column
-        = render :partial => 'components/leaderboard-table', :locals => {:full_path => nil, :distance => @race.distance, :title => 'Leaderboard', :leaderboard => @leaderboard}
-        .ui.button.large.dark-blue
-          = link_to 'View more', leaderboard_race_path(@race), class: 'link-to-button'
+        .leaderboard-table
+          = render :partial => 'components/leaderboard-table', :locals => {:full_path => nil, :distance => @race.distance, :title => 'Leaderboard', :leaderboard => @leaderboard}
+          .ui.button.large.dark-blue
+            = link_to 'View more', leaderboard_race_path(@race), class: 'link-to-button'
