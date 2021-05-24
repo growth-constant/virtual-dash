@@ -21,8 +21,13 @@ class RacesController < ApplicationController
   end
 
   def personal
+    if params[:id]
+      user = User.find(params[:id])
+    else
+      user = current_user
+    end
     @leaderboard = Leaderboard.new(@race, :all).call
-    @personal =  PersonalLeaderboard.new(@leaderboard, current_user).call
+    @personal =  PersonalLeaderboard.new(@leaderboard, user).call
   end
 
   def show

@@ -2,9 +2,9 @@
 
 # Service for Personal Leaderboard
 class PersonalLeaderboard
-  def initialize(leaderboard, me)
+  def initialize(leaderboard, user)
     @leaderboard = leaderboard
-    @me = me
+    @user = user
   end
 
   def call
@@ -28,7 +28,7 @@ class PersonalLeaderboard
   private
 
   def overall_ranking
-    @leaderboard[:competitors].index{ |competitor| competitor.id == @me.id}
+    @leaderboard[:competitors].index{ |competitor| competitor.id == @user.id}
   end
 
   def current_prize(overall_ranking)
@@ -45,7 +45,7 @@ class PersonalLeaderboard
   end
 
   def segment_activity
-    RaceTry.user_segments(@me, @leaderboard[:race_segment])
+    RaceTry.user_segments(@user, @leaderboard[:race_segment])
   end
 
 end

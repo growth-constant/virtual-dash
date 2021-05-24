@@ -20,7 +20,7 @@
                 = link_to 'Register now', new_race_registration_path(@race), class: 'link-to-button'
           - elsif current_user && !@registered.empty?
             .ui.button.large.light-blue
-              = link_to 'Personal status', personal_race_path(@race), class: 'link-to-button'
+              = link_to 'Personal status', race_personal_path(@race), class: 'link-to-button'
           .ui.inverted.button.large
             = link_to 'Live results', leaderboard_race_path(@race), class: 'link-to-inverted-button'
 - if @race.enddate < Time.now 
@@ -49,7 +49,7 @@
               = link_to 'Register now', new_race_registration_path(@race), class: 'link-to-button'
         - elsif current_user && !@registered.empty?
           .ui.button.large.light-blue.register
-            = link_to 'Personal status', personal_race_path(@race), class: 'link-to-button'
+            = link_to 'Personal status', race_personal_path(@race), class: 'link-to-button'
         - if current_user.present? && (policy(current_user).admin? || policy(@race).edit?)
           .ui.button.large.light-blue.register
             = link_to 'Edit race', edit_race_path(@race), class: 'link-to-button'
