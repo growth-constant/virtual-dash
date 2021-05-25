@@ -12,6 +12,6 @@
         .column
           = render :partial => 'components/stats-card', :locals => {:name => 'Total Purse', :icon => 'leaderboard-purse-icon.svg', :number => "$#{@leaderboard[:total_purse]}"}
   .multi-leaderboard-container
-    = render :partial => 'components/leaderboard-table', :locals => {:full_path => '/', :distance => @race.distance, :title => 'Overall', :leaderboard => @leaderboard}
+    = render :partial => 'components/leaderboard-table', :locals => {:full_path => '/', :race_id => @race.id, :distance => @race.distance, :title => 'Overall', :leaderboard => @leaderboard}
   .leaderboard-race-extract
     = render :partial => 'components/race-extract'
