@@ -40,7 +40,7 @@
                     .user-container
                       %object{data: competitor.image, type: 'image/jpg', class: 'picture-profile'}
                         = image_tag 'default-user.jpg', alt: 'User profile', class: 'picture-profile'
-                      = link_to competitor.name, personal_race_path(race_id, competitor.id), class: 'link-to-anchor user-name'
+                      = link_to competitor.name, personal_race_path(race_id, competitor.id), class: 'link-to-anchor-leaderboard-table user-name'
                   %td= "#{Time.at(competitor.duration).utc.strftime('%H:%M:%S')}"
                   - user_tries = leaderboard[:users_tries].select{ |user| user[:user_id] == competitor.id }
                   %td= "#{user_tries[0][:tries]}"
