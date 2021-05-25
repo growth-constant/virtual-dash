@@ -1,5 +1,6 @@
 .nav-container
-  = render :partial => 'components/breadcrumb', :locals => {:nav => [{:name => 'Races', :path => '/races'}, {:name => @race.title, :path => "/races/#{@race.id}"}, {:name => 'Personal race status'}]}
+  - breadcrumb_title = ( @user == current_user ) ? 'Personal race status' : "#{@user[:name]}'s race status"
+  = render :partial => 'components/breadcrumb', :locals => {:nav => [{:name => 'Races', :path => '/races'}, {:name => @race.title, :path => "/races/#{@race.id}"}, {:name => breadcrumb_title}]}
 .leaderboard-shared-container
   .stats-cards-container
     .ui.stackable.grid

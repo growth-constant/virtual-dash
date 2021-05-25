@@ -1,0 +1,40 @@
+@import '../variables/colors.scss';
+
+a.link-to-anchor {
+  color: $light-blue !important;
+  &:hover {
+    text-decoration: underline;
+    background-color: transparent !important;
+  }
+}
+
+a.link-to-anchor-leaderboard-table {
+  color: $black !important;
+  &:hover {
+    text-decoration: underline;
+    background-color: transparent !important;
+  }
+}
+
+a.link-to-button {
+  color: white !important;
+  &:hover {
+    background-color: transparent !important;
+  }
+}
+ 
+a.link-to-inverted-button {
+  color: white !important;
+  &:hover {
+    color: black !important;
+    background-color: transparent !important;
+  }
+}
+
+a.link-to-inverted-blue-button {
+  color: $light-blue !important;
+  &:hover {
+    color: white !important;
+    background-color: transparent !important;
+  }
+}
