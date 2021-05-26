@@ -24,4 +24,5 @@
                   %i.green.caret.up.icon
                 - else
                   %i.gray.caret.right.icon
-                %span.segment-desc= "Try recorded on #{Time.at(segment.start).utc.strftime('%d/%m/%y at %H:%M')} with a time of #{Time.at(segment.duration).utc.strftime('%H:%M:%S')}"
+                %a{:target=> '_blank', :href => "https://www.strava.com/segment_efforts/#{segment.race_try_id}", :class => 'segment-desc link-to-anchor-leaderboard-table'}
+                  = "Try recorded on #{Time.at(segment.start).utc.strftime('%d/%m/%y at %H:%M')} with a time of #{Time.at(segment.duration).utc.strftime('%H:%M:%S')}"
