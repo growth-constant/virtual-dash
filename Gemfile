@@ -64,6 +64,8 @@ group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'rspec-rails', '~> 4.0', '>= 4.0.1'
   gem 'shoulda-matchers', '~> 4.4', '>= 4.4.1'
+  # Adds testing for Sidekiq jobs via a collection of matchers and helpers
+  gem 'rspec-sidekiq' 
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
