@@ -1,8 +1,18 @@
 !!!
 %html
   %head
+    %title Virtual Dash
     %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}/
+    %script{:src => "https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"}
+    %link{:href => "https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.7/dist/semantic.min.css", :rel => "stylesheet", :type => "text/css"}/
+    %script{:src => "https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.7/dist/semantic.min.js"}
     :css
+      * {
+        background-color: #f8f8f8;
+      }
       /* Email styles need to be inline */
   %body
-    = yield
+    .ui.stackable.three.column.centered.grid
+      .row
+        .column
+          = yield
