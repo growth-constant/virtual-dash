@@ -7,10 +7,16 @@
     %link{:href => "https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.7/dist/semantic.min.css", :rel => "stylesheet", :type => "text/css"}/
     %script{:src => "https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.7/dist/semantic.min.js"}
     :css
-      * {
+      body {
+        height: 100vh;
         background-color: #f8f8f8;
       }
-      /* Email styles need to be inline */
+      .card {
+        padding: 3em;
+        margin-top: 15vh;
+        border-radius: 12px;
+        box-shadow: 0px 0px 11px 1px #6b778c4f !important;
+      }
   %body
     .ui.stackable.three.column.centered.grid
       .row

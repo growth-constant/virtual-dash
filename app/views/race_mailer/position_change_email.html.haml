@@ -1,3 +1,19 @@
-%h1 Your postion has changed Luis!
-%p On the race "Lola's Walk" you now rank 2nd on the leaderboard.
-%p You can see more here or going to https://www.virtualdash.co/races/4/leaderboard .
+:css
+  .button {
+    color: white !important;
+    margin-top: 5em !important;
+    background-color: #081f3f !important;
+  }
+  .position-change-container {
+    height: 10em;
+  }
+.position-change-container
+  .card
+    = image_tag 'logo.svg', alt: 'Virtual Dash'
+    %h3 Your postion has changed Luis!
+    %p On the race "Lola's Walk" you now rank 2nd on the leaderboard.
+    = link_to 'Check it out', race_url(1), class: 'ui fluid button'
+    %small 
+      Or paste 
+      = link_to 'virtualdash.co/races/1/leaderboard ', race_url(1)
+      in your browser.
