@@ -1,10 +1,19 @@
 class RaceMailer < ApplicationMailer
-  default from: 'noreply@growthconstant.com'
+  default from: 'noreply@virtualdash.co'
 
   def position_change_email
+    @user = {
+      :first_name => 'Layton',
+      :email => 'andre@thetail.xyz'
+    }
+    @race = {
+      :id => 1,
+      :title => 'Snowpiercer'
+    }
+    @place = '3rd'
     mail(
-      to: "angel-ortega12@hotmail.com",
-      subject: "Your position on Lola's Walk has changed"
+      to: @user[:email],
+      subject: "Your position on #{@race[:title]} has changed"
     )
   end
 end

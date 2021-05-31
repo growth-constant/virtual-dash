@@ -1,19 +1,13 @@
 :css
   .button {
     color: white !important;
-    margin-top: 5em !important;
+    margin-top: 6em !important;
     background-color: #081f3f !important;
   }
-  .position-change-container {
-    height: 10em;
-  }
-.position-change-container
-  .card
-    = image_tag 'logo.svg', alt: 'Virtual Dash'
-    %h3 Your postion has changed Luis!
-    %p On the race "Lola's Walk" you now rank 2nd on the leaderboard.
-    = link_to 'Check it out', race_url(1), class: 'ui fluid button'
-    %small 
-      Or paste 
-      = link_to 'virtualdash.co/races/1/leaderboard ', race_url(1)
-      in your browser.
+%h3= "#{@user[:first_name]}, your postion has changed!"
+%p= "On #{@race[:title]} you now rank #{@place} place on the leaderboard."
+= link_to 'Check it out', leaderboard_race_url(@race[:id]), class: 'ui fluid button'
+%small 
+  Or paste 
+  = link_to "virtualdash.co/races/#{@race[:id]}/leaderboard", leaderboard_race_url(@race[:id])
+  in your browser.
