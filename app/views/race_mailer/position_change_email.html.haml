@@ -1,4 +1,11 @@
 :css
+  small {
+    padding-left: 1em;
+  }
+  .anchor {
+    color: black;
+    text-decoration: underline;
+  }
   .button {
     color: white !important;
     margin-top: 6em !important;
@@ -9,5 +16,5 @@
 = link_to 'Check it out', leaderboard_race_url(@race[:id]), class: 'ui fluid button'
 %small 
   Or paste 
-  = link_to "virtualdash.co/races/#{@race[:id]}/leaderboard", leaderboard_race_url(@race[:id])
+  = link_to "virtualdash.co/races/#{@race[:id]}/leaderboard", leaderboard_race_url(@race[:id]), class: 'anchor'
   in your browser.
