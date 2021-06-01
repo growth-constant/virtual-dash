@@ -40,8 +40,15 @@ class CollectTries
           next if race_tries_for_user.include? try['id']
           
           add_race_try(user, registration, try, registration.race.id)
+
           new_leaderboard = Leaderboard.new(registration.race, :all).call
-          check_user_position(old_leaderboard, new_leaderboard)
+          check_user_position(
+            user,
+            registration.race,
+            old_leaderboard[:competitors], 
+            new_leaderboard[:competitors]
+          )
+          
         end
       elsif res.status == 402 && user.is_subscribed == true
         set_user_stripe_subscription_status(user, false)
@@ -111,14 +118,17 @@ class CollectTries
     user.update(is_subscribed: is_sub)
   end
 
-  def check_user_position(user, old_l, new_l)
-      old_index = old_l.index(old_l.find { |try| try[:id] == user[:id] })
-      p '>>>> OLD INDEX'
-      p old_index
-      
-      new_index = new_l.index(new_l.find { |try| try[:id] == user[:id] })
-      p '>>>> NEW INDEX'
-      p new_index
+  def check_user_position(user, race, old_l, new_l)
+    old_index = old_l.index(old_l.find { |try| try[:id] === user[:id] })
+    new_index = new_l.index(new_l.find { |try| try[:id] === user[:id] })
+
+    if old_index != new_index
+      RaceMailer.with(
+        user: user, 
+        race: race, 
+        place: (new_index + 1).ordinalize
+      ).position_change_email.deliver_now
+    end
   end
 
 end

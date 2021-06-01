@@ -31,7 +31,7 @@ class RacesController < ApplicationController
     # Testing mailer!
     # RaceMailer.with(user: @user, race: @race, place: '2nd').position_change_email.deliver_now
     competitors = @leaderboard[:competitors]
-    mock_check_user_position(@user, competitors, competitors)
+    mock_check_user_position(@user, @race, competitors, competitors)
 
     @personal =  PersonalLeaderboard.new(@leaderboard, @user).call
   end
@@ -89,10 +89,18 @@ class RacesController < ApplicationController
     end
   end
 
-  def mock_check_user_position(user, old_l, new_l)
+  def mock_check_user_position(user, race, old_l, new_l)
     old_index = old_l.index(old_l.find { |try| try[:id] === user[:id] })
     new_index = new_l.index(new_l.find { |try| try[:id] === user[:id] })
-end
+
+    if old_index == new_index
+      RaceMailer.with(
+        user: user, 
+        race: race, 
+        place: (new_index + 1).ordinalize
+      ).position_change_email.deliver_now
+    end
+  end
 
   private
 
