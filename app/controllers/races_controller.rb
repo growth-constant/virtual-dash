@@ -27,6 +27,12 @@ class RacesController < ApplicationController
       @user = current_user
     end
     @leaderboard = Leaderboard.new(@race, :all).call
+
+    # Testing mailer!
+    # RaceMailer.with(user: @user, race: @race, place: '2nd').position_change_email.deliver_now
+    competitors = @leaderboard[:competitors]
+    mock_check_user_position(@user, competitors, competitors)
+
     @personal =  PersonalLeaderboard.new(@leaderboard, @user).call
   end
 
@@ -82,6 +88,11 @@ class RacesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def mock_check_user_position(user, old_l, new_l)
+    old_index = old_l.index(old_l.find { |try| try[:id] === user[:id] })
+    new_index = new_l.index(new_l.find { |try| try[:id] === user[:id] })
+end
 
   private
 

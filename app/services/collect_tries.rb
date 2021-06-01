@@ -29,6 +29,7 @@ class CollectTries
     registrations&.each do |registration|
       segment_id = registration.race.segment_id
       res = segment(segment_id, user, registration.race)
+      old_leaderboard = Leaderboard.new(registration.race, :all).call
       race_tries_for_user = RaceTry.user_segments(user, segment_id).pluck(:race_try_id)
 
       if res.status == 200
@@ -39,6 +40,8 @@ class CollectTries
           next if race_tries_for_user.include? try['id']
           
           add_race_try(user, registration, try, registration.race.id)
+          new_leaderboard = Leaderboard.new(registration.race, :all).call
+          check_user_position(old_leaderboard, new_leaderboard)
         end
       elsif res.status == 402 && user.is_subscribed == true
         set_user_stripe_subscription_status(user, false)
@@ -107,4 +110,15 @@ class CollectTries
   def set_user_stripe_subscription_status(user, is_sub)
     user.update(is_subscribed: is_sub)
   end
+
+  def check_user_position(user, old_l, new_l)
+      old_index = old_l.index(old_l.find { |try| try[:id] == user[:id] })
+      p '>>>> OLD INDEX'
+      p old_index
+      
+      new_index = new_l.index(new_l.find { |try| try[:id] == user[:id] })
+      p '>>>> NEW INDEX'
+      p new_index
+  end
+
 end
