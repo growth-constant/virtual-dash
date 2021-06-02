@@ -29,7 +29,6 @@ class CollectTries
     registrations&.each do |registration|
       segment_id = registration.race.segment_id
       res = segment(segment_id, user, registration.race)
-      old_leaderboard = Leaderboard.new(registration.race, :all).call
       race_tries_for_user = RaceTry.user_segments(user, segment_id).pluck(:race_try_id)
 
       if res.status == 200
@@ -39,9 +38,10 @@ class CollectTries
         JSON.parse(res.body).each do |try|
           next if race_tries_for_user.include? try['id']
           
+          old_leaderboard = Leaderboard.new(registration.race, :all).call
           add_race_try(user, registration, try, registration.race.id)
-
           new_leaderboard = Leaderboard.new(registration.race, :all).call
+          
           check_user_position(
             user,
             registration.race,
