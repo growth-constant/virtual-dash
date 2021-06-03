@@ -12,6 +12,10 @@ module VirtualDash
     config.load_defaults 6.0
     # config.web_console.whitelisted_ips = '0.0.0.0'
 
+    # Subfolders on /assets
+    config.assets.paths << Rails.root.join('app', 'assets', 'images', 'landing')
+    config.assets.paths << Rails.root.join('app', 'assets', 'images', 'leaderboard')
+
     config.stripe.secret_key = ENV['STRIPE_SECRET_KEY']
     config.stripe.publishable_key = ENV['STRIPE_PUB_KEY']
     # Settings in config/environments/* take precedence over those specified here.
