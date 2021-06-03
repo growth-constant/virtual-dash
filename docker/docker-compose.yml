@@ -56,9 +56,8 @@ services:
     - STRIPE_PUB_KEY=pk_test_51HNKEKLf04duTe6muNEmSQGfQl6V9JAMTemqXr7iCPQo2FMMBWND7PxK4bGVoWLywMN7nhf5v0zpq3MsMFcf4KBz00y8tkEnVS
     - STRIPE_SECRET_KEY=sk_test_51HNKEKLf04duTe6mJnC6JjjfcdZOhDOLpkH9jTR305WvYku3Qu8TTJvl0FZDVaCtRY9SiEIQqB9u07k7nb9S4W6i008aBuz03I
     - GMAPS_KEY=AIzaSyD1yemIABjJWJ13y1dNLnuGCVOHicAluk0
-    - MAILGUN_SMTP_USER=postmaster@sandbox4d33da5be9054cf9a6bc0d3a79c1da34.mailgun.org
-    - MAILGUN_SMTP_PASSWORD=f142ea07f6714bdfa521ed68af841b56-1d8af1f4-004b5022
-    - MAILGUN_SMTP_DOMAIN=sandbox4d33da5be9054cf9a6bc0d3a79c1da34.mailgun.org
+    - MAILGUN_API_KEY=218227bb1f448262756edebcd7684cae-1d8af1f4-7ebdaffe
+    - MAILGUN_API_DOMAIN=mg.vitualdash.co
   db:
     image: "postgres:10.12"
     ports:
