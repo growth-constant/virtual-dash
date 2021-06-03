@@ -43,13 +43,13 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
-  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.delivery_method = :smtp   
   config.action_mailer.smtp_settings = {
-    address:              'smtp.gmail.com',
+    address:              'smtp.mailgun.org',
     port:                 587,
-    domain:               'growthconstant.com',
-    user_name:            'noreply@growthconstant.com',
-    password:             '',
+    domain:               ENV['MAILGUN_SMTP_DOMAIN'],
+    user_name:            ENV['MAILGUN_SMTP_USER'],
+    password:             ENV['MAILGUN_SMTP_PASS'],
     authentication:       'plain',
     enable_starttls_auto: true 
   }
