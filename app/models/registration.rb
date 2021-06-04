@@ -29,4 +29,14 @@ class Registration < ApplicationRecord
           status: :registered,
           payment_status: :paid)
   }
+
+  scope :registration_valid_to_collect_tries, lambda { |user|
+    .joins(:races)
+    .where("
+      WHERE registrations.user_id = ?
+      AND registrations.status = 'registered'
+      AND registrations.payment_status = 'paid'
+      AND enddate >= CURRENT_DATE
+    ", user.id)
+  }
 end
