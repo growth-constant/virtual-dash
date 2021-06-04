@@ -31,12 +31,12 @@ class Registration < ApplicationRecord
   }
 
   scope :registration_valid_to_collect_tries, lambda { |user|
-    .joins(:races)
+    joins('INNER JOIN races ON registration.race_id = races.id')
     .where("
-      WHERE registrations.user_id = ?
+      registrations.user_id = ?
       AND registrations.status = 'registered'
       AND registrations.payment_status = 'paid'
-      AND enddate >= CURRENT_DATE
+      AND races.enddate >= CURRENT_DATE
     ", user.id)
   }
 end

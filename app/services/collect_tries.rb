@@ -21,6 +21,7 @@ class CollectTries
       next unless Registration.exists?(user_id: user.id)
 
       registrations = Registration.where(user_id: user.id, status: 'registered')
+      # Aquí hay que hacer un scope que traiga solamente los registros de los usuarios registrados y cuyas carreras tengan una endate igual o mayor a hoy
       segment_efforts(user, registrations)
     end
   end
