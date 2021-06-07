@@ -1,3 +1,5 @@
+require 'mailgun-ruby'
+
 class RacesController < ApplicationController
   before_action :check_payment_status, only: %i[show]
   before_action :set_race, only: %i[show edit update destroy leaderboard general_classification personal]
@@ -28,7 +30,34 @@ class RacesController < ApplicationController
     end
 
     @leaderboard = Leaderboard.new(@race, :all).call
+    competitors = @leaderboard[:competitors]
+    check_user_position(@user, @race, competitors, competitors)
     @personal =  PersonalLeaderboard.new(@leaderboard, @user).call
+
+
+  end
+
+  def check_user_position(user, race, old_l, new_l)
+    old_index = old_l.index(old_l.find { |try| try[:id] === user[:id] })
+    new_index = new_l.index(new_l.find { |try| try[:id] === user[:id] })
+
+    if old_index == new_index
+
+      # mg_client = Mailgun::Client.new ENV['MAILGUN_API_KEY']
+      # msg_params = {
+      #   from: 'noreply@virtualdash.co',
+      #   to: 'angel-ortega12@hotmail.com',
+      #   subject: 'Help me please',
+      #   text: 'Free me from this hell'
+      # }
+      # mg_client.send_message  ENV['MAILGUN_API_DOMAIN'], msg_params
+
+      RaceMailer.with(
+        user: user, 
+        race: race, 
+        place: (new_index + 1).ordinalize
+      ).position_change_email.deliver_now
+    end
   end
 
   def show
