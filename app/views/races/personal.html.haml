@@ -6,11 +6,11 @@
     .ui.stackable.grid
       .three.column.row
         .column
-          = render :partial => 'components/stats-card', :locals => {:name => 'Overall Ranking', :icon => 'trophy-icon.svg', :number => @personal[:overall_ranking].ordinalize}
+          = render :partial => 'components/stats-card', :locals => {:name => 'Overall Ranking', :icon => 'leaderboard/trophy-icon.svg', :number => @personal[:overall_ranking].ordinalize}
         .column
-          = render :partial => 'components/stats-card', :locals => {:name => 'Category Ranking', :icon => 'trophy-icon.svg', :number => @personal[:category_ranking].ordinalize}
+          = render :partial => 'components/stats-card', :locals => {:name => 'Category Ranking', :icon => 'leaderboard/trophy-icon.svg', :number => @personal[:category_ranking].ordinalize}
         .column
-          = render :partial => 'components/stats-card', :locals => {:name => 'Current Prize', :icon => 'leaderboard-purse-icon.svg', :number => "$#{@personal[:current_prize]}"}
+          = render :partial => 'components/stats-card', :locals => {:name => 'Current Prize', :icon => 'leaderboard/purse-icon.svg', :number => "$#{@personal[:current_prize]}"}
   .segment-activity-container
     %h2 Segment Activity
     %table.ui.striped.table
