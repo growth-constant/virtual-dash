@@ -11,6 +11,13 @@
         height: 100vh;
         background-color: #f8f8f8;
       }
+      .anchor {
+        color: #20a4f3;
+        text-decoration: underline;
+      }
+      .anchor-logo {
+        font-size: 0.75em !important;
+      }
       .auto-message {
         color: #6b778c;
         font-size: small;
@@ -30,8 +37,9 @@
         .column
           .card
             = image_tag attachments['logo.svg'].url, alt: 'Virtual Dash'
+            %br
+            = link_to 'virtualdash.co', root_url, class: 'anchor anchor-logo'
             = yield
-          .auto-messsage-container
-            %p.auto-message
-              Please do not reply to this message via e-mail. 
-              This address is automated, unattended, and cannot help with questions or requests.
+          %p.auto-message
+            Please do not reply to this message via e-mail. 
+            This address is automated, unattended, and cannot help with questions or requests.
