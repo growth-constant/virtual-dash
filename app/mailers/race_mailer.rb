@@ -6,7 +6,7 @@ class RaceMailer < ApplicationMailer
     @race = params[:race]
     @place = params[:place]
 
-    attachments.inline['logo.svg'] = File.read('app/assets/images/logo.svg')
+    attachments.inline['v-logo.svg'] = File.read('app/assets/images/logos/vertical-logo.svg')
 
     mail(
       to: @user[:email],
