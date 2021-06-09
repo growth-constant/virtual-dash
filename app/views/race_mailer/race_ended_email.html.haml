@@ -1,0 +1,16 @@
+:css
+  .final-ranking {
+    color: #20a4f3;
+  }
+%h2= "#{@user[:first_name]}, #{@race[:title]} is now over!"
+%p Thank you for participating.
+.dates 
+  %p= "Start date: #{@race[:startdate].strftime('%B %d, %Y')}"
+  %p= "End date: #{@race[:enddate].strftime('%B %d, %Y')}"
+%p.final-ranking= "Final ranking: #{@place} place"
+= link_to 'Open leaderboards', leaderboard_race_url(@race[:id]), class: 'ui fluid button'
+.alt
+  %small 
+    Or paste 
+    = link_to "virtualdash.co/races/#{@race[:id]}/leaderboard", leaderboard_race_url(@race[:id]), class: 'anchor'
+    in your browser.
