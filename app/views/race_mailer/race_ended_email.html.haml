@@ -1,12 +1,27 @@
 :css
+  p {
+    font-size: 1.25em !important;
+  }
+  span {
+    font-weight: 500;
+    font-size: 1em !important;
+  }
+  .dates {
+    margin-top: 2em;
+    margin-bottom: 1em;
+  }
   .final-ranking {
     color: #20a4f3;
+    font-weight: 500;
+    font-size: 1.5em !important;
   }
 %h2= "#{@user[:first_name]}, #{@race[:title]} is now over!"
 %p Thank you for participating.
 .dates 
-  %p= "Start date: #{@race[:startdate].strftime('%B %d, %Y')}"
-  %p= "End date: #{@race[:enddate].strftime('%B %d, %Y')}"
+  %span= "Start date: #{@race[:startdate].strftime('%B %d, %Y')}"
+  %br
+  %span= "End date: #{@race[:enddate].strftime('%B %d, %Y')}"
+%br
 %p.final-ranking= "Final ranking: #{@place} place"
 = link_to 'Open leaderboards', leaderboard_race_url(@race[:id]), class: 'ui fluid button'
 .alt
