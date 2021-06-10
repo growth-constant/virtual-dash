@@ -20,6 +20,16 @@ class RaceMailer < ApplicationMailer
     @place = params[:place]
     
     attachments.inline['v-logo.svg'] = File.read('app/assets/images/logos/vertical-logo.svg')
+    
+    case @place
+    when '1st'
+      attachments.inline['trophy.svg'] = File.read('app/assets/images/leaderboard/1st-place-icon.svg')
+    when '2nd'
+      attachments.inline['trophy.svg'] = File.read('app/assets/images/leaderboard/2nd-place-icon.svg')
+    when '3rd'
+      attachments.inline['trophy.svg'] = File.read('app/assets/images/leaderboard/3rd-place-icon.svg')
+    else
+    end
 
     mail(
       to: @user[:email],
