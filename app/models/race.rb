@@ -35,6 +35,16 @@ class Race < ApplicationRecord
     where(query_string.join(' AND '))
   }
 
+  scope :user_data_from_ended_race, lambda {
+    joins('INNER JOIN registrations ON races.id = registrations.race_id')
+    joins('INNER JOIN users ON registrations.user_id = users.id')
+    .where("
+      registrations.status = 'registered'
+      AND registrations.payment_status = 'paid'
+      AND races.enddate = CURRENT_DATE
+    ")
+  }
+
   def total_purse
     # If there's no price set on the DB, default price will be 10 USD
     checked_price = (price == 0) ? 10 : price 
