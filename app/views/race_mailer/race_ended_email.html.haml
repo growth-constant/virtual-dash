@@ -15,6 +15,14 @@
     font-weight: 500;
     font-size: 1.5em !important;
   }
+  @media (min-width: 320px) and (max-width: 768px) {
+    p {
+      font-size: 1em !important;
+    }
+    .final-ranking {
+      font-size: 1.2em !important;
+    }
+  }
 %h2= "#{@user[:first_name]}, #{@race[:title]} is now over!"
 %p Thank you for participating.
 .dates 

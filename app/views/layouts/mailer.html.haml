@@ -60,6 +60,15 @@
         }
         .card {
           padding: 3em;
+          margin-top: 5vh;
+        }
+        .logo {
+          width: 90%;
+        }
+      }
+      @media (min-width: 1440px) {
+        .card {
+          padding: 10em;
         }
       }
   %body
@@ -67,7 +76,7 @@
       .row
         .column
           .card
-            = image_tag attachments['v-logo.svg'].url, alt: 'Virtual Dash'
+            = image_tag attachments['v-logo.svg'].url, alt: 'Virtual Dash', class: 'logo'
             %br
             = link_to 'virtualdash.co', root_url, class: 'anchor anchor-logo'
             = yield
