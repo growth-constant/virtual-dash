@@ -41,8 +41,10 @@ class Race < ApplicationRecord
     .where("
       registrations.status = 'registered'
       AND registrations.payment_status = 'paid'
-      AND races.enddate = CURRENT_DATE
-    ")
+      AND races.enddate >= CURRENT_DATE
+      AND races.enddate <= (CURRENT_DATE + 1)
+      ") 
+    # Use NOW() instead of (CURRENT_DATE + 1) if the service will check the status of the races hourly
   }
 
   def total_purse
