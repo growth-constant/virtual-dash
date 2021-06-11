@@ -36,14 +36,14 @@ class Race < ApplicationRecord
   }
 
   scope :user_data_from_ended_race, lambda {
-    joins('INNER JOIN registrations ON races.id = registrations.race_id')
-    joins('INNER JOIN users ON registrations.user_id = users.id')
+    includes(:registrations, :user)
     .where("
       registrations.status = 'registered'
       AND registrations.payment_status = 'paid'
       AND races.enddate >= CURRENT_DATE
       AND races.enddate <= (CURRENT_DATE + 1)
-      ") 
+      ")
+    .references(:registrations, :user)
     # Use NOW() instead of (CURRENT_DATE + 1) if the service will check the status of the races hourly
   }
 
