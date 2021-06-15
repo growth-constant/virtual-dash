@@ -1,12 +1,12 @@
 class RaceMailer < ApplicationMailer
-  default from: 'noreply@virtualdash.co'
+  default from: 'Virtual Dash <noreply@virtualdash.co>'
 
   def position_change_email
     @user = params[:user]
     @race = params[:race]
     @place = params[:place]
 
-    attachments.inline['v-logo.svg'] = File.read('app/assets/images/logos/vertical-logo.svg')
+    attachments.inline['v-logo.png'] = File.read('app/assets/images/mails/vertical-logo.png')
 
     mail(
       to: @user[:email],
@@ -19,15 +19,15 @@ class RaceMailer < ApplicationMailer
     @race = params[:race]
     @place = params[:place]
     
-    attachments.inline['v-logo.svg'] = File.read('app/assets/images/logos/vertical-logo.svg')
+    attachments.inline['v-logo.png'] = File.read('app/assets/images/mails/vertical-logo.png')
     
     case @place
     when '1st'
-      attachments.inline['trophy.svg'] = File.read('app/assets/images/leaderboard/1st-place-icon.svg')
+      attachments.inline['trophy.png'] = File.read('app/assets/images/mails/1st-place-icon.png')
     when '2nd'
-      attachments.inline['trophy.svg'] = File.read('app/assets/images/leaderboard/2nd-place-icon.svg')
+      attachments.inline['trophy.png'] = File.read('app/assets/images/mails/2nd-place-icon.png')
     when '3rd'
-      attachments.inline['trophy.svg'] = File.read('app/assets/images/leaderboard/3rd-place-icon.svg')
+      attachments.inline['trophy.png'] = File.read('app/assets/images/mails/3rd-place-icon.png')
     else
     end
 

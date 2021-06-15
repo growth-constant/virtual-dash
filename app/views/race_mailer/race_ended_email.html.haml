@@ -35,7 +35,7 @@
 %h2= "#{@user[:first_name]}, #{@race[:title]} is now over!"
 - if winners.include? @place
   %p.winner= "CONGRATULATIONS, YOU PLACED #{@place.upcase}!"
-  = image_tag attachments['trophy.svg'].url, alt: 'Trophy'
+  = image_tag attachments['trophy.png'].url, alt: 'Trophy'
 - else
   %p Thank you for participating.
 .dates 
