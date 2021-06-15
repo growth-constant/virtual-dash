@@ -1,4 +1,5 @@
 class RaceMailer < ApplicationMailer
+  include Roadie::Rails::Automatic
   default from: 'Virtual Dash <noreply@virtualdash.co>'
 
   def position_change_email

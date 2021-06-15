@@ -38,6 +38,10 @@ gem 'fomantic-ui-sass', '~> 2.8'
 gem 'simple_form', '~> 5.0'
 # gem to add country select for forms
 
+# Mailer
+# Translate CSS to inline style to allow Gmail to read it
+gem 'roadie-rails', '~> 2.2'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
