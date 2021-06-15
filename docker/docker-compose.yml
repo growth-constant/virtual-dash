@@ -28,8 +28,7 @@ services:
     - STRIPE_SECRET_KEY=sk_test_51HNKEKLf04duTe6mJnC6JjjfcdZOhDOLpkH9jTR305WvYku3Qu8TTJvl0FZDVaCtRY9SiEIQqB9u07k7nb9S4W6i008aBuz03I
     - GMAPS_KEY=AIzaSyD1yemIABjJWJ13y1dNLnuGCVOHicAluk0
     - REDIS_URL=redis://redis:6379/1
-    - MAILGUN_API_KEY=2f77f7446a98a7fbb58ce18953ea23b1-1d8af1f4-fed434fc
-    - MAILGUN_API_DOMAIN=mg.vitualdash.co
+    - SENDGRID_API_KEY=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
   worker:
     image: virtual-dash:dev
     build:
@@ -55,8 +54,7 @@ services:
     - STRIPE_PUB_KEY=pk_test_51HNKEKLf04duTe6muNEmSQGfQl6V9JAMTemqXr7iCPQo2FMMBWND7PxK4bGVoWLywMN7nhf5v0zpq3MsMFcf4KBz00y8tkEnVS
     - STRIPE_SECRET_KEY=sk_test_51HNKEKLf04duTe6mJnC6JjjfcdZOhDOLpkH9jTR305WvYku3Qu8TTJvl0FZDVaCtRY9SiEIQqB9u07k7nb9S4W6i008aBuz03I
     - GMAPS_KEY=AIzaSyD1yemIABjJWJ13y1dNLnuGCVOHicAluk0
-    - MAILGUN_API_KEY=2f77f7446a98a7fbb58ce18953ea23b1-1d8af1f4-fed434fc
-    - MAILGUN_API_DOMAIN=mg.vitualdash.co
+    - SENDGRID_API_KEY=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
   db:
     image: "postgres:10.12"
     ports:
