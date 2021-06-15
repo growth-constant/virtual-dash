@@ -28,25 +28,7 @@ class RacesController < ApplicationController
     end
 
     @leaderboard = Leaderboard.new(@race, :all).call
-    competitors = @leaderboard[:competitors]
-    check_user_position(@user, @race, competitors, competitors)
     @personal =  PersonalLeaderboard.new(@leaderboard, @user).call
-
-
-  end
-
-  def check_user_position(user, race, old_l, new_l)
-    old_index = old_l.index(old_l.find { |try| try[:id] === user[:id] })
-    new_index = new_l.index(new_l.find { |try| try[:id] === user[:id] })
-
-    if old_index == new_index
-
-      RaceMailer.with(
-        user: user, 
-        race: race, 
-        place: (new_index + 1).ordinalize
-      ).race_ended_email.deliver_now
-    end
   end
 
   def show
