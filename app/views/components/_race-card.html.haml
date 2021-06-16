@@ -19,15 +19,29 @@
           .details
             %h3.title= race.title
             %p.desc= race.description
-    .two.column.row
-      .left-button-column.eight.wide.centered.column
-        .left-button
-          - if !current_user
-            = link_to 'Sign up', new_user_session_path, class: 'fluid ui button dark-blue tiny'
-          - elsif current_user && registered.empty?
-            = link_to 'Register', new_race_registration_path(race), class: 'fluid ui button dark-blue tiny'
-          - elsif current_user && !registered.empty?
-            = link_to 'Status', personal_race_path(race), class: 'fluid ui button dark-blue tiny'
-      .right-button-column.eight.wide.centered.column
-        .right-button
-          = link_to 'Leaderboard', leaderboard_race_path(race), class: 'fluid ui button inverted blue tiny'
+    - if race.enddate < Time.now
+      - if current_user && !registered.empty?
+        .two.column.row
+          .left-button-column.eight.wide.centered.column
+            .left-button
+              = link_to 'Status', personal_race_path(race), class: 'fluid ui button dark-blue tiny'
+          .right-button-column.eight.wide.centered.column
+            .right-button
+              = link_to 'Leaderboard', leaderboard_race_path(race), class: 'fluid ui button inverted blue tiny'
+      - else
+        .one.row.column
+          .fifteen.wide.centered.column
+            = link_to 'Leaderboard', leaderboard_race_path(race), class: 'fluid ui button inverted blue tiny center-button'
+    - else
+      .two.column.row
+        .left-button-column.eight.wide.centered.column
+          .left-button
+            - if !current_user
+              = link_to 'Sign up', new_user_session_path, class: 'fluid ui button dark-blue tiny'
+            - elsif current_user && registered.empty?
+              = link_to 'Register', new_race_registration_path(race), class: 'fluid ui button dark-blue tiny'
+            - elsif current_user && !registered.empty?
+              = link_to 'Status', personal_race_path(race), class: 'fluid ui button dark-blue tiny'
+        .right-button-column.eight.wide.centered.column
+          .right-button
+            = link_to 'Leaderboard', leaderboard_race_path(race), class: 'fluid ui button inverted blue tiny'
