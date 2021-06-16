@@ -4,3 +4,7 @@ retrieve_segment_info:
   cron: "59 23 * * *"
   class: "CollectTriesJob"
   queue: default
+check_races_ended:
+  cron: "01 00 * * *"
+  class: "RacesEndedJob"
+  queue: default

@@ -26,6 +26,7 @@ class RacesController < ApplicationController
     else
       @user = current_user
     end
+
     @leaderboard = Leaderboard.new(@race, :all).call
     @personal =  PersonalLeaderboard.new(@leaderboard, @user).call
   end

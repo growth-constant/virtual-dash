@@ -38,7 +38,17 @@ class CollectTries
         JSON.parse(res.body).each do |try|
           next if race_tries_for_user.include? try['id']
           
+          old_leaderboard = Leaderboard.new(registration.race, :all).call
           add_race_try(user, registration, try, registration.race.id)
+          new_leaderboard = Leaderboard.new(registration.race, :all).call
+          
+          check_user_position(
+            user,
+            registration.race,
+            old_leaderboard[:competitors], 
+            new_leaderboard[:competitors]
+          )
+          
         end
       elsif res.status == 402 && user.is_subscribed == true
         set_user_stripe_subscription_status(user, false)
@@ -107,4 +117,18 @@ class CollectTries
   def set_user_stripe_subscription_status(user, is_sub)
     user.update(is_subscribed: is_sub)
   end
+
+  def check_user_position(user, race, old_l, new_l)
+    old_index = old_l.index(old_l.find { |try| try[:id] === user[:id] })
+    new_index = new_l.index(new_l.find { |try| try[:id] === user[:id] })
+
+    if old_index != new_index
+      RaceMailer.with(
+        user: user, 
+        race: race, 
+        place: (new_index + 1).ordinalize
+      ).position_change_email.deliver_now
+    end
+  end
+
 end

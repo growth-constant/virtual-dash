@@ -15,6 +15,8 @@ module VirtualDash
     # Subfolders on /assets
     config.assets.paths << Rails.root.join('app', 'assets', 'images', 'landing')
     config.assets.paths << Rails.root.join('app', 'assets', 'images', 'leaderboard')
+    config.assets.paths << Rails.root.join('app', 'assets', 'images', 'logos')
+    config.assets.paths << Rails.root.join('app', 'assets', 'images', 'mails')
 
     config.stripe.secret_key = ENV['STRIPE_SECRET_KEY']
     config.stripe.publishable_key = ENV['STRIPE_PUB_KEY']

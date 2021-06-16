@@ -31,11 +31,11 @@
                 %tr
                   %td.trophy
                     - if index === 0
-                      = image_tag 'leaderboard/1st-place-icon.svg'
+                      = image_tag 'leaderboard/1st-place-icon.svg', class: 'trophy-img'
                     - elsif index === 1
-                      = image_tag 'leaderboard/2nd-place-icon.svg'
+                      = image_tag 'leaderboard/2nd-place-icon.svg', class: 'trophy-img'
                     - elsif index === 2
-                      = image_tag 'leaderboard/3rd-place-icon.svg'
+                      = image_tag 'leaderboard/3rd-place-icon.svg', class: 'trophy-img'
                   %td
                     .user-container
                       %object{data: competitor.image, type: 'image/jpg', class: 'picture-profile'}

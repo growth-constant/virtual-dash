@@ -1,6 +1,6 @@
 .ui.secondary.fixed.menu.header-container
   %a.item{:href => '/', class: 'no-hover'}
-    = image_tag('logo.svg', alt: 'Virtual Dash', class: 'logo-nav')
+    = image_tag('logos/logo.svg', alt: 'Virtual Dash', class: 'logo-nav')
   - if current_user.present? && policy(current_user).admin?
     %a.header.item{:href => "/admin"} Admin
   .right.menu.mobile-nav

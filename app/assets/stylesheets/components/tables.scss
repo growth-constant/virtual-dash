@@ -31,8 +31,13 @@
     }
   
     .trophy {
-      width: 25px;
+      max-width: 10px;
       padding-top: 1em;
+      text-align: center;
+    }
+
+    .trophy-img {
+      max-width: 26px;
     }
   
     .user-container {
@@ -42,6 +47,17 @@
     .user-name {
       display: inline;
       vertical-align: middle;
+    }
+  }
+}
+
+////// Mobile //////
+@media (min-width: 320px) and (max-width: 768px) {
+  .leaderboard-table-container {
+    .leaderboard-table {
+      .trophy {
+        max-width: 40px;
+      }
     }
   }
 }

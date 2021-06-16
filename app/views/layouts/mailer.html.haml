@@ -1,8 +1,90 @@
 !!!
 %html
   %head
+    %title Virtual Dash
     %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}/
+    %script{:src => "https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"}
+    %link{:href => "https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.7/dist/semantic.min.css", :rel => "stylesheet", :type => "text/css"}/
+    %script{:src => "https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.7/dist/semantic.min.js"}
     :css
-      /* Email styles need to be inline */
+      body {
+        height: 100vh;
+        background-color: #f8f8f8;
+      }
+      h2 {
+        font-size: 1.5em !important;
+      }
+      p {
+        font-size: 1em !important;
+      }
+      small {
+        font-size: 0.875em !important;
+      }
+      .alt {
+        margin-top: 0.625em;
+      }
+      .anchor {
+        color: #20a4f3;
+        text-decoration: underline;
+      }
+      .anchor-logo {
+        font-size: 0.75em !important;
+      }
+      .auto-message {
+        color: #6b778c;
+        font-size: small;
+        text-align: center;
+        padding-top: 2em !important;
+      }
+      .button {
+        padding: 10px 10%;
+        border-radius: 4px;
+        text-decoration: none;
+
+        color: white !important;
+        margin-top: 2.5em !important;
+        background-color: #081f3f !important;
+      }
+      .card {
+        padding: 6em;    
+        margin-top: 5vh;
+        text-align: center;
+        border-radius: 12px;
+        background-color: #ffffff;
+        box-shadow: 0px 0px 11px 1px #6b778c4f !important;
+      }
+      @media (min-width: 320px) and (max-width: 768px) {
+        h2 {
+          font-size: 1.3em !important;
+        }
+        p {
+          font-size: 0.9em !important;
+        }
+        small {
+          font-size: 0.7em !important;
+        }
+        .card {
+          padding: 1em;
+          margin-top: 1vh;
+        }
+        .logo {
+          width: 70%;
+        }
+      }
+      @media (min-width: 1440px) {
+        .card {
+          padding: 10em;
+        }
+      }
   %body
-    = yield
+    .ui.stackable.two.column.centered.grid
+      .row
+        .column
+          .card
+            = image_tag attachments['v-logo.png'].url, alt: 'Virtual Dash', class: 'logo'
+            %br
+            = link_to 'virtualdash.co', root_url, class: 'anchor anchor-logo'
+            = yield
+          %p.auto-message
+            Please do not reply to this message via e-mail. 
+            This address is automated, unattended, and cannot help with questions or requests.

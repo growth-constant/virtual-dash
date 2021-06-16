@@ -35,6 +35,18 @@ class Race < ApplicationRecord
     where(query_string.join(' AND '))
   }
 
+  scope :user_data_from_ended_race, lambda {
+    includes(:registrations, :user)
+    .where("
+      registrations.status = 'registered'
+      AND registrations.payment_status = 'paid'
+      AND races.enddate >= CURRENT_DATE
+      AND races.enddate <= (CURRENT_DATE + 1)
+      ")
+    .references(:registrations, :user)
+    # Use NOW() instead of (CURRENT_DATE + 1) if the service will check the status of the races hourly
+  }
+
   def total_purse
     # If there's no price set on the DB, default price will be 10 USD
     checked_price = (price == 0) ? 10 : price 

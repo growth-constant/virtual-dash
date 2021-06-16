@@ -1,0 +1,8 @@
+<%=@user[:first_name]%>, <%=@race[:title]%> is now over!
+Thank you for participating.
+
+Start date: <%=@race[:startdate].strftime('%B %d, %Y')%>.
+End date: <%=@race[:enddate].strftime('%B %d, %Y')%>.
+
+Final ranking: <%=@place%> place.
+You can see more at: https://www.virtualdash.co/races/<%=@race[:id]%>/leaderboard
