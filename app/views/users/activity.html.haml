@@ -1,14 +1,32 @@
 .banner
   .ui.sixteen.column.centered.grid
     .row
-      .column
+      .sixteen.wide.column
         %p Activity
+%br
 .activity-container
   .ui.stackable.centered.grid
     .row
       .five.wide.column
-        %p Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates beatae magni magnam asperiores nulla, sed ullam possimus libero tempore rerum voluptas reiciendis, excepturi minus provident aspernatur suscipit rem, accusamus consequatur.
-        %p Lorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium commodi hic tenetur eius possimus? Reiciendis qui porro maiores laboriosam aperiam animi voluptate cum explicabo commodi placeat magni saepe, veniam vero.
+        .activity-left-card
+          .content
+            .wallet-container
+              %i.huge.wallet.icon.light-gray
+            %br
+            %br
+            %p.balance $240
+            %p.title Virtual Dash Balance
+            .link-status
+              .pending 
+                %p Pending link
+            %br
+            %p.desc Virtual Dash partners with Stripe to transfer race prize earnings to your bank account.
+          = link_to 'Set up payouts', root_path, class: 'ui button fluid light-blue', style: 'border-radius: 0%;'
+        %br
+        .activity-left-card
+          .content
+            %p Lorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium commodi hic tenetur eius possimus? Reiciendis qui porro maiores laboriosam aperiam animi voluptate cum explicabo commodi placeat magni saepe, veniam vero.
       .nine.wide.column
-        %p Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit, explicabo. Hic illo quibusdam at natus aperiam blanditiis excepturi sit doloremque? Vel nesciunt voluptate provident laudantium dignissimos necessitatibus omnis vitae itaque.
+        .activity-right-card
+          %p Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit, explicabo. Hic illo quibusdam at natus aperiam blanditiis excepturi sit doloremque? Vel nesciunt voluptate provident laudantium dignissimos necessitatibus omnis vitae itaque.
     

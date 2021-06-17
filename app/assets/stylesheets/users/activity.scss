@@ -1,0 +1,71 @@
+@import '../variables/colors.scss';
+
+.activity-left-card {
+  .balance {
+    font-size: 2.5em;
+    font-weight: 600;
+    line-height: 0em;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .desc {
+    font-size: 0.9em;
+    color: $light-gray;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .title {
+    font-size: 1.5em;
+    font-weight: 500;
+    line-height: 0em;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .link-status {
+    margin-left: 7em;
+    margin-right: 7em;
+    text-align: center;
+    justify-content: center;
+    
+    .pending {
+      padding: .2em;
+      color: #FFFFFF;
+      font-weight: 500;
+      border-radius: 4px;
+      background-color: $lighter-gray;
+    }
+
+    .success {
+      padding: .2em;
+      color: #FFFFFF;
+      font-weight: 500;
+      border-radius: 4px;
+      background-color: $green;
+    }
+  }
+}
+
+.banner {
+  height: 8em;
+  background: linear-gradient( 
+    rgba(0, 0, 0, 0.5), 
+    rgba(0, 0, 0, 0.5) 
+  ), image-url('landing/welcome-bg.png');
+  background-size: cover;
+
+  p {
+    font-size: 2.5em;
+    color: #FFFFFF;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 0.5em;
+  }
+}
+
+.wallet-container {
+  text-align: center;
+  justify-content: center;
+}
