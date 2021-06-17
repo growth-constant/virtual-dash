@@ -20,6 +20,9 @@ class UsersController < ApplicationController
     end
   end
 
+  def activity
+  end
+
   private
 
   def set_user
