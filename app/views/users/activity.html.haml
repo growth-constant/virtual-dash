@@ -17,15 +17,28 @@
             %p.balance $240
             %p.title Virtual Dash Balance
             .link-status
-              .pending 
-                %p Pending link
+              - if true 
+                .pending 
+                  %p Pending link
+              - else
+                .success
+                  %p Linked
             %br
             %p.desc Virtual Dash partners with Stripe to transfer race prize earnings to your bank account.
-          = link_to 'Set up payouts', root_path, class: 'ui button fluid light-blue', style: 'border-radius: 0%;'
+          - if true
+            = link_to 'Set up payouts', root_path, class: 'ui button fluid light-blue', style: 'border-radius: 0%;'
+          - else
+            = link_to 'Go to dashboard', root_path, class: 'ui button fluid light-blue', style: 'border-radius: 0%;'
         %br
         .activity-left-card
           .content
-            %p Lorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium commodi hic tenetur eius possimus? Reiciendis qui porro maiores laboriosam aperiam animi voluptate cum explicabo commodi placeat magni saepe, veniam vero.
+            .wallet-container
+              %i.huge.handshake.icon.light-gray
+            %br
+            %br
+            %p.title Need help?
+            %p.desc We are here to help. Our experts will reply as soon as possible to solve questions or concerns.
+          = link_to 'Contact us', root_path, class: 'ui button fluid', style: 'border-radius: 0%;'
       .nine.wide.column
         .activity-right-card
           %p Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit, explicabo. Hic illo quibusdam at natus aperiam blanditiis excepturi sit doloremque? Vel nesciunt voluptate provident laudantium dignissimos necessitatibus omnis vitae itaque.
