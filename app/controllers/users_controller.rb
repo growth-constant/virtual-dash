@@ -22,9 +22,9 @@ class UsersController < ApplicationController
 
   def activity
     @mock = [
-      {:date => DateTime.now, :description => 'Race registration - Senic Drive Race', :status => 'OK', :amount => -10},
-      {:date => DateTime.now, :description => 'Race registration - Senic Drive Race', :status => 'OK', :amount => -10},
-      {:date => DateTime.now, :description => 'Race registration - Senic Drive Race', :status => 'OK', :amount => -10}
+      {:date => DateTime.now, :description => '2nd place prize - Tour de Richmond Park', :status => 'OK', :amount => 10},
+      {:date => DateTime.now - 1, :description => 'Race registration - Senic Drive Race', :status => 'ERROR', :amount => -10},
+      {:date => DateTime.now - 2, :description => 'Race registration - Newlands Corner from West Clandon', :status => 'PENDING', :amount => -10}
     ]
   end
 

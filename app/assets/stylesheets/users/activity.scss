@@ -84,3 +84,51 @@
   text-align: center;
   justify-content: center;
 }
+
+////// Mobile //////
+@media (min-width: 320px) and (max-width: 425px) {
+  .activity-left-card {
+    .link-status {
+      margin-left: 5em;
+      margin-right: 5em; 
+    }
+  }
+
+  .activity-right-card {
+    td, th {
+      font-size: 0.7em;
+    }
+
+    .search-bar {
+      width: 8em;
+    }
+  }
+
+  .banner {
+    max-width: 98%;
+  }
+}
+
+////// Tablet //////
+@media (min-width: 426px) and (max-width: 768px) {
+  .activity-left-card {
+    .balance {
+      font-size: 2.2em;
+    }
+  
+    .title {
+      font-size: 1.1em;
+    }
+    
+    .link-status {
+      margin-left: 2em;
+      margin-right: 2em; 
+    }
+  }
+
+  .activity-right-card {
+    .search-bar {
+      width: 15em;
+    }
+  }
+}
