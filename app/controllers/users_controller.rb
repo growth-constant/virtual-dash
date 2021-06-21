@@ -21,6 +21,11 @@ class UsersController < ApplicationController
   end
 
   def activity
+    @mock = [
+      {:date => DateTime.now, :description => 'Race registration - Senic Drive Race', :status => 'OK', :amount => -10},
+      {:date => DateTime.now, :description => 'Race registration - Senic Drive Race', :status => 'OK', :amount => -10},
+      {:date => DateTime.now, :description => 'Race registration - Senic Drive Race', :status => 'OK', :amount => -10}
+    ]
   end
 
   private

@@ -7,6 +7,28 @@
 .activity-container
   .ui.stackable.centered.grid
     .row
+      .fifteen.wide.column
+        .activity-right-card
+          %h3 Recent Activity
+          .ui.disabled.icon.input
+            %i.search.icon.gray
+            %input{:placeholder => "Search activity", :type => "text"}
+          %table.ui.celled.table.stackable
+            %thead
+              %tr
+                %th Date
+                %th Description
+                %th Status
+                %th Amount
+            %tbody
+              - @mock.each do | activity |
+                %tr
+                  %td{:colspan => '3'}= activity[:date].strftime('%B %d, %Y')
+                  %td{:colspan => '6'}= activity[:description]
+                  %td{:colspan => '2'}= activity[:status]
+                  %td{:colspan => '3'}= "#{activity[:amount]} (USD)"
+-#  Uncomment the code below when Stripe Connect is implemented.
+    .row
       .five.wide.column
         .activity-left-card
           .content
