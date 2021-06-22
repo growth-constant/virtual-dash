@@ -25,8 +25,8 @@
   }
 
   .link-status {
-    margin-left: 7em;
-    margin-right: 7em;
+    margin-left: 5em;
+    margin-right: 5em;
     text-align: center;
     justify-content: center;
     
@@ -65,6 +65,7 @@
 
   .search-bar {
     width: 30em;
+    // width: 15em; // Uncomment when Stripe Connect is implemented.
     margin-right: 1em;
   }
 }
@@ -107,8 +108,13 @@
     }
 
     .search-bar {
-      width: 7em;
+      width: 100%;
       margin-right: 0em;
+      margin-bottom: 0.5em;
+    }
+
+    .submit-search {
+      width: 100%;
     }
   }
 
