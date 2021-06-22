@@ -51,15 +51,21 @@
 .activity-right-card {
   th {
     font-weight: 400 !important;
-    background-color: #F4FAFF !important;
+    background-color: $lighter-blue !important;
   }
 
   .center {
     text-align: center !important;
   }
 
+  .wins {
+    font-weight: 600;
+    color: $green;
+  }
+
   .search-bar {
     width: 30em;
+    margin-right: 1em;
   }
 }
 
@@ -68,12 +74,13 @@
   background: linear-gradient( 
     rgba(0, 0, 0, 0.5), 
     rgba(0, 0, 0, 0.5) 
-  ), image-url('landing/welcome-bg.png');
+  ), image-url('activity/header.jpeg');
   background-size: cover;
+  background-position: center;
 
   p {
     font-size: 2.5em;
-    color: #FFFFFF;
+    color: white;
     font-weight: bold;
     text-align: center;
     padding-top: 0.5em;
@@ -100,7 +107,8 @@
     }
 
     .search-bar {
-      width: 8em;
+      width: 7em;
+      margin-right: 0em;
     }
   }
 
@@ -129,6 +137,7 @@
   .activity-right-card {
     .search-bar {
       width: 15em;
+      margin-right: 0.5em;
     }
   }
 }

@@ -49,26 +49,32 @@
             .ui.icon.input.search-bar
               %i.search.icon.gray
               %input{:placeholder => "Search activity", :type => "text"}
-            = submit_tag 'Search', class: 'ui right floated button'
+            = submit_tag 'Search', class: 'ui dark-blue button'
           %table.ui.celled.table.unstackable
             %thead
               %tr
                 %th Date
                 %th{:colspan => '2'} Description
-                %th.center Status
+                -# %th.center Transaction Status
                 %th.center Amount
             %tbody
               - @mock.each do | activity |
                 %tr
                   %td= activity[:date].strftime('%B %d, %Y')
                   %td{:colspan => '2'}= activity[:description]
-                  %td.center
-                    - case activity[:status]
-                    - when 'OK'
-                      = image_tag 'activity/status-ok', alt: 'OK'
-                    - when 'ERROR'
-                      = image_tag 'activity/status-error', alt: 'ERROR'
-                    - else
-                      = image_tag 'activity/status-pending', alt: 'PENDING'
-                  %td.center= "#{number_to_currency(activity[:amount], precision: 2)} (USD)"
+                  -# 
+                    %td.center
+                      - case activity[:status]
+                      - when 'OK'
+                        = image_tag 'activity/status-ok', alt: 'OK'
+                      - when 'ERROR'
+                        = image_tag 'activity/status-error', alt: 'ERROR'
+                      - else
+                        = image_tag 'activity/status-pending', alt: 'PENDING'
+                  - if activity[:amount] > 0
+                    %td.center
+                      .wins= "#{number_to_currency(activity[:amount], precision: 2)} (USD)"
+                  - else 
+                    %td.center= "#{number_to_currency(activity[:amount], precision: 2)} (USD)"
+
     
