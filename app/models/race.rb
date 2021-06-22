@@ -47,6 +47,16 @@ class Race < ApplicationRecord
     # Use NOW() instead of (CURRENT_DATE + 1) if the service will check the status of the races hourly
   }
 
+  scope :thingy, lambda { |user|
+    includes(:registrations, :user)
+    .where("
+      registrations.status = 'registered'
+      AND registrations.payment_status = 'paid'
+      AND users.id = ?
+    ", user.id)
+    .references(:registrations, :user)
+  }
+
   def total_purse
     # If there's no price set on the DB, default price will be 10 USD
     checked_price = (price == 0) ? 10 : price 
