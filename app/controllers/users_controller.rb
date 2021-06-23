@@ -21,6 +21,26 @@ class UsersController < ApplicationController
   end
 
   def activity
+    races = Race.thingy(current_user)
+    @activities = []
+    races.each do | race |
+      if race.enddate <= DateTime.now 
+        # Get leaderboard place and price. Push it only if it's top 3.
+        @activities.push({
+          :date => race.enddate,
+          :description => "2nd place prize - #{race.title}",
+          :amount => 10 #Won price
+        })
+      end
+      
+      @activities.push({
+        :date => race.registrations.first.updated_at,
+        :description => "Race registration - #{race.title}",
+        :amount => (race.price > 0) ? race.price : 10
+      })
+    end
+
+
     @mock = [
       {:date => DateTime.now, :description => '2nd place prize - Tour de Richmond Park', :status => 'OK', :amount => 10},
       {:date => DateTime.now - 1, :description => 'Race registration - Senic Drive Race', :status => 'ERROR', :amount => -10},
