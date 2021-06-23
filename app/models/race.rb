@@ -47,7 +47,7 @@ class Race < ApplicationRecord
     # Use NOW() instead of (CURRENT_DATE + 1) if the service will check the status of the races hourly
   }
 
-  scope :thingy, lambda { |user|
+  scope :registrations_paid, lambda { |user|
     includes(:registrations, :user)
     .where("
       registrations.status = 'registered'

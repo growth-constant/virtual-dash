@@ -58,7 +58,7 @@
                 -# %th.center Transaction Status
                 %th.center Amount
             %tbody
-              - @mock.each do | activity |
+              - @activities.each do | activity |
                 %tr
                   %td= activity[:date].strftime('%B %d, %Y')
                   %td{:colspan => '2'}= activity[:description]
@@ -76,5 +76,3 @@
                       .wins= "#{number_to_currency(activity[:amount], precision: 2)} (USD)"
                   - else 
                     %td.center= "#{number_to_currency(activity[:amount], precision: 2)} (USD)"
-
-    
