@@ -47,9 +47,11 @@
           %h2 Recent Activity
           = form_with(url: activity_path, method: 'get', local: true) do
             .ui.icon.input.search-bar
+              = text_field_tag :name, nil, placeholder: 'Search by race name', value: @race_name == '%%' ? '' : @race_name.gsub('%', '')
               %i.search.icon.gray
-              %input{:placeholder => "Search by race name", :type => "text"}
-            = submit_tag 'Search', class: 'ui dark-blue button submit-search'
+            = submit_tag 'Search', class: "ui #{ @race_name == '%%' ? 'dark-blue' : 'light-blue'} button submit-search"
+            - unless @race_name == '%%'
+              = link_to 'Clear', activity_path, class: 'ui dark-blue button submit-search'
           %table.ui.celled.table.unstackable
             %thead
               %tr

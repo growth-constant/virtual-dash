@@ -20,8 +20,9 @@ class UsersController < ApplicationController
     end
   end
 
-  def activity(race_name='')
-    races = Race.registrations_paid(current_user, race_name)
+  def activity
+    @race_name = params[:name] ? "%#{params[:name]}%" : '%%'
+    races = Race.registrations_paid(current_user, @race_name)
     @activities = []
     
     races.each do | race |

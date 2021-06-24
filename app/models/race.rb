@@ -53,7 +53,7 @@ class Race < ApplicationRecord
       registrations.status = 'registered'
       AND registrations.payment_status = 'paid'
       AND users.id = ?
-      AND races.title ILIKE '%?%'
+      AND races.title ILIKE ?
     ", user.id, race_name)
     .references(:registrations, :user)
   }

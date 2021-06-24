@@ -72,10 +72,7 @@
 
 .banner {
   height: 8em;
-  background: linear-gradient( 
-    rgba(0, 0, 0, 0.5), 
-    rgba(0, 0, 0, 0.5) 
-  ), image-url('activity/header.jpeg');
+  background: image-url('activity/header.jpeg');
   background-size: cover;
   background-position: center;
 
@@ -110,11 +107,11 @@
     .search-bar {
       width: 100%;
       margin-right: 0em;
-      margin-bottom: 0.5em;
     }
 
     .submit-search {
       width: 100%;
+      margin-top: .5em !important;
     }
   }
 
