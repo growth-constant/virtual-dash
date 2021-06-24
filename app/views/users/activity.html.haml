@@ -48,7 +48,7 @@
           = form_with(url: activity_path, method: 'get', local: true) do
             .ui.icon.input.search-bar
               %i.search.icon.gray
-              %input{:placeholder => "Search activity", :type => "text"}
+              %input{:placeholder => "Search by race name", :type => "text"}
             = submit_tag 'Search', class: 'ui dark-blue button submit-search'
           %table.ui.celled.table.unstackable
             %thead

@@ -20,8 +20,8 @@ class UsersController < ApplicationController
     end
   end
 
-  def activity
-    races = Race.registrations_paid(current_user)
+  def activity(race_name='')
+    races = Race.registrations_paid(current_user, race_name)
     @activities = []
     
     races.each do | race |
