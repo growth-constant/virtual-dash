@@ -33,7 +33,15 @@
 }
 
 .icon.light-gray{
-    color: $light-blue !important;
+    color: $light-gray !important;
+    font-style: normal !important;
+    font-weight: normal !important;
+    font-family: 'Icons' !important;
+    background-color: transparent !important;
+}
+
+.icon.lighter-gray{
+    color: $lighter-gray !important;
     font-style: normal !important;
     font-weight: normal !important;
     font-family: 'Icons' !important;

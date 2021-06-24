@@ -1,0 +1,80 @@
+.banner
+  .ui.sixteen.column.centered.grid
+    .row
+      .sixteen.wide.column
+        %p Activity
+%br
+.activity-container
+  .ui.stackable.centered.grid
+    .row
+      -# Uncomment the code below when Stripe Connect is implemented.
+        .five.wide.column
+          .activity-left-card
+            .content
+              .icon-container
+                %i.huge.wallet.icon.light-gray
+              %br
+              %br
+              %p.balance $240
+              %p.title Virtual Dash Balance
+              .link-status
+                - if true 
+                  .pending 
+                    %p Pending link
+                - else
+                  .success
+                    %p Linked
+              %br
+              %p.desc Virtual Dash partners with Stripe to transfer race prize earnings to your bank account.
+            - if true
+              = link_to 'Set up payouts', root_path, class: 'ui button fluid light-blue', style: 'border-radius: 0%;'
+            - else
+              = link_to 'Go to dashboard', root_path, class: 'ui button fluid light-blue', style: 'border-radius: 0%;'
+          %br
+          .activity-left-card
+            .content
+              .icon-container
+                %i.huge.handshake.icon.light-gray
+              %br
+              %br
+              %p.title Need help?
+              %p.desc We are here to help. Our experts will reply as soon as possible to solve questions or concerns.
+            = link_to 'Contact us', root_path, class: 'ui button fluid', style: 'border-radius: 0%;'
+      -# This is the original width of the right card
+      -# .nine.wide.column 
+      .fifteen.wide.column
+        .activity-right-card
+          %h2 Recent Activity
+          = form_with(url: activity_path, method: 'get', local: true) do
+            .ui.icon.input.search-bar
+              %i.search.icon.gray
+              %input{:placeholder => "Search activity", :type => "text"}
+            = submit_tag 'Search', class: 'ui dark-blue button submit-search'
+          %table.ui.celled.table.unstackable
+            %thead
+              %tr
+                %th Date
+                %th{:colspan => '2'} Description
+                -# %th.center Transaction Status
+                %th.center Amount
+            %tbody
+              - @mock.each do | activity |
+                %tr
+                  %td= activity[:date].strftime('%B %d, %Y')
+                  %td{:colspan => '2'}= activity[:description]
+                  -# 
+                    %td.center
+                      - case activity[:status]
+                      - when 'OK'
+                        = image_tag 'activity/status-ok', alt: 'OK'
+                      - when 'ERROR'
+                        = image_tag 'activity/status-error', alt: 'ERROR'
+                      - else
+                        = image_tag 'activity/status-pending', alt: 'PENDING'
+                  - if activity[:amount] > 0
+                    %td.center
+                      .wins= "#{number_to_currency(activity[:amount], precision: 2)} (USD)"
+                  - else 
+                    %td.center= "#{number_to_currency(activity[:amount], precision: 2)} (USD)"
+
+    
