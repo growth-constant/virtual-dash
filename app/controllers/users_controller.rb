@@ -29,14 +29,14 @@ class UsersController < ApplicationController
         leaderboard = Leaderboard.new(race, :leaders).call
         place = leaderboard[:competitors].index(leaderboard[:competitors].find { |try| try[:id] == current_user[:id] })
 
-        if place >= 0 && place <= 3 
+        unless place.nil?
           case place
           when 0
-            prize = leaderboard[:prize][:first]
+            prize = leaderboard[:prizes][:first]
           when 1
-            prize = leaderboard[:prize][:second]
+            prize = leaderboard[:prizes][:second]
           when 2
-            prize = leaderboard[:prize][:third]
+            prize = leaderboard[:prizes][:third]
           else
             prize = 0
           end
