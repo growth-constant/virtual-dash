@@ -21,11 +21,41 @@ class UsersController < ApplicationController
   end
 
   def activity
-    @mock = [
-      {:date => DateTime.now, :description => '2nd place prize - Tour de Richmond Park', :status => 'OK', :amount => 10},
-      {:date => DateTime.now - 1, :description => 'Race registration - Senic Drive Race', :status => 'ERROR', :amount => -10},
-      {:date => DateTime.now - 2, :description => 'Race registration - Newlands Corner from West Clandon', :status => 'PENDING', :amount => -10}
-    ]
+    @race_name = params[:name] ? "%#{params[:name]}%" : '%%'
+    races = Race.registrations_paid(current_user, @race_name)
+    @activities = []
+    
+    races.each do | race |
+      if race.enddate <= DateTime.now
+        leaderboard = Leaderboard.new(race, :leaders).call
+        place = leaderboard[:competitors].index(leaderboard[:competitors].find { |try| try[:id] == current_user[:id] })
+
+        unless place.nil?
+          case place
+          when 0
+            prize = leaderboard[:prizes][:first]
+          when 1
+            prize = leaderboard[:prizes][:second]
+          when 2
+            prize = leaderboard[:prizes][:third]
+          else
+            prize = 0
+          end
+  
+          @activities.push({
+            :date => race.enddate,
+            :description => "#{(place + 1).ordinalize} place prize - #{race.title}",
+            :amount => prize
+          })
+        end
+      end
+      
+      @activities.push({
+        :date => race.registrations.first.updated_at,
+        :description => "Race registration - #{race.title}",
+        :amount => (race.price > 0) ? -race.price : -10
+      })
+    end
   end
 
   private
