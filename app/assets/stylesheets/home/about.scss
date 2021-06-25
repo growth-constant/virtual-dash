@@ -9,4 +9,43 @@
     text-align: center;
     justify-content: center;
   }
+
+  h1 {
+    color: $dark-blue;
+    font-weight: 600;
+  }
+
+  p {
+    line-height: 2em;
+    padding-left: 6em;
+    padding-right: 6em;
+  }
+}
+
+.values-container {
+  padding-top: 3em;
+  padding-bottom: 3em;
+
+  h1 {
+    color: $dark-blue;
+    font-weight: 600;
+  }
+
+  img {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    position: absolute;
+  }
+
+  p {
+    line-height: 2em;
+  }
+
+  .value {
+    font-size: 1.5em;
+    color: $light-blue;
+  }
 }
