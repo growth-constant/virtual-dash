@@ -1,0 +1,12 @@
+@import '../variables/colors.scss';
+
+.story-container {
+  padding-top: 4em;
+  padding-bottom: 4em;
+  background-color: $lighter-blue;
+
+  p, h1 {
+    text-align: center;
+    justify-content: center;
+  }
+}
