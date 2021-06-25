@@ -39,7 +39,24 @@
                 %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lectus facilisis fusce purus viverra eu. Nisi amet, lectus ut leo cursus pellentesque molestie dignissim arcu. 
                 %p.value Our Goal
                 %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lectus facilisis fusce purus viverra eu. Nisi amet, lectus ut leo cursus pellentesque molestie dignissim arcu. 
-.ui.stackable.centered.grid
-  .row
-    .ten.wide.column
-      .team-container
+.team-container
+  .ui.stackable.centered.grid
+    .row
+      .ten.wide.column
+        %h1 Our Team
+        %p Here at Virtual Dash we believe that people to make a living doing things they enjoy.
+        %br
+        .ui.stackable.centered.grid
+          .row
+            .five.wide.column
+              = image_tag 'about/luisortega.jpg', alt: 'Luis Angel Ortega', class: 'team'
+              %p.name Luis Angel Ortega
+              %p.title Software Developer
+            .five.wide.column
+              = image_tag 'about/victorfernandez.jpg', alt: 'Victor Fernández', class: 'team'
+              %p.name Victor Fernández
+              %p.title CEO & Founder
+            .five.wide.column
+              = image_tag 'about/luisgonzalez.jpg', alt: 'Luis Angel González', class: 'team'
+              %p.name Luis Angel González
+              %p.title Digital Designer
