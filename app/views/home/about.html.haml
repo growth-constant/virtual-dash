@@ -1,9 +1,4 @@
-.banner
-  .ui.sixteen.column.centered.grid
-    .row
-      .sixteen.wide.column
-        %p About us
--# TODO: Make the banner a shared component
+= render :partial => 'components/title-banner', :locals => {:title => 'About us'}
 .story-container
   .ui.stackable.centered.grid
     .row
