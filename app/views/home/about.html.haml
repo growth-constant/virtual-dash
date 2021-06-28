@@ -17,7 +17,7 @@
               .five.wide.column
                 = image_tag 'about/left.jpg', alt: 'Meeting'
               .five.wide.column
-                = image_tag 'about/up.jpg', alt: 'Racing'
+                = image_tag 'about/up.jpg', alt: 'Racing', class: 'racing'
                 = image_tag 'about/down.jpg', alt: 'Sharing'
               .five.wide.column
                 = image_tag 'about/right.jpg', alt: 'Caring'
@@ -27,9 +27,9 @@
       .ten.wide.column
         .ui.stackable.centered.grid
           .row
-            .six.wide.column
+            .six.wide.column.hide
               = image_tag 'about/values.jpg', alt: 'Our Values', class: 'img'
-            .two.wide.column
+            .two.wide.column.hide
             .eight.wide.column
               .values-container
                 %h1 Our values 
@@ -44,7 +44,7 @@
     .row
       .ten.wide.column
         %h1 Our Team
-        %p Here at Virtual Dash we believe that people to make a living doing things they enjoy.
+        %p.hide Here at Virtual Dash we believe that people to make a living doing things they enjoy.
         %br
         .ui.stackable.centered.grid
           .row

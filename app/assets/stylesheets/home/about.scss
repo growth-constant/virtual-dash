@@ -66,11 +66,55 @@
     margin-bottom: .3em;
   }
 
-  .team {
-  }
-
   .title {
     font-size: 0.8em;
     color: $light-gray;
+  }
+}
+
+////// Mobile //////
+@media (min-width: 320px) and (max-width: 768px) {
+  .story-container {
+    padding-top: 2em;
+    padding-bottom: 2em;
+
+    h1 {
+      font-size: 1.5em;
+    }
+
+    p {
+      padding: 0em;
+    }
+
+    .racing {
+      padding-bottom: 2em;
+    }
+  }
+
+  .values-container {
+    padding-top: 1em;
+    padding-bottom: 2em;
+
+    h1 {
+      text-align: center;
+      justify-content: center;
+    }
+
+    .hide {
+      display: none !important;
+    }
+
+    .value {
+      font-size: 1.2em;
+      margin-bottom: 0em !important;
+    }
+  }
+
+  .team-container {
+    padding: 0 2.5em;
+
+    .hide {
+      display: none;
+    }
   }
 }
