@@ -1,4 +1,4 @@
-%h1= title
+%h2= title
 .ui.styled.accordion{:style => 'width: 100%;'}
   - elements.each do | element |
     .title
@@ -6,3 +6,4 @@
       = element[:title]
     .content
       %p= element[:content]
+%br

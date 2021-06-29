@@ -1,0 +1,9 @@
+@import '../variables/colors.scss';
+
+.help-container {
+  margin-top: 3em;
+
+  h2 {
+    color: $dark-blue;
+  }
+}
