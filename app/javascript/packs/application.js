@@ -87,3 +87,8 @@ $(document).on('turbolinks:load', function () {
 $(document).on('turbolinks:load', () => {
   $('.ui.dropdown').dropdown();
 });
+
+// Accordion
+$('.ui.accordion')
+  .accordion()
+;
