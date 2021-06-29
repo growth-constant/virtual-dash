@@ -1,0 +1,120 @@
+@import '../variables/colors.scss';
+
+.story-container {
+  padding-top: 4em;
+  padding-bottom: 4em;
+  background-color: $lighter-blue;
+
+  p, h1 {
+    text-align: center;
+    justify-content: center;
+  }
+
+  h1 {
+    color: $dark-blue;
+    font-weight: 600;
+  }
+
+  p {
+    line-height: 2em;
+    padding-left: 6em;
+    padding-right: 6em;
+  }
+}
+
+.values-container {
+  padding-top: 3em;
+  padding-bottom: 3em;
+
+  h1 {
+    color: $dark-blue;
+    font-weight: 600;
+  }
+
+  img {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    position: absolute;
+  }
+
+  p {
+    line-height: 2em;
+  }
+
+  .value {
+    font-size: 1.5em;
+    color: $light-blue;
+  }
+}
+
+.team-container {
+  p, h1 {
+    text-align: center;
+    justify-content: center;
+  }
+
+  h1 {
+    color: $dark-blue;
+    font-weight: 600;
+  }
+
+  .name {
+    font-size: 1.3em;
+    margin-bottom: .3em;
+  }
+
+  .title {
+    font-size: 0.8em;
+    color: $light-gray;
+  }
+}
+
+////// Mobile //////
+@media (min-width: 320px) and (max-width: 768px) {
+  .story-container {
+    padding-top: 2em;
+    padding-bottom: 2em;
+
+    h1 {
+      font-size: 1.5em;
+    }
+
+    p {
+      padding: 0em;
+    }
+
+    .racing {
+      padding-bottom: 2em;
+    }
+  }
+
+  .values-container {
+    padding-top: 1em;
+    padding-bottom: 2em;
+
+    h1 {
+      text-align: center;
+      justify-content: center;
+    }
+
+    .hide {
+      display: none !important;
+    }
+
+    .value {
+      font-size: 1.2em;
+      margin-bottom: 0em !important;
+    }
+  }
+
+  .team-container {
+    padding: 0 2.5em;
+
+    .hide {
+      display: none;
+    }
+  }
+}

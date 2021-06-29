@@ -22,6 +22,8 @@ Rails.application.routes.draw do
   resources :users, only: %i[edit update]
   get :activity, to: 'users#activity'
 
+  get :about, to: 'home#about'
+
   unauthenticated do
     root 'home#index'
   end
