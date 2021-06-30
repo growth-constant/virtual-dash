@@ -89,12 +89,19 @@ $(document).on('turbolinks:load', () => {
 });
 
 // Accordion
-$('.ui.accordion').accordion();
+// Initialize every instance of the accordion
+$(document).on('turbolinks:load', () => {
+  $('.ui.accordion').each(function(i){
+    $('.title').each(function(i){
+      $(this).parent().accordion('open',i);
+      $(this).parent().accordion('close',i);
+    });
+  });  
+});
 
-$(document).on('turbolinks:load', function () {
-  $('.ui.accordion').on('click', () => {
-    let accordionId = $(this).attr('id');
-    console.log(accordionId);
-    $(accordionId).accordion('open', 1);
-  });
+// Open the title/content combo if the title is clicked
+$(document).on('click', '.ui.accordion .title', function () {
+  let itemId = $(this).attr('item_id');
+  let accordionId = $(this).attr('accordion_id');
+  $('#'+accordionId).accordion('open', itemId);
 });
