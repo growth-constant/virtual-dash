@@ -89,6 +89,12 @@ $(document).on('turbolinks:load', () => {
 });
 
 // Accordion
-$('.ui.accordion')
-  .accordion()
-;
+$('.ui.accordion').accordion();
+
+$(document).on('turbolinks:load', function () {
+  $('.ui.accordion').on('click', () => {
+    let accordionId = $(this).attr('id');
+    console.log(accordionId);
+    $(accordionId).accordion('open', 1);
+  });
+});
