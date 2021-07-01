@@ -12,7 +12,7 @@
     .two.column
       %h1 Editing Profile
       = simple_form_for @user do |f|
-        = f.input :email, input_html: { placeholder: 'your@email.com', input_wrapper_html: { class: 'error' } }, hint: 'Important advice: You can continue with complete your sign up for your account if  you modify to your e-mail address'
+        = f.input :email, input_html: { placeholder: 'your@email.com', input_wrapper_html: { class: 'error' } } #, hint: 'Important advice: You can continue with complete your sign up for your account if  you modify to your e-mail address' # What does the hint mean?
         = f.input :name
         = f.input :gender, collection: User::GENDER
         = f.input :phone

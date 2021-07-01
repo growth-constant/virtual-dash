@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   get :activity, to: 'users#activity'
 
   get :about, to: 'home#about'
+  get :help, to: 'home#help'
 
   unauthenticated do
     root 'home#index'

@@ -87,3 +87,21 @@ $(document).on('turbolinks:load', function () {
 $(document).on('turbolinks:load', () => {
   $('.ui.dropdown').dropdown();
 });
+
+// Accordion
+// Initialize every instance of the accordion
+$(document).on('turbolinks:load', () => {
+  $('.ui.accordion').each(function(i){
+    $('.title').each(function(i){
+      $(this).parent().accordion('open',i);
+      $(this).parent().accordion('close',i);
+    });
+  });  
+});
+
+// Open the title/content combo if the title is clicked
+$(document).on('click', '.ui.accordion .title', function () {
+  let itemId = $(this).attr('item_id');
+  let accordionId = $(this).attr('accordion_id');
+  $('#'+accordionId).accordion('open', itemId);
+});
