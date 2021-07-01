@@ -1,24 +1,67 @@
-%p#notice= notice
-
-%p
-  %b Title:
-  = @race.title
-%p
-  %b Description:
-  = @race.description
-%p
-  %b Country:
-  = @race.country
-%p
-  %b State:
-  = @race.state
-%p
-  %b City:
-  = @race.city
-%p
-  %b Enddate:
-  = @race.enddate
-
-= link_to 'Edit', edit_race_path(@race)
-\|
-= link_to 'Back', races_path
+.race-details-background
+  .container 
+    .ui.grid
+      .row
+        .sixteen.wide.column
+          %h1.title= @race.title
+      .row
+        .sixteen.wide.column
+          %p.desc= @race.description
+      .row
+        .sixteen.wide.column
+          - if !current_user
+            .ui.button.large.light-blue
+              = link_to 'Sign up', new_user_session_path, class: 'link-to-button'
+          - elsif current_user && @registered.empty?
+            - if @race.enddate < Time.now 
+              .ui.disabled.button.large.light-blue Race endend
+            - else
+              .ui.button.large.light-blue
+                = link_to 'Register now', new_race_registration_path(@race), class: 'link-to-button'
+          - elsif current_user && !@registered.empty?
+            .ui.button.large.light-blue
+              = link_to 'Personal status', personal_race_path(@race), class: 'link-to-button'
+          .ui.inverted.button.large
+            = link_to 'Live results', leaderboard_race_path(@race), class: 'link-to-inverted-button'
+- if @race.enddate < Time.now 
+  .enddate-container{:style => 'background-color: red !important;'}
+    %p.text= "The race ended on #{@race.enddate.strftime('%B %d, %Y')}"
+- else
+  .enddate-container
+    %p.text= "Registation closes on #{@race.enddate.strftime('%B %d, %Y')}"
+.race-details-container
+  .ui.stackable.grid
+    .row
+      .eight.wide.column
+        %h1{class: 'race-name'}= @race.title
+        %p{class: 'price-and-dates'}= "$#{@race.price.to_i} | From #{@race.startdate.strftime('%B %d')} to #{@race.enddate.strftime('%B %d')}"
+        %h2 Description
+        %p{class: 'desc'}= @race.description
+      .eight.wide.colum.map-and-button
+        - if !current_user
+          .ui.button.large.light-blue.register
+            = link_to 'Sign up', new_user_session_path, class: 'link-to-button'
+        - elsif current_user && @registered.empty?
+          - if @race.enddate < Time.now 
+            .ui.disabled.button.large.light-blue.register Race endend
+          - else
+            .ui.button.large.light-blue.register
+              = link_to 'Register now', new_race_registration_path(@race), class: 'link-to-button'
+        - elsif current_user && !@registered.empty?
+          .ui.button.large.light-blue.register
+            = link_to 'Personal status', personal_race_path(@race), class: 'link-to-button'
+        - if current_user.present? && (policy(current_user).admin? || policy(@race).edit?)
+          .ui.button.large.light-blue.register
+            = link_to 'Edit race', edit_race_path(@race), class: 'link-to-button'
+        .map-container#map{ 
+          "data-polyline" => "#{@race.all_data['map']['polyline']}",
+          "data-lat" => "#{@lat}", 
+          "data-lng" => "#{@lng}", 
+          :class => "race-map"
+        }
+    .row
+      .sixteen.wide.column
+        .leaderboard-table
+          = render :partial => 'components/leaderboard-table', :locals => {:full_path => nil, :race_id => @race.id, :distance => @race.distance, :title => 'Leaderboard', :leaderboard => @leaderboard}
+          .ui.button.large.dark-blue
+            = link_to 'View more', leaderboard_race_path(@race), class: 'link-to-button'

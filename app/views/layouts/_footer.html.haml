@@ -1,0 +1,28 @@
+.footer-container
+  .ui.stackable.three.column.centered.grid
+    .centered.row
+      .column
+        %a{:href => '/', class: 'no-hover'}
+          = image_tag('logos/logo-white.svg', alt: 'Virtual Dash', class: 'logo-nav')
+        %p{class: 'footer'}
+          = link_to('Race', races_path, {:class => 'footer no-hover'})
+        %p
+          = link_to('About', '/', {:class => 'footer no-hover'})
+        %p
+          = link_to('Blog', '/', {:class => 'footer no-hover'})
+      .column
+        %p{class: 'footer-title'} Legal
+        %p{class: 'footer'}
+          = link_to('Privacy policy', '/docs/privacy-policy.pdf', {:target => '_blank', :class => 'footer no-hover'})
+        %p
+          = link_to('Terms and condition', '/docs/terms-of-use.pdf', {:target => '_blank', :class => 'footer no-hover'})
+        %p
+          = link_to('Cookies', '/', {:target => '_blank', :class => 'footer no-hover'})
+      .column
+        %p{class: 'footer-title'} Subscribe
+        %p{class: 'footer'} Get the latest news and articles to your inbox every month.
+        %br
+        .ui.action.input.footer-mail
+          %input{:placeholder => 'Your email', :type => 'email'}/
+          %button.ui.icon.button.footer-input-button
+            %i.arrow.right.icon.light-blue

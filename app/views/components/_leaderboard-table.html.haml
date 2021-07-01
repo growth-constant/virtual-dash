@@ -1,0 +1,52 @@
+.leaderboard-table-container
+  .ui.grid
+    .two.column.row
+      .column
+        %h2= title
+      .column
+        - if not full_path.nil?
+          .full-board-link
+            %a{ :href => full_path } Full Leaderboard
+    .row
+      .column
+        -# Display a message if there's no tries on the race
+        - if leaderboard[:competitors].length == 0
+          .ui.icon.message
+            %i.bicycle.icon.black
+            .content
+              .header
+                Be the first to finish the race segment
+              %p You and others can track their tries on this segment. Use the Strava app to participate on this race.
+        - else
+          %table.ui.striped.unstackable.table.leaderboard-table
+            %thead
+              %tr
+                %th 
+                %th Name
+                %th Time
+                %th Tries
+                %th Price
+            %tbody
+              - leaderboard[:competitors].each_with_index do |competitor, index|
+                %tr
+                  %td.trophy
+                    - if index === 0
+                      = image_tag 'leaderboard/1st-place-icon.svg', class: 'trophy-img'
+                    - elsif index === 1
+                      = image_tag 'leaderboard/2nd-place-icon.svg', class: 'trophy-img'
+                    - elsif index === 2
+                      = image_tag 'leaderboard/3rd-place-icon.svg', class: 'trophy-img'
+                  %td
+                    .user-container
+                      %object{data: competitor.image, type: 'image/jpg', class: 'picture-profile'}
+                        = image_tag 'default-user.jpg', alt: 'User profile', class: 'picture-profile'
+                      = link_to competitor.name, personal_race_path(race_id, competitor.id), class: 'link-to-anchor-leaderboard-table user-name'
+                  %td= "#{Time.at(competitor.duration).utc.strftime('%H:%M:%S')}"
+                  - user_tries = leaderboard[:users_tries].select{ |user| user[:user_id] == competitor.id }
+                  %td= "#{user_tries[0][:tries]}"
+                  - if index === 0
+                    %td= "$#{leaderboard[:prizes][:first]}"
+                  - elsif index === 1
+                    %td= "$#{leaderboard[:prizes][:second]}"
+                  - elsif index === 2
+                    %td= "$#{leaderboard[:prizes][:third]}"

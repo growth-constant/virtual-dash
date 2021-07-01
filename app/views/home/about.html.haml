@@ -1,0 +1,57 @@
+= render :partial => 'components/title-banner', :locals => {:title => 'About us'}
+.story-container
+  .ui.stackable.centered.grid
+    .row
+      .ten.wide.column
+        %h1 Our Story
+        %p We believe that people should be rewarded when they are doing the things they enjoy, when they are the best ones; but in this busy world not everyone have the time to be the best at the same time, that's why we created a platafrorm where you earn prices by racing others when you are at your best. Race whenever you can, we'll collect the try and put it on the leaderboard to see just how good you are.
+        %br
+        .image-grid
+          .ui.stackable.centered.grid
+            .row
+              .five.wide.column
+                = image_tag 'about/left.jpg', alt: 'Meeting'
+              .five.wide.column
+                = image_tag 'about/up.jpg', alt: 'Racing', class: 'racing'
+                = image_tag 'about/down.jpg', alt: 'Sharing'
+              .five.wide.column
+                = image_tag 'about/right.jpg', alt: 'Caring'
+.values-container
+  .ui.stackable.centered.grid
+    .row
+      .ten.wide.column
+        .ui.stackable.centered.grid
+          .row
+            .six.wide.column.hide
+              = image_tag 'about/values.jpg', alt: 'Our Values', class: 'img'
+            .two.wide.column.hide
+            .eight.wide.column
+              .values-container
+                %h1 Our values 
+                %p.value Our Mision
+                %p Deliver a platform where athletes and organizers can come together to organize, race and win prices from everywhere in the world at anytime.
+                %p.value Our Vision
+                %p Help athletes be rewarded for being the best among their peers, while providing more freedom than traditional racing.
+                %p.value Our Goal
+                %p To be the go to place for creating asynchronous races and be an essential part of the biking community.
+.team-container
+  .ui.stackable.centered.grid
+    .row
+      .ten.wide.column
+        %h1 Our Team
+        %p.hide Meet the amazing team behind Virtual Dash.
+        %br
+        .ui.stackable.centered.grid
+          .row
+            .five.wide.column
+              = image_tag 'about/luisortega.jpg', alt: 'Luis Angel Ortega', class: 'team'
+              %p.name Luis Angel Ortega
+              %p.title Software Developer
+            .five.wide.column
+              = image_tag 'about/victorfernandez.jpg', alt: 'Victor Fernández', class: 'team'
+              %p.name Victor Fernández
+              %p.title CEO & Founder
+            .five.wide.column
+              = image_tag 'about/luisgonzalez.jpg', alt: 'Luis Angel González', class: 'team'
+              %p.name Luis Angel González
+              %p.title Digital Designer

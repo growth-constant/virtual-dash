@@ -1,33 +1,60 @@
 class RacesController < ApplicationController
-  before_action :set_race, only: [:show, :edit, :update, :destroy]
+  before_action :check_payment_status, only: %i[show]
+  before_action :set_race, only: %i[show edit update destroy leaderboard general_classification personal]
+  before_action :set_profile, only: %i[index]
+  before_action :registered, only: %i[show leaderboard]
+  before_action :filter, only: %i[index]
 
-  # GET /races
-  # GET /races.json
-  def index
-    @races = Race.all
+  def index; end
+
+  def leaderboard
+    @leaderboard = Leaderboard.new(@race).call
+
+    # For when categories comes to life
+    # @leaderboard_men = MenLeaderboard.new(@race, competitors_qty).call
+    # @leaderboard_women = WomenLeaderboard.new(@race, competitors_qty).call
   end
 
-  # GET /races/1
-  # GET /races/1.json
+  def general_classification
+    @results = Leaderboard.new(@race, :all).call
+    @competitors = Kaminari.paginate_array(@results[:competitors]).page(params[:page]).per(1)
+  end
+
+  def personal
+    if params[:user_id]
+      @user = User.find(params[:user_id])
+    else
+      @user = current_user
+    end
+
+    @leaderboard = Leaderboard.new(@race, :all).call
+    @personal =  PersonalLeaderboard.new(@leaderboard, @user).call
+  end
+
   def show
+    coordinates = Polylines::Decoder.decode_polyline(@race.all_data['map']['polyline'])
+    i = coordinates.size / 2
+    @lat = coordinates[i][0]
+    @lng = coordinates[i][1]
+    @leaderboard = Leaderboard.new(@race).call
   end
 
-  # GET /races/new
   def new
     @race = Race.new
+    authorize @race, :create?
   end
 
-  # GET /races/1/edit
   def edit
+    authorize @race, :edit?
   end
 
-  # POST /races
-  # POST /races.json
   def create
     @race = Race.new(race_params)
+    @race.user_id = current_user.id
 
     respond_to do |format|
       if @race.save
+        CollectTries.new.call # Collect new tries after a new race is crated
         format.html { redirect_to @race, notice: 'Race was successfully created.' }
         format.json { render :show, status: :created, location: @race }
       else
@@ -37,8 +64,6 @@ class RacesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /races/1
-  # PATCH/PUT /races/1.json
   def update
     respond_to do |format|
       if @race.update(race_params)
@@ -51,8 +76,6 @@ class RacesController < ApplicationController
     end
   end
 
-  # DELETE /races/1
-  # DELETE /races/1.json
   def destroy
     @race.destroy
     respond_to do |format|
@@ -62,13 +85,49 @@ class RacesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_race
-      @race = Race.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def race_params
-      params.require(:race).permit(:title, :description, :country, :state, :city, :enddate)
+  def filter
+    # When paginator is implemented, change the 3 for 4 in the conditional
+    if params.as_json.size < 3
+      @races = Race.all.page(params[:page])
+    else
+      @params = params.as_json
+      @races = Race.search(@params).page(params[:page])
     end
+  end
+
+  def registered
+    return unless current_user
+
+    @registered = Registration.user_registered_and_paid?(current_user, @race)
+  end
+
+  # Check if payment status is the same on Stripe
+  def check_payment_status
+    if current_user
+      race = Race.find(params[:id])
+      registration = Registration.race_registration(current_user, race)
+      if registration.status == 'require_payment'
+        stripe_res = Stripe::Checkout::Session.retrieve(
+          registration.session_id
+        )
+        if stripe_res.payment_status == 'paid'
+          registration.update(
+            status: 'registered',
+            payment_status: 'paid'
+          )
+        end
+      end
+    end
+  end
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_race
+    @race = Race.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def race_params
+    params.require(:race).permit(:title, :description, :country, :state, :city, :enddate, :segment_id, :user_id)
+  end
 end

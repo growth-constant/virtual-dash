@@ -1,0 +1,47 @@
+.race-card
+  .ui.centered.grid
+    .one.row.column
+      .sixteen.wide.column
+        - coordinates = Polylines::Decoder.decode_polyline(race.all_data['map']['polyline'])
+        - i = coordinates.size / 2
+        - lat = coordinates[i][0]
+        - lng = coordinates[i][1]
+        .map-container{ 
+          "data-polyline" => "#{race.all_data['map']['polyline']}",
+          "data-lat" => "#{lat}", 
+          "data-lng" => "#{lng}", 
+          :class => "race-map",
+          :id => "map#{race.id}"
+        }
+    .one.row.column
+      .sixteen.wide.column
+        = link_to race do
+          .details
+            %h3.title= race.title
+            %p.desc= race.description
+    - if race.enddate < Time.now
+      - if current_user && !registered.empty?
+        .two.column.row
+          .left-button-column.eight.wide.centered.column
+            .left-button
+              = link_to 'Status', personal_race_path(race), class: 'fluid ui button dark-blue tiny'
+          .right-button-column.eight.wide.centered.column
+            .right-button
+              = link_to 'Leaderboard', leaderboard_race_path(race), class: 'fluid ui button inverted blue tiny'
+      - else
+        .one.row.column
+          .fifteen.wide.centered.column
+            = link_to 'Leaderboard', leaderboard_race_path(race), class: 'fluid ui button inverted blue tiny center-button'
+    - else
+      .two.column.row
+        .left-button-column.eight.wide.centered.column
+          .left-button
+            - if !current_user
+              = link_to 'Sign up', new_user_session_path, class: 'fluid ui button dark-blue tiny'
+            - elsif current_user && registered.empty?
+              = link_to 'Register', new_race_registration_path(race), class: 'fluid ui button dark-blue tiny'
+            - elsif current_user && !registered.empty?
+              = link_to 'Status', personal_race_path(race), class: 'fluid ui button dark-blue tiny'
+        .right-button-column.eight.wide.centered.column
+          .right-button
+            = link_to 'Leaderboard', leaderboard_race_path(race), class: 'fluid ui button inverted blue tiny'

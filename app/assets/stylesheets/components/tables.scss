@@ -1,0 +1,63 @@
+@import '../variables/colors.scss';
+
+.leaderboard-table-container {
+  margin-bottom: 1em;
+
+  .full-board-link {
+    a {
+      height: 1em;
+      float: right;
+      max-width: 30%;
+      margin-top: 4%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      color: $dark-blue !important;
+      
+      &:hover {
+        color: $light-blue !important;
+        background-color: transparent !important;
+      }
+    }
+  }
+
+  .leaderboard-table {
+
+    .picture-profile {
+      width: 25px;
+      height: 25px;
+      display: inline;
+      border-radius: 50%;
+      vertical-align: middle;
+    }
+  
+    .trophy {
+      max-width: 10px;
+      padding-top: 1em;
+      text-align: center;
+    }
+
+    .trophy-img {
+      max-width: 26px;
+    }
+  
+    .user-container {
+      display: inline;
+    }
+  
+    .user-name {
+      display: inline;
+      vertical-align: middle;
+    }
+  }
+}
+
+////// Mobile //////
+@media (min-width: 320px) and (max-width: 768px) {
+  .leaderboard-table-container {
+    .leaderboard-table {
+      .trophy {
+        max-width: 40px;
+      }
+    }
+  }
+}

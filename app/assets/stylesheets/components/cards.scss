@@ -1,0 +1,149 @@
+@import '../variables/colors.scss';
+
+.activity-left-card {
+  box-shadow: 0px 0px 11px 1px #6b778c4f !important;
+  
+  .content {
+    padding: 2em;
+  }
+}
+
+.activity-right-card {
+  padding: 3em;
+  box-shadow: 0px 0px 11px 1px #6b778c4f !important;
+}
+
+.auth-card-container {
+  display: flex;
+  margin-top: 3em;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-card {
+  width: 26em;
+  height: 25em;
+  padding: 3em;
+  border-radius: 12px;
+  box-shadow: 0px 0px 11px 1px #6b778c4f !important;
+
+  p {
+    width: 80%;
+    font-size: 12px;
+    margin-bottom: 50%;
+    
+    a {
+      &:hover {
+        text-decoration: underline;
+        background-color: transparent !important;
+      }  
+    }
+  }
+}
+
+.race-card {
+  margin-bottom: 2em;
+  border: solid #eaeaea 1px;
+
+  .center-button {
+    margin-bottom: 1.1em !important;
+  }
+
+  .details {
+    margin-left: 1em;
+    margin-right: 1em;
+
+    .desc {
+      color: $gray;
+      font-size: 12px;
+      min-height: 68px;
+      // Limit description to 4 lines
+      overflow: hidden !important;
+      display: -webkit-box;
+      -webkit-line-clamp: 4; /* number of lines to show */
+      text-overflow: ellipsis;
+      -webkit-box-orient: vertical;
+    }
+
+    .title {
+      color: $black;
+
+      &:hover {
+        color: $light-blue;
+      }
+    }
+  }
+
+  .left-button {
+    margin-left: 1em;
+    margin-bottom: 1em;
+  }
+
+  .left-button-column {
+    padding-right: 1% !important;
+  }
+
+  .map-container {
+    height: 8em;
+  }
+
+  .right-button {
+    margin-right: 1em;
+    margin-bottom: 1em;
+  }
+
+  .right-button-column {
+    padding-left: 1% !important;
+  }
+
+  &:hover {
+    box-shadow: 0px 0px 11px 1px #6b778c4f !important;
+  }
+}
+
+.stats-card{
+  padding: 2em;
+  border-radius: 6px;
+  box-shadow: 0px 0px 11px 1px #6b778c4f !important;
+
+  .stats-icon {
+    float: right !important;
+  }
+
+  .stats-name {
+    font-size: 17px;
+    font-weight: bold;
+    color: $dark-blue;
+  }
+
+  .stats-number {
+    font-size: 24px;
+    font-weight: bold;
+    color: $dark-blue;
+  }
+}
+
+////// Mobile //////
+@media (min-width: 320px) and (max-width: 768px) {
+  .auth-card-container {
+    margin: 3em 1em 0em;
+  }
+
+  .auth-card {
+    p {
+      width: 90%;
+      margin-bottom: 60%;
+    }
+  }
+
+  .stats-card {
+    padding: 1em;
+  }
+}
+
+////// Laptop L //////
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .stats-card {
+    margin: 0em 2em 0em;
+  }
+}

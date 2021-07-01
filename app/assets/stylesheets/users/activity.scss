@@ -1,0 +1,127 @@
+@import '../variables/colors.scss';
+
+.activity-left-card {
+  .balance {
+    font-size: 2.5em;
+    font-weight: 600;
+    line-height: 0em;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .desc {
+    font-size: 0.9em;
+    color: $light-gray;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .title {
+    font-size: 1.5em;
+    font-weight: 500;
+    line-height: 0em;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .link-status {
+    margin-left: 5em;
+    margin-right: 5em;
+    text-align: center;
+    justify-content: center;
+    
+    .pending {
+      padding: .2em;
+      color: #FFFFFF;
+      font-weight: 500;
+      border-radius: 4px;
+      background-color: $lighter-gray;
+    }
+
+    .success {
+      padding: .2em;
+      color: #FFFFFF;
+      font-weight: 500;
+      border-radius: 4px;
+      background-color: $green;
+    }
+  }
+}
+
+.activity-right-card {
+  th {
+    font-weight: 400 !important;
+    background-color: $lighter-blue !important;
+  }
+
+  .center {
+    text-align: center !important;
+  }
+
+  .wins {
+    font-weight: 600;
+    color: $green;
+  }
+
+  .search-bar {
+    width: 30em;
+    // width: 15em; // Uncomment when Stripe Connect is implemented.
+    margin-right: 1em;
+  }
+}
+
+.icon-container {
+  text-align: center;
+  justify-content: center;
+}
+
+////// Mobile //////
+@media (min-width: 320px) and (max-width: 425px) {
+  .activity-left-card {
+    .link-status {
+      margin-left: 5em;
+      margin-right: 5em; 
+    }
+  }
+
+  .activity-right-card {
+    td, th {
+      font-size: 0.7em;
+    }
+
+    .search-bar {
+      width: 100%;
+      margin-right: 0em;
+    }
+
+    .submit-search {
+      width: 100%;
+      margin-top: .5em !important;
+    }
+  }
+}
+
+////// Tablet //////
+@media (min-width: 426px) and (max-width: 768px) {
+  .activity-left-card {
+    .balance {
+      font-size: 2.2em;
+    }
+  
+    .title {
+      font-size: 1.1em;
+    }
+    
+    .link-status {
+      margin-left: 2em;
+      margin-right: 2em; 
+    }
+  }
+
+  .activity-right-card {
+    .search-bar {
+      width: 15em;
+      margin-right: 0.5em;
+    }
+  }
+}

@@ -1,0 +1,21 @@
+%br
+.ui.stackable.three.column.centered.grid
+  - if @user.is_subscribed == false
+    .row
+      .two.column
+        .ui.warning.message
+          .header
+            You must be a Strava premium subscriber to register to a race
+          %a{:href=>'https://www.strava.com/subscribe', class: 'link-to-anchor'} Subscribe
+          , then register to race.
+  .row
+    .two.column
+      %h1 Editing Profile
+      = simple_form_for @user do |f|
+        = f.input :email, input_html: { placeholder: 'your@email.com', input_wrapper_html: { class: 'error' } } #, hint: 'Important advice: You can continue with complete your sign up for your account if  you modify to your e-mail address' # What does the hint mean?
+        = f.input :name
+        = f.input :gender, collection: User::GENDER
+        = f.input :phone
+        = f.input :birthdate, as: :date, html5: true
+        = f.button :submit
+      = link_to 'Back', races_path

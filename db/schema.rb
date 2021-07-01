@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_16_231356) do
+ActiveRecord::Schema.define(version: 2021_05_06_172406) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,10 @@ ActiveRecord::Schema.define(version: 2020_12_16_231356) do
     t.datetime "start"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "moving_time"
+    t.datetime "start_date_local"
+    t.integer "race_id"
+    t.bigint "race_try_id"
     t.index ["registration_id"], name: "index_race_tries_on_registration_id"
     t.index ["start"], name: "index_race_tries_on_start"
     t.index ["user_id"], name: "index_race_tries_on_user_id"
@@ -49,16 +53,29 @@ ActiveRecord::Schema.define(version: 2020_12_16_231356) do
     t.string "segment_id"
     t.boolean "published"
     t.datetime "startdate"
+    t.integer "user_id"
+    t.string "activity_type"
+    t.string "name"
+    t.float "distance"
+    t.float "average_grade"
+    t.float "maximum_grade"
+    t.float "elevation_high"
+    t.float "elevation_low"
+    t.string "start_latlng", array: true
+    t.string "end_latlng", array: true
+    t.jsonb "all_data"
+    t.decimal "price", precision: 8, scale: 2, default: "0.0"
   end
 
   create_table "registrations", force: :cascade do |t|
     t.bigint "race_id", null: false
     t.bigint "user_id", null: false
-    t.bigint "race_category_id", null: false
-    t.string "status"
+    t.string "status", default: "require_agreements"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["race_category_id"], name: "index_registrations_on_race_category_id"
+    t.string "payment_status", default: "unpaid"
+    t.boolean "agreements_signed", default: false
+    t.string "session_id"
     t.index ["race_id"], name: "index_registrations_on_race_id"
     t.index ["user_id"], name: "index_registrations_on_user_id"
   end
@@ -84,6 +101,13 @@ ActiveRecord::Schema.define(version: 2020_12_16_231356) do
     t.string "state"
     t.string "country"
     t.string "image_medium"
+    t.integer "role", default: 3
+    t.string "stripe_customer_id"
+    t.string "gender"
+    t.string "phone"
+    t.boolean "profile_complete", default: false
+    t.date "birthdate"
+    t.boolean "is_subscribed", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -91,7 +115,6 @@ ActiveRecord::Schema.define(version: 2020_12_16_231356) do
   add_foreign_key "race_categories", "races"
   add_foreign_key "race_tries", "registrations"
   add_foreign_key "race_tries", "users"
-  add_foreign_key "registrations", "race_categories"
   add_foreign_key "registrations", "races"
   add_foreign_key "registrations", "users"
 end

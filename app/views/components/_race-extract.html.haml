@@ -1,0 +1,12 @@
+.race-extract-container
+  %h1= @race.title
+  %p= @race.description
+  - if !current_user
+    = link_to 'Sign up', new_user_session_path, class: ' ui button large light-blue'
+  - elsif current_user && @registered.empty?
+    - if @race.enddate < Time.now 
+      .ui.disabled.button.large.light-blue Race endend
+    - else
+      = link_to 'Register now', new_race_registration_path(@race), class: 'ui button large light-blue'
+  - elsif current_user && !@registered.empty?
+    .ui.disabled.button.large.light-blue Registered!

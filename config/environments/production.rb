@@ -64,6 +64,17 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { host: ENV['RAILS_HOST'], port: 80 }
 
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :user_name => 'apikey',
+    :password => ENV['SENDGRID_API_KEY'],
+    :domain => 'virtualdash.co',
+    :address => 'smtp.sendgrid.net',
+    :port => 587,
+    :authentication => :plain,
+    :enable_starttls_auto => true
+  }
+
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false

@@ -1,0 +1,10 @@
+# “At every minute on every day-of-month from 8 am through 6 pm and on every day-of-week from Monday through Friday.”
+# cron: "* * 8-18 * 1-5"
+retrieve_segment_info:
+  cron: "59 23 * * *"
+  class: "CollectTriesJob"
+  queue: default
+check_races_ended:
+  cron: "01 00 * * *"
+  class: "RacesEndedJob"
+  queue: default

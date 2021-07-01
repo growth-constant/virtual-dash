@@ -1,0 +1,8 @@
+%h2= "#{@user[:first_name]}, your postion has changed!"
+%p= "On #{@race[:title]} you now rank #{@place} place on the leaderboard."
+= link_to 'Open Virtual Dash', leaderboard_race_url(@race[:id]), class: 'ui fluid button'
+.alt
+  %small 
+    Or paste 
+    = link_to "virtualdash.co/races/#{@race[:id]}/leaderboard", leaderboard_race_url(@race[:id]), class: 'anchor'
+    in your browser.

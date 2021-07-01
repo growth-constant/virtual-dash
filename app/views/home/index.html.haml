@@ -1,2 +1,47 @@
-%h1 Home#index
-= link_to "Sign in with Strava", user_strava_omniauth_authorize_path
+.welcome-background
+  .welcome-container 
+    .ui.grid
+      .row
+        .sixteen.wide.column
+          %h1.title VIRTUAL RACING IN YOUR OWN COMFORT SPACE
+      .row
+        .sixteen.wide.column
+          %p.desc Race other bikers virtually on any course using Virtual Dash. Easily register online, race by yourself or with friends on any of the virtual races at any time, and win money prices. 
+      .row
+        .sixteen.wide.column
+          .ui.button.large.light-blue
+            = link_to 'Explore races', new_user_session_path, class: 'link-to-button'
+.racers-container
+  .ui.stackable.two.column.grid
+    .row.first-row
+      .eight.wide.column
+        = image_tag 'landing/virtual-racer-1.png', alt: 'Virtual Racer 1', class: 'first-virtual-racer'
+      .eight.wide.column
+        .text-container
+          %h1.race-heading Race at any time that is convenient for you.
+          %p Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et.
+    .row
+      .eight.wide.column.right-inverted
+        = image_tag 'landing/virtual-racer-2.png', alt: 'Virtual Racer 2'
+      .eight.wide.column.left-inverted
+        .text-container
+          %h1.race-heading Win price money after each race
+          %p Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et.
+.panoramic-race
+.upcoming-container
+  .ui.stackable.two.column.grid
+    .row.title-row
+      .sixteen.wide.column
+        %h2 Upcoming races for you to explore
+        %p See top races happening close to you
+    .row
+      .eight.wide.column
+        = image_tag 'landing/map-example.png', alt: 'Robocop Desert Race Map', class: 'race-map'
+      .eight.wide.column
+        .race-data-container
+          %h2 Robocop Desert Race
+          %p Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+          .ui.button.dark-blue
+            = link_to 'Register to race', new_user_session_path, class: 'link-to-button'
+          .ui.button.light-blue
+            = link_to 'More info', new_user_session_path, class: 'link-to-button'

@@ -1,0 +1,36 @@
+@import '../variables/colors.scss';
+
+.nav-container {
+  height: 5em;
+  width: 100%;
+  display: flex;
+  padding-left: 4em;
+  align-items: center; 
+  background-color: $lighter-gray;
+}
+
+.leaderboard-shared-container { 
+  margin-top: 2em;
+  margin-left: 2em;
+  margin-right: 2em;
+}
+
+////// Mobile //////
+@media (min-width: 320px) and (max-width: 768px) {
+  .nav-container {
+    padding-left: 2em;
+  }
+
+  .leaderboard-shared-container {
+    margin-left: .5em;
+    margin-right: 0em;
+  }
+}
+
+////// Laptop L //////
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .nav-container {
+    margin-top: 0em;
+    padding-left: 4em;
+  }
+}

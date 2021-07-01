@@ -1,0 +1,56 @@
+:css
+  p {
+    font-size: 1.25em !important;
+  }
+  span {
+    font-weight: 500;
+    font-size: 1em !important;
+  }
+  .dates {
+    margin-top: 2em;
+    margin-bottom: 1em;
+  }
+  .final-ranking {
+    color: #20a4f3;
+    font-weight: 500;
+    font-size: 1.5em !important;
+  }
+  .winner {
+    color: #20a4f3;
+    font-weight: 600;
+    font-size: 2em !important;
+  }
+  @media (min-width: 320px) and (max-width: 768px) {
+    p {
+      font-size: 1em !important;
+    }
+    .final-ranking {
+      font-size: 1.2em !important;
+    }
+    .thropy {
+      width: 40%;
+    }
+    .winner {
+      font-size: 1.2em !important;
+    }
+  }
+- winners = ['1st', '2nd', '3rd']
+%h2= "#{@user[:first_name]}, #{@race[:title]} is now over!"
+- if winners.include? @place
+  %p.winner= "CONGRATULATIONS, YOU PLACED #{@place.upcase}!"
+  = image_tag attachments['trophy.png'].url, alt: 'Trophy', class: 'thropy'
+- else
+  %p Thank you for participating.
+.dates 
+  %span= "Start date: #{@race[:startdate].strftime('%B %d, %Y')}"
+  %br
+  %span= "End date: #{@race[:enddate].strftime('%B %d, %Y')}"
+%br
+- if winners.exclude? @place
+  %p.final-ranking= "Final ranking: #{@place} place"
+= link_to 'Open leaderboards', leaderboard_race_url(@race[:id]), class: 'ui fluid button'
+.alt
+  %small 
+    Or paste 
+    = link_to "virtualdash.co/races/#{@race[:id]}/leaderboard", leaderboard_race_url(@race[:id]), class: 'anchor'
+    in your browser.

@@ -1,0 +1,268 @@
+// Place all the styles related to the Home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+@import 'variables/colors.scss';
+
+// Section 1
+.welcome-background {
+    width: 100%;
+    height: 900px;
+    background: linear-gradient( 
+        rgba(0, 0, 0, 0.5), 
+        rgba(0, 0, 0, 0.5) 
+    ), image-url('landing/welcome-bg.png');
+    background-size: cover;
+}
+
+.welcome-container {
+    color: white;
+    text-align: center;
+    padding: 16em 30em 10em;
+
+    .title {
+        font-size: 69px;
+        font-weight: bolder;
+    }
+
+    .desc {
+        font-size: 17px;
+        padding: 0em 7em 0em;
+    }
+
+}
+
+// Section 2
+.racers-container { 
+    padding-bottom: 5em;
+
+    p {
+        font-size: 17px;
+        color: $gray;
+    }
+
+    .first-row {
+        margin: 0em 4em 0em;
+    }
+
+    .first-virtual-racer {
+        margin-left: 6em;
+    }
+
+    .left-inverted {
+        right: 48%;
+    }
+
+    .race-heading{
+        margin-top: 6em;
+    }
+
+    .right-inverted {
+        left: 50%;
+    }
+
+    .text-container{
+        margin-left: 5em;
+        margin-right: 5em;
+    }
+}
+
+// Section 3
+.panoramic-race {
+    width: 100%;
+    height: 35em;
+    background-image: image-url('landing/panoramic-race.png');
+    background-size: cover;
+}
+
+// Section 4
+.upcoming-container {
+    h2 {
+        font-size: 30px;
+    }
+
+    p {
+        color: $gray;
+        font-size: 15px;
+    }
+
+    .title-row {
+        margin-top: 6em;
+        margin-bottom: 6em;
+        text-align: center;
+        justify-content: center;
+        -webkit-box-pack: center;
+    }
+
+    .race-data-container {
+        margin-top: 5em;
+        margin-right: 20em;
+    }
+
+    .race-map {
+        height: 23em;
+        margin-left: 25em;
+        border-radius: 11%;
+        border: solid 1.5em white;
+        box-shadow: 2px 2px 17px 0px $gray !important;
+    }
+}
+////// Mobile //////
+@media (min-width: 320px) and (max-width: 768px) {
+    // Section 1
+    .welcome-background {
+        height: 600px;
+    }
+
+    .welcome-container {
+        padding: 5em 1em 5em;
+
+        .title {
+            font-size: 35px;
+        }
+
+        .desc {
+            line-height: 2;
+            font-size: 13px;
+            padding: 0em 1em 0em;
+        }
+    }
+
+    // Section 2
+    .racers-container {
+        .first-virtual-racer {
+            margin-left: 0;
+        }
+
+        .left-inverted {
+            right: 0;
+        }
+
+        .race-heading {
+            margin-top: 0;
+        }
+
+        .right-inverted {
+            left: 0;
+        }
+
+        .text-container {
+            margin-left: 1em;
+            margin-right: 1em;
+        }
+    }
+
+    // Section 3
+    .panoramic-race {
+        height: 15em;
+    }
+
+    // Section 4
+    .upcoming-container {
+        .title-row {
+            margin-top: 3em !important;
+        }
+
+        .race-data-container {
+            margin-top: 0em !important;
+            margin-left: 1em !important;
+            margin-right: 0em !important;
+        }
+
+        .race-map {
+            margin-left: 0em !important;
+        }
+    }
+
+}
+
+////// Tablet //////
+@media (min-width: 426px) and (max-width: 768px) {
+    // Section 2
+    .racers-container {
+        p {
+            font-size: 14px;
+        }
+
+        .race-heading {
+            margin-top: 1.5em;
+        }
+    }
+}
+
+////// Laptop //////
+@media (min-width: 769px) and (max-width: 1024px) {
+    // Section 1
+    .welcome-container {
+        padding: 10em 6em 0em;
+    }
+
+    // Section 2
+    .racers-container {
+        .first-virtual-racer {
+            margin-left: 0em;
+        }
+
+        .race-heading {
+            margin-top: 2em;
+        }
+    }
+
+    // Section 3
+    .panoramic-race {
+        height: 20em;
+    }
+
+    // Section 4
+    .upcoming-container {
+        .race-data-container {
+            margin-top: 3em;
+            margin-right: 4em;
+        }
+
+        .race-map {
+            margin-left: 4em;
+        }
+    }
+
+}
+
+////// Laptop L //////
+@media (min-width: 1025px) and (max-width: 1440px) {
+    // Section 1
+    .welcome-container {
+        padding: 10em 15em 10em;
+
+        .desc {
+            padding: 0em 1em 0em;
+        }
+    }
+
+    // Section 2
+    .racers-container {
+        .first-row {
+            margin: 0;
+        }
+
+        .first-virtual-racer {
+            margin-left: 0;
+        }
+
+        .text-container {
+            margin-left: 1em;
+            margin-right: 1em;
+        }
+    }
+
+    // Section 4
+    .upcoming-container {
+        .race-data-container {
+            margin-left: 0em;
+            margin-right: 10em;
+        }
+
+        .race-map {
+            margin-left: 10em;
+        }
+    }
+}

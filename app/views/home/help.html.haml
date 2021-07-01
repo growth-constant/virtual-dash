@@ -1,0 +1,7 @@
+= render :partial => 'components/title-banner', :locals => {:title => 'We are here to help'}
+.ui.stackable.centered.grid
+  .row
+    .ten.wide.column
+      .help-container
+        - get_help_content.each_with_index do | item, index |
+          = render :partial => 'components/accordion-with-title', :locals => {:title => item[:title], :elements => item[:elements], :accordion_index => index}

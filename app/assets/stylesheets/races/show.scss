@@ -1,0 +1,185 @@
+@import 'variables/colors.scss';
+
+////// Race details //////
+
+// Section 1
+.race-details-background {
+  width: 100%;
+  height: 624px;
+  margin-top: 1em;
+  background: linear-gradient( 
+      rgba(0, 0, 0, 0.5), 
+      rgba(0, 0, 0, 0.5) 
+  ), image-url('race-details-bg.png');
+  background-size: cover;
+
+  .container {
+    color: white;
+    text-align: center;
+    padding: 10em 15em 0em;
+    
+    .title {
+      font-size: 69px;
+      font-weight: bolder;
+    }
+
+    .desc {
+      font-size: 17px;
+      padding: 0em 7em 0em;
+    }
+  }
+  
+  @media (min-width: 320px) and (max-width: 768px) {
+    height: 600px;
+
+    .container {
+      padding: 5em 1em 5em !important;
+
+      .desc {
+        line-height: 2;
+        font-size: 13px;
+        padding: 0em 1em 0em;
+      }
+
+      .title {
+        font-size: 35px;
+      }
+
+      .ui.button.large {
+        font-size: 1em !important;
+      }
+
+      .ui.iverted.button.large {
+        font-size: 1em !important;
+      }
+    }
+  }
+
+  @media (min-width: 1023px) and (max-width: 1200px) {
+    .container {
+      padding: 10em 9em 10em;
+    
+      .desc {
+        padding: 0em 1em 0em;
+      }
+    }
+  }
+
+  @media (min-width: 1201px) and (max-width: 2559) {
+    .container {
+      padding: 8em 17em 8em;
+    }
+  }
+}
+
+// Section 2
+.enddate-container {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  color: white;
+  text-align: center;
+  align-content: center;
+  flex-direction: column;
+  justify-content: center;
+  background-color: $light-blue;
+
+  .text {
+    font-size: 17px;
+  }
+}
+
+// Section 3
+.race-details-container {
+  margin: 4em;
+  padding: 4em;
+  box-shadow: 0px 0px 20px 2px $shadow !important;
+
+  .desc {
+    color: $gray;
+    font-size: 15px;
+  }
+
+  .price-and-dates {
+    margin-top: 0%;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .map-container {
+    clear:both;
+  }
+
+  .map-and-button {
+    margin-left: auto;
+  }
+
+  .race-map {
+    float: right;
+    width: 500px;
+    height: 300px;
+  }
+
+  .race-name {
+    font-size: 30px;
+    margin-bottom: 0;
+    font-weight: bold;
+  }
+
+  .register {
+    float: right;
+    margin-right: 1em !important;
+    margin-bottom: 2em !important;
+  }
+
+  @media (min-width: 320px) and (max-width: 425px) {
+    padding: 1em;
+    margin: 2em 0.5em 2em;
+
+    .desc {
+      text-align: justify;
+    }
+    
+    .leaderboard-table {
+      margin-left: -0.8em !important;
+    }
+
+    .map-and-button {
+      width: 100%;
+      margin-left: none;
+    }
+
+    .race-map {
+      width: 100%;
+      height: 200px;
+    }
+
+    .register {
+      width: 100%;
+      margin-right: 0em !important;
+    }
+  }
+
+  @media (min-width: 426px) and (max-width: 768px) {
+    .race-map {
+      width: 40em;
+      float: left;
+      height: 250px;
+    }
+  }
+
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .race-map {
+      width: 400px;
+      height: 200px;
+    }
+  }
+
+  @media (min-width: 1023px) and (max-width: 1200px) {
+    margin: 4em 2em 0em;
+  }
+
+  @media (min-width: 1201px) and (max-width: 2559) {
+    margin: 7em 10em 0em;
+  }
+}
