@@ -1,5 +1,5 @@
 %h2= title
-.ui.styled.accordion{:id => "acc#{accordion_index}", :style => 'width: 100%;'}
+.ui.styled.accordion{:id => "acc#{accordion_index}"}
   - elements.each_with_index do | element, index |
     .title{:item_id => index, :accordion_id => "acc#{accordion_index}"}
       %i.dropdown.icon.black
