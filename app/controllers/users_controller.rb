@@ -21,6 +21,9 @@ class UsersController < ApplicationController
   end
 
   def activity
+
+    UserIsPremium.new(current_user).call
+
     @race_name = params[:name] ? "%#{params[:name]}%" : '%%'
     races = Race.registrations_paid(current_user, @race_name)
     @activities = []
