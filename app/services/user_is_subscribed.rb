@@ -1,31 +1,30 @@
 require 'faraday'
 
-class UserIsPremium
+class UserIsSubscribed
   def initialize(user)
     @user = user
   end
 
   def call
-    is_user_premium
-  end
-
-  def is_user_premium
     res = Faraday.get(
       "https://www.strava.com/api/v3/athlete",
       {},
       { 'Authorization' => "Bearer #{@user.token}" })
 
     if res.status === 200
-      p 'Success'
-      p res.body
+      update_subscribed_user(JSON.parse(res.body))
     elsif res.status === 401
       refresh_token
-      is_user_premium
+      call
     else
-      STDERR.puts res # Prints the response as an error
+      # Prints the response as an error
+      STDERR.puts "ERROR: Strava returned #{res.status}" 
+      STDERR.puts "Response's body:"
+      STDERR.puts res.body
     end
-    
   end
+
+  private
 
   def refresh_token
     res = Faraday.post('https://www.strava.com/api/v3/oauth/token') do |req|
@@ -38,20 +37,22 @@ class UserIsPremium
       }.to_json
     end
 
-    body = JSON.parse(res.body)
-    if body['access_token'] && body['refresh_token']
+    update_user_tokens(JSON.parse(res.body))
+  end
+
+  def update_subscribed_user(res)
+    @user.update(
+      is_subscribed: res['premium'],
+    )
+  end
+
+  def update_user_tokens(res)
+    if res['access_token'] && res['refresh_token']
       @user.update(
-        token: body['access_token'],
-        refresh_token: body['refresh_token'],
-        token_expires_at: body['expires_at']
+        token: res['access_token'],
+        refresh_token: res['refresh_token'],
+        token_expires_at: res['expires_at']
       )
     end
-  end
-
-  def update_premium_user
-    
-  end
-
-  def update_user_tokens
   end
 end
