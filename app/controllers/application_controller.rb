@@ -15,6 +15,13 @@ class ApplicationController < ActionController::Base
 
   def set_current_user
     User.current = current_user
+    user_is_subscribed
+  end
+  
+  def user_is_subscribed
+    if current_user
+      UserIsSubscribed.new(current_user).call
+    end
   end
 
   def user_not_authorized
