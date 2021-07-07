@@ -15,14 +15,14 @@
               .column
                 = f.input :title, class: 'ui input'
                 = f.input :description, class: 'ui input'
+                %br
                 = f.input :country, class: 'ui input'
+              .column
                 = f.input :state, class: 'ui input'
                 = f.input :city, class: 'ui input'
                 = f.input :segment_id, class: 'ui input'
-              .column
-                = f.input :startdate, label: 'Starts', class: 'ui input'
-                %br
-                = f.input :enddate, label: 'Ends', class: 'ui input'
+                = f.input :startdate, as: :date, html5: true, label: 'Starts'
+                = f.input :enddate, as: :date, html5: true, label: 'Ends'
           %br
           = f.button :submit, class: 'ui button dark-blue'
           .ui.icon.message

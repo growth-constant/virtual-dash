@@ -54,9 +54,16 @@ class RacesController < ApplicationController
 
     respond_to do |format|
       if @race.save
-        CollectTries.new.call # Collect new tries after a new race is crated
-        format.html { redirect_to @race, notice: 'Race was successfully created.' }
-        format.json { render :show, status: :created, location: @race }
+        if @race.all_data['errors']
+          @race.destroy
+          flash.now[:alert] = 'Segment not found, please check the segment ID and make sure that the segment is public.'
+          format.html { render :new }
+          format.json { render json: @race.all_data['message'], status: :unprocessable_entity }
+        else
+          CollectTries.new.call # Collect new tries after a new race is crated
+          format.html { redirect_to @race, notice: 'Race was successfully created.' }
+          format.json { render :show, status: :created, location: @race }
+        end
       else
         format.html { render :new }
         format.json { render json: @race.errors, status: :unprocessable_entity }
@@ -128,6 +135,6 @@ class RacesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def race_params
-    params.require(:race).permit(:title, :description, :country, :state, :city, :enddate, :segment_id, :user_id)
+    params.require(:race).permit(:title, :description, :country, :state, :city, :startdate, :enddate, :segment_id, :user_id)
   end
 end
