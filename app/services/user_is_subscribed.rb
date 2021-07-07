@@ -17,7 +17,6 @@ class UserIsSubscribed
       refresh_token
       call
     else
-      # Prints the response as an error
       STDERR.puts "ERROR: Strava returned #{res.status}" 
       STDERR.puts "Response's body:"
       STDERR.puts res.body
