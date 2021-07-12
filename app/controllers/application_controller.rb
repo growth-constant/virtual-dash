@@ -11,6 +11,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def default_url_options
+    { host: ENV['RAILS_HOST'] || 'localhost:3000' }
+  end
+
   private
 
   def set_current_user

@@ -29,6 +29,7 @@ services:
     - GMAPS_KEY=AIzaSyD1yemIABjJWJ13y1dNLnuGCVOHicAluk0
     - REDIS_URL=redis://redis:6379/1
     - SENDGRID_API_KEY=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
+    - NGROK_HOST=9eb24565d51c.ngrok.io
   worker:
     image: virtual-dash:dev
     build:
