@@ -6,13 +6,14 @@ a.no-hover:hover {
 }
 
 .logo-nav {
-    width: 213px !important;
-    height: 26px !important;
+    width: 20em !important;
+    height: 3em !important;
 }
 
 ////// Header ////// 
 a.item.header {
-    color: $gray !important;
+    font-size: 20px;
+    color: #282828 !important;
 }
 
 .auth-buttons {
@@ -27,7 +28,7 @@ a.item.header {
 }
 
 .header-container {
-    padding: 3em 5em 3em !important;
+    padding: 1em 7em 1em !important;
     background-color: white !important;
 }
 
