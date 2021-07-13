@@ -12,7 +12,8 @@ a.no-hover:hover {
 
 ////// Header ////// 
 a.item.header {
-    font-size: 20px;
+    font-size: 16px;
+    font-weight: normal !important;
     color: #282828 !important;
 }
 
@@ -21,6 +22,15 @@ a.item.header {
     margin-left: 3em;
     align-items: center;
     justify-content: center;
+
+    .ui.button {
+        padding-left: 2em;
+        padding-right: 2em;
+
+        &:first-child {
+            margin-right: 1em;
+        }
+    }
 }
 
 .desktop-nav {
@@ -122,8 +132,43 @@ p.footer{
     }
 }
 
-@media (min-width: 1023px) and (max-width: 1200px) {
+/// Laptop
+@media (min-width: 769px) and (max-width: 1025px) {
+    a.item.header {
+        font-size: 15px;
+    }
+
+    .auth-buttons {
+        margin-left: 2em;
+    
+        .ui.button {
+            padding-left: 1.5em;
+            padding-right: 1.5em;
+    
+            &:first-child {
+                margin-right: 1em;
+            }
+        }
+    }
+
+    .header-container {
+        padding: 1em 4em 1em !important;
+    }
+
+    .logo-nav {
+        width: 18em !important;
+        height: 2em !important;
+    }
+}
+
+/// Laptop L
+@media (min-width: 1025px) and (max-width: 1439px) {
     .footer-container {
         padding-left: 7em;
+        
+        .logo-nav{
+            width: 15em !important;
+            height: 2em !important;
+        }
     }
 }
