@@ -1,21 +1,23 @@
 .ui.secondary.fixed.menu.header-container
   %a.item{:href => '/', class: 'no-hover'}
     = image_tag('logos/logo.svg', alt: 'Virtual Dash', class: 'logo-nav')
-  - if current_user.present? && policy(current_user).admin?
-    %a.header.item{:href => "/admin"} Admin
   .right.menu.mobile-nav
-    %button.huge.ui.icon.button.mobile-menu#mobile-menu-button
+    - if not user_signed_in?
+      .header.item
+        = link_to 'Log in', new_user_session_path, class: 'ui mini button light-blue'
+      .header.item
+        = link_to 'Register', new_user_session_path, class: 'ui mini button dark-blue'
+    - else
+      %object{data: current_user.image, type: 'image/jpg', class: 'profile-pic'}
+        = image_tag 'default-user.jpg', alt: 'Profile pic', class: 'profile-pic'
+    %button.big.ui.icon.button.mobile-menu#mobile-menu-button
       %i.bars.icon.black
   .right.menu.desktop-nav
-    %a.item.header{:href => '/about'}
-      About
+    = link_to 'Races', races_path, class: 'item header'
+    = link_to 'About', about_path, class: 'item header'
     - if user_signed_in?
-      %a.item.header{:href => '/activity'}
-        Activity
-    %a.item.header{:href => '/races'}
-      Races
-    %a.item.header{:href => '/help'}
-      Help
+      = link_to 'Activity', activity_path, class: 'item header'
+    = link_to 'Help', help_path, class: 'item header'
     - if not user_signed_in?
       .auth-buttons 
         .ui.button.light-blue
@@ -31,7 +33,11 @@
         .menu
           = link_to edit_user_registration_path, class: 'item' do
             %i.user.icon.black 
-            My Profile
+            Profile
+          - if policy(current_user).admin?
+            = link_to rails_admin_path, class: 'item' do
+              %i.coffee.icon.black 
+              Admin
           = link_to destroy_user_session_path, method: :delete, class: 'item' do
-            %i.power.off.icon.black 
-            Log Out
+            %i.sign.out.alternate.icon.black 
+            Sign out

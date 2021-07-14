@@ -38,17 +38,17 @@
 
   %body
     .ui.right.thin.menu.vertical.sidebar#mobile-menu
-      %a.item.header{:href => '/about'}
-        About
-      %a.item.header{:href => '/races'}
-        Races
-      %a.item.header{:href => '/help'}
-        Help
       - if not user_signed_in?
-        = link_to 'Log in', new_user_session_path, class: 'item header'
-        = link_to 'Register', new_user_session_path, class: 'item header'
+        = link_to 'Races', races_path, class: 'item header'
+        = link_to 'About', about_path, class: 'item header'
+        = link_to 'Help', help_path, class: 'item header'
       - else
+        = link_to 'Races', races_path, class: 'item header'
+        = link_to 'About', about_path, class: 'item header'
         = link_to 'Activity', activity_path, class: 'item header'
+        = link_to 'Help', help_path, class: 'item header'
+        - if policy(current_user).admin?
+          = link_to 'Admin', rails_admin_path, class: 'item header'
         = link_to 'My Profile', edit_user_registration_path, class: 'item header'
         = link_to 'Log Out', destroy_user_session_path, method: :delete, class: 'item header'
     .pusher 
