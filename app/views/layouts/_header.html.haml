@@ -11,13 +11,13 @@
     %button.big.ui.icon.button.mobile-menu#mobile-menu-button
       %i.bars.icon.black
   .right.menu.desktop-nav
+    %a.item.header{:href => '/races'}
+      Races
     %a.item.header{:href => '/about'}
       About
     - if user_signed_in?
       %a.item.header{:href => '/activity'}
         Activity
-    %a.item.header{:href => '/races'}
-      Races
     %a.item.header{:href => '/help'}
       Help
     - if not user_signed_in?
