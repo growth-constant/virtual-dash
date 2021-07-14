@@ -105,3 +105,10 @@ $(document).on('click', '.ui.accordion .title', function () {
   let accordionId = $(this).attr('accordion_id');
   $('#'+accordionId).accordion('open', itemId);
 });
+
+// Close icons
+$(document).on('click', '#close', function () {
+  $(this).parent().css({
+    'display': 'none'
+  });
+});

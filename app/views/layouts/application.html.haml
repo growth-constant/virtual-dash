@@ -34,8 +34,18 @@
     .pusher 
       = render partial: "layouts/header"
       .main.container
-        %p#notice= notice
-        %p#alert= alert
+        - if notice
+          .ui.positive.message#notice
+            %i.close.icon.gray#close
+            .header
+              Success!
+            %p= notice
+        - elsif alert 
+          .ui.negative.message#alert
+            %i.close.icon.gray#close
+            .header
+              Error!
+            %p= alert
         = yield
 
   %footer
