@@ -113,8 +113,29 @@ p.footer{
         padding: 0em !important;
     }
 
+    .item.no-hover {
+        padding-left: 0.5em !important;
+    }
+
+    .mobile-menu {
+        padding-left: 0.2em !important; 
+        padding-right: 0.2em !important;
+    }
+
     .mobile-nav {
         visibility: inherit;
+
+        .mini.button {
+            padding: 0.7em !important;
+            font-size: 0.7em !important;
+        }
+        
+        .header.item {
+            padding-left: 0em !important;
+            padding-right: 0em !important;
+            margin-left: 0.2em !important;
+            margin-right: 0.2em !important;
+        }
     }
 
     ////// Footer ////// 

@@ -4,7 +4,11 @@
   - if current_user.present? && policy(current_user).admin?
     %a.header.item{:href => "/admin"} Admin
   .right.menu.mobile-nav
-    %button.huge.ui.icon.button.mobile-menu#mobile-menu-button
+    .header.item
+      = link_to 'Log in', new_user_session_path, class: 'ui mini button light-blue'
+    .header.item
+      = link_to 'Register', new_user_session_path, class: 'ui mini button dark-blue'
+    %button.big.ui.icon.button.mobile-menu#mobile-menu-button
       %i.bars.icon.black
   .right.menu.desktop-nav
     %a.item.header{:href => '/about'}
