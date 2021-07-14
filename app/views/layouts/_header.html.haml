@@ -31,13 +31,13 @@
         = current_user.name
         %i.dropdown.icon.black
         .menu
+          = link_to edit_user_registration_path, class: 'item' do
+            %i.user.icon.black 
+            Profile
           - if policy(current_user).admin?
             = link_to rails_admin_path, class: 'item' do
               %i.coffee.icon.black 
               Admin
-          = link_to edit_user_registration_path, class: 'item' do
-            %i.user.icon.black 
-            My Profile
           = link_to destroy_user_session_path, method: :delete, class: 'item' do
-            %i.power.off.icon.black 
-            Log Out
+            %i.sign.out.alternate.icon.black 
+            Sign out
