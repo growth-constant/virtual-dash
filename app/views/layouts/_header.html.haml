@@ -2,10 +2,14 @@
   %a.item{:href => '/', class: 'no-hover'}
     = image_tag('logos/logo.svg', alt: 'Virtual Dash', class: 'logo-nav')
   .right.menu.mobile-nav
-    .header.item
-      = link_to 'Log in', new_user_session_path, class: 'ui mini button light-blue'
-    .header.item
-      = link_to 'Register', new_user_session_path, class: 'ui mini button dark-blue'
+    - if not user_signed_in?
+      .header.item
+        = link_to 'Log in', new_user_session_path, class: 'ui mini button light-blue'
+      .header.item
+        = link_to 'Register', new_user_session_path, class: 'ui mini button dark-blue'
+    - else
+      %object{data: current_user.image, type: 'image/jpg', class: 'profile-pic'}
+        = image_tag 'default-user.jpg', alt: 'Profile pic', class: 'profile-pic'
     %button.big.ui.icon.button.mobile-menu#mobile-menu-button
       %i.bars.icon.black
   .right.menu.desktop-nav
