@@ -13,6 +13,28 @@
             = link_to 'Explore races', new_user_session_path, class: 'link-to-button'
 .ui.stackable.centered.grid
   .row
+    .ten.wide.column 
+      .features-container
+        .ui.stackable.centered.grid
+          .row
+            .sixteen.wide.column
+              %h3 Racing Features
+              %p Race other bikers virtually on any course using Virtual Dash. 
+          .row
+            .five.wide.column
+              = image_tag 'landing/easy.svg', alt: 'Easy to use', class: ''
+              %h5 Easy to use
+              %p Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+            .five.wide.column
+              = image_tag 'landing/cash.svg', alt: 'Win money prizes', class: ''
+              %h5 Win money prizes
+              %p Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+            .five.wide.column
+              = image_tag 'landing/plus.svg', alt: 'Race safely', class: ''
+              %h5 Race safely
+              %p Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+
+  .row
     .fourteen.wide.column
       .racers-container
         .ui.stackable.two.column.grid
