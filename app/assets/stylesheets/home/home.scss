@@ -32,7 +32,7 @@
 
 }
 
-// Section 2
+// Section 3
 .racers-container { 
     padding-bottom: 5em;
 
@@ -41,29 +41,16 @@
         color: $gray;
     }
 
-    .first-row {
-        margin: 0em 4em 0em;
-    }
-
-    .first-virtual-racer {
-        margin-left: 6em;
-    }
-
     .left-inverted {
-        right: 48%;
+        right: 50%;
     }
 
     .race-heading{
-        margin-top: 6em;
+        margin-top: 2em;
     }
 
     .right-inverted {
         left: 50%;
-    }
-
-    .text-container{
-        margin-left: 5em;
-        margin-right: 5em;
     }
 }
 
@@ -88,7 +75,7 @@
         }
     }
 
-    // Section 2
+    // Section 3
     .racers-container {
         .first-virtual-racer {
             margin-left: 0;
@@ -116,7 +103,7 @@
 
 ////// Tablet //////
 @media (min-width: 426px) and (max-width: 768px) {
-    // Section 2
+    // Section 3
     .racers-container {
         p {
             font-size: 14px;
@@ -135,7 +122,7 @@
         padding: 10em 6em 0em;
     }
 
-    // Section 2
+    // Section 3
     .racers-container {
         .first-virtual-racer {
             margin-left: 0em;
@@ -158,26 +145,16 @@
         }
     }
 
-    // Section 2
+    // Section 3
     .racers-container {
-        .first-row {
-            margin: 0;
-        }
+        margin-top: 5em;
 
         .first-virtual-racer {
             height: 20em;
-            margin-top: 9em;
-            margin-left: 5em;
         }
 
         .second-virtual-racer {
             height: 20em;
-            margin-right: 5em;
-        }
-
-        .text-container {
-            margin-left: 1em;
-            margin-right: 1em;
         }
     }
 }
