@@ -50,8 +50,21 @@
 
 // Section 2
 .features-container {
+    margin-top: 4em;
+
     p {
         color: $light-gray;
+    }
+
+    p.who {
+        bottom: 0;
+        width: 90%;
+        color: white;
+        position: absolute;
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
+        box-sizing: border-box;
+        background-color: $light-blue;
     }
 
     .features-item {
@@ -61,6 +74,22 @@
         h5 {
             color: $dark-blue;
         }
+    }
+
+    .admin-image {
+        width: 100%;
+        height: 15em;
+        text-align: center;
+        background: image-url('landing/admin.jpg');
+        background-size: cover;
+    }
+
+    .athlete-image {
+        width: 100%;
+        height: 15em;
+        text-align: center;
+        background: image-url('landing/athlete.jpg');
+        background-size: cover;
     }
 }
 
