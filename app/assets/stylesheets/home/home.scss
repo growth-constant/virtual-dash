@@ -4,6 +4,22 @@
 
 @import 'variables/colors.scss';
 
+// Shared
+.centered-title {
+    text-align: center;
+    align-items: center;
+
+    h3 {
+        color: $dark-blue;
+        font-size: 2em !important;
+    
+        mark {
+            color: $light-blue;
+            background-color: inherit;
+        }
+    }  
+}
+
 // Section 1
 .welcome-background {
     width: 100%;
@@ -36,16 +52,6 @@
 .features-container {
     p {
         color: $light-gray;
-    }
-
-    .features-title {
-        margin-top: 4em;
-        text-align: center;
-        
-        h3 {
-            color: $dark-blue;
-            font-size: 2em !important;
-        }
     }
 
     .features-item {
