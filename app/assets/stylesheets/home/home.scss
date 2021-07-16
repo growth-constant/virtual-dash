@@ -32,6 +32,32 @@
 
 }
 
+// Section 2
+.features-container {
+    p {
+        color: $light-gray;
+    }
+
+    .features-title {
+        margin-top: 4em;
+        text-align: center;
+        
+        h3 {
+            color: $dark-blue;
+            font-size: 2em !important;
+        }
+    }
+
+    .features-item {
+        text-align: center;
+        align-items: center;
+
+        h5 {
+            color: $dark-blue;
+        }
+    }
+}
+
 // Section 3
 .racers-container { 
     padding-bottom: 5em;
