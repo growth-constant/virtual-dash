@@ -57,12 +57,13 @@
         color: $light-gray;
     }
 
-    p.who {
-        color: white;
-        text-align: center;
-        padding-top: 1em;
-        padding-bottom: 1em;
-        background-color: $light-blue;
+    .content {
+        background-color: $light-blue !important;
+
+        p {
+            color: white;
+            text-align: center;
+        }
     }
 
     .features-item {

@@ -51,12 +51,15 @@
                 %p Virtual Dash is an online platform that allows runners from all over the world to compete against each other virtually.
           .row
             .eight.wide.column
-              %div 
-              = image_tag 'landing/athlete.jpg', alt: 'Virtual Dash for Athletes'
-              %p.who For Race Runners
+              .ui.centered.fluid.card 
+                = image_tag 'landing/athlete.jpg', alt: 'Virtual Dash for Athletes'
+                .content
+                  %p For Race Runners
             .eight.wide.column
-              = image_tag 'landing/admin.jpg', alt: 'Virtual Dash for Administrators'
-              %p.who For Race Administrators
+              .ui.centered.fluid.card
+                = image_tag 'landing/admin.jpg', alt: 'Virtual Dash for Administrators'
+                .content
+                  %p For Race Administrators
   .row
     .fourteen.wide.column
       .racers-container
