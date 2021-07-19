@@ -136,6 +136,30 @@
     }
 }
 
+// Section 5
+.main.container {
+    margin-bottom: 0em !important;
+
+    .explore-background {
+        width: 100%;
+        height: 300px;
+        color: white;
+        margin-top: 3em;
+        text-align: center;
+        background: image-url('landing/explore-bg.jpg');
+        background-size: cover;
+    
+        .title {
+            margin-top: 1em;
+            font-size: 40px;
+            font-weight: bolder;
+        }
+    
+        .desc {
+            font-size: 15px;
+        }
+    }
+}
 
 ////// Mobile //////
 @media (min-width: 320px) and (max-width: 768px) {

@@ -47,7 +47,7 @@ body {
 }
 .main.container {
   margin-top: 7em !important;
-  margin-bottom: 6em !important;
+  margin-bottom: 6em;
 
   @media (max-width: 768px) {
     margin-top: 5em !important;
