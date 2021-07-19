@@ -79,5 +79,37 @@
                 %h1.race-heading Win price money after each race
                 %p Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et.
   .row
-    
+    .fourteen.wide.column 
+      .started-container
+        .ui.stackable.two.column.grid
+          .row
+            .eight.wide.column
+              %h3 How do I get started?
+              = image_tag 'landing/started.jpg', alt: 'Get started with Strava!'
+            .right.floated.eight.wide.column
+              .start-cards
+                .ui.stackable.two.column.grid
+                  .row
+                    .column
+                      .ui.card
+                        .content
+                          %i.strava.icon.dark-blue
+                          %p.step 1. Sign Up with Strava
+                          %p.desc Start by signing up through Strava. Just click the sign up button above. 
+                      .ui.card
+                        .content
+                          %i.user.plus.icon.dark-blue
+                          %p.step 2. Authorize and edit
+                          %p.desc Allow Virtual Dash to use Strava’s data and complete your profile. 
+                    .column
+                      .ui.card
+                        .content
+                          %i.file.signature.icon.dark-blue
+                          %p.step 3. Register to your favorite race
+                          %p.desc Browse and choose your favorite races from an extensive list to partake in. 
+                      .ui.card
+                        .content
+                          %i.trophy.icon.dark-blue
+                          %p.step 4. Climb the leaderboards!
+                          %p.desc Compete and look at the leaderboards to break your and other’s records!
           

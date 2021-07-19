@@ -98,6 +98,45 @@
     }
 }
 
+// Section 4
+.started-container {
+    h3 {
+        color: $dark-blue;
+        font-size: 2em !important; 
+    }
+
+    img {
+        max-width: 80% !important;
+    }
+
+    .card {
+        height: 18em;
+        padding: 1.5em !important;
+        background-color: #FAFAFA !important;
+        box-shadow: 0px 0px 11px 1px #a1abbd4f !important;
+
+        .desc {
+            color: $gray;
+        }
+
+        .icon {
+            font-size: 4em;
+            margin-bottom: 0.5em;
+        }
+
+        .step {
+            font-size: 1em;
+            color: $dark-blue;
+            font-weight: bolder;
+        }
+    }
+
+    .start-cards {
+        margin-top: 15%
+    }
+}
+
+
 ////// Mobile //////
 @media (min-width: 320px) and (max-width: 768px) {
     // Section 1
