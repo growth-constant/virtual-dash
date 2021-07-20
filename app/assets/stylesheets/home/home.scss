@@ -293,6 +293,8 @@
 
     // Section 3
     .racers-container {
+        margin-top: 3em;
+
         .first-virtual-racer {
             margin-left: 0em;
         }
@@ -300,6 +302,11 @@
         .race-heading {
             margin-top: 2em;
         }
+    }
+
+    // Section 4
+    .started-container img {
+        max-width: 90% !important;
     }
 }
 

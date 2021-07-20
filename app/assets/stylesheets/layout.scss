@@ -171,8 +171,8 @@ p.footer{
         margin-left: 2em;
     
         .ui.button {
-            padding-left: 1.5em;
-            padding-right: 1.5em;
+            padding-left: 1em;
+            padding-right: 1em;
     
             &:first-child {
                 margin-right: 1em;
@@ -185,8 +185,12 @@ p.footer{
     }
 
     .logo-nav {
-        width: 18em !important;
+        width: 13em !important;
         height: 2em !important;
+    }
+
+    .footer-container {
+        padding-left: 9em;
     }
 }
 
