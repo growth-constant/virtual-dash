@@ -3,45 +3,124 @@
     .ui.grid
       .row
         .sixteen.wide.column
-          %h1.title VIRTUAL RACING IN YOUR OWN COMFORT SPACE
+          %h1.title 
+            JOIN A VIRTUAL RACE NOW.
+            %br
+            RACE IN YOUR OWN TIME.
       .row
         .sixteen.wide.column
-          %p.desc Race other bikers virtually on any course using Virtual Dash. Easily register online, race by yourself or with friends on any of the virtual races at any time, and win money prices. 
+          %p.desc Race other bikers virtually on any course using Virtual Dash. Easily register online, race by yourself or with friends on any of the races at any time, and win money prices. 
       .row
         .sixteen.wide.column
           .ui.button.large.light-blue
             = link_to 'Explore races', new_user_session_path, class: 'link-to-button'
-.racers-container
-  .ui.stackable.two.column.grid
-    .row.first-row
-      .eight.wide.column
-        = image_tag 'landing/virtual-racer-1.png', alt: 'Virtual Racer 1', class: 'first-virtual-racer'
-      .eight.wide.column
-        .text-container
-          %h1.race-heading Race at any time that is convenient for you.
-          %p Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et.
+.ui.stackable.centered.grid
+  .row
+    .ten.wide.column 
+      .features-container
+        .ui.stackable.centered.grid
+          .row
+            .sixteen.wide.column
+              .centered-title
+                %h3 Racing Features
+                %p Discover why many cyclists are using Virtual Dash.
+          .row
+            .five.wide.column
+              .features-item
+                = image_tag 'landing/easy.svg', alt: 'Easy to use'
+                %h5 Easy to use
+                %p Just connect your Strava account and sign to race.
+            .five.wide.column
+              .features-item
+                = image_tag 'landing/cash.svg', alt: 'Win money prizes'
+                %h5 Win money prizes
+                %p The first three places of every race gets a price.
+            .five.wide.column
+              .features-item
+                = image_tag 'landing/plus.svg', alt: 'Race safely'
+                %h5 Race safely
+                %p Choose the time and mood when you race to give your best.
+  .row
+    .ten.wide.column
+      .features-container
+        .ui.stackable.centered.grid
+          .row
+            .sixteen.wide.column
+              .centered-title
+                %h3 
+                  Who is 
+                  %mark Virtual Dash 
+                  for?
+                %p Virtual Dash is an online platform that allows runners to compete against each other asynchronously.
+          .row
+            .eight.wide.column
+              .ui.centered.fluid.card 
+                = image_tag 'landing/athlete.jpg', alt: 'Virtual Dash for Athletes'
+                .content
+                  %p For Race Runners
+            .eight.wide.column
+              .ui.centered.fluid.card
+                = image_tag 'landing/admin.jpg', alt: 'Virtual Dash for Administrators'
+                .content
+                  %p For Race Administrators
+  .row
+    .fourteen.wide.column
+      .racers-container
+        .ui.stackable.two.column.grid
+          .row.first-row
+            .eight.wide.column
+              = image_tag 'landing/virtual-racer-1.jpg', alt: 'Virtual Racer 1', class: 'first-virtual-racer'
+            .eight.wide.column
+              .text-container
+                %h1.race-heading Race at any time that is convenient for you.
+                %p Use Strava to track your tries as an activity and we'll collect it at the end of the day.
+          .row
+            .eight.wide.column.right-inverted
+              = image_tag 'landing/virtual-racer-2.jpg', alt: 'Virtual Racer 2', class: 'second-virtual-racer'
+            .eight.wide.column.left-inverted
+              .text-container
+                %h1.race-heading Win price money after each race
+                %p The more people participate on a race, the bigger the pool will get!
+  .row
+    .fourteen.wide.column 
+      .started-container
+        .ui.stackable.two.column.grid
+          .row
+            .eight.wide.column
+              %h3 How do I get started?
+              = image_tag 'landing/started.jpg', alt: 'Get started with Strava!'
+            .right.floated.eight.wide.column
+              .start-cards
+                .ui.two.column.grid
+                  .row
+                    .column
+                      .ui.card
+                        .content
+                          %i.strava.icon.dark-blue
+                          %p.step 1. Sign Up with Strava
+                          %p.desc Start by signing up through Strava. Just click the sign up button above. 
+                      .ui.card
+                        .content
+                          %i.user.plus.icon.dark-blue
+                          %p.step 2. Authorize and edit
+                          %p.desc Allow Virtual Dash to use Strava’s data and complete your profile. 
+                    .column
+                      .ui.card
+                        .content
+                          %i.file.signature.icon.dark-blue
+                          %p.step 3. Register to your favorite race
+                          %p.desc Browse and choose your favorite races from an extensive list to partake in. 
+                      .ui.card
+                        .content
+                          %i.trophy.icon.dark-blue
+                          %p.step 4. Climb the leaderboards!
+                          %p.desc Compete and look at the leaderboards to break your and other’s records!
+.explore-background
+  .ui.grid
     .row
-      .eight.wide.column.right-inverted
-        = image_tag 'landing/virtual-racer-2.png', alt: 'Virtual Racer 2'
-      .eight.wide.column.left-inverted
-        .text-container
-          %h1.race-heading Win price money after each race
-          %p Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et.
-.panoramic-race
-.upcoming-container
-  .ui.stackable.two.column.grid
-    .row.title-row
       .sixteen.wide.column
-        %h2 Upcoming races for you to explore
-        %p See top races happening close to you
+        %h2.title Explore new races and test your limits 
+        %p.desc Watch for new segments and compete to become the best. 
     .row
-      .eight.wide.column
-        = image_tag 'landing/map-example.png', alt: 'Robocop Desert Race Map', class: 'race-map'
-      .eight.wide.column
-        .race-data-container
-          %h2 Robocop Desert Race
-          %p Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
-          .ui.button.dark-blue
-            = link_to 'Register to race', new_user_session_path, class: 'link-to-button'
-          .ui.button.light-blue
-            = link_to 'More info', new_user_session_path, class: 'link-to-button'
+      .sixteen.wide.column
+        = link_to 'Explore races', new_user_session_path, class: 'ui button large light-blue'
