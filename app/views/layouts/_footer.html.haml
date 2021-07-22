@@ -1,28 +1,34 @@
 .footer-container
-  .ui.stackable.three.column.centered.grid
-    .centered.row
-      .column
+  .ui.stackable.centered.grid
+    .row
+      .four.wide.column
         %a{:href => '/', class: 'no-hover'}
-          = image_tag('logos/logo-white.svg', alt: 'Virtual Dash', class: 'logo-nav')
+          = image_tag('logos/logo-white.svg', alt: 'Virtual Dash', class: 'logo-footer')
         %p{class: 'footer'}
           = link_to('Race', races_path, {:class => 'footer no-hover'})
         %p
-          = link_to('About', '/', {:class => 'footer no-hover'})
+          = link_to('About', about_path, {:class => 'footer no-hover'})
         %p
-          = link_to('Blog', '/', {:class => 'footer no-hover'})
-      .column
+          = link_to('Help', help_path, {:class => 'footer no-hover'})
+      .four.wide.column
         %p{class: 'footer-title'} Legal
         %p{class: 'footer'}
           = link_to('Privacy policy', '/docs/privacy-policy.pdf', {:target => '_blank', :class => 'footer no-hover'})
         %p
           = link_to('Terms and condition', '/docs/terms-of-use.pdf', {:target => '_blank', :class => 'footer no-hover'})
         %p
-          = link_to('Cookies', '/', {:target => '_blank', :class => 'footer no-hover'})
-      .column
-        %p{class: 'footer-title'} Subscribe
-        %p{class: 'footer'} Get the latest news and articles to your inbox every month.
-        %br
-        .ui.action.input.footer-mail
-          %input{:placeholder => 'Your email', :type => 'email'}/
-          %button.ui.icon.button.footer-input-button
-            %i.arrow.right.icon.light-blue
+          = link_to('Liability', '/docs/rekease-liability.pdf', {:target => '_blank', :class => 'footer no-hover'})
+      .four.wide.column
+        %p{class: 'footer-title'} Follow us
+        = link_to('https://instagram.com/virtual.dash.co', {:target => '_blank', :class => 'footer no-hover'}) do
+          %i.instagram.icon.white
+          Instagram
+      -# TODO: Uncomment when the newsletter is implemented
+      -# .column
+      -#   %p{class: 'footer-title'} Subscribe
+      -#   %p{class: 'footer'} Get the latest news and articles to your inbox every month.
+      -#   %br
+      -#   .ui.action.input.footer-mail
+      -#     %input{:placeholder => 'Your email', :type => 'email'}/
+      -#     %button.ui.icon.button.footer-input-button
+      -#       %i.arrow.right.icon.light-blue

@@ -2,12 +2,19 @@
 
 ////// Shared ////// 
 a.no-hover:hover {
+    text-decoration: underline;
     background-color: transparent !important;
 }
 
 .logo-nav {
     width: 18em !important;
     height: 3em !important;
+
+}
+
+.logo-footer {
+    width: 14em !important;
+    height: 2em !important;
 }
 
 ////// Header ////// 
@@ -77,8 +84,7 @@ a.footer {
     height: 30em;
     color: white;
     padding-top: 5em;
-    padding-left: 14em;
-    padding-right: 5em;
+    padding-left: 5em;
     position: relative;
     background-color: $dark-blue;
 }
@@ -147,9 +153,9 @@ p.footer{
 
     ////// Footer ////// 
     .footer-container {
-        height: 40em;
+        height: 30em;
+        padding-top: 2em;
         padding-left: 1em;
-        padding-right: 1em;
 
         p.footer {
             max-width: 19em;
@@ -188,20 +194,12 @@ p.footer{
         width: 13em !important;
         height: 2em !important;
     }
-
-    .footer-container {
-        padding-left: 9em;
-    }
 }
 
 /// Laptop L
 @media (min-width: 1025px) and (max-width: 1439px) {
-    .footer-container {
-        padding-left: 7em;
-        
-        .logo-nav{
-            width: 15em !important;
-            height: 2em !important;
-        }
+    .footer-container.logo-nav {
+        width: 15em !important;
+        height: 2em !important;
     }
 }
