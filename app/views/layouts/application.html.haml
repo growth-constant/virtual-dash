@@ -1,42 +1,72 @@
 !!!
 %html
   %head
-    %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}/
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
-    %title Virtual Dash
+    
     = csrf_meta_tags
     = csp_meta_tag
+    %meta{:content => 'IE=edge', 'http-equiv' => 'X-UA-Compatible'}/
+    %meta{:content => 'text/html; charset=UTF-8', 'http-equiv' => 'Content-Type'}/
+    %meta{:content => 'width=device-width, initial-scale=1', :name => 'viewport'}/
+    %meta{:name => 'title', :content => meta_title}
+    %meta{:name => 'description', :content => meta_description}
+
+    -# Facebook
+    %meta{:content => meta_title, :property => 'og:title'}/
+    %meta{:content => 'website', :property => 'og:type'}/
+    %meta{:content => request.original_url, :property => 'og:url'}/
+    %meta{:content => meta_image, :property => 'og:image'}/
+    %meta{:content => meta_description, :property => 'og:description'}/
+    %meta{:content => meta_title, :property => 'og:site_name'}/
+
+    -# Twitter
+    %meta{:content => 'summary_large_image', :name => 'twitter:card'}/
+    %meta{:content => meta_title, :name => 'twitter:title'}/
+    %meta{:content => meta_description, :name => 'twitter:description'}/
+    %meta{:content => DEFAULT_META['twitter_account'], :name => 'twitter:creator'}/
+    %meta{:content => meta_image, :name => 'twitter:image:src'}/
+
+    %title Virtual Dash
+
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag "https://maps.google.com/maps/api/js?key=#{ENV['GMAPS_KEY']}&libraries=geometry"
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'maps/race'
-    = tag :meta, :name => "stripe-key", :content => Rails.configuration.stripe[:publishable_key]
+    = tag :meta, :name => 'stripe-key', :content => Rails.configuration.stripe[:publishable_key]
     = favicon_link_tag 'logos/favicon.ico'
     = favicon_link_tag 'logos/apple-touch-icon.png', rel: 'apple-touch-icon', type: 'image/png'
 
   %body
     .ui.right.thin.menu.vertical.sidebar#mobile-menu
-      %a.item.header{:href => '/about'}
-        About
-      %a.item.header{:href => '/races'}
-        Races
-      %a.item.header{:href => '/help'}
-        Help
       - if not user_signed_in?
-        = link_to 'Log in', new_user_session_path, class: 'item header'
-        = link_to 'Register', new_user_session_path, class: 'item header'
+        = link_to 'Races', races_path, class: 'item header'
+        = link_to 'About', about_path, class: 'item header'
+        = link_to 'Help', help_path, class: 'item header'
       - else
+        = link_to 'Races', races_path, class: 'item header'
+        = link_to 'About', about_path, class: 'item header'
         = link_to 'Activity', activity_path, class: 'item header'
+        = link_to 'Help', help_path, class: 'item header'
+        - if policy(current_user).admin?
+          = link_to 'Admin', rails_admin_path, class: 'item header'
         = link_to 'My Profile', edit_user_registration_path, class: 'item header'
         = link_to 'Log Out', destroy_user_session_path, method: :delete, class: 'item header'
     .pusher 
-      = render partial: "layouts/header"
+      = render partial: 'layouts/header'
       .main.container
-        %p#notice= notice
-        %p#alert= alert
+        - if notice
+          .ui.positive.message#notice
+            %i.close.icon.gray#close
+            .header
+              Success!
+            %p= notice
+        - elsif alert 
+          .ui.negative.message#alert
+            %i.close.icon.gray#close
+            .header
+              Error!
+            %p= alert
         = yield
 
   %footer
-    = render partial: "layouts/footer"
+    = render partial: 'layouts/footer'

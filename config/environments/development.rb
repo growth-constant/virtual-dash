@@ -78,4 +78,7 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   # config.file_watcher = ActiveSupport::EventedFileUpdateChecker
   config.file_watcher = ActiveSupport::FileUpdateChecker
+
+  # Allow port forwarding with Ngrok on develop
+  config.hosts << ENV['NGROK_HOST'] if ENV['NGROK_HOST'].present?
 end
