@@ -4,41 +4,42 @@
   .ui.stackable.centered.grid
     .row
       -# Uncomment the code below when Stripe Connect is implemented.
-        .five.wide.column
-          .activity-left-card
-            .content
-              .icon-container
-                %i.huge.wallet.icon.light-gray
-              %br
-              %br
-              %p.balance $240
-              %p.title Virtual Dash Balance
-              .link-status
-                - if true 
-                  .pending 
-                    %p Pending link
-                - else
-                  .success
-                    %p Linked
-              %br
-              %p.desc Virtual Dash partners with Stripe to transfer race prize earnings to your bank account.
-            - if true
-              = link_to 'Set up payouts', root_path, class: 'ui button fluid light-blue', style: 'border-radius: 0%;'
-            - else
-              = link_to 'Go to dashboard', root_path, class: 'ui button fluid light-blue', style: 'border-radius: 0%;'
-          %br
-          .activity-left-card
-            .content
-              .icon-container
-                %i.huge.handshake.icon.light-gray
-              %br
-              %br
-              %p.title Need help?
-              %p.desc We are here to help. Our experts will reply as soon as possible to solve questions or concerns.
-            = link_to 'Contact us', root_path, class: 'ui button fluid', style: 'border-radius: 0%;'
+      .five.wide.column
+        .activity-left-card
+          .content
+            .icon-container
+              %i.huge.wallet.icon.light-gray
+            %br
+            %br
+            %p.balance $240
+            %p.title Virtual Dash Balance
+            .link-status
+              - if true 
+                .pending 
+                  %p Pending link
+              - else
+                .success
+                  %p Linked
+            %br
+            %p.desc Virtual Dash partners with Stripe to transfer race prize earnings to your bank account.
+          - if true
+            = link_to 'Set up payouts', root_path, class: 'ui button fluid light-blue', style: 'border-radius: 0%;'
+          - else
+            %
+            = link_to 'Go to dashboard', root_path, class: 'ui button fluid light-blue', style: 'border-radius: 0%;'
+        %br
+        .activity-left-card
+          .content
+            .icon-container
+              %i.huge.handshake.icon.light-gray
+            %br
+            %br
+            %p.title Need help?
+            %p.desc We are here to help. Our experts will reply as soon as possible to solve questions or concerns.
+          = link_to 'Contact us', 'mailto:luis@grwothconstant.com', class: 'ui button fluid', style: 'border-radius: 0%;'
       -# This is the original width of the right card
-      -# .nine.wide.column 
-      .fifteen.wide.column
+      -# .fifteen.wide.column
+      .nine.wide.column 
         .activity-right-card
           %h2 Recent Activity
           = form_with(url: activity_path, method: 'get', local: true) do
