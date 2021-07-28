@@ -3,7 +3,6 @@
 .activity-container
   .ui.stackable.centered.grid
     .row
-      -# Uncomment the code below when Stripe Connect is implemented.
       .five.wide.column
         .activity-left-card
           .content
@@ -14,7 +13,7 @@
             %p.balance $240
             %p.title Virtual Dash Balance
             .link-status
-              - if true 
+              - if @user.stripe_conn_acc_id.nil? 
                 .pending 
                   %p Pending link
               - else
@@ -22,8 +21,8 @@
                   %p Linked
             %br
             %p.desc Virtual Dash partners with Stripe to transfer race prize earnings to your bank account.
-          - if true
-            = link_to 'Set up payouts', root_path, class: 'ui button fluid light-blue', style: 'border-radius: 0%;'
+          - if @user.stripe_conn_acc_id.nil?
+            = link_to 'Set up payouts', stripe_connect_path, class: 'ui button fluid light-blue', style: 'border-radius: 0%;'
           - else
             = link_to 'Go to dashboard', root_path, class: 'ui button fluid light-blue', style: 'border-radius: 0%;'
         %br
@@ -36,8 +35,6 @@
             %p.title Need help?
             %p.desc We are here to help. Our experts will reply as soon as possible to solve questions or concerns.
           = link_to 'Contact us', 'mailto:luis@grwothconstant.com', class: 'ui button fluid', style: 'border-radius: 0%;'
-      -# This is the original width of the right card
-      -# .fifteen.wide.column
       .nine.wide.column 
         .activity-right-card
           %h2 Recent Activity

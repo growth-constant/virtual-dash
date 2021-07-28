@@ -58,6 +58,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def create_connect_account
+    linked_account = helpers.create_account(current_user)
+    redirect_to linked_account.url
+  end
+
   private
 
   def set_user
