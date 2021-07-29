@@ -24,6 +24,13 @@ class UsersController < ApplicationController
     @race_name = params[:name] ? "%#{params[:name]}%" : '%%'
     races = Race.registrations_paid(current_user, @race_name)
     @activities = []
+
+    if params[:stripe_connect] == 'return'
+      flash[:notice] = 'Stripe account linked!'
+    elsif params[:stripe_connect] == 'refresh'
+      helpers.delete_stripe_connect_account(current_user, params[:acc_id])
+      flash[:alert] = 'Something happen linking your Stripe account, please try again!'
+    end
     
     races.each do | race |
       if race.enddate <= DateTime.now
@@ -59,7 +66,7 @@ class UsersController < ApplicationController
   end
 
   def create_connect_account
-    linked_account = helpers.create_account(current_user)
+    linked_account = helpers.create_stripe_connect_account(current_user)
     redirect_to linked_account.url
   end
 
