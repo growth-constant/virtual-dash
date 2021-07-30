@@ -10,7 +10,7 @@
               %i.huge.wallet.icon.light-gray
             %br
             %br
-            %p.balance $240
+            %p.balance= @balance ? "$#{@balance}" : 'N/A'
             %p.title Virtual Dash Balance
             .link-status
               - if @user.stripe_conn_acc_id.nil? 
@@ -24,7 +24,7 @@
           - if @user.stripe_conn_acc_id.nil?
             = link_to 'Set up payouts', stripe_connect_path, class: 'ui button fluid light-blue', style: 'border-radius: 0%;'
           - else
-            = link_to 'Go to dashboard', @dashboard.url, class: 'ui button fluid light-blue', style: 'border-radius: 0%;'
+            = link_to 'Go to dashboard', @dashboard, class: 'ui button fluid light-blue', style: 'border-radius: 0%;'
         %br
         .activity-left-card
           .content

@@ -25,6 +25,16 @@ module StripeConnectHelper
   def create_stripe_dashboard_link(user)
     if user.stripe_conn_acc_id
       login_link = Stripe::Account.create_login_link(user.stripe_conn_acc_id)
+      login_link.url
+    end
+  end
+
+  def get_stripe_user_balance(user)
+    if user.stripe_conn_acc_id
+      account = Stripe::Balance.retrieve({
+        stripe_account: user.stripe_conn_acc_id
+      })
+      account.available[0].amount
     end
   end
 

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user
-  before_action :get_stripe_dashboard, only: %i[activity]
+  before_action :get_stripe_data, only: %i[activity]
 
   def edit
   end
@@ -98,9 +98,10 @@ class UsersController < ApplicationController
     redirect_to linked_account.url
   end
 
-  def get_stripe_dashboard
+  def get_stripe_data
     if current_user.stripe_conn_acc_id
       @dashboard = helpers.create_stripe_dashboard_link(current_user)
+      @balance = helpers.get_stripe_user_balance(current_user)
     end
   end
 
