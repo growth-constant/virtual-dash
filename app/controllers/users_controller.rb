@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user
+  before_action :get_stripe_dashboard, only: %i[activity]
 
   def edit
   end
@@ -65,11 +66,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def create_connect_account
-    linked_account = helpers.create_stripe_connect_account(current_user)
-    redirect_to linked_account.url
-  end
-
   private
 
   def set_user
@@ -95,4 +91,17 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:id, :gender, :phone, :profile_complete, :name, :birthdate, :email)
   end
+
+  # Stripe Connect related methods
+  def create_connect_account
+    linked_account = helpers.create_stripe_connect_account(current_user)
+    redirect_to linked_account.url
+  end
+
+  def get_stripe_dashboard
+    if current_user.stripe_conn_acc_id
+      @dashboard = helpers.create_stripe_dashboard_link(current_user)
+    end
+  end
+
 end

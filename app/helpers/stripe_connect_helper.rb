@@ -22,6 +22,12 @@ module StripeConnectHelper
     end
   end
 
+  def create_stripe_dashboard_link(user)
+    if user.stripe_conn_acc_id
+      login_link = Stripe::Account.create_login_link(user.stripe_conn_acc_id)
+    end
+  end
+
   private
 
   def create_connect_account(user)
