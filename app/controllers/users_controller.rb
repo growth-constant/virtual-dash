@@ -66,7 +66,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # Stripe Connect related methods
   def create_connect_account
     linked_account = helpers.create_stripe_connect_account(current_user)
     redirect_to linked_account.url
