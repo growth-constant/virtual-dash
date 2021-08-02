@@ -66,6 +66,12 @@ class UsersController < ApplicationController
     end
   end
 
+  # Stripe Connect related methods
+  def create_connect_account
+    linked_account = helpers.create_stripe_connect_account(current_user)
+    redirect_to linked_account.url
+  end
+
   private
 
   def set_user
@@ -90,12 +96,6 @@ class UsersController < ApplicationController
   # Only allow a list of trusted parameters through.
   def user_params
     params.require(:user).permit(:id, :gender, :phone, :profile_complete, :name, :birthdate, :email)
-  end
-
-  # Stripe Connect related methods
-  def create_connect_account
-    linked_account = helpers.create_stripe_connect_account(current_user)
-    redirect_to linked_account.url
   end
 
   def get_stripe_data
