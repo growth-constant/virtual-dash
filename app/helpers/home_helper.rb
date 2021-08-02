@@ -22,6 +22,7 @@ module HomeHelper
         :title => 'Prizes and payments',
         :elements => [
           {:title => 'Prices', :content => "The prices are calculated according to the number of the participants and the entry price. The more participants there are on a race, the bigger the price! <br> If you win a race, the team of Virtual Dash will contact you via email with instructions on how to receive the prize."},
+          {:title => 'Claim your prices', :content => ""}
           {:title => 'Payment', :content => "Payments, such as the one needed to registry to a race, are done safely via Stripe. Virtual Dash doesn't store your card information. To learn more about Stripe click <a class='link-to-anchor' href='https://stripe.com/about'>here.</a>"},
         ]
       },
