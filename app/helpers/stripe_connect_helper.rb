@@ -3,7 +3,6 @@ require 'stripe'
 module StripeConnectHelper
 
   def create_stripe_connect_account(user)
-    # TODO: Explain to user what to put on the website field
     if user.stripe_conn_acc_id.nil?
       connected_acc = create_connect_account(user)
       add_stripe_conn_acc_id(user, connected_acc.id)
@@ -44,7 +43,7 @@ module StripeConnectHelper
     account = Stripe::Account.create({
       email: user.email,
       type: 'express',
-      country: 'US', # TODO: Make clear on help page that this is US only
+      country: 'US',
       business_type: 'individual',
       individual: {
         first_name: user.first_name,
