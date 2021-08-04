@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   resources :users, only: %i[edit update]
   get :activity, to: 'users#activity'
   get :stripe_connect, to: 'users#create_connect_account', as: 'stripe_connect'
+  get :stripe_dashboard, to: 'users#get_stripe_dashboard', as: 'stripe_dashboard'
 
   get :about, to: 'home#about'
   get :help, to: 'home#help'
