@@ -1,11 +1,10 @@
 class CreatePrizesTable < ActiveRecord::Migration[6.0]
   def change
-    #TODO: Run migration
-    create_table :prizes_tables do |t|
-      t.references :user_id, null: false, foreign_key: true
-      t.references :race_id, null: false, foreign_key: true
-      t.integer :amount
-      t.string :currency
+    create_table :prizes do |t|
+      t.references :user, null: false, foreign_key: true
+      t.references :race, null: false, foreign_key: true
+      t.integer :amount, null: false
+      t.string :currency, null: false, :default => 'usd'
       t.string :strpe_transfer_id
     end
   end

@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_26_221857) do
+ActiveRecord::Schema.define(version: 2021_08_03_220140) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "prizes", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "race_id", null: false
+    t.integer "amount", null: false
+    t.string "currency", default: "usd", null: false
+    t.string "strpe_transfer_id"
+    t.index ["race_id"], name: "index_prizes_on_race_id"
+    t.index ["user_id"], name: "index_prizes_on_user_id"
+  end
 
   create_table "race_categories", force: :cascade do |t|
     t.string "title"
@@ -113,6 +123,8 @@ ActiveRecord::Schema.define(version: 2021_07_26_221857) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "prizes", "races"
+  add_foreign_key "prizes", "users"
   add_foreign_key "race_categories", "races"
   add_foreign_key "race_tries", "registrations"
   add_foreign_key "race_tries", "users"
