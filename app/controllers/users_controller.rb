@@ -27,10 +27,10 @@ class UsersController < ApplicationController
     @activities = []
 
     if params[:stripe_connect] == 'return'
-      flash[:notice] = 'Stripe account linked!'
+      flash[:notice] = 'You have successfully linked your Virtual Dash Balance to your Stripe account.'
     elsif params[:stripe_connect] == 'refresh'
       helpers.delete_stripe_connect_account(current_user, params[:acc_id])
-      flash[:alert] = 'Something happen linking your Stripe account, please try again!'
+      flash[:alert] = 'Something happen linking your Stripe account, please try again.'
     end
     
     races.each do | race |
