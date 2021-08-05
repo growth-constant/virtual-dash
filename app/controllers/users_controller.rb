@@ -34,6 +34,9 @@ class UsersController < ApplicationController
     end
     
     races.each do | race |
+
+      Prize.race_prizes(race)
+
       if race.enddate <= DateTime.now
         leaderboard = Leaderboard.new(race, :leaders).call
         place = leaderboard[:competitors].index(leaderboard[:competitors].find { |try| try[:id] == current_user[:id] })
