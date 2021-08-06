@@ -2,32 +2,21 @@ class Prize < ApplicationRecord
   belongs_to :race
   belongs_to :user
 
-  # Get the prizes for a given race
-  def self.race_prizes(race)
+  def self.create_race_prizes(race)
     leaderboard = Leaderboard.new(race).call
-    if leaderboard[:competitors]
-      leaderboard[:competitors].each_with_index do | try, index |
-        p '>>> PRIZE <<<'
-        p "Index => #{index}"
-        p "User ID => #{try[:id]}"
-        p "Race ID => #{try[:race_id]}"
+    leaderboard[:competitors].each_with_index do | try, index |
 
-        unless leaderboard[:prizes].nil?
-          case index
-          when 0
-            prize = leaderboard[:prizes][:first]
-          when 1
-            prize = leaderboard[:prizes][:second]
-          when 2
-            prize = leaderboard[:prizes][:third]
-          else
-            prize = 0
-          end
-        end
+      dupl_item = Prize.find_by(user_id: try[:id], race_id: try[:race_id])
 
-        p "Amount => #{prize}"
-
+      if dupl_item.nil?
+        amount = Leaderboard.get_prize_amount(leaderboard, try[:id])
+        prize_item = Prize.new(
+          user_id: try[:id],
+          race_id: try[:race_id],
+          amount: amount
+        ).save
       end
+
     end
   end
 
