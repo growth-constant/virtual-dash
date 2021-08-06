@@ -34,25 +34,11 @@ class UsersController < ApplicationController
     end
     
     races.each do | race |
-
-      Prize.race_prizes(race)
-
       if race.enddate <= DateTime.now
         leaderboard = Leaderboard.new(race, :leaders).call
         place = leaderboard[:competitors].index(leaderboard[:competitors].find { |try| try[:id] == current_user[:id] })
-
-        unless place.nil?
-          case place
-          when 0
-            prize = leaderboard[:prizes][:first]
-          when 1
-            prize = leaderboard[:prizes][:second]
-          when 2
-            prize = leaderboard[:prizes][:third]
-          else
-            prize = 0
-          end
-  
+        prize = Leaderboard.get_prize_amount(leaderboard, current_user[:id])
+        unless place.nil?  
           @activities.push({
             :date => race.enddate,
             :description => "#{(place + 1).ordinalize} place prize - #{race.title}",
