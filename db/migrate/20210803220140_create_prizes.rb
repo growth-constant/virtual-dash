@@ -5,7 +5,7 @@ class CreatePrizes < ActiveRecord::Migration[6.0]
       t.references :race, null: false, foreign_key: true
       t.integer :amount, null: false
       t.string :currency, null: false, :default => 'usd'
-      t.string :strpe_transfer_id
+      t.string :stripe_transfer_id
       
       t.timestamps
     end
