@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 2021_08_03_220140) do
     t.integer "amount", null: false
     t.string "currency", default: "usd", null: false
     t.string "strpe_transfer_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["race_id"], name: "index_prizes_on_race_id"
     t.index ["user_id"], name: "index_prizes_on_user_id"
   end

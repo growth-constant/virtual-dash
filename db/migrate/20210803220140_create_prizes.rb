@@ -6,6 +6,8 @@ class CreatePrizes < ActiveRecord::Migration[6.0]
       t.integer :amount, null: false
       t.string :currency, null: false, :default => 'usd'
       t.string :strpe_transfer_id
+      
+      t.timestamps
     end
   end
 end
