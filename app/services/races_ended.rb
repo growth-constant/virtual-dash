@@ -5,7 +5,14 @@ class RacesEnded
   end
 
   def call
+    create_prize_items
     notify
+  end
+
+  def create_prize_items
+    @ended_races.each do | race |
+      Prize.create_race_prizes(race)
+    end
   end
 
   def notify
