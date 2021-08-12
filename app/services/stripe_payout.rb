@@ -18,7 +18,7 @@ class StripePayout
     # Only transfer to users with a Connected Account
     if prize.user.stripe_conn_acc_id
       transfer = Stripe::Transfer.create({
-        amount: prize.amount,
+        amount: prize.amount * 100, # Stripe expect the amount in cents
         currency: prize.currency,
         destination: prize.user.stripe_conn_acc_id,
         description: 'Virtual Dash Prize',

@@ -33,7 +33,14 @@ module StripeConnectHelper
       account = Stripe::Balance.retrieve({
         stripe_account: user.stripe_conn_acc_id
       })
-      account.available[0].amount
+      
+      # Handle the case where the user has no balance
+      if account.available[0]
+        # Stripe returns balance in cents
+        account.available[0].amount.to_f / 100
+      else
+        'N/A'
+      end
     end
   end
 
