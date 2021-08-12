@@ -8,6 +8,12 @@ class Prize < ApplicationRecord
     .references(:user)
   } 
 
+  scope :prizes_from_user, lambda { | user |
+    includes(:race)
+    .where('user_id': user.id)
+    .references(:race)
+  } 
+
   def self.create_race_prizes(race)
     leaderboard = Leaderboard.new(race).call
     leaderboard[:competitors].each_with_index do | try, index |
