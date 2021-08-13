@@ -30,6 +30,7 @@ services:
     - GMAPS_KEY=AIzaSyD1yemIABjJWJ13y1dNLnuGCVOHicAluk0
     - REDIS_URL=redis://redis:6379/1
     - SENDGRID_API_KEY=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
+    - REDIRECT_STRIPE_URL=http://localhost:3000
     - NGROK_HOST=9eb24565d51c.ngrok.io
   worker:
     image: virtual-dash:dev
@@ -58,6 +59,7 @@ services:
     - STRIPE_SECRET_KEY=sk_test_51HNKEKLf04duTe6mJnC6JjjfcdZOhDOLpkH9jTR305WvYku3Qu8TTJvl0FZDVaCtRY9SiEIQqB9u07k7nb9S4W6i008aBuz03I
     - GMAPS_KEY=AIzaSyD1yemIABjJWJ13y1dNLnuGCVOHicAluk0
     - SENDGRID_API_KEY=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
+    - REDIRECT_STRIPE_URL=http://localhost:3000
   db:
     image: "postgres:10.12"
     ports:

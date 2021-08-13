@@ -82,9 +82,8 @@ module StripeConnectHelper
     account_links = Stripe::AccountLink.create({
       type: 'account_onboarding',
       account: user.stripe_conn_acc_id,
-      # TODO: Create a ENV variable for handle stripe returns
-      return_url: 'https://' + ENV['RAILS_HOST'] + '/activity?stripe_connect=return',
-      refresh_url: 'https://' + ENV['RAILS_HOST'] + "/activity?stripe_connect=refresh&acc_id=#{user.stripe_conn_acc_id}",
+      return_url: ENV['REDIRECT_STRIPE_URL'] + '/activity?stripe_connect=return',
+      refresh_url: ENV['REDIRECT_STRIPE_URL'] + "/activity?stripe_connect=refresh&acc_id=#{user.stripe_conn_acc_id}",
     })
   end
 
