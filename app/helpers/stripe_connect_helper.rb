@@ -11,6 +11,13 @@ module StripeConnectHelper
     linked_acc = create_linked_account(user)
   end
 
+  def create_stripe_dashboard_link(user)
+    if user.stripe_conn_acc_id
+      login_link = Stripe::Account.create_login_link(user.stripe_conn_acc_id)
+      login_link.url
+    end
+  end
+
   def delete_stripe_connect_account(user, acc_id)
     if acc_id == user.stripe_conn_acc_id
       account = Stripe::Account.delete(user.stripe_conn_acc_id)
@@ -18,13 +25,6 @@ module StripeConnectHelper
       if account.deleted
         user.update(stripe_conn_acc_id: nil)
       end
-    end
-  end
-
-  def create_stripe_dashboard_link(user)
-    if user.stripe_conn_acc_id
-      login_link = Stripe::Account.create_login_link(user.stripe_conn_acc_id)
-      login_link.url
     end
   end
 
@@ -75,6 +75,7 @@ module StripeConnectHelper
     account_links = Stripe::AccountLink.create({
       type: 'account_onboarding',
       account: user.stripe_conn_acc_id,
+      # TODO: Create a ENV variable for handle stripe returns
       return_url: 'https://' + ENV['RAILS_HOST'] + '/activity?stripe_connect=return',
       refresh_url: 'https://' + ENV['RAILS_HOST'] + "/activity?stripe_connect=refresh&acc_id=#{user.stripe_conn_acc_id}",
     })
