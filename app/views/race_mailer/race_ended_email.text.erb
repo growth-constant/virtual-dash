@@ -5,4 +5,12 @@ Start date: <%=@race[:startdate].strftime('%B %d, %Y')%>.
 End date: <%=@race[:enddate].strftime('%B %d, %Y')%>.
 
 Final ranking: <%=@place%> place.
+
+<% if @user[:stripe_conn_acc_id] %>
+Prize money has been automatically transferred to your linked Stripe account.
+Check it out at https://www.virtualdash.co/activity
+<% else %>
+Link your account on the activity (https://www.virtualdash.co/activity) page with Stripe to claim this and future prizes.
+<% end %>
+
 You can see more at: https://www.virtualdash.co/races/<%=@race[:id]%>/leaderboard

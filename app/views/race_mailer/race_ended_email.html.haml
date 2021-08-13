@@ -48,9 +48,17 @@
 %br
 - if winners.exclude? @place
   %p.final-ranking= "Final ranking: #{@place} place"
+- else
+  - if @user[:stripe_conn_acc_id]
+    %p Prize money has been automatically transferred to your linked Stripe account.
+  - else
+    %p 
+      Link your account on the 
+      = link_to 'activity page', activity_url, class: 'anchor'
+      with Stripe to claim this and future prizes.
 = link_to 'Open leaderboards', leaderboard_race_url(@race[:id]), class: 'ui fluid button'
 .alt
   %small 
     Or paste 
-    = link_to "virtualdash.co/races/#{@race[:id]}/leaderboard", leaderboard_race_url(@race[:id]), class: 'anchor'
+    = link_to "wwww.virtualdash.co/races/#{@race[:id]}/leaderboard", leaderboard_race_url(@race[:id]), class: 'anchor'
     in your browser.
