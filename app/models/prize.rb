@@ -12,7 +12,12 @@ class Prize < ApplicationRecord
     includes(:race)
     .where('user_id': user.id)
     .references(:race)
-  } 
+  }
+  
+  scope :user_price_on_race, lambda { | race, user |
+    select('id')
+    .where('user_id': user.id, 'race_id': race.id)
+  }
 
   def self.create_race_prizes(race)
     leaderboard = Leaderboard.new(race).call
