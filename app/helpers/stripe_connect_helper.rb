@@ -28,6 +28,13 @@ module StripeConnectHelper
     end
   end
 
+  def deposit_unpaid_prizes(user)
+    races = Race.unpaid_prizes_from_user_races(user)
+    races.each do | race |
+      StripePayout.new(race).call
+    end
+  end
+
   def get_stripe_user_balance(user)
     if user.stripe_conn_acc_id
       account = Stripe::Balance.retrieve({

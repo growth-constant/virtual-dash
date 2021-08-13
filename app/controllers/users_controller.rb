@@ -27,6 +27,7 @@ class UsersController < ApplicationController
     @activities = []
 
     if params[:stripe_connect] == 'return'
+      helpers.deposit_unpaid_prizes(current_user)
       flash[:notice] = 'You have successfully linked your Virtual Dash Balance to your Stripe account.'
     elsif params[:stripe_connect] == 'refresh'
       helpers.delete_stripe_connect_account(current_user, params[:acc_id])

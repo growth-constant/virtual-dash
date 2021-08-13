@@ -5,6 +5,7 @@ class Race < ApplicationRecord
   paginates_per 10
 
   belongs_to :user
+  has_many :prizes
   has_many :race_tries
   has_many :registrations
   after_create :update_race
@@ -33,6 +34,12 @@ class Race < ApplicationRecord
     end
 
     where(query_string.join(' AND '))
+  }
+
+  scope :unpaid_prizes_from_user_races, lambda { | user |
+    includes(:prizes)
+    .where('prizes.user_id': user.id, 'prizes.stripe_transfer_id': nil)
+    .references(:prizes)
   }
 
   scope :user_data_from_ended_race, lambda {
