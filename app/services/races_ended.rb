@@ -7,7 +7,7 @@ class RacesEnded
   def call
     @ended_races.each do | race |
       Prize.create_race_prizes(race)
-      # TODO: Deposit prizes
+      StripePayout.new(race).call
       notify(race)
     end
   end
