@@ -2,10 +2,10 @@ module UsersHelper
   
   def handle_stripe_connect(params, user)
     if params[:stripe_connect] == 'return'
-      helpers.deposit_unpaid_prizes(user)
+      deposit_unpaid_prizes(user) # Method in stripe_connect_helper.rb
       flash[:notice] = 'You have successfully linked your Virtual Dash Balance to your Stripe account.'
     elsif params[:stripe_connect] == 'refresh'
-      helpers.delete_stripe_connect_account(user, params[:acc_id])
+      delete_stripe_connect_account(user, params[:acc_id]) # Method in stripe_connect_helper.rb
       flash[:alert] = 'Something happen linking your Stripe account, please try again.'
     end
   end
