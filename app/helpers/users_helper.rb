@@ -14,13 +14,12 @@ module UsersHelper
     activities = []
 
     races.each do | race |
-      prize = Prize.prize_from_user_race(current_user, race)
-      p '>>>><<<<'
-      p prize
-      if race.enddate <= DateTime.now
+      prize = Prize.prize_from_user_race(current_user, race).first
+
+      if race.enddate <= DateTime.now && prize
         activities.push({
           :status => prize[:stripe_transfer_id].nil? ? 'PENDING' : 'OK',
-          :amount => prize,
+          :amount => prize.amount,
           :date => prize.created_at,
           :description => "Race prize - #{race.title}",
         })
@@ -33,6 +32,9 @@ module UsersHelper
         :amount => (race.price > 0) ? -race.price : -10
       })
     end
+
+    
+    activities
   end
 
 
