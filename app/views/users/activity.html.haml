@@ -50,22 +50,21 @@
               %tr
                 %th Date
                 %th{:colspan => '2'} Description
-                -# %th.center Transaction Status
+                %th.center Status
                 %th.center Amount
             %tbody
               - @activities.each do | activity |
                 %tr
                   %td= activity[:date].strftime('%B %d, %Y')
                   %td{:colspan => '2'}= activity[:description]
-                  -# 
-                    %td.center
-                      - case activity[:status]
-                      - when 'OK'
-                        = image_tag 'activity/status-ok', alt: 'OK'
-                      - when 'ERROR'
-                        = image_tag 'activity/status-error', alt: 'ERROR'
-                      - else
-                        = image_tag 'activity/status-pending', alt: 'PENDING'
+                  %td.center
+                    - case activity[:status]
+                    - when 'OK'
+                      = image_tag 'activity/status-ok', alt: 'OK'
+                    - when 'PENDING'
+                      = image_tag 'activity/status-pending', alt: 'PENDING'
+                    - else
+                      = image_tag 'activity/status-error', alt: 'ERROR'
                   - if activity[:amount] > 0
                     %td.center
                       .wins= "#{number_to_currency(activity[:amount], precision: 2)} (USD)"

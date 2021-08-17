@@ -24,36 +24,8 @@ class UsersController < ApplicationController
   def activity
     @race_name = params[:name] ? "%#{params[:name]}%" : '%%'
     races = Race.registrations_paid(current_user, @race_name)
-    @activities = []
-
-    if params[:stripe_connect] == 'return'
-      helpers.deposit_unpaid_prizes(current_user)
-      flash[:notice] = 'You have successfully linked your Virtual Dash Balance to your Stripe account.'
-    elsif params[:stripe_connect] == 'refresh'
-      helpers.delete_stripe_connect_account(current_user, params[:acc_id])
-      flash[:alert] = 'Something happen linking your Stripe account, please try again.'
-    end
-    
-    races.each do | race |
-      if race.enddate <= DateTime.now
-        leaderboard = Leaderboard.new(race, :leaders).call
-        place = leaderboard[:competitors].index(leaderboard[:competitors].find { |try| try[:id] == current_user[:id] })
-        prize = Leaderboard.get_prize_amount(leaderboard, current_user[:id])
-        unless place.nil?  
-          @activities.push({
-            :date => race.enddate,
-            :description => "#{(place + 1).ordinalize} place prize - #{race.title}",
-            :amount => prize
-          })
-        end
-      end
-      
-      @activities.push({
-        :date => race.registrations.first.updated_at,
-        :description => "Race registration - #{race.title}",
-        :amount => (race.price > 0) ? -race.price : -10
-      })
-    end
+    helpers.handle_stripe_connect(params, current_user)
+    @activities = helpers.get_activities_from_user(races, current_user)
   end
 
   def create_connect_account
