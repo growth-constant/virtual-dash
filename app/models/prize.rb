@@ -1,4 +1,6 @@
 class Prize < ApplicationRecord
+  paginates_per 8
+
   belongs_to :race
   belongs_to :user
 
