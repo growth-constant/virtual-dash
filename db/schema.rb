@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_06_172406) do
+ActiveRecord::Schema.define(version: 2021_08_03_220140) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "prizes", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "race_id", null: false
+    t.integer "amount", null: false
+    t.string "currency", default: "usd", null: false
+    t.string "stripe_transfer_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["race_id"], name: "index_prizes_on_race_id"
+    t.index ["user_id"], name: "index_prizes_on_user_id"
+  end
 
   create_table "race_categories", force: :cascade do |t|
     t.string "title"
@@ -108,10 +120,13 @@ ActiveRecord::Schema.define(version: 2021_05_06_172406) do
     t.boolean "profile_complete", default: false
     t.date "birthdate"
     t.boolean "is_subscribed", default: false
+    t.string "stripe_conn_acc_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "prizes", "races"
+  add_foreign_key "prizes", "users"
   add_foreign_key "race_categories", "races"
   add_foreign_key "race_tries", "registrations"
   add_foreign_key "race_tries", "users"

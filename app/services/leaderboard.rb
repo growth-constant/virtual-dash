@@ -23,6 +23,25 @@ class Leaderboard
     }
   end
 
+  def self.get_prize_amount(leaderboard, user_id)
+    prize = 0
+    leaderboard[:competitors].each_with_index do |competitor, index|
+      if competitor.id == user_id 
+        case index
+        when 0
+          prize = leaderboard[:prizes][:first]
+        when 1
+          prize = leaderboard[:prizes][:second]
+        when 2
+          prize = leaderboard[:prizes][:third]
+        else
+          prize = 0
+        end
+      end
+    end
+    prize
+  end
+
   private
 
   def competitors

@@ -17,7 +17,8 @@ class RaceMailerPreview < ActionMailer::Preview
   def race_ended_email
     user = {
       :first_name => 'Layton',
-      :email => 'andre@thetail.xyz'
+      :email => 'andre@thetail.xyz',
+      :stripe_conn_acc_id => nil
     }
     race = {
       :id => 1,

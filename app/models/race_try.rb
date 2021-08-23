@@ -24,11 +24,11 @@ class RaceTry < ApplicationRecord
     find_by_sql("
       SELECT *
       FROM ( 
-        SELECT DISTINCT ON (name) name, user_id AS id, MIN(duration) AS duration, image_medium AS image, start
+        SELECT DISTINCT ON (name) name, user_id AS id, race_id, MIN(duration) AS duration, image_medium AS image, start
           FROM race_tries 
           INNER JOIN users ON users.id = race_tries.user_id
           WHERE race_tries.race_id = #{race.id}
-          GROUP BY race_tries.user_id, name, image_medium, race_tries.duration, race_tries.start
+          GROUP BY race_tries.user_id, name, image_medium, race_tries.duration, race_tries.start, race_tries.race_id
           ORDER BY name
       ) AS races
       ORDER BY duration

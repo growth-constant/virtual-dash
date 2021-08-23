@@ -58,13 +58,13 @@
           .ui.positive.message#notice
             %i.close.icon.gray#close
             .header
-              Success!
+              Success
             %p= notice
         - elsif alert 
           .ui.negative.message#alert
             %i.close.icon.gray#close
             .header
-              Error!
+              Error
             %p= alert
         = yield
 

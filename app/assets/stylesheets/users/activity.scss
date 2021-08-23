@@ -1,5 +1,9 @@
 @import '../variables/colors.scss';
 
+.activity-container {
+  margin-bottom: 2em;
+}
+
 .activity-left-card {
   .balance {
     font-size: 2.5em;
@@ -49,6 +53,8 @@
 }
 
 .activity-right-card {
+  height: 100%;
+
   th {
     font-weight: 400 !important;
     background-color: $lighter-blue !important;

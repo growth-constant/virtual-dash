@@ -5,20 +5,24 @@ class RacesEnded
   end
 
   def call
-    notify
+    @ended_races.each do | race |
+      Prize.create_race_prizes(race)
+      StripePayout.new(race).call
+      notify(race)
+    end
   end
 
-  def notify
-    @ended_races.each do | race |
-      leaderboard = Leaderboard.new(race, :all).call[:competitors]
-      place =  leaderboard.index(leaderboard.find { |try| try[:id] == race.user[:id] })
+  private
 
-      RaceMailer.with(
-        race: race,
-        user: race.user,
-        place: (place + 1).ordinalize
-      ).race_ended_email.deliver_now
-    end
+  def notify(race)
+    leaderboard = Leaderboard.new(race, :all).call[:competitors]
+    place =  leaderboard.index(leaderboard.find { |try| try[:id] == race.user[:id] })
+
+    RaceMailer.with(
+      race: race,
+      user: race.user,
+      place: (place + 1).ordinalize
+    ).race_ended_email.deliver_now
   end
 
 end
