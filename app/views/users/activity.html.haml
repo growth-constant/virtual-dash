@@ -70,3 +70,5 @@
                       .wins= "#{number_to_currency(activity[:amount], precision: 2)} (USD)"
                   - else 
                     %td.center= "#{number_to_currency(activity[:amount], precision: 2)} (USD)"
+          -# = render partial: 'paginator', locals: { page: @page, total: @total, url: activity_path }
+          = render partial: 'components/paginator', locals: { total: [1,2,3,4,5] }
