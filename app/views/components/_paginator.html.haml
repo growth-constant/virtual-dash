@@ -6,13 +6,17 @@
       - for i in 0...total
         %a.item= i + 1
     - else
+      %a.item < 
       - if page > (total - 4)
-        - for i in (total - 3)...total
+        - for i in (total - 2)...total
           %a.item= i - 2
       - else
-        %a.item= page - 1
         - for i in page...(page + 2)
           %a.item= i + 1
       %a.item.disabled= "..."
-      - for i in (total - 3)...total
+      - for i in (total - 2)...total
         %a.item= i + 1
+      - if page == total
+        %a.item.disabled > 
+      - else
+        %a.item > 
