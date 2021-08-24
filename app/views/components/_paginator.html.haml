@@ -2,21 +2,24 @@
   %div
 - else
   .ui.compact.menu{style: 'position: absolute; bottom: 3em;'}
-    - if total <= 6
+    - if total <= 4
       - for i in 0...total
-        %a.item= i + 1
+        = link_to i + 1, url_for(page: i + 1), class: 'item'
     - else
-      %a.item < 
-      - if page > (total - 4)
+      - if page == 1
+        = link_to '<', url_for(page: page - 1), class: 'item disabled'
+      - else
+        = link_to '<', url_for(page: page - 1), class: 'item'
+      - if page > (total - 3)
         - for i in (total - 2)...total
-          %a.item= i - 2
+          = link_to i - 2, url_for(page: i - 2), class: 'item'
       - else
         - for i in page...(page + 2)
-          %a.item= i + 1
+          = link_to i + 1, url_for(page: i + 1), class: 'item'
       %a.item.disabled= "..."
       - for i in (total - 2)...total
-        %a.item= i + 1
+        = link_to i + 1, url_for(page: i + 1), class: 'item'
       - if page == total
-        %a.item.disabled > 
+        = link_to '>', url_for(page: page + 1), class: 'item disabled'
       - else
-        %a.item > 
+        = link_to '>', url_for(page: page + 1), class: 'item'
