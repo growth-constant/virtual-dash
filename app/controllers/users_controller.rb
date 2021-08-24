@@ -23,11 +23,12 @@ class UsersController < ApplicationController
 
   def activity
     @race_name = params[:name] ? "%#{params[:name]}%" : '%%'
+    @current_page = params[:page] ? params[:page] : 1
     races = Race.registrations_paid(current_user, @race_name)
     helpers.handle_stripe_connect(params, current_user)
     @activities = Kaminari.paginate_array(
       helpers.get_activities_from_user(races, current_user)
-    ).page(params[:page]).per(8)
+    ).page(params[:page]).per(6)
   end
 
   def create_connect_account
