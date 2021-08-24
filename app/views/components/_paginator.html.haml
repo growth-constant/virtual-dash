@@ -1,7 +1,7 @@
 - if total == 1
   %div
 - else
-  .ui.compact.menu{style: 'position: absolute; bottom: 3em;'}
+  .ui.compact.menu
     - if total <= 4
       - for i in 0...total
         = link_to i + 1, url_for(page: i + 1), class: 'item'
@@ -22,4 +22,4 @@
       - if page == total
         = link_to '>', url_for(page: page + 1), class: 'item disabled'
       - else
-        = link_to '>', url_for(page: page + 1), class: 'item'
+        = link_to '>', url_for(page: page + 1), class: 'item' #TODO: Pass the params from the url to the link
