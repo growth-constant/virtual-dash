@@ -4,22 +4,22 @@
   .ui.compact.menu
     - if total <= 4
       - for i in 0...total
-        = link_to i + 1, url_for(page: i + 1), class: 'item'
+        = link_to i + 1, url_for(request.parameters.merge({:page => i + 1})), class: 'item'
     - else
       - if page == 1
-        = link_to '<', url_for(page: page - 1), class: 'item disabled'
+        = link_to '<', url_for(request.parameters.merge({:page => page - 1})), class: 'item disabled'
       - else
-        = link_to '<', url_for(page: page - 1), class: 'item'
+        = link_to '<', url_for(request.parameters.merge({:page => page - 1})), class: 'item'
       - if page > (total - 3)
         - for i in (total - 2)...total
-          = link_to i - 2, url_for(page: i - 2), class: 'item'
+          = link_to i - 2, url_for(request.parameters.merge({:page => i - 2})), class: 'item'
       - else
         - for i in page...(page + 2)
-          = link_to i + 1, url_for(page: i + 1), class: 'item'
+          = link_to i + 1, url_for(request.parameters.merge({:page => i + 1})), class: 'item'
       %a.item.disabled= "..."
       - for i in (total - 2)...total
-        = link_to i + 1, url_for(page: i + 1), class: 'item'
+        = link_to i + 1, url_for(request.parameters.merge({:page => i + 1})), class: 'item'
       - if page == total
-        = link_to '>', url_for(page: page + 1), class: 'item disabled'
+        = link_to '>', url_for(request.parameters.merge({:page => page + 1})), class: 'item disabled'
       - else
-        = link_to '>', url_for(page: page + 1), class: 'item' #TODO: Pass the params from the url to the link
+        = link_to '>', url_for(request.parameters.merge({:page => page + 1})), class: 'item'
