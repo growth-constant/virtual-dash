@@ -94,12 +94,17 @@ class RacesController < ApplicationController
   private
 
   def filter
+    @current_page = params[:page] ? params[:page] : 1
     # When paginator is implemented, change the 3 for 4 in the conditional
     if params.as_json.size < 3
-      @races = Race.all.page(params[:page])
+      @races = Kaminari.paginate_array(
+        Race.all.page(params[:page])
+      ).page(params[:page]).per(12)
     else
       @params = params.as_json
-      @races = Race.search(@params).page(params[:page])
+      @races =  Kaminari.paginate_array(
+        Race.search(@params).page(params[:page])
+      ).page(params[:page]).per(12)
     end
   end
 

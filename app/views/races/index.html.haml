@@ -35,3 +35,7 @@
         - else
           .column
             = render partial: 'components/race-card', locals: {race: race}
+    .one.column.row
+      .one.wide.column
+        .race-paginator
+          = render partial: 'components/paginator', locals: { total: @races.total_pages, page: @current_page, url: races_path } 
