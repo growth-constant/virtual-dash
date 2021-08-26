@@ -57,7 +57,7 @@ module StripeConnectHelper
     account = Stripe::Account.create({
       email: user.email,
       type: 'express',
-      country: 'US',
+      country: 'US', # Stripe requires US accounts
       business_type: 'individual',
       individual: {
         first_name: user.first_name,
@@ -67,7 +67,7 @@ module StripeConnectHelper
         phone: user.phone,
         address: {
           city: user.city,
-          country: user.country,
+          country: 'US',
         },
         dob: {
           day: user.birthdate.day,
