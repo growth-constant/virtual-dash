@@ -64,7 +64,6 @@ module StripeConnectHelper
         last_name: user.last_name,
         gender: user.gender,
         email: user.email,
-        phone: user.phone,
         address: {
           city: user.city,
           country: 'US',
