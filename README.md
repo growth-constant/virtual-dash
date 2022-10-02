@@ -2,9 +2,9 @@
 
 An web app to compete for cash prices easily and virtually with friends and have race organizers create completely virtual events that are hassle free.
 
-https://github.com/growth-constant/virtual-dash/blob/develop/1-part.mov
+https://user-images.githubusercontent.com/2532265/193481305-f9bedd2a-2284-4930-8161-18efd539e605.mov
 
-https://github.com/growth-constant/virtual-dash/blob/develop/2-part.mov?raw=true
+https://user-images.githubusercontent.com/2532265/193481308-5a70644a-cbfc-4294-b86e-2744c88fa81c.mov
 
 ## Development of App
 
