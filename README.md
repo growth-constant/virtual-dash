@@ -1,4 +1,11 @@
 # Virtual Dash
+
+An web app to compete for cash prices easily and virtually with friends and have race organizers create completely virtual events that are hassle free.
+
+[](./1-part.mov)
+
+[](./2-part.mov)
+
 ## Development of App
 
 To start the application run the following docker command
